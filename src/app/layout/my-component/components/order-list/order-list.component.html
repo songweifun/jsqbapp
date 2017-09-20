@@ -1,0 +1,43 @@
+<div>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card border-primary mb-3">
+                <div class="card-header">最新订单</div>
+                <div class="card-block table-responsive">
+                    <table class="table table-hover  table-bordered table-dark table-sm ">
+                        <thead class="bg-success">
+                        <tr>
+                            <th>id</th>
+                            <th>申请IP</th>
+                            <th>申请单位</th>
+                            <th>申请人</th>
+                            <th>申请时间</th>
+                            <!--<th>标题</th>-->
+                            <!--<th>DOI号</th>-->
+                            <th>操作</th>
+                            <!--<th>留言</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let order of orders" [hidden]="!orders">
+                            <th scope="row">{{order.id}}</th>
+                            <td>{{order.requestip}}</td>
+                            <td>{{order.request_map}}</td>
+                            <td>{{order.from_name}}</td>
+                            <td>{{order.create_time}}</td>
+                            <!--<td>{{order.title}}</td>-->
+                            <!--<td>{{order.doi}}</td>-->
+                            <!--<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>-->
+                            <!--<td [hidden]="order.url"><app-modal></app-modal></td>-->
+                            <td><app-modal [orderInfo]="order"></app-modal></td>
+                            <!--<td><button>详情</button></td>-->
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

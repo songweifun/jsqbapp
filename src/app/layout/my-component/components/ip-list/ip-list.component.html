@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col col-xl-12 col-lg-12">
+        <div class="card border-primary mb-3">
+            <div class="card-header">{{title}}</div>
+            <div class="card-block table-responsive">
+                <table class="table table-hover  table-bordered table-dark table-sm ">
+                    <thead class="bg-success">
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>id</th>
+                        <th>IP地址起</th>
+                        <th>IP地址止</th>
+                        <th>映射单位</th>
+                        <th [hidden]="isWhite || isBlack">是否启用映射</th>
+                        <th>加入黑白名单</th>
+
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr *ngFor="let order of orders" [hidden]="!orders">-->
+                        <!--<th scope="row">{{order.id}}</th>-->
+                        <!--<td>{{order.requestip}}</td>-->
+                        <!--<td>未知</td>-->
+                        <!--<td>{{order.email}}</td>-->
+                        <!--<td>{{order.create_time}}</td>-->
+                        <!--&lt;!&ndash;<td>{{order.title}}</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>{{order.doi}}</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td [hidden]="order.url"><app-modal></app-modal></td>&ndash;&gt;-->
+                        <!--<td><app-modal [orderInfo]="order"></app-modal></td>-->
+                        <!--&lt;!&ndash;<td><button>详情</button></td>&ndash;&gt;-->
+                    <!--</tr>-->
+
+                    <tr *ngFor="let map of ipMaps">
+                        <td><input type="checkbox"></td>
+                        <td>{{map.id}}</td>
+                        <td>{{map.ip_start}}</td>
+                        <td>{{map.ip_end}}</td>
+                        <td>{{map.map_name}}</td>
+                        <td [hidden]="isWhite || isBlack">
+                            <div style="width:40px;">
+                                <app-switch [checked]="map.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,map.id)"></app-switch>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="width:40px;">
+                                <app-switch [checked]="map.is_forbid==1?true:false" [onLabel]="'黑'"  [offLabel]="'白'" [theme]="theme" (onChange)="changeIsForbid($event,map.id)"></app-switch>
+                            </div>
+                        </td>
+
+                        <td>
+                            <!--<button class="btn btn-sm btn-success">状态</button>-->
+                            <!--<button class="btn btn-sm btn-success"><i class="fa fa-wrench" aria-hidden="true"></i> 修改</button>-->
+                            <app-add-ip-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editIpMap($event,map.id)" [ipMapId]="map.id" [isBlack]="isBlack" [isWhite]="isWhite" ></app-add-ip-modal>
+                            <button class="btn btn-sm btn-success" (click)="deleteIpMap(map.id)"><i class="fa fa-minus"></i> 删除</button>
+                            <!--<button type="button" class="btn btn-info" (click)="openInfo()">信息消息框</button>-->
+
+
+                            <!--<button type="button" class="btn btn-danger" (click)="openError()">错误消息</button>-->
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+
+
+                <app-add-ip-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addIpMap($event,isBlack)" [isBlack]="isBlack" [isWhite]="isWhite"></app-add-ip-modal>
+            </div>
+        </div>
+    </div>
+</div>

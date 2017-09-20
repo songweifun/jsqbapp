@@ -1,0 +1,11 @@
+<span class="c-switch"
+      [class.checked]="checked"
+      [class.disabled]="disabled"
+      [ngClass]="theme"
+      (click)="toggle()" >
+            <small></small>
+            <span class="c-switch-text" >
+                <span class="on"  [hidden]="!onLabel">{{onLabel}}</span>
+                <span class="off" [hidden]="!offLabel">{{offLabel}}</span>
+            </span>
+</span>

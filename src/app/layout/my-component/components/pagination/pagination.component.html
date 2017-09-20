@@ -1,0 +1,40 @@
+<div class="row pull-right">
+
+    <!--<div class="col col-sm-6 pull-right">-->
+        <!--<div class="card mt-3">-->
+            <!--<div class="card-header">Advanced Pagination</div>-->
+            <!--<div class="card-block">-->
+                <!--<div class="text-uppercase text-muted fs-12">maxSize = 5, rotate = false</div>-->
+                <!--<ngb-pagination [collectionSize]="120" [(page)]="advancedPagination" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination>-->
+
+                <!--<div class="text-uppercase text-muted fs-12">maxSize = 5, rotate = true</div>-->
+                <ngb-pagination [collectionSize]="options.total" [(page)]="options.pageNumber" [pageSize]="options.pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" [size]="''" (pageChange)="pageChangeHandler($event)"></ngb-pagination>
+    <!--<br>-->
+                <!--{{options.pageTotal}}<br>-->
+                <!--{{options.pageSize}}<br>-->
+                <!--{{options.total}}<br>-->
+
+                <!--<div class="text-uppercase text-muted fs-12">maxSize = 5, rotate = true, ellipses = false</div>-->
+                <!--<ngb-pagination [collectionSize]="120" [(page)]="advancedPagination" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>-->
+                <!--<div class="alert alert-info">-->
+                    <!--<b>Current page: </b>{{advancedPagination}}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+
+
+<div class="btn-group pull-left" style="margin-top:5px">
+			<span *ngIf="options.pageTotal>0"> 每页
+				<select  [ngModel]="options.pageSize" (ngModelChange)="pageSizeChanged($event);">
+				<option *ngFor="let item of options.pageList" [value]='item'>{{item}}</option>
+				</select> 条数据，
+	            </span>
+            <span *ngIf="options.pageTotal<=0">
+		      每页 {{options.pageSize}} 条数据，
+			</span>
+
+    当前第 {{options.pageNumber}} 页, 共 {{options.pageTotal}} 页，共  {{options.total}} 条数据
+</div>

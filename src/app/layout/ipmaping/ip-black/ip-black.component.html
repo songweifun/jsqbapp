@@ -1,0 +1,7 @@
+<div [@routerTransition]>
+    <app-ip-list [title]="title" [ipMaps]="ipMaps" [transformPageData]="transformPageData" [isBlack]="true"></app-ip-list>
+    <!--<br>-->
+    <!--{{transformPageData.pageNumber}}<br>-->
+    <!--{{transformPageData.pageSize}}<br>-->
+    <app-http-pagination [url]="url" [pageList]="pageList" [method]="'get'" (onDataChanged)="onDataChanged($event)"></app-http-pagination>
+</div>

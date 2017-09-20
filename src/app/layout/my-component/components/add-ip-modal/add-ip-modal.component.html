@@ -1,0 +1,158 @@
+<button class="btn btn-success btn-sm"  (click)="open(content)"><i class="fa" [class.fa-plus]="btnText=='添加'" [class.fa-wrench]="btnText=='修改'"></i> {{btnText}}</button>
+<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{header}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container" >
+            <form [formGroup]="formModel">
+                <div formGroupName="ipRange">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">IP开始</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="inputEmail3" placeholder="IP开始" formControlName="start">
+                        </div>
+                        <div class="col-sm-4">
+                            <div [hidden]="formModel.get(['ipRange','start']).valid ||formModel.get(['ipRange','start']).pristine"><!-- 当表单项验证通过 或者 mobile没被修改过时隐藏 -->
+                                <div [hidden]="!formModel.hasError('ip',['ipRange','start'])"><h5>ip格式不正确</h5></div><!-- 第一个参数是返回的键值，第二个是要验证的字段 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">IP终止</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="inputPassword3" placeholder="IP终止" formControlName="end">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div [hidden]="formModel.get(['ipRange','end']).valid ||formModel.get(['ipRange','end']).pristine"><!-- 当表单项验证通过 或者 mobile没被修改过时隐藏 -->
+                                <div [hidden]="!formModel.hasError('ip',['ipRange','end'])"><h5>ip格式不正确</h5></div><!-- 第一个参数是返回的键值，第二个是要验证的字段 -->
+                            </div>
+                            <div [hidden]="!formModel.hasError('compare','ipRange')"><h5>{{formModel.getError('compare','ipRange')?.description}}</h5></div>
+
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group row">-->
+                        <!--<div class="">-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+
+
+
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">映射单位名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="映射单位名称" formControlName="mapName">
+                    </div>
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('mapName').valid || formModel.get('mapName').untouched">
+                            <div [hidden]="!formModel.hasError('required','mapName')"><h5>映射单位名称为必填项</h5></div>
+                        </div>
+                    </div>
+                </div>
+
+<div [hidden]="isWhite || isBlack">
+                <div class="form-group row">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">到期时间</label>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="time" ngbDatepicker ngbDatepicker #d2="ngbDatepicker">
+                            <span class="input-group-btn">
+                                 <button class="btn btn-info c-not-shadow" type="button"  (click)="d2.toggle()">
+                                      <i class="fa fa-calendar"></i>
+                                 </button>
+
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('time').valid || formModel.get('time').untouched">
+                            <div [hidden]="!formModel.hasError('required','time')"><h5>到期时间为必填项</h5></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword5" class="col-sm-2 col-form-label">月下载量</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" id="inputPassword7" placeholder="月下载量" formControlName="monthlimit">
+                    </div>
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('monthlimit').valid || formModel.get('monthlimit').untouched">
+                            <div [hidden]="!formModel.hasError('required','monthlimit')"><h5>月下载量为必填项</h5></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword5" class="col-sm-2 col-form-label">日下载量</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" id="inputPassword5" placeholder="日下载量" formControlName="daylimit">
+                    </div>
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('daylimit').valid || formModel.get('daylimit').untouched">
+                            <div [hidden]="!formModel.hasError('required','daylimit')"><h5>日下载量为必填项</h5></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <fieldset class="form-group" >
+                    <div class="row">
+                        <legend class="col-form-legend col-sm-2">是否开启</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="isOpen" id="gridRadios1" value="1" formControlName="isOpen" checked>
+                                    是
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="isOpen" id="gridRadios2" value="0" formControlName="isOpen">
+                                    否
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+</div>
+
+                <!--<div class="form-group row">-->
+                    <!--<div class="col-sm-10">-->
+                        <!--<button type="submit" class="btn btn-primary">Sign in</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </form>
+        </div>
+
+        <!--<app-file-upload (isUploaded)="setIsupload($event)" [hidden]="orderInfo.is_have" [orderId]="orderInfo.id"></app-file-upload>-->
+
+        <!--<button [hidden]="!isUploaded" class="btn btn-success" (click)="sendArticle(orderInfo.id)">提交</button>-->
+
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">保存</button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-secondary" (click)="c('Close click')">关闭</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

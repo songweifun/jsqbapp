@@ -1,0 +1,76 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+
+
+@import "test3/scss/base/app-base";
+@import 'test3/scss/base/common';
+@import "test3/scss/shared/switch";
+@import 'test3/scss/shared/toast';
+@import "test3/scss/shared/modal";
+
+
+/* You can add global styles to this file, and also import other style files */
+/*你可以添加全局的样式到这个文件中，并且可以引入其它的样式文件*/
+
+///* ======以下是第三方scss与css引入======*/
+//@import '../node_modules/font-awesome/css/font-awesome.min.css';
+//@import '../node_modules/animate.css/animate.min.css';
+//@import '../node_modules/ztree/css/metroStyle/metroStyle.css';
+//@import '../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css';
+//@import '../node_modules/imageviewer/dist/viewer.min.css';
+////bootstrap
+//@import "test3/scss/base/bootstrap-variables.scss";
+//@import '../node_modules/bootstrap/scss/bootstrap.scss';
+//@import '../node_modules/bootstrap/scss/bootstrap-grid.scss';
+//@import '../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+
+
+
+///* ======以下是scss引入======*/
+////公共样式
+//@import 'test3/scss/base/app-base.scss';
+//@import 'test3/scss/base/common.scss';
+//
+////样式重写
+//@import 'test3/scss/base/bootstrap.scss';
+//@import 'test3/scss/base/ztree.scss';
+//@import 'test3/scss/base/select2-bootstrap.scss';
+//@import 'test3/scss/base/mCustomScrollbar.scss';
+//@import 'test3/scss/base/viewer.scss';
+//
+////模块样式
+////@import 'test3/scss/login/login.scss';
+//@import 'test3/scss/main/main.scss';
+//@import 'test3/scss/home/home.scss';
+//@import 'test3/scss/shared/modal.scss';
+//@import 'test3/scss/shared/toast.scss';
+//@import 'test3/scss/shared/hierarchy-view.scss';
+//@import 'test3/scss/shared/spin.scss';
+//@import 'test3/scss/shared/tree.scss';
+//@import 'test3/scss/shared/ztree.scss';
+//@import 'test3/scss/shared/switch.scss';
+//@import 'test3/scss/errorpage/errorpage.scss';
+//
+//
+//
+////示例样式
+//@import 'test3/scss/demo/demo.scss';
+
+
+
+
+
+
+
+
+
+
+
+
+
+

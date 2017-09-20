@@ -1,0 +1,44 @@
+<!--<div [@routerTransition]>-->
+    <!--<div class="row">-->
+        <!--<div class="col col-xl-12 col-lg-12">-->
+            <!--<div class="card border-primary mb-3">-->
+                <!--<div class="card-header">最新订单</div>-->
+                <!--<div class="card-block table-responsive">-->
+                    <!--<table class="table table-hover  table-bordered table-dark table-sm ">-->
+                        <!--<thead class="bg-success">-->
+                        <!--<tr>-->
+                            <!--<th>id</th>-->
+                            <!--<th>申请IP</th>-->
+                            <!--<th>申请单位</th>-->
+                            <!--<th>申请人</th>-->
+                            <!--<th>申请时间</th>-->
+                            <!--&lt;!&ndash;<th>标题</th>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<th>DOI号</th>&ndash;&gt;-->
+                            <!--<th>操作</th>-->
+                            <!--&lt;!&ndash;<th>留言</th>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr *ngFor="let order of orders" [hidden]="!orders">-->
+                            <!--<th scope="row">{{order.id}}</th>-->
+                            <!--<td>{{order.requestip}}</td>-->
+                            <!--<td>未知</td>-->
+                            <!--<td>{{order.email}}</td>-->
+                            <!--<td>{{order.create_time}}</td>-->
+                            <!--&lt;!&ndash;<td>{{order.title}}</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td>{{order.doi}}</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td [hidden]="order.url"><app-modal></app-modal></td>&ndash;&gt;-->
+                            <!--<td><app-modal [orderInfo]="order"></app-modal></td>-->
+                            <!--&lt;!&ndash;<td><button>详情</button></td>&ndash;&gt;-->
+                        <!--</tr>-->
+
+
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<router-outlet></router-outlet>
