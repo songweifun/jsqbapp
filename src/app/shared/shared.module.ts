@@ -17,6 +17,12 @@ import {ConfirmComponent} from "./components/modal/confirm.component";
 import {ToastComponent} from "./components/toast/toast.component";
 import {ToastBoxComponent} from "./components/toast/toast-box.component";
 import {DatepickerI18n, DatepickerI18nType} from "./components/datepickerI18n/datepickerI18n";
+import {VerticalBaChartComponent} from "../layout/my-component/components/vertical-ba-chart/vertical-ba-chart.component";
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {PieChartComponent} from "../layout/my-component/components/pie-chart/pie-chart.component";
+import {AdvancePieChartComponent} from "../layout/my-component/components/advance-pie-chart/advance-pie-chart.component";
+
+
 /**
  * 公共模块
  */
@@ -29,6 +35,10 @@ import {DatepickerI18n, DatepickerI18nType} from "./components/datepickerI18n/da
         HttpModule,
         FileUploadModule,
         NgbModule.forRoot(),
+        NgxChartsModule,
+
+
+
 
     ],
     declarations: [
@@ -44,6 +54,10 @@ import {DatepickerI18n, DatepickerI18nType} from "./components/datepickerI18n/da
         ConfirmComponent,
         // ToastComponent,
         // ToastBoxComponent
+        VerticalBaChartComponent,
+        PieChartComponent,
+        AdvancePieChartComponent
+
 
     ],
     providers:    [
@@ -74,6 +88,10 @@ import {DatepickerI18n, DatepickerI18nType} from "./components/datepickerI18n/da
         ConfirmComponent,
         // ToastComponent,
         // ToastBoxComponent
+        VerticalBaChartComponent,
+        PieChartComponent,
+        AdvancePieChartComponent
+
 
     ]
     //bootstrap：通常是app启动的根组件，一般只有一个component。bootstrap中的组件会自动被放入到entryComponents中。
