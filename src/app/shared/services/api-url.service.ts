@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiUrlService {
 
-    private baseUrl='http://jsqb.api.cn/api/v1/'
+    private baseUrl='http://101.201.103.106/jsqbapi/public/api/v1/'
     public addMapIpUrl:string;
     public allMapUrl:string;
     public updateIpMapUrl:string;
