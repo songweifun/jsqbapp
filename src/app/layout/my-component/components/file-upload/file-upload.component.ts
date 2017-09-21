@@ -2,7 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FileUploader, FileItem, ParsedResponseHeaders} from "ng2-file-upload";
 import {TokenService} from "../../../../shared/services/token.service";
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-const URL = 'http://localhost/after/jsqb/jsqbapi/public/api/v1/upload/?XDEBUG_SESSION_START=18239';
+const URL = 'http://101.201.103.106/jsqbapi/public/api/v1/upload';
 
 @Component({
   selector: 'app-file-upload',

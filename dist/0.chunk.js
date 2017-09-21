@@ -229,7 +229,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-var URL = 'http://localhost/after/jsqb/jsqbapi/public/api/v1/upload/?XDEBUG_SESSION_START=18239';
+var URL = 'http://101.201.103.106/jsqbapi/public/api/v1/upload';
 var FileUploadComponent = (function () {
     function FileUploadComponent(tokenService) {
         this.tokenService = tokenService;
