@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
+import {ApiUrlService} from "./api-url.service";
 
 @Injectable()
 export class TokenService {
@@ -7,10 +8,14 @@ export class TokenService {
     public isValid:boolean;
     public token:string;
 
-  constructor(private http:Http) { }
+  constructor(
+      private http:Http,
+      private apiUrlService:ApiUrlService
+
+  ) { }
 
   getToken(ac,se){
-      this.http.post('http://192.168.1.144/after/jsqb/jsqbapi/public/api/v1/token/app',{"ac":ac,"se":se})
+      this.http.post(this.apiUrlService.tokenAppUrl,{"ac":ac,"se":se})
           .map(res=>res.json()).subscribe(
               data=>this.token=data.token
           );
@@ -21,7 +26,7 @@ export class TokenService {
   }
 
     verifyToken(){
-      this.http.post('http://192.168.1.144/after/jsqb/jsqbapi/public/api/v1/token/verify',{'token':localStorage.getItem('token')})
+      this.http.post(this.apiUrlService.tokenVerifyUrl,{'token':localStorage.getItem('token')})
           .map(res=>res.json())
           .subscribe(
               data=>this.isValid=data.isValid

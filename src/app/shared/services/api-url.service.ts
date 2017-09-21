@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiUrlService {
 
-    private baseUrl='http://localhost/after/jsqb/jsqbapi/public/api/v1/'
+    private baseUrl='http://jsqb.api.cn/api/v1/'
     public addMapIpUrl:string;
     public allMapUrl:string;
     public updateIpMapUrl:string;
@@ -19,6 +19,11 @@ export class ApiUrlService {
     public updateLibrayUrl:string;
     public oneLibraryUrl:string;
     public deleteLibraryUrl:string;
+    public sendArticleUrl:string;
+    public tokenAppUrl:string;
+    public tokenVerifyUrl:string;
+    public getMyTransmitesUrl:string;
+    public allTransmitesUrl:string;
 
 
     constructor() {
@@ -37,6 +42,11 @@ export class ApiUrlService {
       this.updateLibrayUrl=this.baseUrl+'system/update_library';
       this.oneLibraryUrl=this.baseUrl+'system/one_library';
       this.deleteLibraryUrl=this.baseUrl+'system/delete_library';
+      this.sendArticleUrl=this.baseUrl+'order/send';
+      this.tokenAppUrl=this.baseUrl+'token/app';
+      this.tokenVerifyUrl=this.baseUrl+'token/verify';
+      this.getMyTransmitesUrl=this.baseUrl+'order/by_user';
+      this.allTransmitesUrl=this.baseUrl+'order/paginate';
 
     }
 

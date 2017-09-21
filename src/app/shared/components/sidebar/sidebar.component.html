@@ -51,13 +51,13 @@
             <li class="nested" [class.expand]="showMenu === 'statistics'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆统计' | translate }}</span></a>
+                        <a [routerLink]="['/statistics/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆统计' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '请求统计' | translate }}</span></a>
+                        <a [routerLink]="['/statistics/rquest']" [routerLinkActive]="['router-link-active']"><span>{{ '请求统计' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '资源统计' | translate }}</span></a>
+                        <a [routerLink]="['/statistics/resource']" [routerLinkActive]="['router-link-active']"><span>{{ '资源统计' | translate }}</span></a>
                     </li>
                 </ul>
             </li>

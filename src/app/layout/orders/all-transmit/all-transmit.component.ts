@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {routerTransition} from "../../../router.animations";
 import {Order} from "../orders.component";
+import {ApiUrlService} from "../../../shared/services/api-url.service";
 
 @Component({
   selector: 'app-all-transmit',
@@ -12,9 +13,14 @@ export class AllTransmitComponent implements OnInit {
 //http://localhost/after/jsqb/jsqbapi/public/api/v1/order/paginate
 
     orders:Array<Order>;
-    url:string="http://192.168.1.144/after/jsqb/jsqbapi/public/api/v1/order/paginate";
+    url:string;
     pageList:Array<number>= [10,15, 25, 35]
-  constructor() { }
+  constructor(
+      private apiUrlService:ApiUrlService
+  ) {
+        this.url=this.apiUrlService.allTransmitesUrl
+
+  }
 
   ngOnInit() {
   }

@@ -64,7 +64,7 @@ import {DatepickerI18n, DatepickerI18nType} from "./components/datepickerI18n/da
     exports:[
         //exports：用来控制将哪些内部成员暴露给外部使用。
         // 导入一个module并不意味着会自动导入这个module内部导入的module所暴露出的公共成员。除非导入的这个module把它内部导入的module写到exports中。
-
+        CommonModule,
         PaginationComponent,
         HttpPaginationComponent,
         ModalComponent,

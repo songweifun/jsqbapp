@@ -12,6 +12,7 @@ const routes: Routes = [
             { path: 'orders', loadChildren: './orders/orders.module#OrdersModule' },
             { path: 'ipmaping', loadChildren: './ipmaping/ipmaping.module#IpmapingModule' },
             { path: 'system', loadChildren: './system/system.module#SystemModule' }, 
+            { path: 'statistics', loadChildren: './statistics/statistics.module#StatisticsModule' },
             //{ path: 'my-transmit', loadChildren: './my-transmit/my-transmit.module#MyTransmitModule' },
 
 

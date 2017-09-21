@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OrderService} from "../../../shared/services/order/order.service";
 import {Order} from "../orders.component";
 import {routerTransition} from "../../../router.animations";
+import {ApiUrlService} from "../../../shared/services/api-url.service";
 
 @Component({
   selector: 'app-my-transmit',
@@ -12,15 +13,18 @@ import {routerTransition} from "../../../router.animations";
 })
 export class MyTransmitComponent implements OnInit {
     orders:Array<Order>;
-    url:string="http://localhost/after/jsqb/jsqbapi/public/api/v1/order/by_user";
+    url:string;
     param:any = {
         token: localStorage.getItem('token')
     }
 
     pageList:Array<number>= [10,15, 25, 35]
   constructor(
-      private orderService:OrderService
-  ) { }
+      private orderService:OrderService,
+      private apiUrlService:ApiUrlService
+  ) {
+        this.url=this.apiUrlService.getMyTransmitesUrl
+  }
 
   ngOnInit() {
         this.orderService.getMyTransmites().subscribe(

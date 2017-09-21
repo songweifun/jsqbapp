@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs";
 import {TokenService} from "./token.service";
+import {ApiUrlService} from "./api-url.service";
 
 @Injectable()
 export class SendArticleService {
@@ -10,7 +11,8 @@ export class SendArticleService {
 
   constructor(
       private http:Http,
-      private tokenService:TokenService
+      private tokenService:TokenService,
+      private apiUrlService:ApiUrlService
   ) {
 
   }
@@ -32,7 +34,7 @@ export class SendArticleService {
         }
         let myHeaders:Headers=new Headers();
         myHeaders.append('token',localStorage.getItem('token'))
-        return this.sourceData=this.http.post('http://192.168.1.144/after/jsqb/jsqbapi/public/api/v1/order/send',{'id':orderId},{headers:myHeaders}).map(res=>res.json());
+        return this.sourceData=this.http.post(this.apiUrlService.sendArticleUrl,{'id':orderId},{headers:myHeaders}).map(res=>res.json());
 
 
     }
