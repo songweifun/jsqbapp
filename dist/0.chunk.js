@@ -66383,7 +66383,7 @@ var FileItem = (function () {
     function FileItem(uploader, some, options) {
         this.url = '/';
         this.headers = [];
-        this.withCredentials = true;
+        this.withCredentials = false;
         this.formData = [];
         this.isReady = false;
         this.isUploading = false;
