@@ -33,7 +33,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">密码</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="密码" formControlName="app_secret">
+                                    <input type="password" class="form-control" id="inputEmail3" placeholder="密码" formControlName="app_secret">
                                 </div>
                                 <div class="col-sm-4">
                                     <div [hidden]="!formModel.hasError('minlength',['secret','app_secret'])"><h5>密码最低为6个字符</h5></div><!-- 如果这个属性是嵌套的-->
@@ -42,7 +42,7 @@
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-2 col-form-label">确认密码</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="inputPassword3" placeholder="确认密码" formControlName="c_app_secret">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="确认密码" formControlName="c_app_secret">
                                 </div>
 
                                 <div class="col-sm-4">
@@ -54,15 +54,18 @@
                         </div>
 
                     <div class="form-group row">
-                            <label for="inputPassword4" class="col-sm-2 col-form-label">共享馆名称</label>
+                            <label for="inputPassword4" class="col-sm-2 col-form-label">所属成员馆</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control is-invalid" id="inputPassword6" placeholder="共享馆名称" formControlName="app_description" [class.is-invalid]="formModel.get('app_description').invalid && formModel.get('app_description').touched">
+                                <!--<input type="text" class="form-control is-invalid" id="inputPassword6" placeholder="共享馆名称" formControlName="app_description" [class.is-invalid]="formModel.get('app_description').invalid && formModel.get('app_description').touched">-->
+                                <select  formControlName="school_id" class="form-control">
+                                    <option value="{{school.id}}"  *ngFor="let school of schools">{{school.name}}</option>
+                                </select>
                             </div>
 
                             <div class="col-sm-4">
-                                <div [hidden]="formModel.get('app_description').valid || formModel.get('app_description').untouched">
-                                    <div [hidden]="!formModel.hasError('required','app_description')"><h5>共享馆名称为必填项</h5></div>
-                                    <div [hidden]="!formModel.hasError('minlength','app_description')"><h5>共享馆名称最低为10个字符</h5></div><!-- 这个minlength要小些 -->
+                                <div [hidden]="formModel.get('school_id').valid || formModel.get('school_id').untouched">
+                                    <div [hidden]="!formModel.hasError('required','school_id')"><h5>所属成员馆为必选项</h5></div>
+                                    <!--<div [hidden]="!formModel.hasError('minlength','app_description')"><h5>共享馆名称最低为10个字符</h5></div>&lt;!&ndash; 这个minlength要小些 &ndash;&gt;-->
                                 </div>
                             </div>
 

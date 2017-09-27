@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FileUploader, FileItem, ParsedResponseHeaders} from "ng2-file-upload";
 import {TokenService} from "../../../../shared/services/token.service";
+import { ApiUrlService } from '../../../../shared/services/api-url.service'
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 const URL = 'http://101.201.103.106/jsqbapi/public/api/v1/upload';
 
@@ -17,18 +18,27 @@ export class FileUploadComponent implements OnInit {
     @Output()
     isUploaded:EventEmitter<boolean>=new EventEmitter();
 
+    url:string;
+
     public uploader:FileUploader ;
     public hasBaseDropZoneOver:boolean = false;
     public hasAnotherDropZoneOver:boolean = false;
 
 
 
-  constructor(private tokenService:TokenService) { }
+  constructor(
+      private tokenService:TokenService,
+      private apiUrlService:ApiUrlService
+  ) {
+      this.url=this.apiUrlService.uploadTextUrl;
+  }
 
   ngOnInit() {
       const that=this;
 
-      this.uploader= new FileUploader({url: URL,method:'post',maxFileSize:500000,itemAlias:'pdf',headers:[{name:'token',value:localStorage.getItem('token')},{'name':'orderId',value:this.orderId}]});
+      this.tokenService.refreshToken()
+
+      this.uploader= new FileUploader({url: this.url,method:'post',maxFileSize:500000000,itemAlias:'pdf',headers:[{name:'token',value:localStorage.getItem('token')},{'name':'orderId',value:this.orderId}]});
       //定义两个回调
       this.uploader.onBeforeUploadItem=(fileItem: FileItem)=>{
           this.onBeforeUploadItem(fileItem);

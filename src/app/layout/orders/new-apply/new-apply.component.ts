@@ -54,7 +54,7 @@ export class NewApplyComponent implements OnInit,OnChanges {
 
             //点击按钮调用服务的方法创建连接 此方法返回一个可观测的流 这里就可以订阅这个流了 并携带一个参数id
             let token=localStorage.getItem('token')?localStorage.getItem('token'):'';
-            this.subscrption=this.wsService.createObservableSocket('ws://101.201.122.94:8085',token)
+            this.subscrption=this.wsService.createObservableSocket('ws://localhost:8085',token)
                 .subscribe(
                     //服务器吐送过来的消息
                     //收到的是这个客户端关注的所有商品的一个报价

@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalOptions, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {Order} from "../../../orders/orders.component";
 import {SendArticleService} from "../../../../shared/services/send-article.service";
+import {ModalService} from "../../../../shared/components/modal/modal.service";
+import {AlertConfig, AlertType} from "../../../../shared/components/modal/modal-model";
 
 @Component({
     selector: 'app-modal',
@@ -17,9 +19,13 @@ export class ModalComponent {
     @Input()
     orderInfo:Order;
 
+    @Input()
+    isTransmited:boolean;
+
     constructor(
         private modalService: NgbModal,
         private sendArticleService:SendArticleService,
+        private modalService2:ModalService,
 
     ) { }
 
@@ -46,10 +52,13 @@ export class ModalComponent {
         this.sendArticleService.sendArticle(orderId).subscribe(
             data=>{
                 if(data.errorCode===0){
-                    alert('传递成功')
+                    const alertCfg = new AlertConfig(AlertType.INFO, '原文传递', '传递成功');
+                    this.modalService2.alert(alertCfg);
+                    //alert('传递成功')
                     this.myModalRef.close()
                 }else{
-                    alert('传递失败')
+                    const alertCfg = new AlertConfig(AlertType.ERROR, '原文传递', '传递失败');
+                    this.modalService2.alert(alertCfg);
                     //this.myModalRef.close()
                 }
             }

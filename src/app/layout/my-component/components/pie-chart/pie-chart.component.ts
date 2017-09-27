@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {single, multi} from '../../../../../data/data';
+import {Options} from "../../../statistics/statistics.component";
 
 
 @Component({
@@ -8,6 +9,9 @@ import {single, multi} from '../../../../../data/data';
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent implements OnInit {
+
+    @Input()
+    options:Options;
 
     single: any[];
     multi: any[];

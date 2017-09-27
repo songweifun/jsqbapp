@@ -1,3 +1,61 @@
-<p>
-  resource-statistics works!
-</p>
+<div [@routerTransition] >
+    <div class="row">
+        <div class="col col-sm-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    资源贡献量统计和资源总量统计
+                </div>
+                <div class="card-block">
+                    <app-advance-pie-chart [options]="options_advance_pie"></app-advance-pie-chart>
+                    <!--<app-advance-pie-chart ></app-advance-pie-chart>-->
+
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-info btn-sm" (click)="randomize()">更新数据</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <!--<div class="row">-->
+        <!--<div class="col col-sm-6">-->
+            <!--<div class="card mb-3">-->
+                <!--<div class="card-header">-->
+                    <!--订单总量统计-->
+                <!--</div>-->
+                <!--<div class="card-block">-->
+                    <!--<app-vertical-ba-chart [options]="options"></app-vertical-ba-chart>-->
+
+                <!--</div>-->
+                <!--<div class="card-footer">-->
+                    <!--<button class="btn btn-info btn-sm" (click)="randomize()">更新数据</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="col col-sm-6">-->
+            <!--<div class="card mb-3">-->
+                <!--<div class="card-header">-->
+                    <!--资源贡献量统计-->
+                <!--</div>-->
+                <!--<div class="card-block">-->
+                    <!--<app-pie-chart [options]="options_pie"></app-pie-chart>-->
+
+                <!--</div>-->
+                <!--<div class="card-footer">-->
+                    <!--<button class="btn btn-info btn-sm" (click)="randomize()">更新数据</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+</div>
+
+

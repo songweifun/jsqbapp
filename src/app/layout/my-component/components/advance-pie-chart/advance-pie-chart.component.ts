@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {single, multi} from '../../../../../data/data';
+import {Options} from "../../../statistics/statistics.component";
 
 
 @Component({
@@ -8,6 +9,8 @@ import {single, multi} from '../../../../../data/data';
   styleUrls: ['./advance-pie-chart.component.scss']
 })
 export class AdvancePieChartComponent implements OnInit {
+    @Input()
+    options:Options;
 
     single: any[];
     multi: any[];

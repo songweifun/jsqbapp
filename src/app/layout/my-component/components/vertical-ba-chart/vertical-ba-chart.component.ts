@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {single, multi} from '../../../../../data/data';
+import {Component, OnInit, Input} from '@angular/core';
+ import {single, multi} from '../../../../../data/data';
 
 @Component({
   selector: 'app-vertical-ba-chart',
@@ -7,6 +7,9 @@ import {single, multi} from '../../../../../data/data';
   styleUrls: ['./vertical-ba-chart.component.scss']
 })
 export class VerticalBaChartComponent implements OnInit {
+
+    @Input()
+    options;
 
     single: any[];
     multi: any[];

@@ -1,11 +1,11 @@
 <ngx-charts-pie-chart
-    [view]="view"
-    [scheme]="colorScheme"
-    [results]="single"
-    [legend]="showLegend"
-    [explodeSlices]="explodeSlices"
-    [labels]="showLabels"
-    [doughnut]="doughnut"
-    [gradient]="gradient"
+    [view]="options?options.view:view"
+    [scheme]="options?options.colorScheme:colorScheme"
+    [results]="options?options.single:single"
+    [legend]="options?options.showLegend:showLegend"
+    [explodeSlices]="options?options.explodeSlices:explodeSlices"
+    [labels]="options?options.showLabels:showLabels"
+    [doughnut]="options?options.doughnut:doughnut"
+    [gradient]="options?options.gradient:gradient"
     (select)="onSelect($event)">
 </ngx-charts-pie-chart>

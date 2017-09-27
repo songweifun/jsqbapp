@@ -1,3 +1,62 @@
-<p>
-  request-statistics works!
-</p>
+<div [@routerTransition] >
+    <!--<div class="row">-->
+        <!--<div class="col col-sm-12">-->
+            <!--<div class="card mb-3">-->
+                <!--<div class="card-header">-->
+                    <!--资源贡献量统计-->
+                <!--</div>-->
+                <!--<div class="card-block">-->
+                    <!--<app-advance-pie-chart [options]="options_advance_pie"></app-advance-pie-chart>-->
+                    <!--&lt;!&ndash;<app-advance-pie-chart ></app-advance-pie-chart>&ndash;&gt;-->
+
+                <!--</div>-->
+                <!--<div class="card-footer">-->
+                    <!--<button class="btn btn-info btn-sm" (click)="randomize()">更新数据</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+
+    <!--</div>-->
+
+
+
+    <div class="row">
+        <div class="col col-sm-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                   IP请求量TOP10
+                </div>
+                <div class="card-block">
+                    <app-vertical-ba-chart [options]="optionsRequestIpTop10"></app-vertical-ba-chart>
+
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-info btn-sm" (click)="randomize()">更新数据</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col col-sm-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    机构请求量TOP10
+                </div>
+                <div class="card-block">
+                    <!--//<app-pie-chart [options]="optionsRequestMapTop10"></app-pie-chart>-->
+                    <app-vertical-ba-chart [options]="optionsRequestMapTop10"></app-vertical-ba-chart>
+
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-info btn-sm" (click)="randomize()">更新数据</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

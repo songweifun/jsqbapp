@@ -18,7 +18,10 @@ export class MyTransmitComponent implements OnInit {
         token: localStorage.getItem('token')
     }
 
-    pageList:Array<number>= [10,15, 25, 35]
+    pageList:Array<number>= [10,15, 25, 35];
+
+    isTransmited:boolean=true;
+
   constructor(
       private orderService:OrderService,
       private apiUrlService:ApiUrlService

@@ -136,4 +136,40 @@ export class SystemService {
         return  this.http.delete(this.apiUrlService.deleteLibraryUrl,{headers:myHeaders}).map(res=>res.json());
     }
 
+    getSchools(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.getSchoolsUrl,{headers:myHeaders}).map(res=>res.json());
+    }
+
+    getOrderStatisticsBySchool(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.orderStatisticsSchoolUrl,{headers:myHeaders}).map(res=>res.json());
+    }
+
+    getResourceStatisticsBySchool(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.resourceStatisticsSchoolUrl,{headers:myHeaders}).map(res=>res.json());
+    }
+    getRequstStatisticsByIpTop10(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.requestStatisticsIpTop10Url,{headers:myHeaders}).map(res=>res.json());
+
+    }
+
+    getRequestStatisticsByMapNameTop10(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.requestStatisticsMapTop10Url,{headers:myHeaders}).map(res=>res.json());
+
+    }
+
 }

@@ -8,6 +8,7 @@
                   <tr>
                       <th><input type="checkbox"></th>
                       <th>id</th>
+                      <th>用户名</th>
                       <th>共享馆名称</th>
                       <th>是否开启</th>
                       <th>操作</th>
@@ -19,7 +20,8 @@
                     <tr *ngFor="let library of libraries">
                       <td><input type="checkbox"></td>
                       <td>{{library.id}}</td>
-                      <td>{{library.app_description}}</td>
+                      <td>{{library.app_id}}</td>
+                      <td>{{library.school_id.name}}</td>
                       <td>
                           <div style="width:40px;">
                               <app-switch [checked]="library.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,library.id)"></app-switch>

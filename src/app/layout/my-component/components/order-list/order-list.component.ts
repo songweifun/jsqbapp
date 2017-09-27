@@ -9,11 +9,16 @@ import {Order} from "../../../orders/orders.component";
 export class OrderListComponent implements OnInit {
 
     @Input()
-    orders:Array<Order>
+    orders:Array<Order>;
+
+
+    @Input()
+    isTransmited:boolean=false;
 
   constructor() { }
 
   ngOnInit() {
+      //alert(this.isTransmited)
   }
 
 }

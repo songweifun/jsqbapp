@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiUrlService {
 
-    private baseUrl='http://101.201.103.106/jsqbapi/public/api/v1/'
+    //private baseUrl='http://101.201.103.106/jsqbapi/public/api/v1/'
+    private baseUrl='http://localhost/after/jsqb/jsqbapi/public/api/v1/'
+    public uploadTextUrl:string;
     public addMapIpUrl:string;
     public allMapUrl:string;
     public updateIpMapUrl:string;
@@ -25,8 +27,16 @@ export class ApiUrlService {
     public getMyTransmitesUrl:string;
     public allTransmitesUrl:string;
 
+    public getSchoolsUrl:string;
+
+    public orderStatisticsSchoolUrl:string;
+    public resourceStatisticsSchoolUrl:string;
+    public requestStatisticsIpTop10Url:string;
+    public requestStatisticsMapTop10Url:string;
+
 
     constructor() {
+      this.uploadTextUrl=this.baseUrl+'upload'
       this.allMapUrl=this.baseUrl+'system/all_map';
       this.updateIpMapUrl=this.baseUrl+'system/update_map';
       this.addMapIpUrl=this.baseUrl+'system/map';
@@ -47,6 +57,12 @@ export class ApiUrlService {
       this.tokenVerifyUrl=this.baseUrl+'token/verify';
       this.getMyTransmitesUrl=this.baseUrl+'order/by_user';
       this.allTransmitesUrl=this.baseUrl+'order/paginate';
+
+      this.getSchoolsUrl=this.baseUrl+'system/schools';
+      this.orderStatisticsSchoolUrl=this.baseUrl+'statistics/order_byschool';
+      this.resourceStatisticsSchoolUrl=this.baseUrl+'statistics/resource_byschool';
+      this.requestStatisticsIpTop10Url=this.baseUrl+'statistics/requestip_top10';
+      this.requestStatisticsMapTop10Url=this.baseUrl+'statistics/requestmap_top10';
 
     }
 

@@ -134,7 +134,7 @@ export class IpListComponent implements OnInit,OnChanges {
                     this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
 
                 }else{
-                    const alertCfg = new AlertConfig(AlertType.ERROR, 'IP映射', '添加失败');
+                    const alertCfg = new AlertConfig(AlertType.ERROR, 'IP映射', data.msg);
                     this.modalService.alert(alertCfg);
 
                 }
@@ -154,7 +154,7 @@ export class IpListComponent implements OnInit,OnChanges {
                     event.ref.close()
                     this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
                 }else{
-                    const alertCfg = new AlertConfig(AlertType.ERROR, 'IP映射', '修改失败');
+                    const alertCfg = new AlertConfig(AlertType.ERROR, 'IP映射', data.msg);
                     this.modalService.alert(alertCfg);
 
                 }

@@ -1,4 +1,4 @@
 <div [@routerTransition]>
-    <app-order-list [orders]="orders"></app-order-list>
+    <app-order-list [orders]="orders" [isTransmited]="isTransmited"></app-order-list>
     <app-http-pagination [url]="url" [pageList]="pageList" [method]="'get'" (onDataChanged)="onDataChanged($event)"></app-http-pagination>
 </div>

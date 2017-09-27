@@ -1,14 +1,14 @@
-<ngx-charts-bar-vertical-2d
-    [view]="view"
-    [scheme]="colorScheme"
-    [results]="multi"
-    [gradient]="gradient"
-    [xAxis]="showXAxis"
-    [yAxis]="showYAxis"
-    [legend]="showLegend"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
+<ngx-charts-bar-vertical
+    [view]="options?options.view:view"
+    [scheme]="options?options.colorScheme:colorScheme"
+    [results]="options?options.single:single"
+    [gradient]="options?options.gradient:gradient"
+    [xAxis]="options?options.showXAxis:showXAxis"
+    [yAxis]="options?options.showYAxis:showXAxis"
+    [legend]="options?options.showLegend:showLegend"
+    [showXAxisLabel]="options?options.showXAxisLabel:showXAxisLabel"
+    [showYAxisLabel]="options?options.showYAxisLabel:showYAxisLabel"
+    [xAxisLabel]="options?options.xAxisLabel:xAxisLabel"
+    [yAxisLabel]="options?options.yAxisLabel:yAxisLabel"
     (select)="onSelect($event)">
-</ngx-charts-bar-vertical-2d>
+</ngx-charts-bar-vertical>

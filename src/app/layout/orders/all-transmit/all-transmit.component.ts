@@ -14,7 +14,9 @@ export class AllTransmitComponent implements OnInit {
 
     orders:Array<Order>;
     url:string;
-    pageList:Array<number>= [10,15, 25, 35]
+    pageList:Array<number>= [10,15, 25, 35];
+
+    isTransmited:boolean=true;
   constructor(
       private apiUrlService:ApiUrlService
   ) {

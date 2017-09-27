@@ -58,6 +58,8 @@ ipMapId:number;
 // transformPageData:any
 //model;
 
+    schools;
+
 
 
 
@@ -80,7 +82,7 @@ constructor(
                 validator:equalValidator//这么用
             }
         ),
-        app_description:['',[Validators.required,Validators.minLength(10)]],
+        school_id:['',[Validators.required]],
         scope:[32,[Validators.required]],
         isOpen:[1],
     })
@@ -88,6 +90,9 @@ constructor(
 }
 
 ngOnInit() {
+    this.systemService.getSchools().subscribe(
+        data=>this.schools=data
+    )
 
 
 }
@@ -129,7 +134,7 @@ open(content) {
                             validator:equalValidator//这么用
                         }
                     ),
-                    app_description:[data.app_description,[Validators.required,Validators.minLength(10)]],
+                    school_id:[data.school_id.id,[Validators.required]],
                     scope:[data.scope,[Validators.required]],
                     isOpen:[data.is_open],
                 })

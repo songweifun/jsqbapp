@@ -29,7 +29,7 @@
                             <!--<td>{{order.doi}}</td>-->
                             <!--<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>-->
                             <!--<td [hidden]="order.url"><app-modal></app-modal></td>-->
-                            <td><app-modal [orderInfo]="order"></app-modal></td>
+                            <td><app-modal [orderInfo]="order" [isTransmited]="isTransmited"></app-modal></td>
                             <!--<td><button>详情</button></td>-->
                         </tr>
 
