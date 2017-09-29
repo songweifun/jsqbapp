@@ -87,31 +87,31 @@ $c-bootstrap-danger-deep:#e23533;
 
 
 /*页面统一样式*/
-html,
-body {
-  font-size: 14px;
-  //background-color: $c-color-primary;
-}
-/*添加手形*/
-a[href], input[type='submit'], input[type='image'], label[for], select, button, .c-pointer {
-  cursor: pointer;
-}
-/*整体部分*/
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-/*滑动轨道*/
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.06);
-}
-/*滑块*/
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.08);
-  &:hover {
-    background: rgba(0, 0, 0, 0.15);
-  }
-}
+//html,
+//body {
+//  font-size: 14px;
+//  //background-color: $c-color-primary;
+//}
+///*添加手形*/
+//a[href], input[type='submit'], input[type='image'], label[for], select, button, .c-pointer {
+//  cursor: pointer;
+//}
+///*整体部分*/
+//::-webkit-scrollbar {
+//  width: 10px;
+//  height: 10px;
+//}
+///*滑动轨道*/
+//::-webkit-scrollbar-track {
+//  background: rgba(0, 0, 0, 0.06);
+//}
+///*滑块*/
+//::-webkit-scrollbar-thumb {
+//  background: rgba(0, 0, 0, 0.08);
+//  &:hover {
+//    background: rgba(0, 0, 0, 0.15);
+//  }
+//}
 /**内边距**/
 .c-p5{
   padding:5px

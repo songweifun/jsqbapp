@@ -1,10 +1,11 @@
-import {Component, OnInit, SimpleChanges, OnChanges} from '@angular/core';
-import {Subscription} from "rxjs";
+import {Component, OnInit, SimpleChanges, OnChanges, Output, EventEmitter} from '@angular/core';
+import {Subscription, Observable} from "rxjs";
 import {WebSocketService} from "../../../shared/services/web-socket.service";
 import {SendArticleService} from "../../../shared/services/send-article.service";
 import {TokenService} from "../../../shared/services/token.service";
 import {Order} from "../orders.component";
 import {routerTransition} from "../../../router.animations";
+import {AppService} from "../../../app.service";
 
 @Component({
   selector: 'app-new-apply',
@@ -18,25 +19,17 @@ export class NewApplyComponent implements OnInit,OnChanges {
     orders:Array<Order>;
     //token:string;
 
+   // @Output() newOrderCount:Observable<number>=new EventEmitter();
+
     constructor(
         private wsService:WebSocketService,
         private sendArticleService:SendArticleService,
-        private tokenService:TokenService
+        private tokenService:TokenService,
+        private appService:AppService
     ) { }
 
 
     ngOnChanges(changes: SimpleChanges): void {
-        // this.tokenService.verifyToken().subscribe(
-        //     data=>{
-        //         if(data.isValid===false){
-        //             this.tokenService.getToken(localStorage.getItem('ac'),localStorage.getItem('se')).subscribe(
-        //                 thisdata=>{
-        //                     localStorage.setItem('token',thisdata.token)
-        //                 }
-        //             )
-        //         }
-        //     }
-        // )
         this.tokenService.refreshToken()
 
     }
@@ -60,7 +53,8 @@ export class NewApplyComponent implements OnInit,OnChanges {
                     //收到的是这个客户端关注的所有商品的一个报价
                     products=>{
                         //console.log(products)
-                        this.orders=(JSON.parse(products))
+                        this.orders=(JSON.parse(products));
+                        this.appService.newOrderCountEventEmitter.emit(this.orders.length)
                     }
 
                 );

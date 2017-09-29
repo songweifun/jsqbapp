@@ -11,8 +11,11 @@ const routes: Routes = [
 
             { path: 'orders', loadChildren: './orders/orders.module#OrdersModule' },
             { path: 'ipmaping', loadChildren: './ipmaping/ipmaping.module#IpmapingModule' },
-            { path: 'system', loadChildren: './system/system.module#SystemModule' }, 
+            { path: 'system', loadChildren: './system/system.module#SystemModule' },
             { path: 'statistics', loadChildren: './statistics/statistics.module#StatisticsModule' },
+            { path: 'member', loadChildren: './member/member.module#MemberModule' },
+            { path: 'log', loadChildren: './log/log.module#LogModule' },
+
             //{ path: 'my-transmit', loadChildren: './my-transmit/my-transmit.module#MyTransmitModule' },
 
 

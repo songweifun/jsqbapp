@@ -1,0 +1,6 @@
+<div [@routerTransition]>
+    <app-user-list [title]="title" [users]="users" [transformPageData]="transformPageData" (click)="searchByKeyword()"></app-user-list>
+
+
+    <app-http-pagination [url]="url" [pageList]="pageList" [method]="'get'" (onDataChanged)="onDataChanged($event)"></app-http-pagination>
+</div>

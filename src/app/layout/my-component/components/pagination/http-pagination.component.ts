@@ -61,6 +61,7 @@ export class HttpPaginationComponent implements OnInit,OnChanges {
             data=>{
                 this.pageSize=data.pageSize;
                 this.pageNumber=data.pageNumber;
+                this.url=data.url?data.url:this.url
                 this.getServerData()
                 //alert(data.pageNumber)
             }
@@ -145,7 +146,9 @@ export class HttpPaginationComponent implements OnInit,OnChanges {
             // this.pageNumber =data.current_page;
             this.onDataChanged.emit(data);
         } else {
-            console.error("app-http-pagination,返回的数据格式不正确！");
+            //console.error("app-http-pagination,返回的数据格式不正确！");
+            this.total = data.total;
+            this.onDataChanged.emit(data);
         }
     }
 

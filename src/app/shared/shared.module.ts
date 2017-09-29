@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {PaginationComponent} from "../layout/my-component/components/pagination/pagination.component";
 import {HttpPaginationComponent} from "../layout/my-component/components/pagination/http-pagination.component";
@@ -36,6 +36,8 @@ import {AdvancePieChartComponent} from "../layout/my-component/components/advanc
         FileUploadModule,
         NgbModule.forRoot(),
         NgxChartsModule,
+        FormsModule,
+        ReactiveFormsModule,
 
 
 
@@ -90,7 +92,9 @@ import {AdvancePieChartComponent} from "../layout/my-component/components/advanc
         // ToastBoxComponent
         VerticalBaChartComponent,
         PieChartComponent,
-        AdvancePieChartComponent
+        AdvancePieChartComponent,
+        FormsModule,
+        ReactiveFormsModule,
 
 
     ]

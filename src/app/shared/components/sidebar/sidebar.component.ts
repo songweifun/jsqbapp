@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppService} from "../../../app.service";
 
 @Component({
     selector: 'app-sidebar',
@@ -8,6 +9,15 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
     isActive = false;
     showMenu = '';
+    newOrderCount:number=0;
+
+    constructor(
+        private appService:AppService
+    ){
+        this.appService.newOrderCountEventEmitter.subscribe(
+            data=>this.newOrderCount=data
+        )
+    }
     eventCalled() {
         this.isActive = !this.isActive;
     }

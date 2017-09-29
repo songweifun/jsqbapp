@@ -71,7 +71,7 @@ export class IpListComponent implements OnInit,OnChanges {
   }
 
     change($event,id){
-        //console.info($event);
+        //alert($event);
         //alert(id)
 
         this.systemService.updateIsopen($event,id).subscribe(

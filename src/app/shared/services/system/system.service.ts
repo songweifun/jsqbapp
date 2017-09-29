@@ -172,4 +172,56 @@ export class SystemService {
 
     }
 
+    getAllmemberByPage(){
+
+    }
+
+    getOneMember(id){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.getOneMemberDetailUrl+'?id='+id,{headers:myHeaders}).map(res=>res.json());
+
+    }
+
+
+    updateMember(value,id){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.post(this.apiUrlService.updateMemberUrl,{data:value,id:id},{headers:myHeaders}).map(res=>res.json());
+
+
+    }
+
+    getAllSchoolMessage(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.getAllSchoolUrl,{headers:myHeaders}).map(res=>res.json());
+
+    }
+    updateMemberIsopen(status,id){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.post(this.apiUrlService.updateMemberIpOpenUrl,{status:status,id:id},{headers:myHeaders}).map(res=>res.json());
+
+    }
+
+    recordLoginlog(token){
+        //alert(token+'111111111111111111111111111')
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',token);
+        return  this.http.post(this.apiUrlService.recordLoginLogUrl,{},{headers:myHeaders}).map(res=>res.json());
+
+    }
+
+    recordLoginout(token){
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',token);
+        return  this.http.post(this.apiUrlService.recordLogoutLogUrl,{},{headers:myHeaders}).map(res=>res.json());
+
+    }
+
 }

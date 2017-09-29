@@ -34,6 +34,17 @@ export class ApiUrlService {
     public requestStatisticsIpTop10Url:string;
     public requestStatisticsMapTop10Url:string;
 
+    public getAllmemberByPageUrl:string;
+    public getOneMemberDetailUrl:string;
+    public updateMemberUrl:string;
+    public getAllSchoolUrl:string;
+    public updateMemberIpOpenUrl:string;
+
+    public recordLoginLogUrl:string;
+    public recordLogoutLogUrl:string;
+    public getEntryLogUrl:string;
+    public getOperateLogUrl:string;
+
 
     constructor() {
       this.uploadTextUrl=this.baseUrl+'upload'
@@ -63,6 +74,17 @@ export class ApiUrlService {
       this.resourceStatisticsSchoolUrl=this.baseUrl+'statistics/resource_byschool';
       this.requestStatisticsIpTop10Url=this.baseUrl+'statistics/requestip_top10';
       this.requestStatisticsMapTop10Url=this.baseUrl+'statistics/requestmap_top10';
+
+      this.getAllmemberByPageUrl=this.baseUrl+'member/all';
+      this.getOneMemberDetailUrl=this.baseUrl+'member/one_member';
+      this.updateMemberUrl=this.baseUrl+'member/update_member';
+      this.getAllSchoolUrl=this.baseUrl+'member/all_school';
+      this.updateMemberIpOpenUrl=this.baseUrl+'member/update_isopen';
+
+      this.recordLoginLogUrl=this.baseUrl+'log/login';
+      this.recordLogoutLogUrl=this.baseUrl+'log/logout';
+      this.getEntryLogUrl=this.baseUrl+'log/get_entry';
+      this.getOperateLogUrl=this.baseUrl+'log/get_operate';
 
     }
 

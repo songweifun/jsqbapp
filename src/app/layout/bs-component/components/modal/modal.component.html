@@ -52,7 +52,7 @@
 
         <div [hidden]="isTransmited">
 
-            <button [hidden]="!orderInfo.is_have" class="btn btn-success" (click)="sendArticle(orderInfo.id)">提交1{{isTransmited}}</button>
+            <button [hidden]="!orderInfo.is_have" class="btn btn-success" (click)="sendArticle(orderInfo.id)">提交</button>
             <app-file-upload (isUploaded)="setIsupload($event)" [hidden]="orderInfo.is_have" [orderId]="orderInfo.id"></app-file-upload>
 
             <button [hidden]="!isUploaded" class="btn btn-success" (click)="sendArticle(orderInfo.id)">提交</button>

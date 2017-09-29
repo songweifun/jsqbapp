@@ -41,6 +41,32 @@ export class TokenService {
             localStorage.setItem('token',this.getToken(localStorage.getItem('ac'),localStorage.getItem('se')));
 
         }
+
+        // this.verifyTokenAsync().subscribe(
+        //     data=>{
+        //         if(data.isValid==false){
+        //             this.getTokenAsync().subscribe(
+        //                 token=>{
+        //                     localStorage.setItem('token',token)
+        //                 }
+        //             )
+        //         }
+        //     }
+        // )
+    }
+
+
+    getTokenAsync(ac,se){
+        return this.http.post(this.apiUrlService.tokenAppUrl,{"ac":ac,"se":se})
+            .map(res=>res.json());
+
+
+    }
+
+    verifyTokenAsync(){
+        return this.http.post(this.apiUrlService.tokenVerifyUrl,{'token':localStorage.getItem('token')})
+            .map(res=>res.json());
+
     }
 
 }

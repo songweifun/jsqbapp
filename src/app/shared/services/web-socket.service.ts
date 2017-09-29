@@ -19,7 +19,6 @@ export class WebSocketService {
         this.ws.onmessage=(event)=>observer.next(event.data);
         this.ws.onerror=(event)=>observer.error(event);
         this.ws.onclose=(event)=>observer.complete();
-
         this.ws.onopen=(event)=>this.sendMessage({token:token}) //传参用
         return ()=>this.ws.close();//这个毁掉函数会在流被取消订阅是调用 调用这个函数后如果没有客户端服务器端停止推送
       }

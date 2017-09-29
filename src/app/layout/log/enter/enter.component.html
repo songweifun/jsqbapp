@@ -1,0 +1,6 @@
+
+<div [@routerTransition]>
+    <app-log-list [title]="title" [logs]="logs"></app-log-list>
+
+    <app-http-pagination [url]="url" [pageList]="pageList" [method]="'get'" (onDataChanged)="onDataChanged($event)"></app-http-pagination>
+</div>

@@ -1,8 +1,8 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'dashboard' | translate }}
-        </a>
+        <!--<a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
+            <!--<i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'dashboard' | translate }}-->
+        <!--</a>-->
 
 
         <div class="nested-menu">
@@ -12,7 +12,7 @@
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '最新订单' | translate }}</span></a>
+                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '最新订单' | translate }}</span>  <span class="badge badge-info pull-right"> {{newOrderCount}}</span></a>
                     </li>
                     <li>
                         <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '我的传递' | translate }}</span></a>
@@ -64,20 +64,20 @@
         </div>
 
         <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('user')">
+            <a class="list-group-item" (click)="addExpandClass('member')">
                 <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ '会员管理' | translate }}</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'user'">
+            <li class="nested" [class.expand]="showMenu === 'member'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '用户管理' | translate }}</span></a>
+                        <a [routerLink]="['/member/user']" [routerLinkActive]="['router-link-active']"><span>{{ '用户管理' | translate }}</span></a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '下载数量设置' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '访问时间设置' | translate }}</span></a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '下载数量设置' | translate }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '访问时间设置' | translate }}</span></a>-->
+                    <!--</li>-->
 
                 </ul>
             </li>
@@ -115,16 +115,16 @@
 
 
         <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('calendar')">
+            <a class="list-group-item" (click)="addExpandClass('log')">
                 <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ '日志管理' | translate }}</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'calendar'">
+            <li class="nested" [class.expand]="showMenu === 'log'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '登录日志' | translate }}</span></a>
+                        <a [routerLink]="['/log/enter']" [routerLinkActive]="['router-link-active']"><span>{{ '登录日志' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '操作日志' | translate }}</span></a>
+                        <a [routerLink]="['/log/operate']" [routerLinkActive]="['router-link-active']"><span>{{ '操作日志' | translate }}</span></a>
                     </li>
 
                 </ul>
