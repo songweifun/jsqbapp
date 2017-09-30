@@ -173,6 +173,10 @@ export class SystemService {
     }
 
     getAllmemberByPage(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.getAllmemberByPageUrl,{headers:myHeaders}).map(res=>res.json());
 
     }
 
@@ -221,6 +225,14 @@ export class SystemService {
         let myHeaders:Headers=new Headers();
         myHeaders.append('token',token);
         return  this.http.post(this.apiUrlService.recordLogoutLogUrl,{},{headers:myHeaders}).map(res=>res.json());
+
+    }
+
+    checkSuperAdmin(){
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'));
+        return  this.http.get(this.apiUrlService.checkSuperAdminUrl,{headers:myHeaders}).map(res=>res.json());
 
     }
 

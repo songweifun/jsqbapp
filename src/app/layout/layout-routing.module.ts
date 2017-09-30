@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import {superAdminGuard} from "../guard/superAdmin.guard";
+import {ModalService} from "../shared/components/modal/modal.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ConfirmComponent} from "../shared/components/modal/confirm.component";
+import {AlertComponent} from "../shared/components/modal/alert.component";
+import {SharedModule} from "../shared/shared.module";
 
 const routes: Routes = [
     {
@@ -10,11 +16,27 @@ const routes: Routes = [
 
 
             { path: 'orders', loadChildren: './orders/orders.module#OrdersModule' },
-            { path: 'ipmaping', loadChildren: './ipmaping/ipmaping.module#IpmapingModule' },
-            { path: 'system', loadChildren: './system/system.module#SystemModule' },
+            {
+                path: 'ipmaping',
+                loadChildren: './ipmaping/ipmaping.module#IpmapingModule',
+                canActivate:[superAdminGuard],
+            },
+            {
+                path: 'system',
+                loadChildren: './system/system.module#SystemModule',
+                canActivate:[superAdminGuard],
+            },
             { path: 'statistics', loadChildren: './statistics/statistics.module#StatisticsModule' },
-            { path: 'member', loadChildren: './member/member.module#MemberModule' },
-            { path: 'log', loadChildren: './log/log.module#LogModule' },
+            {
+                path: 'member',
+                loadChildren: './member/member.module#MemberModule',
+                canActivate:[superAdminGuard],
+            },
+            {
+                path: 'log',
+                loadChildren: './log/log.module#LogModule',
+                canActivate:[superAdminGuard],
+            },
 
             //{ path: 'my-transmit', loadChildren: './my-transmit/my-transmit.module#MyTransmitModule' },
 
@@ -31,7 +53,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    imports: [
+        RouterModule.forChild(routes),
+        NgbModule.forRoot(),
+        SharedModule
+    ],
+    exports: [RouterModule],
+    providers:[superAdminGuard,ModalService],
+    entryComponents : [
+
+        ConfirmComponent,
+        AlertComponent,
+
+    ],
 })
 export class LayoutRoutingModule { }

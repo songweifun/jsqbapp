@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+        localStorage.removeItem('jurisdiction');
         this.tokenService.refreshToken();
         this.systemService.recordLoginout(localStorage.getItem('token')).subscribe(
             data=>{

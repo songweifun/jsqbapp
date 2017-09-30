@@ -46,6 +46,9 @@ export class ApiUrlService {
     public getOperateLogUrl:string;
 
 
+    public checkSuperAdminUrl:string;
+
+
     constructor() {
       this.uploadTextUrl=this.baseUrl+'upload'
       this.allMapUrl=this.baseUrl+'system/all_map';
@@ -85,6 +88,9 @@ export class ApiUrlService {
       this.recordLogoutLogUrl=this.baseUrl+'log/logout';
       this.getEntryLogUrl=this.baseUrl+'log/get_entry';
       this.getOperateLogUrl=this.baseUrl+'log/get_operate';
+
+
+      this.checkSuperAdminUrl=this.baseUrl+'access/super_admin';
 
     }
 

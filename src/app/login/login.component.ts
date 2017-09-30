@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     onLoggedin() {
 
-        let token=this.tokenService.getTokenAsync(this.ac,this.se).subscribe(
+        this.tokenService.getTokenAsync(this.ac,this.se).subscribe(
             data=>{
                 if(data.token){
                     //alert(data.token)
@@ -46,6 +46,19 @@ export class LoginComponent implements OnInit {
                     this.systemService.recordLoginlog(data.token).subscribe(
                         data=>{
 
+                        }
+                    )
+                    localStorage.setItem('jurisdiction','0')
+                    this.systemService.checkSuperAdmin().subscribe(
+                        data=>{
+                            //alert(data.errorCode)
+                            //console.log(data.errorCode);
+                            if(data.errorCode==10001){
+                                localStorage.setItem('jurisdiction','0')
+
+                            }else{
+                                localStorage.setItem('jurisdiction','1')
+                            }
                         }
                     )
                     this.router.navigate(['/orders/new-apply'])
