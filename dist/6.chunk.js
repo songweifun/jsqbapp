@@ -55,7 +55,7 @@ var LibraryStatisticsComponent = (function () {
             _this.options = {
                 single: data,
                 multi: [],
-                view: [700, 300],
+                view: [400, 200],
                 // options
                 showXAxis: true,
                 showYAxis: true,
@@ -78,7 +78,7 @@ var LibraryStatisticsComponent = (function () {
             _this.options_pie = {
                 single: data,
                 multi: [],
-                view: [700, 300],
+                view: [400, 200],
                 // options
                 colorScheme: {
                     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
@@ -92,7 +92,7 @@ var LibraryStatisticsComponent = (function () {
                     val.value = parseInt(val.value);
                     return val;
                 }),
-                view: [1500, 300],
+                view: [800, 300],
                 colorScheme: {
                     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
                 }
@@ -171,7 +171,7 @@ var RequestStatisticsComponent = (function () {
             _this.optionsRequestIpTop10 = {
                 single: data,
                 multi: [],
-                view: [700, 400],
+                view: [400, 200],
                 // options
                 showXAxis: true,
                 showYAxis: true,
@@ -190,7 +190,7 @@ var RequestStatisticsComponent = (function () {
             _this.optionsRequestMapTop10 = {
                 single: data,
                 multi: [],
-                view: [700, 400],
+                view: [400, 200],
                 // options
                 showXAxis: true,
                 showYAxis: true,
@@ -284,7 +284,7 @@ var ResourceStatisticsComponent = (function () {
                     val.value = parseInt(val.value);
                     return val;
                 }),
-                view: [1500, 300],
+                view: [800, 300],
                 colorScheme: {
                     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
                 }

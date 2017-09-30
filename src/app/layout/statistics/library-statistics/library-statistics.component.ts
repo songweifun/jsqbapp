@@ -29,7 +29,7 @@ export class LibraryStatisticsComponent implements OnInit {
               this.options={
                   single: data,
                   multi: [],
-                  view:  [700, 300],
+                  view:  [400, 200],
                   // options
                   showXAxis :true,
                   showYAxis : true,
@@ -59,7 +59,7 @@ export class LibraryStatisticsComponent implements OnInit {
               this.options_pie={
                   single: data,
                   multi: [],
-                  view:  [700, 300],
+                  view:  [400, 200],
                   // options
                   colorScheme : {
                       domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','#FF3333','#CC0099']
@@ -74,7 +74,7 @@ export class LibraryStatisticsComponent implements OnInit {
                       val.value=parseInt(val.value);
                       return val;
                   }),
-                  view:  [1500, 300],
+                  view:  [800, 300],
                   colorScheme : {
                       domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','#FF3333','#CC0099']
                   }

@@ -29,7 +29,7 @@ export class ResourceStatisticsComponent implements OnInit {
                       val.value=parseInt(val.value);
                       return val;
                   }),
-                  view:  [1500, 300],
+                  view:  [800, 300],
                   colorScheme : {
                       domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','#FF3333','#CC0099']
                   }
