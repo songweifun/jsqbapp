@@ -3,7 +3,7 @@ webpackJsonp([6],{
 /***/ "../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition] >\n<div class=\"row\">\n    <div class=\"col col-sm-12\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                资源贡献量统计\n            </div>\n            <div class=\"card-block\">\n                <app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>\n                <!--<app-advance-pie-chart ></app-advance-pie-chart>-->\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n\n\n\n</div>\n\n\n\n<div class=\"row\">\n    <div class=\"col col-sm-6\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                订单总量统计\n            </div>\n            <div class=\"card-block\">\n                <app-vertical-ba-chart [options]=\"options\"></app-vertical-ba-chart>\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n\n    <div class=\"col col-sm-6\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                资源贡献量统计\n            </div>\n            <div class=\"card-block\">\n                <app-pie-chart [options]=\"options_pie\"></app-pie-chart>\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n</div>\n</div>\n\n\n"
+module.exports = "<div [@routerTransition] >\n<div class=\"row\">\n    <div class=\"col col-sm-12\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                资源贡献量统计\n            </div>\n            <div class=\"card-block\">\n                <app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>\n                <!--<app-advance-pie-chart ></app-advance-pie-chart>-->\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n\n\n\n</div>\n\n\n\n<div class=\"row\">\n    <div class=\"col col-sm-12 \">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                订单总量统计\n            </div>\n            <div class=\"card-block\">\n                <app-vertical-ba-chart [options]=\"options\"></app-vertical-ba-chart>\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n\n    <div class=\"col col-sm-12 \">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                资源贡献量统计\n            </div>\n            <div class=\"card-block\">\n                <app-pie-chart [options]=\"options_pie\"></app-pie-chart>\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n</div>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -55,7 +55,7 @@ var LibraryStatisticsComponent = (function () {
             _this.options = {
                 single: data,
                 multi: [],
-                view: [400, 200],
+                view: [700, 400],
                 // options
                 showXAxis: true,
                 showYAxis: true,
@@ -78,7 +78,7 @@ var LibraryStatisticsComponent = (function () {
             _this.options_pie = {
                 single: data,
                 multi: [],
-                view: [400, 200],
+                view: [700, 400],
                 // options
                 colorScheme: {
                     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
@@ -119,7 +119,7 @@ var _a;
 /***/ "../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition] >\n    <!--<div class=\"row\">-->\n        <!--<div class=\"col col-sm-12\">-->\n            <!--<div class=\"card mb-3\">-->\n                <!--<div class=\"card-header\">-->\n                    <!--资源贡献量统计-->\n                <!--</div>-->\n                <!--<div class=\"card-block\">-->\n                    <!--<app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>-->\n                    <!--&lt;!&ndash;<app-advance-pie-chart ></app-advance-pie-chart>&ndash;&gt;-->\n\n                <!--</div>-->\n                <!--<div class=\"card-footer\">-->\n                    <!--<button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n\n\n\n\n    <!--</div>-->\n\n\n\n    <div class=\"row\">\n        <div class=\"col col-sm-6\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                   IP请求量TOP10\n                </div>\n                <div class=\"card-block\">\n                    <app-vertical-ba-chart [options]=\"optionsRequestIpTop10\"></app-vertical-ba-chart>\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n\n        <div class=\"col col-sm-6\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                    机构请求量TOP10\n                </div>\n                <div class=\"card-block\">\n                    <!--//<app-pie-chart [options]=\"optionsRequestMapTop10\"></app-pie-chart>-->\n                    <app-vertical-ba-chart [options]=\"optionsRequestMapTop10\"></app-vertical-ba-chart>\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>\n\n\n"
+module.exports = "<div [@routerTransition] >\n    <!--<div class=\"row\">-->\n        <!--<div class=\"col col-sm-12\">-->\n            <!--<div class=\"card mb-3\">-->\n                <!--<div class=\"card-header\">-->\n                    <!--资源贡献量统计-->\n                <!--</div>-->\n                <!--<div class=\"card-block\">-->\n                    <!--<app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>-->\n                    <!--&lt;!&ndash;<app-advance-pie-chart ></app-advance-pie-chart>&ndash;&gt;-->\n\n                <!--</div>-->\n                <!--<div class=\"card-footer\">-->\n                    <!--<button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n\n\n\n\n    <!--</div>-->\n\n\n\n    <div class=\"row\">\n        <div class=\"col col-sm-12\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                   IP请求量TOP10\n                </div>\n                <div class=\"card-block\">\n                    <app-vertical-ba-chart [options]=\"optionsRequestIpTop10\"></app-vertical-ba-chart>\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n\n        <div class=\"col col-sm-12\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                    机构请求量TOP10\n                </div>\n                <div class=\"card-block\">\n                    <!--//<app-pie-chart [options]=\"optionsRequestMapTop10\"></app-pie-chart>-->\n                    <app-vertical-ba-chart [options]=\"optionsRequestMapTop10\"></app-vertical-ba-chart>\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -171,7 +171,7 @@ var RequestStatisticsComponent = (function () {
             _this.optionsRequestIpTop10 = {
                 single: data,
                 multi: [],
-                view: [400, 200],
+                view: [700, 400],
                 // options
                 showXAxis: true,
                 showYAxis: true,
@@ -190,7 +190,7 @@ var RequestStatisticsComponent = (function () {
             _this.optionsRequestMapTop10 = {
                 single: data,
                 multi: [],
-                view: [400, 200],
+                view: [700, 400],
                 // options
                 showXAxis: true,
                 showYAxis: true,

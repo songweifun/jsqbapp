@@ -24,7 +24,7 @@ export class RequestStatisticsComponent implements OnInit {
               this.optionsRequestIpTop10={
                   single: data,
                   multi: [],
-                  view:  [400, 200],
+                  view:  [700, 400],
                   // options
                   showXAxis :true,
                   showYAxis : true,
@@ -46,7 +46,7 @@ export class RequestStatisticsComponent implements OnInit {
               this.optionsRequestMapTop10={
                   single: data,
                   multi: [],
-                  view:  [400, 200],
+                  view:  [700, 400],
                   // options
                   showXAxis :true,
                   showYAxis : true,
