@@ -69,10 +69,10 @@ var ModalComponent = (function () {
         });
     };
     ModalComponent.prototype.getDismissReason = function (reason) {
-        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["c" /* ModalDismissReasons */].ESC) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
             return 'by pressing ESC';
         }
-        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["c" /* ModalDismissReasons */].BACKDROP_CLICK) {
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
             return 'by clicking on a backdrop';
         }
         else {
@@ -83,13 +83,13 @@ var ModalComponent = (function () {
         var _this = this;
         this.sendArticleService.sendArticle(orderId).subscribe(function (data) {
             if (data.errorCode === 0) {
-                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].INFO, '原文传递', '传递成功');
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].INFO, '原文传递', '传递成功');
                 _this.modalService2.alert(alertCfg);
                 //alert('传递成功')
                 _this.myModalRef.close();
             }
             else {
-                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, '原文传递', '传递失败');
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, '原文传递', '传递失败');
                 _this.modalService2.alert(alertCfg);
                 //this.myModalRef.close()
             }
@@ -951,7 +951,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var C_SWITCH_CONTROL_VALUE_ACCESSOR = {
-    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALUE_ACCESSOR */],
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* NG_VALUE_ACCESSOR */],
     useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return SwitchComponent; }),
     multi: true
 };
@@ -1452,7 +1452,7 @@ var DatepickerI18n = (function (_super) {
         return this.getMonthShortName(month);
     };
     return DatepickerI18n;
-}(__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* NgbDatepickerI18n */]));
+}(__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["c" /* NgbDatepickerI18n */]));
 DatepickerI18n = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [DatepickerI18nType])
@@ -1534,7 +1534,7 @@ var AlertComponent = (function () {
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* AlertConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* AlertConfig */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* AlertConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* AlertConfig */]) === "function" && _a || Object)
 ], AlertComponent.prototype, "config", void 0);
 AlertComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1606,7 +1606,7 @@ var ConfirmComponent = (function () {
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* ConfirmConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* ConfirmConfig */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* ConfirmConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* ConfirmConfig */]) === "function" && _a || Object)
 ], ConfirmComponent.prototype, "config", void 0);
 ConfirmComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1626,9 +1626,9 @@ var _a, _b;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ConfirmConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AlertType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return AlertConfig; });
 /**
  * 确认框配置
  */

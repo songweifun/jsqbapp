@@ -36,6 +36,7 @@ export class ApiUrlService {
 
     public getAllmemberByPageUrl:string;
     public getOneMemberDetailUrl:string;
+    public addMemberUrl:string;
     public updateMemberUrl:string;
     public getAllSchoolUrl:string;
     public updateMemberIpOpenUrl:string;
@@ -80,6 +81,7 @@ export class ApiUrlService {
 
       this.getAllmemberByPageUrl=this.baseUrl+'member/all';
       this.getOneMemberDetailUrl=this.baseUrl+'member/one_member';
+      this.addMemberUrl=this.baseUrl+'member/add';
       this.updateMemberUrl=this.baseUrl+'member/update_member';
       this.getAllSchoolUrl=this.baseUrl+'member/all_school';
       this.updateMemberIpOpenUrl=this.baseUrl+'member/update_isopen';

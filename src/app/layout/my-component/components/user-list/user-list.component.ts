@@ -81,4 +81,21 @@ export class UserListComponent implements OnInit {
         this.appService.keywordEventEmitter.emit(this.keyword)
     }
 
+    addMember(event){
+      this.systemService.addMember(event.formModel.value).subscribe(
+          data=>{
+              if(data.errorCode===0){
+                  const alertCfg = new AlertConfig(AlertType.INFO, '会员管理', '添加成功');
+                  this.modalService.alert(alertCfg);
+                  event.ref.close()
+                  this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
+              }else{
+                  const alertCfg = new AlertConfig(AlertType.ERROR, '会员管理', data.msg);
+                  this.modalService.alert(alertCfg);
+
+              }
+          }
+      )
+    }
+
 }

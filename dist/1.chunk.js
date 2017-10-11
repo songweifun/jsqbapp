@@ -1,49 +1,13 @@
 webpackJsonp([1],{
 
-/***/ "../../../../../src/app/layout/bs-component/bs-component-routing.module.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bs_component_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/bs-component.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BsComponentRoutingModule; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__bs_component_component__["a" /* BsComponentComponent */] }
-];
-var BsComponentRoutingModule = (function () {
-    function BsComponentRoutingModule() {
-    }
-    return BsComponentRoutingModule;
-}());
-BsComponentRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
-    })
-], BsComponentRoutingModule);
-
-//# sourceMappingURL=bs-component-routing.module.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/bs-component.component.html":
+/***/ "../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Bootstrap Component'\" [icon]=\"'fa-th-list'\"></app-page-header>\n    <!--<app-modal></app-modal>-->\n    <app-alert></app-alert>\n    <app-buttons></app-buttons>\n    <app-collapse></app-collapse>\n    <app-date-picker></app-date-picker>\n    <app-dropdown></app-dropdown>\n    <app-pagination></app-pagination>\n    <app-pop-over></app-pop-over>\n    <app-progressbar></app-progressbar>\n    <app-tabs></app-tabs>\n    <app-tooltip></app-tooltip>\n    <app-timepicker></app-timepicker>\n</div>\n"
+module.exports = "<div [@routerTransition]>\n    <app-ip-list [title]=\"title\" [ipMaps]=\"ipMaps\" [transformPageData]=\"transformPageData\" [isBlack]=\"true\"></app-ip-list>\n    <!--<br>-->\n    <!--{{transformPageData.pageNumber}}<br>-->\n    <!--{{transformPageData.pageSize}}<br>-->\n    <app-http-pagination [url]=\"url\" [pageList]=\"pageList\" [method]=\"'get'\" (onDataChanged)=\"onDataChanged($event)\"></app-http-pagination>\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/bs-component.component.scss":
+/***/ "../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -61,13 +25,152 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/bs-component.component.ts":
+/***/ "../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BsComponentComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpBlackComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var IpBlackComponent = (function () {
+    function IpBlackComponent(apiUrlService) {
+        this.apiUrlService = apiUrlService;
+        this.title = '黑名单';
+        this.pageList = [10, 15, 25, 35];
+        this.transformPageData = {};
+    }
+    IpBlackComponent.prototype.ngOnInit = function () {
+        this.url = this.apiUrlService.getIpBlackUrl;
+    };
+    IpBlackComponent.prototype.onDataChanged = function (event) {
+        console.log(event);
+        this.ipMaps = event.rows;
+        //每次请求拂服务器后 可以拿到单钱的页码和每页的条数 用于输入列表组件的输入属性
+        this.transformPageData.pageNumber = event.current_page;
+        this.transformPageData.pageSize = event.page_size;
+        //this.appService.pageRefreshEventEmitter.emit(this.transformPageData)
+    };
+    return IpBlackComponent;
+}());
+IpBlackComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-ip-black',
+        template: __webpack_require__("../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.scss")],
+        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object])
+], IpBlackComponent);
+
+var _a;
+//# sourceMappingURL=ip-black.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div [@routerTransition]>\n    <app-ip-list [title]=\"title\" [ipMaps]=\"ipMaps\" [transformPageData]=\"transformPageData\" [isWhite]=\"true\"></app-ip-list>\n    <!--<br>-->\n    <!--{{transformPageData.pageNumber}}<br>-->\n    <!--{{transformPageData.pageSize}}<br>-->\n    <app-http-pagination [url]=\"url\" [pageList]=\"pageList\" [method]=\"'get'\" (onDataChanged)=\"onDataChanged($event)\"></app-http-pagination>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpWhiteComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var IpWhiteComponent = (function () {
+    function IpWhiteComponent(apiUrlService) {
+        this.apiUrlService = apiUrlService;
+        this.title = '白名单';
+        this.pageList = [10, 15, 25, 35];
+        this.transformPageData = {};
+    }
+    IpWhiteComponent.prototype.ngOnInit = function () {
+        this.url = this.apiUrlService.getIpWhiteUrl;
+    };
+    IpWhiteComponent.prototype.onDataChanged = function (event) {
+        console.log(event);
+        this.ipMaps = event.rows;
+        //每次请求拂服务器后 可以拿到单钱的页码和每页的条数 用于输入列表组件的输入属性
+        this.transformPageData.pageNumber = event.current_page;
+        this.transformPageData.pageSize = event.page_size;
+        //this.appService.pageRefreshEventEmitter.emit(this.transformPageData)
+    };
+    return IpWhiteComponent;
+}());
+IpWhiteComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-ip-white',
+        template: __webpack_require__("../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.scss")],
+        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object])
+], IpWhiteComponent);
+
+var _a;
+//# sourceMappingURL=ip-white.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ipmaping-routing.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipmaping_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ips_map_ips_map_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ip_white_ip_white_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ip_black_ip_black_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpmapingRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -76,38 +179,128 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-var BsComponentComponent = (function () {
-    function BsComponentComponent() {
-    }
-    return BsComponentComponent;
-}());
-BsComponentComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-bs-component',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/bs-component.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/bs-component.component.scss")],
-        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
-    })
-], BsComponentComponent);
 
-//# sourceMappingURL=bs-component.component.js.map
+
+
+
+var routes = [
+    {
+        path: '',
+        component: __WEBPACK_IMPORTED_MODULE_2__ipmaping_component__["a" /* IpmapingComponent */],
+        children: [
+            {
+                path: 'ips-map',
+                component: __WEBPACK_IMPORTED_MODULE_3__ips_map_ips_map_component__["a" /* IpsMapComponent */]
+            },
+            {
+                path: 'ip-white',
+                component: __WEBPACK_IMPORTED_MODULE_4__ip_white_ip_white_component__["a" /* IpWhiteComponent */]
+            },
+            {
+                path: 'ip-black',
+                component: __WEBPACK_IMPORTED_MODULE_5__ip_black_ip_black_component__["a" /* IpBlackComponent */]
+            },
+        ]
+    }
+];
+var IpmapingRoutingModule = (function () {
+    function IpmapingRoutingModule() {
+    }
+    return IpmapingRoutingModule;
+}());
+IpmapingRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+    })
+], IpmapingRoutingModule);
+
+//# sourceMappingURL=ipmaping-routing.module.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/bs-component.module.ts":
+/***/ "../../../../../src/app/layout/ipmaping/ipmaping.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<router-outlet></router-outlet>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ipmaping.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ipmaping.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpmapingComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var IpmapingComponent = (function () {
+    function IpmapingComponent() {
+    }
+    IpmapingComponent.prototype.ngOnInit = function () {
+    };
+    return IpmapingComponent;
+}());
+IpmapingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-ipmaping',
+        template: __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], IpmapingComponent);
+
+//# sourceMappingURL=ipmaping.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/ipmaping/ipmaping.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__bs_component_routing_module__ = __webpack_require__("../../../../../src/app/layout/bs-component/bs-component-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__bs_component_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/bs-component.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared__ = __webpack_require__("../../../../../src/app/shared/index.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BsComponentModule", function() { return BsComponentModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_charts__ = __webpack_require__("../../../../ng2-charts/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipmaping_routing_module__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ipmaping_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared__ = __webpack_require__("../../../../../src/app/shared/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ips_map_ips_map_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__my_component_components_ip_list_ip_list_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__my_component_components_add_ip_modal_add_ip_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ip_white_ip_white_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ip_black_ip_black_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IpmapingModule", function() { return IpmapingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -118,56 +311,53 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// relative import
 
 
 
 
-var BsComponentModule = (function () {
-    function BsComponentModule() {
+
+
+
+
+
+var IpmapingModule = (function () {
+    function IpmapingModule() {
     }
-    return BsComponentModule;
+    return IpmapingModule;
 }());
-BsComponentModule = __decorate([
+IpmapingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_7__shared__["b" /* PageHeaderModule */],
-            __WEBPACK_IMPORTED_MODULE_4__bs_component_routing_module__["a" /* BsComponentRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_1_ng2_charts__["ChartsModule"],
+            __WEBPACK_IMPORTED_MODULE_2__ipmaping_routing_module__["a" /* IpmapingRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_4__shared__["b" /* PageHeaderModule */],
+            __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__["FileUploadModule"],
+            __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__["a" /* SharedModule */]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_5__bs_component_component__["a" /* BsComponentComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["a" /* ButtonsComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["b" /* AlertComponent */],
-            //ModalComponent,
-            __WEBPACK_IMPORTED_MODULE_6__components__["c" /* CollapseComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["d" /* DatePickerComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["e" /* DropdownComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["f" /* PaginationComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["g" /* PopOverComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["h" /* ProgressbarComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["i" /* TabsComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["j" /* TooltipComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__components__["k" /* TimepickerComponent */]
+            __WEBPACK_IMPORTED_MODULE_3__ipmaping_component__["a" /* IpmapingComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__ips_map_ips_map_component__["a" /* IpsMapComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__my_component_components_ip_list_ip_list_component__["a" /* IpListComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__my_component_components_add_ip_modal_add_ip_modal_component__["a" /* AddIpModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__ip_white_ip_white_component__["a" /* IpWhiteComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__ip_black_ip_black_component__["a" /* IpBlackComponent */]
         ]
     })
-], BsComponentModule);
+], IpmapingModule);
 
-//# sourceMappingURL=bs-component.module.js.map
+//# sourceMappingURL=ipmaping.module.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/alert/alert.component.html":
+/***/ "../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-lg-12\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">Buttons</div>\n            <div class=\"card-block\">\n                <p *ngFor=\"let alert of alerts\">\n                    <ngb-alert [type]=\"alert.type\" (close)=\"closeAlert(alert)\">{{ alert.message }}</ngb-alert>\n                </p>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div [@routerTransition]>\n    <app-ip-list [title]=\"title\" [ipMaps]=\"ipMaps\" [transformPageData]=\"transformPageData\"></app-ip-list>\n    <!--<br>-->\n    <!--{{transformPageData.pageNumber}}<br>-->\n    <!--{{transformPageData.pageSize}}<br>-->\n    <app-http-pagination [url]=\"url\" [pageList]=\"pageList\" [method]=\"'get'\" (onDataChanged)=\"onDataChanged($event)\"></app-http-pagination>\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/alert/alert.component.scss":
+/***/ "../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -185,95 +375,14 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/alert/alert.component.ts":
+/***/ "../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var AlertComponent = (function () {
-    function AlertComponent() {
-        this.alerts = [];
-        this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'This is an success alert',
-        }, {
-            id: 2,
-            type: 'info',
-            message: 'This is an info alert',
-        }, {
-            id: 3,
-            type: 'warning',
-            message: 'This is a warning alert',
-        }, {
-            id: 4,
-            type: 'danger',
-            message: 'This is a danger alert',
-        });
-    }
-    AlertComponent.prototype.ngOnInit = function () { };
-    AlertComponent.prototype.closeAlert = function (alert) {
-        var index = this.alerts.indexOf(alert);
-        this.alerts.splice(index, 1);
-    };
-    return AlertComponent;
-}());
-AlertComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-alert',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/alert/alert.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/alert/alert.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], AlertComponent);
-
-//# sourceMappingURL=alert.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/buttons/buttons.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row mb-3\">\n    <div class=\"col col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                Radio Button group (<strong>Using ngModel</strong>)\n            </div>\n            <div class=\"card-block\">\n                <div [(ngModel)]=\"model\" ngbRadioGroup name=\"radioBasic\">\n                    <label class=\"btn btn-primary\">\n                        <input type=\"radio\" [value]=\"1\"> Left (pre-checked)\n                    </label>\n                    <label class=\"btn btn-primary\">\n                        <input type=\"radio\" value=\"middle\"> Middle\n                    </label>\n                    <label class=\"btn btn-primary\">\n                        <input type=\"radio\" [value]=\"false\"> Right\n                    </label>\n                </div>\n                <div class=\"alert alert-info mb-0\">\n                    <strong>Selected Value: </strong>{{model}}\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                Radio Button group (<strong>Ractive Forms</strong>)\n            </div>\n            <div class=\"card-block\">\n                <form [formGroup]=\"radioGroupForm\">\n                    <div ngbRadioGroup name=\"radioBasic\" formControlName=\"model\">\n                        <label class=\"btn btn-primary\">\n                            <input type=\"radio\" [value]=\"1\"> Left (pre-checked)\n                        </label>\n                        <label class=\"btn btn-primary\">\n                            <input type=\"radio\" value=\"middle\"> Middle\n                        </label>\n                        <label class=\"btn btn-primary\">\n                            <input type=\"radio\" [value]=\"false\"> Right\n                        </label>\n                    </div>\n                    <div class=\"alert alert-info mb-0\">\n                        <strong>Selected Value: </strong>{{radioGroupForm.value.model}}\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/buttons/buttons.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/buttons/buttons.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpsMapComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -285,40 +394,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var ButtonsComponent = (function () {
-    function ButtonsComponent(formBuilder) {
-        this.formBuilder = formBuilder;
-        this.model = 1;
+
+var IpsMapComponent = (function () {
+    function IpsMapComponent(apiUrlService) {
+        this.apiUrlService = apiUrlService;
+        this.title = 'IP映射';
+        this.pageList = [10, 15, 25, 35];
+        this.transformPageData = {};
+        this.url = this.apiUrlService.allMapUrl;
     }
-    ButtonsComponent.prototype.ngOnInit = function () {
-        this.radioGroupForm = this.formBuilder.group({
-            model: 1
-        });
+    IpsMapComponent.prototype.ngOnInit = function () {
+        // this.systemService.getAllMap().subscribe(
+        //     data=>this.ipMaps=data.rows.data
+        // )
     };
-    return ButtonsComponent;
+    IpsMapComponent.prototype.onDataChanged = function (event) {
+        console.log(event);
+        this.ipMaps = event.rows;
+        //每次请求拂服务器后 可以拿到单钱的页码和每页的条数 用于输入列表组件的输入属性
+        this.transformPageData.pageNumber = event.current_page;
+        this.transformPageData.pageSize = event.page_size;
+        //this.appService.pageRefreshEventEmitter.emit(this.transformPageData)
+    };
+    return IpsMapComponent;
 }());
-ButtonsComponent = __decorate([
+IpsMapComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-buttons',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/buttons/buttons.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/buttons/buttons.component.scss")]
+        selector: 'app-ips-map',
+        template: __webpack_require__("../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.scss")],
+        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormBuilder */]) === "function" && _a || Object])
-], ButtonsComponent);
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object])
+], IpsMapComponent);
 
 var _a;
-//# sourceMappingURL=buttons.component.js.map
+//# sourceMappingURL=ips-map.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/collapse/collapse.component.html":
+/***/ "../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-lg-12\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">Collapse</div>\n            <div class=\"card-block\">\n                <p>\n                    <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"isCollapsed = !isCollapsed\"\n                        [attr.aria-expanded]=\"!isCollapsed\" aria-controls=\"collapseExample\">\n                        Toggle\n                    </button>\n                </p>\n                <div id=\"collapseExample\" [ngbCollapse]=\"isCollapsed\">\n                    <div class=\"card\">\n                        <div class=\"card-block\">\n                            You can collapse this card by clicking Toggle\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\"><i class=\"fa\" [class.fa-plus]=\"btnText=='添加'\" [class.fa-wrench]=\"btnText=='修改'\"></i> {{btnText}}</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{header}}</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <div class=\"container\" >\n            <form [formGroup]=\"formModel\">\n                <div formGroupName=\"ipRange\">\n                    <div class=\"form-group row\">\n                        <label for=\"inputEmail3\" class=\"col-sm-2 col-form-label\">IP开始</label>\n                        <div class=\"col-sm-6\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputEmail3\" placeholder=\"IP开始\" formControlName=\"start\">\n                        </div>\n                        <div class=\"col-sm-4\">\n                            <div [hidden]=\"formModel.get(['ipRange','start']).valid ||formModel.get(['ipRange','start']).pristine\"><!-- 当表单项验证通过 或者 mobile没被修改过时隐藏 -->\n                                <div [hidden]=\"!formModel.hasError('ip',['ipRange','start'])\"><h5>ip格式不正确</h5></div><!-- 第一个参数是返回的键值，第二个是要验证的字段 -->\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputPassword3\" class=\"col-sm-2 col-form-label\">IP终止</label>\n                        <div class=\"col-sm-6\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputPassword3\" placeholder=\"IP终止\" formControlName=\"end\">\n                        </div>\n\n                        <div class=\"col-sm-4\">\n                            <div [hidden]=\"formModel.get(['ipRange','end']).valid ||formModel.get(['ipRange','end']).pristine\"><!-- 当表单项验证通过 或者 mobile没被修改过时隐藏 -->\n                                <div [hidden]=\"!formModel.hasError('ip',['ipRange','end'])\"><h5>ip格式不正确</h5></div><!-- 第一个参数是返回的键值，第二个是要验证的字段 -->\n                            </div>\n                            <div [hidden]=\"!formModel.hasError('compare','ipRange')\"><h5>{{formModel.getError('compare','ipRange')?.description}}</h5></div>\n\n                        </div>\n                    </div>\n\n                    <!--<div class=\"form-group row\">-->\n                        <!--<div class=\"\">-->\n                        <!--</div>-->\n\n                    <!--</div>-->\n\n\n\n                </div>\n\n                <div class=\"form-group row\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">映射单位名称</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"text\" class=\"form-control\" id=\"inputPassword4\" placeholder=\"映射单位名称\" formControlName=\"mapName\">\n                    </div>\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('mapName').valid || formModel.get('mapName').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','mapName')\"><h5>映射单位名称为必填项</h5></div>\n                        </div>\n                    </div>\n                </div>\n\n<div [hidden]=\"isWhite || isBlack\">\n                <div class=\"form-group row\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">到期时间</label>\n                    <div class=\"col-sm-6\">\n                        <div class=\"input-group\">\n                            <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"dp\" formControlName=\"time\" ngbDatepicker ngbDatepicker #d2=\"ngbDatepicker\">\n                            <span class=\"input-group-btn\">\n                                 <button class=\"btn btn-info c-not-shadow\" type=\"button\"  (click)=\"d2.toggle()\">\n                                      <i class=\"fa fa-calendar\"></i>\n                                 </button>\n\n                            </span>\n                        </div>\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('time').valid || formModel.get('time').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','time')\"><h5>到期时间为必填项</h5></div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group row\">\n                    <label for=\"inputPassword5\" class=\"col-sm-2 col-form-label\">月下载量</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"number\" class=\"form-control\" id=\"inputPassword7\" placeholder=\"月下载量\" formControlName=\"monthlimit\">\n                    </div>\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('monthlimit').valid || formModel.get('monthlimit').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','monthlimit')\"><h5>月下载量为必填项</h5></div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group row\">\n                    <label for=\"inputPassword5\" class=\"col-sm-2 col-form-label\">日下载量</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"number\" class=\"form-control\" id=\"inputPassword5\" placeholder=\"日下载量\" formControlName=\"daylimit\">\n                    </div>\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('daylimit').valid || formModel.get('daylimit').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','daylimit')\"><h5>日下载量为必填项</h5></div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <fieldset class=\"form-group\" >\n                    <div class=\"row\">\n                        <legend class=\"col-form-legend col-sm-2\">是否开启</legend>\n                        <div class=\"col-sm-10\">\n                            <div class=\"form-check\">\n                                <label class=\"form-check-label\">\n                                    <input class=\"form-check-input\" type=\"radio\" name=\"isOpen\" id=\"gridRadios1\" value=\"1\" formControlName=\"isOpen\" checked>\n                                    是\n                                </label>\n                            </div>\n                            <div class=\"form-check\">\n                                <label class=\"form-check-label\">\n                                    <input class=\"form-check-input\" type=\"radio\" name=\"isOpen\" id=\"gridRadios2\" value=\"0\" formControlName=\"isOpen\">\n                                    否\n                                </label>\n                            </div>\n                        </div>\n                    </div>\n                </fieldset>\n</div>\n\n                <!--<div class=\"form-group row\">-->\n                    <!--<div class=\"col-sm-10\">-->\n                        <!--<button type=\"submit\" class=\"btn btn-primary\">Sign in</button>-->\n                    <!--</div>-->\n                <!--</div>-->\n            </form>\n        </div>\n\n        <!--<app-file-upload (isUploaded)=\"setIsupload($event)\" [hidden]=\"orderInfo.is_have\" [orderId]=\"orderInfo.id\"></app-file-upload>-->\n\n        <!--<button [hidden]=\"!isUploaded\" class=\"btn btn-success\" (click)=\"sendArticle(orderInfo.id)\">提交</button>-->\n\n\n\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">保存</button>\n            </div>\n        </div>\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/collapse/collapse.component.scss":
+/***/ "../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -336,68 +458,19 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/collapse/collapse.component.ts":
+/***/ "../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CollapseComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var CollapseComponent = (function () {
-    function CollapseComponent() {
-        this.isCollapsed = false;
-    }
-    return CollapseComponent;
-}());
-CollapseComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-collapse',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/collapse/collapse.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/collapse/collapse.component.scss")]
-    })
-], CollapseComponent);
-
-//# sourceMappingURL=collapse.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/date-picker/date-picker.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\">\n    <div class=\"col-lg-12\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">Date Picker</div>\n            <div class=\"card-block\">\n                <form class=\"form-inline mb-3\">\n                    <div class=\"form-group\">\n                        <div class=\"input-group\">\n                            <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\n                                name=\"dp\" [(ngModel)]=\"model\" ngbDatepicker #d=\"ngbDatepicker\">\n                            <div class=\"input-group-addon\" (click)=\"d.toggle()\" >\n                                <span class=\"fa fa-calendar\"></span>\n                            </div>\n                        </div>\n                    </div>\n                </form>\n                <div class=\"alert alert-info mb-0\">\n                    <strong>Model: </strong> {{ model | json }}\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/date-picker/date-picker.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/date-picker/date-picker.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatePickerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_datepickerI18n_datepickerI18n__ = __webpack_require__("../../../../../src/app/shared/components/datepickerI18n/datepickerI18n.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__validator_validators__ = __webpack_require__("../../../../../src/app/validator/validators.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddIpModalComponent; });
+/* unused harmony export SubmitData */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -408,34 +481,191 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var DatePickerComponent = (function () {
-    function DatePickerComponent() {
-    }
-    DatePickerComponent.prototype.ngOnInit = function () {
-    };
-    return DatePickerComponent;
-}());
-DatePickerComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-date-picker',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/date-picker/date-picker.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/date-picker/date-picker.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], DatePickerComponent);
 
-//# sourceMappingURL=date-picker.component.js.map
+
+
+
+
+
+var AddIpModalComponent = (function () {
+    // @Input()
+    // transformPageData:any
+    //model;
+    function AddIpModalComponent(modalService, systemService, modalService2, fb) {
+        this.modalService = modalService;
+        this.systemService = systemService;
+        this.modalService2 = modalService2;
+        this.fb = fb;
+        this.options = { size: 'lg' };
+        //     =new FormGroup({
+        //     ipRange:new FormGroup({
+        //         start:new FormControl(),
+        //         end:new FormControl()
+        //     }),
+        //
+        //     mapName:new FormControl(),
+        //     isOpen:new FormControl(1),
+        //     time:new FormControl(),
+        //     daylimit:new FormControl(100),
+        //     monthlimit:new FormControl(1000)
+        // })
+        this.onSubmitData = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.isWhite = false;
+        this.isBlack = false;
+        this.formModel = fb.group({
+            mapName: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            ipRange: fb.group({
+                start: ['', __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]],
+                end: ['', __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]]
+            }, {
+                validator: __WEBPACK_IMPORTED_MODULE_6__validator_validators__["c" /* ipRange */] //这么用
+            }),
+            time: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            isOpen: [1],
+            daylimit: [100, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            monthlimit: [1000, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]]
+        });
+    }
+    AddIpModalComponent.prototype.ngOnInit = function () {
+    };
+    AddIpModalComponent.prototype.open = function (content) {
+        var _this = this;
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+        if (this.ipMapId) {
+            this.systemService.getOneIpMap(this.ipMapId).subscribe(function (data) {
+                console.log(content);
+                var date = new Date(data.expire * 1000);
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var month2 = (month < 10 ? "0" + month : month);
+                var day = date.getDate();
+                console.log(date.getMonth());
+                // this.formModel.value.mapName=new FormControl(data.map_name);
+                // this.formModel.value.isOpen=data.is_open;
+                // this.formModel.value.ipRange.start=data.ip_start;
+                // this.formModel.value.ipRange.end=data.ip_end;
+                // this.formModel=new FormGroup({
+                //     ipRange:new FormGroup({
+                //         start:new FormControl(data.ip_start),
+                //         end:new FormControl(data.ip_end)
+                //     }),
+                //
+                //     mapName:new FormControl(data.map_name),
+                //     isOpen:new FormControl(data.is_open),
+                //     time:new FormControl({year:year,month:month,day:day}),
+                //     daylimit:new FormControl(data.daylimit),
+                //     monthlimit:new FormControl(data.monthlimit)
+                // })
+                _this.formModel = _this.fb.group({
+                    mapName: [data.map_name, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    ipRange: _this.fb.group({
+                        start: [data.ip_start, __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]],
+                        end: [data.ip_end, __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]]
+                    }, {
+                        validator: __WEBPACK_IMPORTED_MODULE_6__validator_validators__["c" /* ipRange */] //这么用
+                    }),
+                    time: [{ year: year, month: month, day: day }, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    isOpen: [data.is_open],
+                    daylimit: [data.daylimit, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    monthlimit: [data.monthlimit, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]]
+                });
+            });
+        }
+        //this.formMode
+    };
+    AddIpModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    AddIpModalComponent.prototype.onSubmit = function () {
+        //console.log(this.formModel.value)
+        // this.systemService.addIpMap(this.formModel.value).subscribe(
+        //     data=>{
+        //         if(data.errorCode===0){
+        //             const alertCfg = new AlertConfig(AlertType.INFO, 'IP映射', '添加成功');
+        //             this.modalService2.alert(alertCfg);
+        //             this.myModalRef.close()
+        //         }else{
+        //             const alertCfg = new AlertConfig(AlertType.ERROR, 'IP映射', '添加失败');
+        //             this.modalService2.alert(alertCfg);
+        //
+        //         }
+        //     }
+        // )
+        if (this.formModel.valid) {
+            var submitData = new SubmitData(this.formModel, this.myModalRef);
+            this.onSubmitData.emit(submitData);
+        }
+    };
+    return AddIpModalComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AddIpModalComponent.prototype, "header", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AddIpModalComponent.prototype, "btnText", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+], AddIpModalComponent.prototype, "onSubmitData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Number)
+], AddIpModalComponent.prototype, "ipMapId", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Boolean)
+], AddIpModalComponent.prototype, "isWhite", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Boolean)
+], AddIpModalComponent.prototype, "isBlack", void 0);
+AddIpModalComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-add-ip-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_5__shared_components_datepickerI18n_datepickerI18n__["b" /* DatepickerI18nType */], { provide: __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["c" /* NgbDatepickerI18n */], useClass: __WEBPACK_IMPORTED_MODULE_5__shared_components_datepickerI18n_datepickerI18n__["a" /* DatepickerI18n */] }]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */]) === "function" && _e || Object])
+], AddIpModalComponent);
+
+var SubmitData = (function () {
+    function SubmitData(formModel, ref) {
+        this.formModel = formModel;
+        this.ref = ref;
+    }
+    return SubmitData;
+}());
+
+var _a, _b, _c, _d, _e;
+//# sourceMappingURL=add-ip-modal.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/dropdown/dropdown.component.html":
+/***/ "../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n    <div class=\"card-header\">Dropdown</div>\n    <div class=\"card-block\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <div ngbDropdown class=\"d-inline-block\">\n                    <button class=\"btn btn-outline-primary\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button>\n                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n                        <button class=\"dropdown-item\">Action - 1</button>\n                        <button class=\"dropdown-item\">Another Action</button>\n                        <button class=\"dropdown-item\">Something else is here</button>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col text-right\">\n                <div ngbDropdown [up]=\"true\" class=\"d-inline-block\">\n                    <button class=\"btn btn-outline-primary\" id=\"dropdownMenu2\" ngbDropdownToggle>Toggle dropup</button>\n                    <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"dropdownMenu2\">\n                        <button class=\"dropdown-item\">Action - 1</button>\n                        <button class=\"dropdown-item\">Another Action</button>\n                        <button class=\"dropdown-item\">Something else is here</button>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <hr>\n        <p class=\"mb-2\">You can easily control dropdowns programmatically using the exported dropdown instance.</p>\n        <div class=\"d-inline-block\" ngbDropdown #myDrop=\"ngbDropdown\">\n            <button class=\"btn btn-outline-primary\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button>\n            <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n                <button class=\"dropdown-item\">Action - 1</button>\n                <button class=\"dropdown-item\">Another Action</button>\n                <button class=\"dropdown-item\">Something else is here</button>\n            </div>\n\n            <button class=\"btn btn-outline-success\" (click)=\"$event.stopPropagation(); myDrop.open();\">Open from outside</button>\n            <button class=\"btn btn-outline-danger\" (click)=\"$event.stopPropagation(); myDrop.close();\">Close from outside</button>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n    <div class=\"col col-xl-12 col-lg-12\">\n        <div class=\"card border-primary mb-3\">\n            <div class=\"card-header\">{{title}}</div>\n            <div class=\"card-block table-responsive\">\n                <table class=\"table table-hover  table-bordered table-dark table-sm \">\n                    <thead class=\"bg-success\">\n                    <tr>\n                        <th><input type=\"checkbox\"></th>\n                        <th>id</th>\n                        <th>IP地址起</th>\n                        <th>IP地址止</th>\n                        <th>映射单位</th>\n                        <th [hidden]=\"isWhite || isBlack\">是否启用映射</th>\n                        <th>加入黑白名单</th>\n\n                        <th>操作</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n                    <!--<tr *ngFor=\"let order of orders\" [hidden]=\"!orders\">-->\n                        <!--<th scope=\"row\">{{order.id}}</th>-->\n                        <!--<td>{{order.requestip}}</td>-->\n                        <!--<td>未知</td>-->\n                        <!--<td>{{order.email}}</td>-->\n                        <!--<td>{{order.create_time}}</td>-->\n                        <!--&lt;!&ndash;<td>{{order.title}}</td>&ndash;&gt;-->\n                        <!--&lt;!&ndash;<td>{{order.doi}}</td>&ndash;&gt;-->\n                        <!--&lt;!&ndash;<td [hidden]=\"!order.url\"><button class=\"btn btn-success btn-sm\" (click)=\"sendArticle(order.id)\">提交</button></td>&ndash;&gt;-->\n                        <!--&lt;!&ndash;<td [hidden]=\"order.url\"><app-modal></app-modal></td>&ndash;&gt;-->\n                        <!--<td><app-modal [orderInfo]=\"order\"></app-modal></td>-->\n                        <!--&lt;!&ndash;<td><button>详情</button></td>&ndash;&gt;-->\n                    <!--</tr>-->\n\n                    <tr *ngFor=\"let map of ipMaps\">\n                        <td><input type=\"checkbox\"></td>\n                        <td>{{map.id}}</td>\n                        <td>{{map.ip_start}}</td>\n                        <td>{{map.ip_end}}</td>\n                        <td>{{map.map_name}}</td>\n                        <td [hidden]=\"isWhite || isBlack\">\n                            <div style=\"width:40px;\">\n                                <app-switch [checked]=\"map.is_open==1?true:false\" [onLabel]=\"'开'\"  [offLabel]=\"'关'\" [theme]=\"theme2\" (onChange)=\"change($event,map.id)\"></app-switch>\n                            </div>\n                        </td>\n                        <td>\n                            <div style=\"width:40px;\">\n                                <app-switch [checked]=\"map.is_forbid==1?true:false\" [onLabel]=\"'黑'\"  [offLabel]=\"'白'\" [theme]=\"theme\" (onChange)=\"changeIsForbid($event,map.id)\"></app-switch>\n                            </div>\n                        </td>\n\n                        <td>\n                            <!--<button class=\"btn btn-sm btn-success\">状态</button>-->\n                            <!--<button class=\"btn btn-sm btn-success\"><i class=\"fa fa-wrench\" aria-hidden=\"true\"></i> 修改</button>-->\n                            <app-add-ip-modal [header]=\"editheader\" [btnText]=\"editBtnText\"  (onSubmitData)=\"editIpMap($event,map.id)\" [ipMapId]=\"map.id\" [isBlack]=\"isBlack\" [isWhite]=\"isWhite\" ></app-add-ip-modal>\n                            <button class=\"btn btn-sm btn-success\" (click)=\"deleteIpMap(map.id)\"><i class=\"fa fa-minus\"></i> 删除</button>\n                            <!--<button type=\"button\" class=\"btn btn-info\" (click)=\"openInfo()\">信息消息框</button>-->\n\n\n                            <!--<button type=\"button\" class=\"btn btn-danger\" (click)=\"openError()\">错误消息</button>-->\n                        </td>\n                    </tr>\n\n\n                    </tbody>\n                </table>\n\n\n\n                <app-add-ip-modal [header]=\"header\" [btnText]=\"addBtnText\" (onSubmitData)=\"addIpMap($event,isBlack)\" [isBlack]=\"isBlack\" [isWhite]=\"isWhite\"></app-add-ip-modal>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/dropdown/dropdown.component.scss":
+/***/ "../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -453,12 +683,18 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/bs-component/components/dropdown/dropdown.component.ts":
+/***/ "../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DropdownComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__switch_switch_model__ = __webpack_require__("../../../../../src/app/layout/my-component/components/switch/switch-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_service__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -469,448 +705,166 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var DropdownComponent = (function () {
-    function DropdownComponent() {
+
+
+
+
+
+
+var IpListComponent = (function () {
+    // formModel:FormGroup=new FormGroup({
+    //     ipRange:new FormGroup({
+    //         start:new FormControl(),
+    //         end:new FormControl()
+    //     }),
+    //
+    //     mapName:new FormControl(),
+    //     isOpen:new FormControl(1)
+    // })
+    function IpListComponent(appService, modalService, toastService, systemService) {
+        this.appService = appService;
+        this.modalService = modalService;
+        this.toastService = toastService;
+        this.systemService = systemService;
+        //swbtn: boolean = true;
+        this.theme = __WEBPACK_IMPORTED_MODULE_2__switch_switch_model__["a" /* SwitchTheme */].THTME_WARNING;
+        this.theme2 = __WEBPACK_IMPORTED_MODULE_2__switch_switch_model__["a" /* SwitchTheme */].THTME_SUCCESS;
+        this.header = '添加映射关系';
+        this.editheader = '修改映射关系';
+        this.addBtnText = "\u6DFB\u52A0";
+        this.editBtnText = '修改';
+        this.isWhite = false;
+        this.isBlack = false;
     }
-    DropdownComponent.prototype.ngOnInit = function () {
+    IpListComponent.prototype.ngOnChanges = function (changes) {
+        // console.log(this.transformPageData+'999999999999999999')
     };
-    return DropdownComponent;
+    IpListComponent.prototype.ngOnInit = function () {
+    };
+    IpListComponent.prototype.change = function ($event, id) {
+        //alert($event);
+        //alert(id)
+        this.systemService.updateIsopen($event, id).subscribe(function (data) {
+        });
+    };
+    IpListComponent.prototype.changeIsForbid = function ($event, id) {
+        var _this = this;
+        //alert(id)
+        this.systemService.updateIsForbid($event, id).subscribe(function (data) {
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+        });
+    };
+    // openInfo() {
+    //     const alertCfg = new AlertConfig(AlertType.INFO, '标题', '这是一条INFO消息!');
+    //     let result=this.modalService.alert(alertCfg);
+    //     //console.log(result)
+    // }
+    //
+    //
+    // openWarning(){
+    //     const toastCfg = new ToastConfig(ToastType.WARNING,'','这是一条WARNING消息!', 3000);
+    //     this.toastService.toast(toastCfg);
+    // }
+    //
+    // openSuccess(){
+    //     const toastCfg = new ToastConfig(ToastType.SUCCESS,'','这是一条SUCCESS消息!', 3000);
+    //     this.toastService.toast(toastCfg);
+    // }
+    //
+    // openError(){
+    //     const toastCfg = new ToastConfig(ToastType.ERROR,'','这是一条ERROR消息!', 3000);
+    //     let result=this.toastService.toast(toastCfg);
+    //     console.log(result);
+    //     //alert(1111)
+    // }
+    IpListComponent.prototype.addIpMap = function (event, isBlack) {
+        //alert(isBlack)
+        //console.log(event)
+        var _this = this;
+        this.systemService.addIpMap(event.formModel.value, isBlack).subscribe(function (data) {
+            if (data.errorCode === 0) {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'IP映射', '添加成功');
+                _this.modalService.alert(alertCfg);
+                event.ref.close();
+                //this.transformPageData.pageNumber=1;
+                _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            }
+            else {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'IP映射', data.msg);
+                _this.modalService.alert(alertCfg);
+            }
+        });
+    };
+    IpListComponent.prototype.editIpMap = function (event, id) {
+        var _this = this;
+        //console.log(event.formModel.value)
+        //this.formModel=event.formModel;
+        this.systemService.updateIpMap(event.formModel.value, id).subscribe(function (data) {
+            //console.log(data)
+            if (data.errorCode === 0) {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'IP映射', '修改成功');
+                _this.modalService.alert(alertCfg);
+                event.ref.close();
+                _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            }
+            else {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'IP映射', data.msg);
+                _this.modalService.alert(alertCfg);
+            }
+        });
+    };
+    IpListComponent.prototype.deleteIpMap = function (id) {
+        var _this = this;
+        var confirmCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* ConfirmConfig */]('您确定要删除此映射吗？');
+        this.modalService.confirm(confirmCfg).then(function (result) {
+            _this.systemService.deleteIpMap(id).subscribe(function (data) {
+                if (data.errorCode === 0) {
+                    var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'IP映射', '删除成功');
+                    _this.modalService.alert(alertCfg);
+                    _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+                }
+                else {
+                    var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'IP映射', '删除失败');
+                    _this.modalService.alert(alertCfg);
+                }
+            });
+        }, function (reason) {
+            //console.log(reason+22222222222)
+        });
+    };
+    return IpListComponent;
 }());
-DropdownComponent = __decorate([
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], IpListComponent.prototype, "title", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], IpListComponent.prototype, "ipMaps", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], IpListComponent.prototype, "transformPageData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Boolean)
+], IpListComponent.prototype, "isWhite", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Boolean)
+], IpListComponent.prototype, "isBlack", void 0);
+IpListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-dropdown',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/dropdown/dropdown.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/dropdown/dropdown.component.scss")]
+        selector: 'app-ip-list',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
-], DropdownComponent);
-
-//# sourceMappingURL=dropdown.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/index.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__buttons_buttons_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/buttons/buttons.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__buttons_buttons_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__alert_alert_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/alert/alert.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__alert_alert_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modal_modal_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/modal/modal.component.ts");
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__collapse_collapse_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/collapse/collapse.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__collapse_collapse_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__date_picker_date_picker_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/date-picker/date-picker.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_4__date_picker_date_picker_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dropdown_dropdown_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/dropdown/dropdown.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_5__dropdown_dropdown_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pagination_pagination_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/pagination/pagination.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_6__pagination_pagination_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pop_over_pop_over_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/pop-over/pop-over.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_7__pop_over_pop_over_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__progressbar_progressbar_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/progressbar/progressbar.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_8__progressbar_progressbar_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tabs_tabs_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/tabs/tabs.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_9__tabs_tabs_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tooltip_tooltip_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/tooltip/tooltip.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_10__tooltip_tooltip_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__timepicker_timepicker_component__ = __webpack_require__("../../../../../src/app/layout/bs-component/components/timepicker/timepicker.component.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_11__timepicker_timepicker_component__["a"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/pagination/pagination.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\">\n    <div class=\"col col-sm-6\">\n        <div class=\"card mt-3\">\n            <div class=\"card-header\">Basic Pagination</div>\n            <div class=\"card-block\">\n                <div class=\"text-uppercase text-muted fs-12\">Default pagination</div>\n                <ngb-pagination [collectionSize]=\"70\" [(page)]=\"defaultPagination\"></ngb-pagination>\n                <div class=\"text-uppercase text-muted fs-12\">directionLinks = false</div>\n                <ngb-pagination [collectionSize]=\"70\" [(page)]=\"defaultPagination\" [directionLinks]=\"false\"></ngb-pagination>\n                <div class=\"text-uppercase text-muted fs-12\">boundaryLinks = true</div>\n                <ngb-pagination [collectionSize]=\"70\" [(page)]=\"defaultPagination\" [boundaryLinks]=\"true\"></ngb-pagination>\n                <div class=\"alert alert-info\">\n                    <b>Current page: </b>{{defaultPagination}}\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col col-sm-6\">\n        <div class=\"card mt-3\">\n            <div class=\"card-header\">Advanced Pagination</div>\n            <div class=\"card-block\">\n                <div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = false</div>\n                <ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [boundaryLinks]=\"true\"></ngb-pagination>\n\n                <div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = true</div>\n                <ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [rotate]=\"true\" [boundaryLinks]=\"true\"></ngb-pagination>\n\n                <div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = true, ellipses = false</div>\n                <ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [rotate]=\"true\" [ellipses]=\"false\" [boundaryLinks]=\"true\"></ngb-pagination>\n                <div class=\"alert alert-info\">\n                    <b>Current page: </b>{{advancedPagination}}\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col col-sm-6\">\n        <div class=\"card mt-3\">\n            <div class=\"card-header\">Pagination size</div>\n            <div class=\"card-block\">\n                <ngb-pagination [collectionSize]=\"50\" [(page)]=\"paginationSize\" size=\"lg\"></ngb-pagination>\n                <ngb-pagination [collectionSize]=\"50\" [(page)]=\"paginationSize\"></ngb-pagination>\n                <ngb-pagination [collectionSize]=\"50\" [(page)]=\"paginationSize\" size=\"sm\"></ngb-pagination>\n            </div>\n        </div>\n    </div>\n    <div class=\"col col-sm-6\">\n        <div class=\"card mt-3\">\n            <div class=\"card-header\">Disabled pagination</div>\n            <div class=\"card-block\">\n                <p>Pagination control can be disabled:</p>\n                <ngb-pagination [collectionSize]=\"70\" [(page)]=\"disabledPagination\" [disabled]='isDisabled'></ngb-pagination>\n                <hr>\n                <button class=\"btn btn-outline-primary\" (click)=\"toggleDisabled()\">\n                    Toggle disabled\n                </button>\n            </div>\n        </div>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/pagination/pagination.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/pagination/pagination.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaginationComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var PaginationComponent = (function () {
-    function PaginationComponent() {
-        this.defaultPagination = 1;
-        this.advancedPagination = 1;
-        this.paginationSize = 1;
-        this.disabledPagination = 1;
-        this.isDisabled = true;
-    }
-    PaginationComponent.prototype.toggleDisabled = function () {
-        this.isDisabled = !this.isDisabled;
-    };
-    return PaginationComponent;
-}());
-PaginationComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-pagination',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/pagination/pagination.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/pagination/pagination.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], PaginationComponent);
-
-//# sourceMappingURL=pagination.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/pop-over/pop-over.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card mt-3\">\n    <div class=\"card-header\">\n        Pop over\n    </div>\n    <div class=\"card-block\">\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"top\"\n                ngbPopover=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\" popoverTitle=\"Popover on top\">\n          Popover on top\n        </button>\n\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"right\"\n                ngbPopover=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\" popoverTitle=\"Popover on right\">\n          Popover on right\n        </button>\n\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"bottom\"\n                ngbPopover=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\" popoverTitle=\"Popover on bottom\">\n          Popover on bottom\n        </button>\n\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"left\"\n                ngbPopover=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\" popoverTitle=\"Popover on left\">\n          Popover on left\n        </button>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/pop-over/pop-over.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/pop-over/pop-over.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopOverComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var PopOverComponent = (function () {
-    function PopOverComponent() {
-    }
-    PopOverComponent.prototype.ngOnInit = function () {
-    };
-    return PopOverComponent;
-}());
-PopOverComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-pop-over',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/pop-over/pop-over.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/pop-over/pop-over.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], PopOverComponent);
-
-//# sourceMappingURL=pop-over.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/progressbar/progressbar.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card mt-3\">\n    <div class=\"card-header\">Progressbar</div>\n    <div class=\"card-block\">\n        <p><ngb-progressbar type=\"info\" [value]=\"50\"></ngb-progressbar></p>\n        <p><ngb-progressbar showValue=\"true\" type=\"warning\" [value]=\"150\" [max]=\"200\"></ngb-progressbar></p>\n        <p><ngb-progressbar type=\"danger\" [value]=\"100\" [striped]=\"true\"></ngb-progressbar></p>\n        <p><ngb-progressbar type=\"success\" [value]=\"25\">25</ngb-progressbar></p>\n        <p><ngb-progressbar type=\"info\" [value]=\"50\">Copying file <b>2 of 4</b>...</ngb-progressbar></p>\n        <p><ngb-progressbar type=\"warning\" [value]=\"75\" [striped]=\"true\" [animated]=\"true\"><i>50%</i></ngb-progressbar></p>\n        <p class=\"mb-0\"><ngb-progressbar type=\"danger\" [value]=\"100\" [striped]=\"true\">Completed!</ngb-progressbar></p>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/progressbar/progressbar.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/progressbar/progressbar.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgressbarComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var ProgressbarComponent = (function () {
-    function ProgressbarComponent() {
-    }
-    ProgressbarComponent.prototype.ngOnInit = function () {
-    };
-    return ProgressbarComponent;
-}());
-ProgressbarComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-progressbar',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/progressbar/progressbar.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/progressbar/progressbar.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], ProgressbarComponent);
-
-//# sourceMappingURL=progressbar.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/tabs/tabs.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row mt-3\">\n    <div class=\"col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">Tabset</div>\n            <div class=\"card-block\">\n                <ngb-tabset>\n                    <ngb-tab title=\"Simple\">\n                        <ng-template ngbTabContent>\n                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth\n                            master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh\n                            dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum\n                            iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>\n                        </ng-template>\n                    </ngb-tab>\n                    <ngb-tab>\n                        <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>\n                        <ng-template ngbTabContent>\n                            <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table\n                            craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl\n                            cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia\n                            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean\n                            shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero\n                            sint qui sapiente accusamus tattooed echo park.</p>\n                        </ng-template>\n                    </ngb-tab>\n                    <ngb-tab title=\"Disabled\" [disabled]=\"true\">\n                        <ng-template ngbTabContent>\n                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth\n                            master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh\n                            dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum\n                            iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>\n                        </ng-template>\n                    </ngb-tab>\n                </ngb-tabset>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">Pills</div>\n            <div class=\"card-block\">\n                <ngb-tabset type=\"pills\">\n                    <ngb-tab title=\"Simple\">\n                        <ng-template ngbTabContent>\n                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth\n                            master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh\n                            dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum\n                            iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>\n                        </ng-template>\n                    </ngb-tab>\n                    <ngb-tab>\n                        <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>\n                        <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.\n                            <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table\n                            craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl\n                            cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia\n                            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean\n                            shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero\n                            sint qui sapiente accusamus tattooed echo park.</p>\n                        </ng-template>\n                    </ngb-tab>\n                    <ngb-tab title=\"Disabled\" [disabled]=\"true\">\n                        <ng-template ngbTabContent>\n                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth\n                            master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh\n                            dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum\n                            iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>\n                        </ng-template>\n                    </ngb-tab>\n                </ngb-tabset>\n            </div>\n        </div>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/tabs/tabs.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/tabs/tabs.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var TabsComponent = (function () {
-    function TabsComponent() {
-    }
-    TabsComponent.prototype.ngOnInit = function () {
-    };
-    return TabsComponent;
-}());
-TabsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-tabs',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/tabs/tabs.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/tabs/tabs.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], TabsComponent);
-
-//# sourceMappingURL=tabs.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/timepicker/timepicker.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row mt-3\">\n    <div class=\"col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">Timepicker (<b>Default</b>)</div>\n            <div class=\"card-block\">\n                <ngb-timepicker [(ngModel)]=\"defaultTime\"></ngb-timepicker>\n                <div class=\"alert alert-info\">\n                    <b>Selected time: </b>{{defaultTime | json}}\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">Timepicker (<b>Default</b>)</div>\n            <div class=\"card-block\">\n                <ngb-timepicker [(ngModel)]=\"meridianTime\" [meridian]=\"meridian\"></ngb-timepicker>\n                <button class=\"btn btn-sm btn-outline-{{meridian ? 'success' : 'danger'}}\" (click)=\"toggleMeridian()\">\n                    Meridian - {{meridian ? \"ON\" : \"OFF\"}}\n                </button>\n                <div class=\"alert alert-info mt-3 mb-0\">\n                    <b>Selected time: </b>{{meridianTime | json}}\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-sm-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">Timepicker (<b>Seconds</b>)</div>\n            <div class=\"card-block\">\n                <ngb-timepicker [(ngModel)]=\"SecondsTime\" [seconds]=\"seconds\"></ngb-timepicker>\n                <button class=\"btn btn-sm btn-outline-{{seconds ? 'success' : 'danger'}}\" (click)=\"toggleSeconds()\">\n                    Seconds - {{seconds ? \"ON\" : \"OFF\"}}\n                </button>\n                <div class=\"alert alert-info mt-3 mb-0\">\n                    <b>Selected time: </b>{{SecondsTime | json}}\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-sm-6 mt-3\">\n        <div class=\"card\">\n            <div class=\"card-header\">Timepicker (<b>Custom Step</b>)</div>\n            <div class=\"card-block\">\n                <ngb-timepicker [(ngModel)]=\"customTime\" [seconds]=\"true\"\n                [hourStep]=\"hourStep\" [minuteStep]=\"minuteStep\" [secondStep]=\"secondStep\"></ngb-timepicker>\n\n                <div class=\"row\">\n                    <div class=\"col-sm-4\">\n                        <label for=\"changeHourStep\">Hour Step</label>\n                        <input type=\"number\" class=\"form-control\" [(ngModel)]=\"hourStep\" />\n                    </div>\n                    <div class=\"col-sm-4\">\n                        <label for=\"changeMinuteStep\">Minute Step</label>\n                        <input type=\"number\" class=\"form-control\" [(ngModel)]=\"minuteStep\" />\n                    </div>\n                    <div class=\"col-sm-4\">\n                        <label for=\"changeSecondStep\">Second Step</label>\n                        <input type=\"number\" class=\"form-control\" [(ngModel)]=\"secondStep\" />\n                    </div>\n                </div>\n                <div class=\"alert alert-info mt-3 mb-0\">\n                    <b>Selected time: </b>{{customTime | json}}\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/timepicker/timepicker.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/timepicker/timepicker.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimepickerComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var TimepickerComponent = (function () {
-    function TimepickerComponent() {
-        this.defaultTime = { hour: 13, minute: 30 };
-        this.meridianTime = { hour: 13, minute: 30 };
-        this.meridian = true;
-        this.SecondsTime = { hour: 13, minute: 30, second: 30 };
-        this.seconds = true;
-        this.customTime = { hour: 13, minute: 30, second: 0 };
-        this.hourStep = 1;
-        this.minuteStep = 15;
-        this.secondStep = 30;
-    }
-    TimepickerComponent.prototype.toggleSeconds = function () {
-        this.seconds = !this.seconds;
-    };
-    TimepickerComponent.prototype.toggleMeridian = function () {
-        this.meridian = !this.meridian;
-    };
-    return TimepickerComponent;
-}());
-TimepickerComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-timepicker',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/timepicker/timepicker.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/timepicker/timepicker.component.scss")]
-    })
-], TimepickerComponent);
-
-//# sourceMappingURL=timepicker.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/tooltip/tooltip.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card\">\n    <div class=\"card-header\">\n        Tooltip\n    </div>\n    <div class=\"card-block\">\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"top\" ngbTooltip=\"Tooltip on top\">\n          Tooltip on top\n        </button>\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"right\" ngbTooltip=\"Tooltip on right\">\n          Tooltip on right\n        </button>\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"bottom\" ngbTooltip=\"Tooltip on bottom\">\n          Tooltip on bottom\n        </button>\n        <button type=\"button\" class=\"btn btn-secondary\" placement=\"left\" ngbTooltip=\"Tooltip on left\">\n          Tooltip on left\n        </button>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/tooltip/tooltip.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/bs-component/components/tooltip/tooltip.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TooltipComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var TooltipComponent = (function () {
-    function TooltipComponent() {
-    }
-    TooltipComponent.prototype.ngOnInit = function () {
-    };
-    return TooltipComponent;
-}());
-TooltipComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-tooltip',
-        template: __webpack_require__("../../../../../src/app/layout/bs-component/components/tooltip/tooltip.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/bs-component/components/tooltip/tooltip.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], TooltipComponent);
-
-//# sourceMappingURL=tooltip.component.js.map
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__app_service__["a" /* AppService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_service__["a" /* ToastService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_service__["a" /* ToastService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _d || Object])
+], IpListComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=ip-list.component.js.map
 
 /***/ })
 

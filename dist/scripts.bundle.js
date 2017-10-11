@@ -1,4 +1,4 @@
-webpackJsonp([22],{
+webpackJsonp([15],{
 
 /***/ "../../../../raw-loader/index.js!../../../../chart.js/dist/Chart.js":
 /***/ (function(module, exports) {

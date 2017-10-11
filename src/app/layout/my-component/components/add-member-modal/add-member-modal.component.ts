@@ -95,17 +95,17 @@ export class AddMemberModalComponent implements OnInit {
 
 
                     this.formModel=this.fb.group({
-                        user_email:[data.user_email,[Validators.required,Validators.minLength(6)]],
+                        user_email:[data.email,[Validators.required,Validators.minLength(6)]],
                         secret:this.fb.group(
                             {
-                                app_secret:[data.user_password,Validators.minLength(6)],
-                                c_app_secret:[data.user_password]
+                                app_secret:[data.password,Validators.minLength(6)],
+                                c_app_secret:[data.password]
                             },
                             {
                                 validator:equalValidator//这么用
                             }
                         ),
-                        school_id:[data.school_id,[Validators.required]],
+                        school_id:[data.school,[Validators.required]],
                         scope:[data.scope,[Validators.required]],
                         isOpen:[data.is_open],
                     })

@@ -1,13 +1,13 @@
 webpackJsonp([7],{
 
-/***/ "../../../../../src/app/layout/orders/all-transmit/all-transmit.component.html":
+/***/ "../../../../../src/app/layout/my-component/components/add-library-modal/add-library-modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-order-list [orders]=\"orders\" [isTransmited]=\"isTransmited\"></app-order-list>\n    <app-http-pagination [url]=\"url\" [pageList]=\"pageList\" [method]=\"'get'\" (onDataChanged)=\"onDataChanged($event)\"></app-http-pagination>\n</div>\n"
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\"><i class=\"fa\" [class.fa-plus]=\"btnText=='添加'\" [class.fa-wrench]=\"btnText=='修改'\"></i> {{btnText}}</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{header}}</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <form [formGroup]=\"formModel\" (ngSubmit)=\"onSubmit()\" novalidate>\n    <div class=\"modal-body\">\n        <div class=\"container\" >\n\n\n                    <div class=\"form-group row\" [class.has-danger]=\"formModel.get('app_id').invalid && formModel.get('app_id').touched\">\n                            <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">用户名</label>\n                            <div class=\"col-sm-6\">\n                                <input type=\"text\" class=\"form-control\" id=\"inputPassword4\" placeholder=\"用户名\" formControlName=\"app_id\" [class.form-control-danger]=\"formModel.get('app_id').invalid && formModel.get('app_id').touched\">\n\n                            </div>\n\n                            <div class=\"col-sm-4\">\n                                <div [hidden]=\"formModel.get('app_id').valid || formModel.get('app_id').untouched\">\n                                    <div [hidden]=\"!formModel.hasError('required','app_id')\"><h5>用户名为必填项</h5></div>\n                                    <!--<div class=\"invalid-feedback\" [hidden]=\"!formModel.hasError('required','app_id')\">-->\n                                        <!--用户名为必填项-->\n                                    <!--</div>-->\n                                    <div [hidden]=\"!formModel.hasError('minlength','app_id')\"><h5>用户名最低为6个字符</h5></div><!-- 这个minlength要小些 -->\n                                </div>\n                            </div>\n                    </div>\n                    <div formGroupName=\"secret\">\n                            <div class=\"form-group row\">\n                                <label for=\"inputEmail3\" class=\"col-sm-2 col-form-label\">密码</label>\n                                <div class=\"col-sm-6\">\n                                    <input type=\"password\" class=\"form-control\" id=\"inputEmail3\" placeholder=\"密码\" formControlName=\"app_secret\">\n                                </div>\n                                <div class=\"col-sm-4\">\n                                    <div [hidden]=\"!formModel.hasError('minlength',['secret','app_secret'])\"><h5>密码最低为6个字符</h5></div><!-- 如果这个属性是嵌套的-->\n                                </div>\n                            </div>\n                            <div class=\"form-group row\">\n                                <label for=\"inputPassword3\" class=\"col-sm-2 col-form-label\">确认密码</label>\n                                <div class=\"col-sm-6\">\n                                    <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" placeholder=\"确认密码\" formControlName=\"c_app_secret\">\n                                </div>\n\n                                <div class=\"col-sm-4\">\n\n                                    <div [hidden]=\"!formModel.hasError('equal','secret')\"><h5>{{formModel.getError('equal','secret')?.description}}</h5></div>\n                                </div>\n                            </div>\n\n                        </div>\n\n                    <div class=\"form-group row\">\n                            <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">所属成员馆</label>\n                            <div class=\"col-sm-6\">\n                                <!--<input type=\"text\" class=\"form-control is-invalid\" id=\"inputPassword6\" placeholder=\"共享馆名称\" formControlName=\"app_description\" [class.is-invalid]=\"formModel.get('app_description').invalid && formModel.get('app_description').touched\">-->\n                                <select  formControlName=\"school_id\" class=\"form-control\">\n                                    <option value=\"{{school.id}}\"  *ngFor=\"let school of schools\">{{school.name}}</option>\n                                </select>\n                            </div>\n\n                            <div class=\"col-sm-4\">\n                                <div [hidden]=\"formModel.get('school_id').valid || formModel.get('school_id').untouched\">\n                                    <div [hidden]=\"!formModel.hasError('required','school_id')\"><h5>所属成员馆为必选项</h5></div>\n                                    <!--<div [hidden]=\"!formModel.hasError('minlength','app_description')\"><h5>共享馆名称最低为10个字符</h5></div>&lt;!&ndash; 这个minlength要小些 &ndash;&gt;-->\n                                </div>\n                            </div>\n\n                    </div>\n\n                    <div class=\"form-group row\">\n                            <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">权限组</label>\n                            <div class=\"col-sm-6\">\n                                <!--<input type=\"text\" class=\"form-control\" id=\"inputPassword7\" placeholder=\"权限组\" formControlName=\"scope\">-->\n\n                                <select name=\"\" id=\"\" formControlName=\"scope\" class=\"form-control\">\n                                    <option value=\"32\" selected>普通组</option>\n                                    <option value=\"64\">超管组</option>\n                                </select>\n                            </div>\n\n                            <div class=\"col-sm-4\">\n                                <div [hidden]=\"formModel.get('scope').valid || formModel.get('scope').untouched\">\n                                    <div [hidden]=\"!formModel.hasError('required','scope')\"><h5>权限组为必选项</h5></div>\n                                </div>\n                            </div>\n                    </div>\n\n\n\n\n\n\n\n\n                    <fieldset class=\"form-group\" >\n                        <div class=\"row\">\n                            <legend class=\"col-form-legend col-sm-2\">是否开启</legend>\n                            <div class=\"col-sm-10\">\n                                <div class=\"form-check\">\n                                    <label class=\"form-check-label\">\n                                        <input class=\"form-check-input\" type=\"radio\" name=\"isOpen\" id=\"gridRadios1\" value=1 checked formControlName=\"isOpen\">\n                                        是\n                                    </label>\n                                </div>\n                                <div class=\"form-check\">\n                                    <label class=\"form-check-label\">\n                                        <input class=\"form-check-input\" type=\"radio\" name=\"isOpen\" id=\"gridRadios2\" value=0 formControlName=\"isOpen\">\n                                        否\n                                    </label>\n                                </div>\n                            </div>\n                        </div>\n                    </fieldset>\n\n\n\n        </div>\n\n\n\n\n\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"submit\" class=\"btn btn-primary\" >保存</button>\n            </div>\n        </div>\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n    </form>\n</ng-template>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/all-transmit/all-transmit.component.scss":
+/***/ "../../../../../src/app/layout/my-component/components/add-library-modal/add-library-modal.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -25,90 +25,18 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/all-transmit/all-transmit.component.ts":
+/***/ "../../../../../src/app/layout/my-component/components/add-library-modal/add-library-modal.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllTransmitComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var AllTransmitComponent = (function () {
-    function AllTransmitComponent(apiUrlService) {
-        this.apiUrlService = apiUrlService;
-        this.pageList = [10, 15, 25, 35];
-        this.isTransmited = true;
-        this.url = this.apiUrlService.allTransmitesUrl;
-    }
-    AllTransmitComponent.prototype.ngOnInit = function () {
-    };
-    AllTransmitComponent.prototype.onDataChanged = function (event) {
-        console.log(event);
-        this.orders = event.rows;
-    };
-    return AllTransmitComponent;
-}());
-AllTransmitComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-all-transmit',
-        template: __webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.scss")],
-        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object])
-], AllTransmitComponent);
-
-var _a;
-//# sourceMappingURL=all-transmit.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/my-transmit/my-transmit.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div [@routerTransition]>\n    <app-order-list [orders]=\"orders\" [isTransmited]=\"isTransmited\"></app-order-list>\n    <app-http-pagination [url]=\"url\" [method]=\"'get'\" [param]=\"param\" [pageList]=\"pageList\" (onDataChanged)=\"onDataChanged($event)\" ></app-http-pagination>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/my-transmit/my-transmit.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/my-transmit/my-transmit.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__ = __webpack_require__("../../../../../src/app/shared/services/order/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyTransmitComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__validator_validators__ = __webpack_require__("../../../../../src/app/validator/validators.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddLibraryModalComponent; });
+/* unused harmony export SubmitData */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -122,165 +50,324 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var MyTransmitComponent = (function () {
-    function MyTransmitComponent(orderService, apiUrlService) {
-        this.orderService = orderService;
-        this.apiUrlService = apiUrlService;
-        this.param = {
-            token: localStorage.getItem('token')
-        };
-        this.pageList = [10, 15, 25, 35];
-        this.isTransmited = true;
-        this.url = this.apiUrlService.getMyTransmitesUrl;
+
+
+var AddLibraryModalComponent = (function () {
+    function AddLibraryModalComponent(modalService, systemService, modalService2, fb) {
+        this.modalService = modalService;
+        this.systemService = systemService;
+        this.modalService2 = modalService2;
+        this.fb = fb;
+        this.options = { size: 'lg' };
+        //        =new FormGroup({
+        //
+        //
+        //     app_id:new FormControl('',[Validators.required]),
+        //     secret:new FormGroup(
+        //         {
+        //             app_secret:new FormControl(),
+        //             c_app_secret:new FormControl()
+        //         },
+        //         {
+        //             validator:equalValidator//这么用
+        //         }
+        //     ),
+        //     app_description:new FormControl('',[Validators.required,Validators.minLength(10)]),
+        //     scope:new FormControl(32),
+        //     isOpen:new FormControl(1),
+        //
+        // })
+        this.onSubmitData = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.formModel = fb.group({
+            app_id: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].minLength(6)]],
+            secret: fb.group({
+                app_secret: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].minLength(6)],
+                c_app_secret: ['']
+            }, {
+                validator: __WEBPACK_IMPORTED_MODULE_5__validator_validators__["a" /* equalValidator */] //这么用
+            }),
+            school_id: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            scope: [32, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            isOpen: [1],
+        });
     }
-    MyTransmitComponent.prototype.ngOnInit = function () {
+    AddLibraryModalComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.orderService.getMyTransmites().subscribe(function (data) { return _this.orders = data.rows; });
+        this.systemService.getSchools().subscribe(function (data) { return _this.schools = data; });
     };
-    MyTransmitComponent.prototype.onDataChanged = function (event) {
-        console.log(event);
-        this.orders = event.rows;
-    };
-    return MyTransmitComponent;
-}());
-MyTransmitComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-my-transmit',
-        template: __webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.scss")],
-        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__router_animations__["a" /* routerTransition */])()]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__["a" /* OrderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _b || Object])
-], MyTransmitComponent);
-
-var _a, _b;
-//# sourceMappingURL=my-transmit.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div [@routerTransition] >\n    <app-order-list [orders]=\"orders\"></app-order-list>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_web_socket_service__ = __webpack_require__("../../../../../src/app/shared/services/web-socket.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_send_article_service__ = __webpack_require__("../../../../../src/app/shared/services/send-article.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewApplyComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var NewApplyComponent = (function () {
-    //token:string;
-    // @Output() newOrderCount:Observable<number>=new EventEmitter();
-    function NewApplyComponent(wsService, sendArticleService, tokenService, appService) {
-        this.wsService = wsService;
-        this.sendArticleService = sendArticleService;
-        this.tokenService = tokenService;
-        this.appService = appService;
-    }
-    NewApplyComponent.prototype.ngOnChanges = function (changes) {
-        this.tokenService.refreshToken();
-    };
-    NewApplyComponent.prototype.ngOnInit = function () {
+    AddLibraryModalComponent.prototype.open = function (content) {
         var _this = this;
-        if (this.subscrption) {
-            this.subscrption.unsubscribe(); //取消订阅
-            this.subscrption = null;
-        }
-        else {
-            //this.tokenService.refreshToken()
-            //点击按钮调用服务的方法创建连接 此方法返回一个可观测的流 这里就可以订阅这个流了 并携带一个参数id
-            var token = localStorage.getItem('token') ? localStorage.getItem('token') : '';
-            this.subscrption = this.wsService.createObservableSocket('ws://101.201.122.94:8085', token)
-                .subscribe(
-            //服务器吐送过来的消息
-            //收到的是这个客户端关注的所有商品的一个报价
-            function (products) {
-                //console.log(products)
-                _this.orders = (JSON.parse(products));
-                _this.appService.newOrderCountEventEmitter.emit(_this.orders.length);
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+        if (this.ipMapId) {
+            // alert(111)
+            this.systemService.getOneLibrary(this.ipMapId).subscribe(function (data) {
+                // this.formModel=new FormGroup({
+                //     secret:new FormGroup({
+                //         app_secret:new FormControl(data.app_secret),
+                //         c_app_secret:new FormControl(data.app_secret)
+                //     }),
+                //
+                //     app_id:new FormControl(data.app_id),
+                //     isOpen:new FormControl(data.is_open),
+                //     scope:new FormControl(data.scope),
+                //     app_description:new FormControl(data.app_description)
+                //
+                // })
+                _this.formModel = _this.fb.group({
+                    app_id: [data.app_id, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].minLength(6)]],
+                    secret: _this.fb.group({
+                        app_secret: [data.app_secret, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].minLength(6)],
+                        c_app_secret: [data.app_secret]
+                    }, {
+                        validator: __WEBPACK_IMPORTED_MODULE_5__validator_validators__["a" /* equalValidator */] //这么用
+                    }),
+                    school_id: [data.school_id.id, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    scope: [data.scope, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    isOpen: [data.is_open],
+                });
             });
         }
+        //this.formMode
     };
-    NewApplyComponent.prototype.sendArticle = function (orderId) {
-        this.sendArticleService.sendArticle(orderId);
+    AddLibraryModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
     };
-    return NewApplyComponent;
+    AddLibraryModalComponent.prototype.onSubmit = function () {
+        // let validate=this.formModel.get('app_id').valid;
+        // console.log('app_id的验证结果为'+validate)
+        if (this.formModel.valid) {
+            var submitData = new SubmitData(this.formModel, this.myModalRef);
+            this.onSubmitData.emit(submitData);
+        }
+    };
+    return AddLibraryModalComponent;
 }());
-NewApplyComponent = __decorate([
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AddLibraryModalComponent.prototype, "header", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AddLibraryModalComponent.prototype, "btnText", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+], AddLibraryModalComponent.prototype, "onSubmitData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Number)
+], AddLibraryModalComponent.prototype, "ipMapId", void 0);
+AddLibraryModalComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-new-apply',
-        template: __webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.scss")],
-        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__router_animations__["a" /* routerTransition */])()]
+        selector: 'app-add-library-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/add-library-modal/add-library-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/add-library-modal/add-library-modal.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_web_socket_service__["a" /* WebSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_web_socket_service__["a" /* WebSocketService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_send_article_service__["a" /* SendArticleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_send_article_service__["a" /* SendArticleService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_token_service__["a" /* TokenService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_service__["a" /* AppService */]) === "function" && _d || Object])
-], NewApplyComponent);
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */]) === "function" && _e || Object])
+], AddLibraryModalComponent);
 
-var _a, _b, _c, _d;
-//# sourceMappingURL=new-apply.component.js.map
+var SubmitData = (function () {
+    function SubmitData(formModel, ref) {
+        this.formModel = formModel;
+        this.ref = ref;
+    }
+    return SubmitData;
+}());
+
+var _a, _b, _c, _d, _e;
+//# sourceMappingURL=add-library-modal.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/orders-routing.module.ts":
+/***/ "../../../../../src/app/layout/system/library/library.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col col-xl-12 col-lg-12\">\n      <div class=\"card border-primary mb-3\">\n          <div class=\"card-header\">{{title}}</div>\n          <div class=\"card-block table-responsive\">\n              <table class=\"table table-hover  table-bordered table-dark table-sm \">\n                  <thead class=\"bg-success\">\n                  <tr>\n                      <th><input type=\"checkbox\"></th>\n                      <th>id</th>\n                      <th>用户名</th>\n                      <th>共享馆名称</th>\n                      <th>是否开启</th>\n                      <th>操作</th>\n\n                  </tr>\n                  </thead>\n                  <tbody>\n\n                    <tr *ngFor=\"let library of libraries\">\n                      <td><input type=\"checkbox\"></td>\n                      <td>{{library.id}}</td>\n                      <td>{{library.app_id}}</td>\n                      <td>{{library.school_id.name}}</td>\n                      <td>\n                          <div style=\"width:40px;\">\n                              <app-switch [checked]=\"library.is_open==1?true:false\" [onLabel]=\"'开'\"  [offLabel]=\"'关'\" [theme]=\"theme2\" (onChange)=\"change($event,library.id)\"></app-switch>\n                          </div>\n                      </td>\n\n                      <td>\n                            <app-add-library-modal [header]=\"editheader\" [btnText]=\"editBtnText\"  (onSubmitData)=\"editLibray($event,library.id)\" [ipMapId]=\"library.id\" ></app-add-library-modal>\n                          <button class=\"btn btn-sm btn-success\" (click)=\"deleteLibrary(library.id)\"><i class=\"fa fa-minus\"></i> 删除</button>\n                      </td>\n                    </tr>\n\n\n                  </tbody>\n              </table>\n\n\n\n              <app-add-library-modal [header]=\"header\" [btnText]=\"addBtnText\" (onSubmitData)=\"addLibrary($event)\" ></app-add-library-modal>\n              <!-- <app-add-library-modal></app-add-library-modal> -->\n          </div>\n      </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/system/library/library.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/system/library/library.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_component_components_switch_switch_model__ = __webpack_require__("../../../../../src/app/layout/my-component/components/switch/switch-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LibraryComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var LibraryComponent = (function () {
+    function LibraryComponent(appService, modalService, systemService) {
+        this.appService = appService;
+        this.modalService = modalService;
+        this.systemService = systemService;
+        this.title = '共享馆设置';
+        this.libraries = [];
+        this.theme = __WEBPACK_IMPORTED_MODULE_2__my_component_components_switch_switch_model__["a" /* SwitchTheme */].THTME_WARNING;
+        this.theme2 = __WEBPACK_IMPORTED_MODULE_2__my_component_components_switch_switch_model__["a" /* SwitchTheme */].THTME_SUCCESS;
+        this.header = '添加共享馆';
+        this.editheader = '修改共享馆';
+        this.addBtnText = "\u6DFB\u52A0";
+        this.editBtnText = '修改';
+    }
+    LibraryComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.systemService.getLibrarys().subscribe(function (data) {
+            _this.libraries = data;
+            //alert(1111)
+        });
+    };
+    LibraryComponent.prototype.change = function (event, id) {
+        var status = event ? 1 : 0;
+        this.systemService.updateLibraryIsOpen(status, id).subscribe(function (data) {
+        });
+    };
+    LibraryComponent.prototype.addLibrary = function (event) {
+        var _this = this;
+        this.systemService.addLibrary(event.formModel.value).subscribe(function (data) {
+            if (data.errorCode === 0) {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["b" /* AlertType */].INFO, '成员馆管理', '添加成功');
+                _this.modalService.alert(alertCfg);
+                event.ref.close();
+                //this.transformPageData.pageNumber=1;
+                //this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
+                _this.systemService.getLibrarys().subscribe(function (data) {
+                    _this.libraries = data;
+                    //alert(1111)
+                });
+            }
+            else {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["b" /* AlertType */].ERROR, '成员馆管理', data.msg);
+                _this.modalService.alert(alertCfg);
+            }
+        });
+    };
+    LibraryComponent.prototype.editLibray = function (event, id) {
+        var _this = this;
+        this.systemService.updateLibrary(event.formModel.value, id).subscribe(function (data) {
+            //console.log(data)
+            if (data.errorCode === 0) {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'IP映射', '修改成功');
+                _this.modalService.alert(alertCfg);
+                event.ref.close();
+                //this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
+                _this.systemService.getLibrarys().subscribe(function (data) {
+                    _this.libraries = data;
+                    //alert(1111)
+                });
+            }
+            else {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'IP映射', '修改失败');
+                _this.modalService.alert(alertCfg);
+            }
+        });
+    };
+    LibraryComponent.prototype.deleteLibrary = function (id) {
+        var _this = this;
+        var confirmCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["a" /* ConfirmConfig */]('您确定要删除此映射吗？');
+        this.modalService.confirm(confirmCfg).then(function (result) {
+            _this.systemService.deleteLibrary(id).subscribe(function (data) {
+                if (data.errorCode === 0) {
+                    var alertCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["b" /* AlertType */].INFO, '成员馆管理', '删除成功');
+                    _this.modalService.alert(alertCfg);
+                    //this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
+                    _this.systemService.getLibrarys().subscribe(function (data) {
+                        _this.libraries = data;
+                        //alert(1111)
+                    });
+                }
+                else {
+                    var alertCfg = new __WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3_app_shared_components_modal_modal_model__["b" /* AlertType */].ERROR, '成员馆管理', '删除失败');
+                    _this.modalService.alert(alertCfg);
+                }
+            });
+        }, function (reason) {
+            //console.log(reason+22222222222)
+        });
+    };
+    return LibraryComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], LibraryComponent.prototype, "transformPageData", void 0);
+LibraryComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-library',
+        template: __webpack_require__("../../../../../src/app/layout/system/library/library.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/system/library/library.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_app_app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_app_service__["a" /* AppService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_app_shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _c || Object])
+], LibraryComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=library.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/system/system-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders_component__ = __webpack_require__("../../../../../src/app/layout/orders/orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_transmit_my_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__new_apply_new_apply_component__ = __webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__all_transmit_all_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__system_component__ = __webpack_require__("../../../../../src/app/layout/system/system.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__library_library_component__ = __webpack_require__("../../../../../src/app/layout/system/library/library.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SystemRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -288,60 +375,107 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var routes = [
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_2__orders_component__["b" /* OrdersComponent */],
+        component: __WEBPACK_IMPORTED_MODULE_2__system_component__["a" /* SystemComponent */],
         children: [
             {
-                path: 'my-transmit',
-                component: __WEBPACK_IMPORTED_MODULE_3__my_transmit_my_transmit_component__["a" /* MyTransmitComponent */]
+                path: 'library',
+                component: __WEBPACK_IMPORTED_MODULE_3__library_library_component__["a" /* LibraryComponent */]
             },
-            {
-                path: 'new-apply',
-                component: __WEBPACK_IMPORTED_MODULE_4__new_apply_new_apply_component__["a" /* NewApplyComponent */]
-            },
-            {
-                path: 'all-transmit',
-                component: __WEBPACK_IMPORTED_MODULE_5__all_transmit_all_transmit_component__["a" /* AllTransmitComponent */]
-            }
         ]
     }
 ];
-var OrdersRoutingModule = (function () {
-    function OrdersRoutingModule() {
+var SystemRoutingModule = (function () {
+    function SystemRoutingModule() {
     }
-    return OrdersRoutingModule;
+    return SystemRoutingModule;
 }());
-OrdersRoutingModule = __decorate([
+SystemRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
     })
-], OrdersRoutingModule);
+], SystemRoutingModule);
 
-//# sourceMappingURL=orders-routing.module.js.map
+//# sourceMappingURL=system-routing.module.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/orders.module.ts":
+/***/ "../../../../../src/app/layout/system/system.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<router-outlet></router-outlet>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/system/system.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/system/system.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SystemComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SystemComponent = (function () {
+    function SystemComponent() {
+    }
+    SystemComponent.prototype.ngOnInit = function () {
+    };
+    return SystemComponent;
+}());
+SystemComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-system',
+        template: __webpack_require__("../../../../../src/app/layout/system/system.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/system/system.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], SystemComponent);
+
+//# sourceMappingURL=system.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/system/system.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts__ = __webpack_require__("../../../../ng2-charts/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__orders_routing_module__ = __webpack_require__("../../../../../src/app/layout/orders/orders-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__orders_component__ = __webpack_require__("../../../../../src/app/layout/orders/orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__("../../../../../src/app/shared/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_ng2_file_upload__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__my_transmit_my_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__new_apply_new_apply_component__ = __webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__all_transmit_all_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersModule", function() { return OrdersModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__system_component__ = __webpack_require__("../../../../../src/app/layout/system/system.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__system_routing_module__ = __webpack_require__("../../../../../src/app/layout/system/system-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__library_library_component__ = __webpack_require__("../../../../../src/app/layout/system/library/library.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__my_component_components_add_library_modal_add_library_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/add-library-modal/add-library-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SystemModule", function() { return SystemModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -357,43 +491,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
-
-var OrdersModule = (function () {
-    function OrdersModule() {
+var SystemModule = (function () {
+    function SystemModule() {
     }
-    return OrdersModule;
+    return SystemModule;
 }());
-OrdersModule = __decorate([
+SystemModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2_ng2_charts__["ChartsModule"],
-            __WEBPACK_IMPORTED_MODULE_3__orders_routing_module__["a" /* OrdersRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_5__shared__["b" /* PageHeaderModule */],
-            __WEBPACK_IMPORTED_MODULE_6__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_7_ng2_file_upload__["FileUploadModule"],
-            __WEBPACK_IMPORTED_MODULE_10__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_10__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_12__shared_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_3__system_routing_module__["a" /* SystemRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__["a" /* SharedModule */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["b" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__orders_component__["b" /* OrdersComponent */],
-            // ModalComponent,
-            // FileUploadComponent,
-            //OrderListComponent,
-            __WEBPACK_IMPORTED_MODULE_8__my_transmit_my_transmit_component__["a" /* MyTransmitComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__new_apply_new_apply_component__["a" /* NewApplyComponent */],
-            // PaginationComponent,
-            // HttpPaginationComponent,
-            __WEBPACK_IMPORTED_MODULE_11__all_transmit_all_transmit_component__["a" /* AllTransmitComponent */]
+            __WEBPACK_IMPORTED_MODULE_2__system_component__["a" /* SystemComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__library_library_component__["a" /* LibraryComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__my_component_components_add_library_modal_add_library_modal_component__["a" /* AddLibraryModalComponent */]
         ]
     })
-], OrdersModule);
+], SystemModule);
 
-//# sourceMappingURL=orders.module.js.map
+//# sourceMappingURL=system.module.js.map
 
 /***/ })
 

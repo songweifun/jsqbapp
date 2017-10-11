@@ -28,9 +28,9 @@
                     <tr *ngFor="let user of users">
                         <td><input type="checkbox"></td>
                         <td>{{user.id}}</td>
-                        <td>{{user.user_email}}</td>
-                        <td>{{user.user_name}}</td>
-                        <td>{{user.user_tel}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.tel}}</td>
                         <td [hidden]="isWhite || isBlack">
                             <div style="width:40px;">
                                 <app-switch [checked]="user.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,user.id)"></app-switch>
@@ -61,7 +61,7 @@
 
 
 
-                <!--<app-add-ip-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addIpMap($event,isBlack)" [isBlack]="isBlack" [isWhite]="isWhite"></app-add-ip-modal>-->
+                <app-add-member-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addMember($event)" ></app-add-member-modal>
             </div>
         </div>
     </div>

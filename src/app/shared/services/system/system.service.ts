@@ -32,7 +32,7 @@ export class SystemService {
       myHeaders.append('token',localStorage.getItem('token'))
 
       //return this.http.post('http://localhost/after/jsqb/jsqbapi/public/api/v1/system/map',{data:value},{headers:this.myHeaders}).map(res=>res.json());
-      console.log(myHeaders)
+      //console.log(myHeaders)
       return  this.sourceData= this.http.post(this.apiUrlService.addMapIpUrl,{data:value,is_forbid:isForbid},{headers:myHeaders}).map(res=>res.json());
 
 
@@ -185,6 +185,17 @@ export class SystemService {
         let myHeaders:Headers=new Headers();
         myHeaders.append('token',localStorage.getItem('token'));
         return  this.http.get(this.apiUrlService.getOneMemberDetailUrl+'?id='+id,{headers:myHeaders}).map(res=>res.json());
+
+    }
+
+    addMember(value){
+
+        this.tokenService.refreshToken();
+        let myHeaders:Headers=new Headers();
+        myHeaders.append('token',localStorage.getItem('token'))
+        return  this.sourceData= this.http.post(this.apiUrlService.addMemberUrl,{data:value},{headers:myHeaders}).map(res=>res.json());
+
+
 
     }
 

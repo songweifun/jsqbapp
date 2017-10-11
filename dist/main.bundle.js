@@ -1,97 +1,63 @@
-webpackJsonp([20],{
+webpackJsonp([13],{
 
 /***/ "../../../../../src async recursive":
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./blank-page/blank-page.module": [
-		"../../../../../src/app/layout/blank-page/blank-page.module.ts",
-		18
-	],
-	"./bs-component/bs-component.module": [
-		"../../../../../src/app/layout/bs-component/bs-component.module.ts",
-		1,
-		0
-	],
-	"./bs-element/bs-element.module": [
-		"../../../../../src/app/layout/bs-element/bs-element.module.ts",
-		0,
-		17
-	],
-	"./charts/charts.module": [
-		"../../../../../src/app/layout/charts/charts.module.ts",
-		0,
-		16
-	],
 	"./dashboard/dashboard.module": [
 		"../../../../../src/app/layout/dashboard/dashboard.module.ts",
 		0,
-		3
-	],
-	"./form/form.module": [
-		"../../../../../src/app/layout/form/form.module.ts",
-		0,
-		15
-	],
-	"./grid/grid.module": [
-		"../../../../../src/app/layout/grid/grid.module.ts",
-		0,
-		14
+		2
 	],
 	"./ipmaping/ipmaping.module": [
 		"../../../../../src/app/layout/ipmaping/ipmaping.module.ts",
 		0,
-		2
+		1
 	],
 	"./layout/layout.module": [
 		"../../../../../src/app/layout/layout.module.ts",
-		9,
+		8,
 		0
 	],
 	"./log/log.module": [
 		"../../../../../src/app/layout/log/log.module.ts",
 		0,
-		5
+		4
 	],
 	"./login/login.module": [
 		"../../../../../src/app/login/login.module.ts",
 		0,
-		12
+		11
 	],
 	"./member/member.module": [
 		"../../../../../src/app/layout/member/member.module.ts",
 		0,
-		4
+		3
 	],
 	"./not-found/not-found.module": [
 		"../../../../../src/app/not-found/not-found.module.ts",
 		0,
-		11
+		10
 	],
 	"./orders/orders.module": [
 		"../../../../../src/app/layout/orders/orders.module.ts",
 		0,
-		7
+		6
 	],
 	"./signup/signup.module": [
 		"../../../../../src/app/signup/signup.module.ts",
 		0,
-		10
+		9
 	],
 	"./statistics/statistics.module": [
 		"../../../../../src/app/layout/statistics/statistics.module.ts",
 		0,
-		6
+		5
 	],
 	"./system/system.module": [
 		"../../../../../src/app/layout/system/system.module.ts",
 		0,
-		8
-	],
-	"./tables/tables.module": [
-		"../../../../../src/app/layout/tables/tables.module.ts",
-		0,
-		13
+		7
 	]
 };
 function webpackAsyncContext(req) {
@@ -1293,6 +1259,7 @@ var ApiUrlService = (function () {
         this.requestStatisticsMapTop10Url = this.baseUrl + 'statistics/requestmap_top10';
         this.getAllmemberByPageUrl = this.baseUrl + 'member/all';
         this.getOneMemberDetailUrl = this.baseUrl + 'member/one_member';
+        this.addMemberUrl = this.baseUrl + 'member/add';
         this.updateMemberUrl = this.baseUrl + 'member/update_member';
         this.getAllSchoolUrl = this.baseUrl + 'member/all_school';
         this.updateMemberIpOpenUrl = this.baseUrl + 'member/update_isopen';
@@ -1767,7 +1734,7 @@ var SystemService = (function () {
         var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
         myHeaders.append('token', localStorage.getItem('token'));
         //return this.http.post('http://localhost/after/jsqb/jsqbapi/public/api/v1/system/map',{data:value},{headers:this.myHeaders}).map(res=>res.json());
-        console.log(myHeaders);
+        //console.log(myHeaders)
         return this.sourceData = this.http.post(this.apiUrlService.addMapIpUrl, { data: value, is_forbid: isForbid }, { headers: myHeaders }).map(function (res) { return res.json(); });
     };
     SystemService.prototype.getAllMap = function () {
@@ -1885,6 +1852,12 @@ var SystemService = (function () {
         var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
         myHeaders.append('token', localStorage.getItem('token'));
         return this.http.get(this.apiUrlService.getOneMemberDetailUrl + '?id=' + id, { headers: myHeaders }).map(function (res) { return res.json(); });
+    };
+    SystemService.prototype.addMember = function (value) {
+        this.tokenService.refreshToken();
+        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        myHeaders.append('token', localStorage.getItem('token'));
+        return this.sourceData = this.http.post(this.apiUrlService.addMemberUrl, { data: value }, { headers: myHeaders }).map(function (res) { return res.json(); });
     };
     SystemService.prototype.updateMember = function (value, id) {
         this.tokenService.refreshToken();

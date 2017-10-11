@@ -23,7 +23,14 @@ export class UserManageComponent implements OnInit {
       private apiUrlService:ApiUrlService,
       private appService:AppService
   ) {
-      this.url=this.apiUrlService.getAllmemberByPageUrl
+      this.url=this.apiUrlService.getAllmemberByPageUrl;
+
+      this.appService.keywordEventEmitter.debounceTime(500).subscribe(
+          event=>{
+              this.transformPageData.url=this.url+'?keyword='+event
+              this.appService.pageRefreshEventEmitter.emit(this.transformPageData)
+          }
+      )
   }
 
   ngOnInit() {
