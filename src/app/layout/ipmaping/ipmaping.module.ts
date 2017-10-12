@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ChartsModule as Ng2Charts } from 'ng2-charts';
 
 import {IpmapingRoutingModule} from './ipmaping-routing.module';
 import {IpmapingComponent} from './ipmaping.component';
-import {PageHeaderModule } from '../../shared';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {FileUploadModule} from "ng2-file-upload";
 import {SharedModule} from "../../shared/shared.module";
 import { IpsMapComponent } from './ips-map/ips-map.component';
 import {IpListComponent} from "../my-component/components/ip-list/ip-list.component";
@@ -15,11 +12,8 @@ import { IpBlackComponent } from './ip-black/ip-black.component';
 
 @NgModule({
     imports: [
-        Ng2Charts,
         IpmapingRoutingModule,
-        PageHeaderModule,
         NgbModule.forRoot(),
-        FileUploadModule,
         SharedModule
     ],
     declarations: [

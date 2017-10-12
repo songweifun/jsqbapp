@@ -1,14 +1,9 @@
-webpackJsonp([13],{
+webpackJsonp([12],{
 
 /***/ "../../../../../src async recursive":
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./dashboard/dashboard.module": [
-		"../../../../../src/app/layout/dashboard/dashboard.module.ts",
-		0,
-		2
-	],
 	"./ipmaping/ipmaping.module": [
 		"../../../../../src/app/layout/ipmaping/ipmaping.module.ts",
 		0,
@@ -16,48 +11,48 @@ var map = {
 	],
 	"./layout/layout.module": [
 		"../../../../../src/app/layout/layout.module.ts",
-		8,
+		7,
 		0
 	],
 	"./log/log.module": [
 		"../../../../../src/app/layout/log/log.module.ts",
 		0,
-		4
+		3
 	],
 	"./login/login.module": [
 		"../../../../../src/app/login/login.module.ts",
 		0,
-		11
+		10
 	],
 	"./member/member.module": [
 		"../../../../../src/app/layout/member/member.module.ts",
 		0,
-		3
+		2
 	],
 	"./not-found/not-found.module": [
 		"../../../../../src/app/not-found/not-found.module.ts",
 		0,
-		10
+		9
 	],
 	"./orders/orders.module": [
 		"../../../../../src/app/layout/orders/orders.module.ts",
 		0,
-		6
+		5
 	],
 	"./signup/signup.module": [
 		"../../../../../src/app/signup/signup.module.ts",
 		0,
-		9
+		8
 	],
 	"./statistics/statistics.module": [
 		"../../../../../src/app/layout/statistics/statistics.module.ts",
 		0,
-		5
+		4
 	],
 	"./system/system.module": [
 		"../../../../../src/app/layout/system/system.module.ts",
 		0,
-		7
+		6
 	]
 };
 function webpackAsyncContext(req) {
@@ -152,8 +147,6 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__("../../../../@ngx-translate/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -165,16 +158,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
-
+//import { TranslateService } from '@ngx-translate/core';
+//import {SystemService} from "./shared/services/system/system.service";
 var AppComponent = (function () {
-    function AppComponent(translate, systemService) {
-        this.translate = translate;
-        this.systemService = systemService;
-        translate.addLangs(['cn', 'en', 'fr', 'ur', 'es', 'fa']);
-        translate.setDefaultLang('cn');
-        var browserLang = translate.getBrowserLang();
-        translate.use(browserLang.match(/cn|en|fr|ur|es|fa/) ? browserLang : 'cn');
+    function AppComponent() {
+        // translate.addLangs(['cn','en', 'fr', 'ur', 'es', 'fa']);
+        // translate.setDefaultLang('cn');
+        // const browserLang = translate.getBrowserLang();
+        // translate.use(browserLang.match(/cn|en|fr|ur|es|fa/) ? browserLang : 'cn');
     }
     return AppComponent;
 }());
@@ -184,10 +175,9 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [])
 ], AppComponent);
 
-var _a, _b;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -497,7 +487,7 @@ var _a, _b, _c, _d, _e;
 /***/ "../../../../../src/app/shared/components/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n        <!--<a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}-->\n        <!--</a>-->\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">\n                <span><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i>&nbsp; {{ '订单管理' | translate }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '最新订单' | translate }}</span>  <span class=\"badge badge-info pull-right\"> {{newOrderCount}}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '我的传递' | translate }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '全部传递' | translate }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('ipmanage')\">\n                <span><i class=\"fa fa-adjust\" aria-hidden=\"true\"></i>&nbsp; {{ 'IP管理' | translate }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'ipmanage'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ips-map']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ 'IP映射' | translate }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ip-white']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '白名单' | translate }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ip-black']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '黑名单' | translate }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('statistics')\">\n                <span><i class=\"fa fa-fw fa-bar-chart-o\" aria-hidden=\"true\"></i>&nbsp;{{ '数据统计' | translate }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'statistics'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/statistics/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆统计' | translate }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/statistics/rquest']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '请求统计' | translate }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/statistics/resource']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '资源统计' | translate }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('member')\">\n                <span><i class=\"fa fa-user\" aria-hidden=\"true\"></i>&nbsp;{{ '会员管理' | translate }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'member'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/member/user']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '用户管理' | translate }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '下载数量设置' | translate }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '访问时间设置' | translate }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('cog')\">\n                <span><i class=\"fa fa-cog\" aria-hidden=\"true\"></i>&nbsp; {{ '系统设置' | translate }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'cog'\">\n                <ul class=\"submenu\">\n\n                    <li>\n                        <a [routerLink]=\"['/system/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆设置' | translate }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '沟通设置' | translate }}</span></a>-->\n                    <!--</li>-->\n                    <!---->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '原文定位机制' | translate }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('log')\">\n                <span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>&nbsp; {{ '日志管理' | translate }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'log'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/log/enter']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '登录日志' | translate }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/log/operate']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '操作日志' | translate }}</span></a>\n                    </li>\n\n                </ul>\n            </li>\n        </div>\n\n\n        <!--<a [routerLink]=\"['/orders']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;订单管理-->\n        <!--</a>-->\n\n\n        <!--<a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts' | translate }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables' | translate }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms' | translate }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement' | translate }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid' | translate }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component' | translate }}-->\n        <!--</a>-->\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">-->\n                <!--<span><i class=\"fa fa-plus\"></i>&nbsp; {{ 'menu' | translate }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu' | translate }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu' | translate }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu' | translate }}</span></a>-->\n                    <!--</li>-->\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n        <!--<a [routerLink]=\"['/blank-page']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-file-o\"></i>&nbsp;{{ 'blankpage' | translate }}-->\n        <!--</a>-->\n        <!--<a class=\"list-group-item more-themes\" href=\"http://www.strapui.com/\" >-->\n            <!--{{ 'moretheme' | translate }}-->\n        <!--</a>-->\n    </ul>\n</nav>\n"
+module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n        <!--<a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}-->\n        <!--</a>-->\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">\n                <span><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i>&nbsp; {{ '订单管理' }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '最新订单'  }}</span>  <span class=\"badge badge-info pull-right\"> {{newOrderCount}}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '我的传递'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '全部传递'  }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('ipmanage')\">\n                <span><i class=\"fa fa-adjust\" aria-hidden=\"true\"></i>&nbsp; {{ 'IP管理' }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'ipmanage'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ips-map']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ 'IP映射'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ip-white']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '白名单'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ip-black']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '黑名单'  }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('statistics')\">\n                <span><i class=\"fa fa-fw fa-bar-chart-o\" aria-hidden=\"true\"></i>&nbsp;{{ '数据统计'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'statistics'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/statistics/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆统计'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/statistics/rquest']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '请求统计'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/statistics/resource']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '资源统计'  }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('member')\">\n                <span><i class=\"fa fa-user\" aria-hidden=\"true\"></i>&nbsp;{{ '会员管理'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'member'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/member/user']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '用户管理'  }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '下载数量设置'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '访问时间设置'  }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('cog')\">\n                <span><i class=\"fa fa-cog\" aria-hidden=\"true\"></i>&nbsp; {{ '系统设置'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'cog'\">\n                <ul class=\"submenu\">\n\n                    <li>\n                        <a [routerLink]=\"['/system/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆设置'  }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '沟通设置'  }}</span></a>-->\n                    <!--</li>-->\n                    <!---->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '原文定位机制'  }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('log')\">\n                <span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>&nbsp; {{ '日志管理'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'log'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/log/enter']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '登录日志'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/log/operate']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '操作日志'  }}</span></a>\n                    </li>\n\n                </ul>\n            </li>\n        </div>\n\n\n        <!--<a [routerLink]=\"['/orders']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;订单管理-->\n        <!--</a>-->\n\n\n        <!--<a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component'  }}-->\n        <!--</a>-->\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">-->\n                <!--<span><i class=\"fa fa-plus\"></i>&nbsp; {{ 'menu'  }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n        <!--<a [routerLink]=\"['/blank-page']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-file-o\"></i>&nbsp;{{ 'blankpage'  }}-->\n        <!--</a>-->\n        <!--<a class=\"list-group-item more-themes\" href=\"http://www.strapui.com/\" >-->\n            <!--{{ 'moretheme'  }}-->\n        <!--</a>-->\n    </ul>\n</nav>\n"
 
 /***/ }),
 
@@ -923,11 +913,10 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pipes_shared_pipes_module__ = __webpack_require__("../../../../../src/app/shared/pipes/shared-pipes.module.ts");
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components__ = __webpack_require__("../../../../../src/app/shared/components/index.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__components__["a"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__components__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__components__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__components__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules__ = __webpack_require__("../../../../../src/app/shared/modules/index.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__modules__["a"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__modules__["b"]; });
+/* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__guard_auth_guard__ = __webpack_require__("../../../../../src/app/shared/guard/auth.guard.ts");
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__guard_auth_guard__["a"]; });
 
@@ -943,9 +932,9 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stat_stat_module__ = __webpack_require__("../../../../../src/app/shared/modules/stat/stat.module.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__stat_stat_module__["a"]; });
+/* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__page_header_page_header_module__ = __webpack_require__("../../../../../src/app/shared/modules/page-header/page-header.module.ts");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__page_header_page_header_module__["a"]; });
+/* unused harmony namespace reexport */
 
 
 //# sourceMappingURL=index.js.map
@@ -1026,7 +1015,7 @@ PageHeaderComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__page_header_component__ = __webpack_require__("../../../../../src/app/shared/modules/page-header/page-header.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PageHeaderModule; });
+/* unused harmony export PageHeaderModule */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1150,7 +1139,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stat_component__ = __webpack_require__("../../../../../src/app/shared/modules/stat/stat.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatModule; });
+/* unused harmony export StatModule */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

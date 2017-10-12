@@ -3,11 +3,8 @@ import {AppService} from "../../../../app.service";
 import {SwitchTheme} from "../switch/switch-model";
 import {AlertConfig, AlertType, ConfirmConfig} from "../../../../shared/components/modal/modal-model";
 import {ModalService} from "../../../../shared/components/modal/modal.service";
-import {ToastConfig, ToastType} from "../../../../shared/components/toast/toast-model";
 import {ToastService} from "../../../../shared/components/toast/toast.service";
 import {SystemService} from "../../../../shared/services/system/system.service";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {FormGroup, FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-ip-list',

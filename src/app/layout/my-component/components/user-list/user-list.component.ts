@@ -1,11 +1,9 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {SystemService} from "../../../../shared/services/system/system.service";
 import {AlertConfig, AlertType} from "../../../../shared/components/modal/modal-model";
-import {ToastService} from "../../../../shared/components/toast/toast.service";
 import {ModalService} from "../../../../shared/components/modal/modal.service";
 import {AppService} from "../../../../app.service";
 import {SwitchTheme} from "../switch/switch-model";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user-list',
@@ -35,7 +33,6 @@ export class UserListComponent implements OnInit {
       private appService: AppService,
       private systemService:SystemService,
       private modalService:ModalService,
-      private toastService:ToastService,
   ) { }
 
   ngOnInit() {

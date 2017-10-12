@@ -286,20 +286,15 @@ IpmapingComponent = __decorate([
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_charts__ = __webpack_require__("../../../../ng2-charts/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipmaping_routing_module__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ipmaping_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared__ = __webpack_require__("../../../../../src/app/shared/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ips_map_ips_map_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__my_component_components_ip_list_ip_list_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__my_component_components_add_ip_modal_add_ip_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ip_white_ip_white_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ip_black_ip_black_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipmaping_routing_module__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipmaping_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ipmaping.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ips_map_ips_map_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ips-map/ips-map.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__my_component_components_ip_list_ip_list_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/ip-list/ip-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__my_component_components_add_ip_modal_add_ip_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ip_white_ip_white_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-white/ip-white.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ip_black_ip_black_component__ = __webpack_require__("../../../../../src/app/layout/ipmaping/ip-black/ip-black.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IpmapingModule", function() { return IpmapingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -307,9 +302,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
 
 
 
@@ -328,20 +320,17 @@ var IpmapingModule = (function () {
 IpmapingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ng2_charts__["ChartsModule"],
-            __WEBPACK_IMPORTED_MODULE_2__ipmaping_routing_module__["a" /* IpmapingRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_4__shared__["b" /* PageHeaderModule */],
-            __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_6_ng2_file_upload__["FileUploadModule"],
-            __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_1__ipmaping_routing_module__["a" /* IpmapingRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_4__shared_shared_module__["a" /* SharedModule */]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__ipmaping_component__["a" /* IpmapingComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__ips_map_ips_map_component__["a" /* IpsMapComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__my_component_components_ip_list_ip_list_component__["a" /* IpListComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__my_component_components_add_ip_modal_add_ip_modal_component__["a" /* AddIpModalComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__ip_white_ip_white_component__["a" /* IpWhiteComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__ip_black_ip_black_component__["a" /* IpBlackComponent */]
+            __WEBPACK_IMPORTED_MODULE_2__ipmaping_component__["a" /* IpmapingComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__ips_map_ips_map_component__["a" /* IpsMapComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__my_component_components_ip_list_ip_list_component__["a" /* IpListComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__my_component_components_add_ip_modal_add_ip_modal_component__["a" /* AddIpModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__ip_white_ip_white_component__["a" /* IpWhiteComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__ip_black_ip_black_component__["a" /* IpBlackComponent */]
         ]
     })
 ], IpmapingModule);
@@ -466,9 +455,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_datepickerI18n_datepickerI18n__ = __webpack_require__("../../../../../src/app/shared/components/datepickerI18n/datepickerI18n.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__validator_validators__ = __webpack_require__("../../../../../src/app/validator/validators.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_datepickerI18n_datepickerI18n__ = __webpack_require__("../../../../../src/app/shared/components/datepickerI18n/datepickerI18n.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__validator_validators__ = __webpack_require__("../../../../../src/app/validator/validators.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddIpModalComponent; });
 /* unused harmony export SubmitData */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -486,15 +474,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var AddIpModalComponent = (function () {
     // @Input()
     // transformPageData:any
     //model;
-    function AddIpModalComponent(modalService, systemService, modalService2, fb) {
+    function AddIpModalComponent(modalService, systemService, fb) {
         this.modalService = modalService;
         this.systemService = systemService;
-        this.modalService2 = modalService2;
         this.fb = fb;
         this.options = { size: 'lg' };
         //     =new FormGroup({
@@ -515,10 +501,10 @@ var AddIpModalComponent = (function () {
         this.formModel = fb.group({
             mapName: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
             ipRange: fb.group({
-                start: ['', __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]],
-                end: ['', __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]]
+                start: ['', __WEBPACK_IMPORTED_MODULE_5__validator_validators__["b" /* ipValidator */]],
+                end: ['', __WEBPACK_IMPORTED_MODULE_5__validator_validators__["b" /* ipValidator */]]
             }, {
-                validator: __WEBPACK_IMPORTED_MODULE_6__validator_validators__["c" /* ipRange */] //这么用
+                validator: __WEBPACK_IMPORTED_MODULE_5__validator_validators__["c" /* ipRange */] //这么用
             }),
             time: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
             isOpen: [1],
@@ -564,10 +550,10 @@ var AddIpModalComponent = (function () {
                 _this.formModel = _this.fb.group({
                     mapName: [data.map_name, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
                     ipRange: _this.fb.group({
-                        start: [data.ip_start, __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]],
-                        end: [data.ip_end, __WEBPACK_IMPORTED_MODULE_6__validator_validators__["b" /* ipValidator */]]
+                        start: [data.ip_start, __WEBPACK_IMPORTED_MODULE_5__validator_validators__["b" /* ipValidator */]],
+                        end: [data.ip_end, __WEBPACK_IMPORTED_MODULE_5__validator_validators__["b" /* ipValidator */]]
                     }, {
-                        validator: __WEBPACK_IMPORTED_MODULE_6__validator_validators__["c" /* ipRange */] //这么用
+                        validator: __WEBPACK_IMPORTED_MODULE_5__validator_validators__["c" /* ipRange */] //这么用
                     }),
                     time: [{ year: year, month: month, day: day }, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
                     isOpen: [data.is_open],
@@ -640,9 +626,9 @@ AddIpModalComponent = __decorate([
         selector: 'app-add-ip-modal',
         template: __webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.html"),
         styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/add-ip-modal/add-ip-modal.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_5__shared_components_datepickerI18n_datepickerI18n__["b" /* DatepickerI18nType */], { provide: __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["c" /* NgbDatepickerI18n */], useClass: __WEBPACK_IMPORTED_MODULE_5__shared_components_datepickerI18n_datepickerI18n__["a" /* DatepickerI18n */] }]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__shared_components_datepickerI18n_datepickerI18n__["b" /* DatepickerI18nType */], { provide: __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["c" /* NgbDatepickerI18n */], useClass: __WEBPACK_IMPORTED_MODULE_4__shared_components_datepickerI18n_datepickerI18n__["a" /* DatepickerI18n */] }]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */]) === "function" && _d || Object])
 ], AddIpModalComponent);
 
 var SubmitData = (function () {
@@ -653,7 +639,7 @@ var SubmitData = (function () {
     return SubmitData;
 }());
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d;
 //# sourceMappingURL=add-ip-modal.component.js.map
 
 /***/ }),

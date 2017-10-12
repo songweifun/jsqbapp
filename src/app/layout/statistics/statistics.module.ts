@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import {StatisticsRoutingModule} from "./statistics-routing.module";
 import {SharedModule} from "../../shared/shared.module";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {StatisticsComponent} from "./statistics.component";
 import { LibraryStatisticsComponent } from './library-statistics/library-statistics.component';
@@ -13,8 +12,6 @@ import { ResourceStatisticsComponent } from './resource-statistics/resource-stat
   imports: [
       StatisticsRoutingModule,
       SharedModule,
-      FormsModule,
-      ReactiveFormsModule,
       NgbModule.forRoot(), //这个不引入好像input选不中
   ],
   declarations: [

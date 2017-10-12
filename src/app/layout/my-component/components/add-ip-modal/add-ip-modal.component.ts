@@ -3,10 +3,8 @@ import {
     NgbModal, NgbModalRef, ModalDismissReasons, NgbModalOptions,
     NgbDatepickerI18n
 } from "@ng-bootstrap/ng-bootstrap";
-import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {SystemService} from "../../../../shared/services/system/system.service";
-import {subscribeOn} from "rxjs/operator/subscribeOn";
-import {AlertConfig, AlertType} from "../../../../shared/components/modal/modal-model";
 import {ModalService} from "../../../../shared/components/modal/modal.service";
 import {DatepickerI18nType, DatepickerI18n} from "../../../../shared/components/datepickerI18n/datepickerI18n";
 import {ipRange, ipValidator} from "../../../../validator/validators";
@@ -72,7 +70,6 @@ export class AddIpModalComponent implements OnInit {
   constructor(
       private modalService:NgbModal,
       private systemService:SystemService,
-      private modalService2:ModalService,
       private fb:FormBuilder
   ) {
       this.formModel=fb.group({

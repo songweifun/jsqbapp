@@ -7,18 +7,18 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">
-                <span><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp; {{ '订单管理' | translate }}</span>
+                <span><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp; {{ '订单管理' }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '最新订单' | translate }}</span>  <span class="badge badge-info pull-right"> {{newOrderCount}}</span></a>
+                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '最新订单'  }}</span>  <span class="badge badge-info pull-right"> {{newOrderCount}}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '我的传递' | translate }}</span></a>
+                        <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '我的传递'  }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '全部传递' | translate }}</span></a>
+                        <a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '全部传递'  }}</span></a>
                     </li>
                 </ul>
             </li>
@@ -26,18 +26,18 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('ipmanage')">
-                <span><i class="fa fa-adjust" aria-hidden="true"></i>&nbsp; {{ 'IP管理' | translate }}</span>
+                <span><i class="fa fa-adjust" aria-hidden="true"></i>&nbsp; {{ 'IP管理' }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'ipmanage'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/ipmaping/ips-map']" [routerLinkActive]="['router-link-active']"><span>{{ 'IP映射' | translate }}</span></a>
+                        <a [routerLink]="['/ipmaping/ips-map']" [routerLinkActive]="['router-link-active']"><span>{{ 'IP映射'  }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/ipmaping/ip-white']" [routerLinkActive]="['router-link-active']"><span>{{ '白名单' | translate }}</span></a>
+                        <a [routerLink]="['/ipmaping/ip-white']" [routerLinkActive]="['router-link-active']"><span>{{ '白名单'  }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/ipmaping/ip-black']" [routerLinkActive]="['router-link-active']"><span>{{ '黑名单' | translate }}</span></a>
+                        <a [routerLink]="['/ipmaping/ip-black']" [routerLinkActive]="['router-link-active']"><span>{{ '黑名单'  }}</span></a>
                     </li>
                 </ul>
             </li>
@@ -46,18 +46,18 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('statistics')">
-                <span><i class="fa fa-fw fa-bar-chart-o" aria-hidden="true"></i>&nbsp;{{ '数据统计' | translate }}</span>
+                <span><i class="fa fa-fw fa-bar-chart-o" aria-hidden="true"></i>&nbsp;{{ '数据统计'  }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'statistics'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/statistics/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆统计' | translate }}</span></a>
+                        <a [routerLink]="['/statistics/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆统计'  }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/statistics/rquest']" [routerLinkActive]="['router-link-active']"><span>{{ '请求统计' | translate }}</span></a>
+                        <a [routerLink]="['/statistics/rquest']" [routerLinkActive]="['router-link-active']"><span>{{ '请求统计'  }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/statistics/resource']" [routerLinkActive]="['router-link-active']"><span>{{ '资源统计' | translate }}</span></a>
+                        <a [routerLink]="['/statistics/resource']" [routerLinkActive]="['router-link-active']"><span>{{ '资源统计'  }}</span></a>
                     </li>
                 </ul>
             </li>
@@ -65,18 +65,18 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('member')">
-                <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ '会员管理' | translate }}</span>
+                <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ '会员管理'  }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'member'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/member/user']" [routerLinkActive]="['router-link-active']"><span>{{ '用户管理' | translate }}</span></a>
+                        <a [routerLink]="['/member/user']" [routerLinkActive]="['router-link-active']"><span>{{ '用户管理'  }}</span></a>
                     </li>
                     <!--<li>-->
-                        <!--<a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '下载数量设置' | translate }}</span></a>-->
+                        <!--<a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '下载数量设置'  }}</span></a>-->
                     <!--</li>-->
                     <!--<li>-->
-                        <!--<a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '访问时间设置' | translate }}</span></a>-->
+                        <!--<a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '访问时间设置'  }}</span></a>-->
                     <!--</li>-->
 
                 </ul>
@@ -86,20 +86,20 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('cog')">
-                <span><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; {{ '系统设置' | translate }}</span>
+                <span><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; {{ '系统设置'  }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'cog'">
                 <ul class="submenu">
 
                     <li>
-                        <a [routerLink]="['/system/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆设置' | translate }}</span></a>
+                        <a [routerLink]="['/system/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆设置'  }}</span></a>
                     </li>
                     <!--<li>-->
-                        <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '沟通设置' | translate }}</span></a>-->
+                        <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '沟通设置'  }}</span></a>-->
                     <!--</li>-->
                     <!---->
                     <!--<li>-->
-                        <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '原文定位机制' | translate }}</span></a>-->
+                        <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '原文定位机制'  }}</span></a>-->
                     <!--</li>-->
 
                 </ul>
@@ -109,15 +109,15 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('log')">
-                <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ '日志管理' | translate }}</span>
+                <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ '日志管理'  }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'log'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/log/enter']" [routerLinkActive]="['router-link-active']"><span>{{ '登录日志' | translate }}</span></a>
+                        <a [routerLink]="['/log/enter']" [routerLinkActive]="['router-link-active']"><span>{{ '登录日志'  }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/log/operate']" [routerLinkActive]="['router-link-active']"><span>{{ '操作日志' | translate }}</span></a>
+                        <a [routerLink]="['/log/operate']" [routerLinkActive]="['router-link-active']"><span>{{ '操作日志'  }}</span></a>
                     </li>
 
                 </ul>
@@ -131,46 +131,46 @@
 
 
         <!--<a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'charts' | translate }}-->
+            <!--<i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'charts'  }}-->
         <!--</a>-->
         <!--<a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-fw fa-table"></i>&nbsp;{{ 'tables' | translate }}-->
+            <!--<i class="fa fa-fw fa-table"></i>&nbsp;{{ 'tables'  }}-->
         <!--</a>-->
         <!--<a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'forms' | translate }}-->
+            <!--<i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'forms'  }}-->
         <!--</a>-->
         <!--<a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'boostrapElement' | translate }}-->
+            <!--<i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'boostrapElement'  }}-->
         <!--</a>-->
         <!--<a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'boostrapGrid' | translate }}-->
+            <!--<i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'boostrapGrid'  }}-->
         <!--</a>-->
         <!--<a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-th-list"></i>&nbsp;{{ 'component' | translate }}-->
+            <!--<i class="fa fa-th-list"></i>&nbsp;{{ 'component'  }}-->
         <!--</a>-->
         <!--<div class="nested-menu">-->
             <!--<a class="list-group-item" (click)="addExpandClass('pages')">-->
-                <!--<span><i class="fa fa-plus"></i>&nbsp; {{ 'menu' | translate }}</span>-->
+                <!--<span><i class="fa fa-plus"></i>&nbsp; {{ 'menu'  }}</span>-->
             <!--</a>-->
             <!--<li class="nested" [class.expand]="showMenu === 'pages'">-->
                 <!--<ul class="submenu">-->
                     <!--<li>-->
-                        <!--<a href="javascript:void(0)"><span>{{ 'submenu' | translate }}</span></a>-->
+                        <!--<a href="javascript:void(0)"><span>{{ 'submenu'  }}</span></a>-->
                     <!--</li>-->
                     <!--<li>-->
-                        <!--<a href="javascript:void(0)"><span>{{ 'submenu' | translate }}</span></a>-->
+                        <!--<a href="javascript:void(0)"><span>{{ 'submenu'  }}</span></a>-->
                     <!--</li>-->
                     <!--<li>-->
-                        <!--<a href="javascript:void(0)"><span>{{ 'submenu' | translate }}</span></a>-->
+                        <!--<a href="javascript:void(0)"><span>{{ 'submenu'  }}</span></a>-->
                     <!--</li>-->
                 <!--</ul>-->
             <!--</li>-->
         <!--</div>-->
         <!--<a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-            <!--<i class="fa fa-file-o"></i>&nbsp;{{ 'blankpage' | translate }}-->
+            <!--<i class="fa fa-file-o"></i>&nbsp;{{ 'blankpage'  }}-->
         <!--</a>-->
         <!--<a class="list-group-item more-themes" href="http://www.strapui.com/" >-->
-            <!--{{ 'moretheme' | translate }}-->
+            <!--{{ 'moretheme'  }}-->
         <!--</a>-->
     </ul>
 </nav>

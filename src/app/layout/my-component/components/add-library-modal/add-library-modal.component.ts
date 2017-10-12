@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModalOptions, NgbModalRef, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { SystemService } from '../../../../shared/services/system/system.service';
 import { ModalService } from '../../../../shared/components/modal/modal.service';
-import { AlertConfig, AlertType } from 'app/shared/components/modal/modal-model';
 import {equalValidator} from "../../../../validator/validators";
 
 @Component({

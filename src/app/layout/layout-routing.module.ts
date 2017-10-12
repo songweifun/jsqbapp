@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout.component';
 import {superAdminGuard} from "../guard/superAdmin.guard";
 import {ModalService} from "../shared/components/modal/modal.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {ConfirmComponent} from "../shared/components/modal/confirm.component";
+//import {ConfirmComponent} from "../shared/components/modal/confirm.component";
 import {AlertComponent} from "../shared/components/modal/alert.component";
 import {SharedModule} from "../shared/shared.module";
 
@@ -12,7 +12,7 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
-            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            //{ path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
 
 
             { path: 'orders', loadChildren: './orders/orders.module#OrdersModule' },
@@ -59,10 +59,12 @@ const routes: Routes = [
         SharedModule
     ],
     exports: [RouterModule],
-    providers:[superAdminGuard,ModalService],
+    providers:[
+        superAdminGuard,
+        ModalService],
     entryComponents : [
 
-        ConfirmComponent,
+        //ConfirmComponent,
         AlertComponent,
 
     ],

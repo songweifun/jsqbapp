@@ -14,8 +14,6 @@ import {SwitchComponent} from "../layout/my-component/components/switch/switch.c
 import {ModalService} from "./components/modal/modal.service";
 import {AlertComponent} from "./components/modal/alert.component";
 import {ConfirmComponent} from "./components/modal/confirm.component";
-import {ToastComponent} from "./components/toast/toast.component";
-import {ToastBoxComponent} from "./components/toast/toast-box.component";
 import {DatepickerI18n, DatepickerI18nType} from "./components/datepickerI18n/datepickerI18n";
 import {VerticalBaChartComponent} from "../layout/my-component/components/vertical-ba-chart/vertical-ba-chart.component";
 import {NgxChartsModule} from '@swimlane/ngx-charts';
