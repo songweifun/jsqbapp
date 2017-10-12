@@ -158,19 +158,20 @@
 
 
             if (document.readyState == "complete") {
-                pageSpin.style.display = 'none';
+                progress(100, [1, 5], 10, () => {
+                    window.setTimeout(() => {  // 延迟了一秒再隐藏loading
+                        pageSpin.style.display = 'none';
+
+                    }, 1000)
+                })
+
             }
 
 
 
 
 
-            progress(100, [1, 5], 10, () => {
-                window.setTimeout(() => {  // 延迟了一秒再隐藏loading
-                    //pageSpin.style.display = 'none';
 
-                }, 1000)
-            })
             //alert(document.readyState)
 
             //pressid.style.width=document.readyState;
