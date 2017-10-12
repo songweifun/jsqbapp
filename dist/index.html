@@ -1,175 +1,187 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Baohe Admin</title>
-        <base href="/">
+<head>
+    <meta charset="utf-8">
+    <title>Baohe Admin</title>
+    <base href="/">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <style>
-            @-webkit-keyframes spin {
-                0% {
-                    transform: rotate(0deg)
-                }
-                to {
-                    transform: rotate(1turn)
-                }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        @-webkit-keyframes spin {
+            0% {
+                transform: rotate(0deg)
             }
-
-            @-moz-keyframes spin {
-                0% {
-                    -moz-transform: rotate(0deg)
-                }
-                to {
-                    -moz-transform: rotate(1turn)
-                }
+            to {
+                transform: rotate(1turn)
             }
+        }
 
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg)
-                }
-                to {
-                    transform: rotate(1turn)
-                }
+        @-moz-keyframes spin {
+            0% {
+                -moz-transform: rotate(0deg)
             }
-
-            .spin-container {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1003;
-                background: #1190d6;
-                display: none;
+            to {
+                -moz-transform: rotate(1turn)
             }
+        }
 
-            .spin-container .spin1 {
-                display: block;
-                position: relative;
-                left: calc(50% + 15px);
-                top: calc(50% - 50px);
-                width: 100px;
-                height: 100px;
-                margin: -75px 0 0 -75px;
-                border-radius: 50%;
-                border: 6px solid transparent;
-                border-top-color: #f95372;
-                transform: translateZ(0);
-                animation: spin 2s linear infinite
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg)
             }
-
-            .spin-container .spin2 {
-                content: "";
-                position: absolute;
-                top: 5px;
-                left: 5px;
-                right: 5px;
-                bottom: 5px;
-                border-radius: 50%;
-                border: 6px solid transparent;
-                border-top-color: #00abff;
-                -webkit-animation: spin 3s linear infinite;
-                animation: spin 3s linear infinite
+            to {
+                transform: rotate(1turn)
             }
+        }
 
-            .spin-container .spin3 {
-                content: "";
-                position: absolute;
-                top: 15px;
-                left: 15px;
-                right: 15px;
-                bottom: 15px;
-                border-radius: 50%;
-                border: 6px solid transparent;
-                border-top-color: #e7ba08;
-                animation: spin 1.5s linear infinite
-            }
-        </style>
-    </head>
-    <body>
-    <div class="spin-container" id="pageSpin">
-        <div class="spin1">
-            <div class="spin2"></div>
-            <div class="spin3"></div>
-        </div>
+        .spin-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1003;
+            background: #1190d6;
+            display: none;
+        }
 
-        <div class="progress" style="margin: auto;width: 50%">
-            <div class="progress-bar" role="progressbar" style="width: 0%;color: orange" id="pressid">正在加载。。。</div>
-        </div>
+        .spin-container .spin1 {
+            display: block;
+            position: relative;
+            left: calc(50% + 15px);
+            top: calc(50% - 50px);
+            width: 100px;
+            height: 100px;
+            margin: -75px 0 0 -75px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-top-color: #f95372;
+            transform: translateZ(0);
+            animation: spin 2s linear infinite
+        }
+
+        .spin-container .spin2 {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-top-color: #00abff;
+            -webkit-animation: spin 3s linear infinite;
+            animation: spin 3s linear infinite
+        }
+
+        .spin-container .spin3 {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-top-color: #e7ba08;
+            animation: spin 1.5s linear infinite
+        }
+    </style>
+</head>
+<body>
+<div class="spin-container" id="pageSpin">
+    <div class="spin1">
+        <div class="spin2"></div>
+        <div class="spin3"></div>
     </div>
 
-
-    <script type="text/javascript">
-        const initialize = function () {
-            let pageSpin = document.getElementById("pageSpin");
-            let pressid = document.getElementById("pressid");
-            pageSpin.style.display = 'block';
+    <div class="progress" style="margin: auto;width: 50%">
+        <div class="progress-bar" role="progressbar" style="width: 0%;color: orange" id="pressid">正在加载。。。</div>
+    </div>
+</div>
 
 
-            let prg = 0;
-
-            let timer = 0;
-
-            progress([80, 90], [1, 3], 100);  // 使用数组来表示随机数的区间
-
-            window.onload = () => {
-
-            }
-
-            function progress (dist, speed, delay, callback) {
-                let _dist = random(dist)
-                let _delay = random(delay)
-                let _speed = random(speed)
-                window.clearTimeout(timer)
-                timer = window.setTimeout(() => {
-                    if (prg + _speed >= _dist) {
-                        window.clearTimeout(timer)
-                        prg = _dist;
-                        callback && callback()
-                    } else {
-                        prg += _speed;
-                        progress (_dist, speed, delay, callback)
-                    }
-
-                    pressid.innerHTML=parseInt(prg)+'%';
-                    pressid.style.width=parseInt(prg)+'%';  // 留意，由于已经不是自增1，所以这里要取整
-                    console.log(prg)
-                }, _delay)
-            }
-
-            function random (n) {
-                if (typeof n === 'object') {
-                    let times = n[1] - n[0]
-                    let offset = n[0]
-                    return Math.random() * times + offset
-                } else {
-                    return n
-                }
-            }
+<script type="text/javascript">
+    const initialize = function () {
+        let pageSpin = document.getElementById("pageSpin");
+        let pressid = document.getElementById("pressid");
+        pageSpin.style.display = 'block';
 
 
+        let prg = 0;
 
-            document.onreadystatechange = function () {
+        let timer = 0;
 
+        progress([80, 90], [1, 3], 100);  // 使用数组来表示随机数的区间
 
-
-                progress(100, [1, 5], 10, () => {
-                    window.setTimeout(() => {  // 延迟了一秒再隐藏loading
-                        pageSpin.style.display = 'none';
-                    }, 1000)
-                })
-                //alert(document.readyState)
-
-                //pressid.style.width=document.readyState;
-            }
-
+        window.onload = () => {
 
         }
-        initialize();
-    </script>
-        <app-root></app-root>
-    <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
+        function progress (dist, speed, delay, callback) {
+            let _dist = random(dist)
+            let _delay = random(delay)
+            let _speed = random(speed)
+            window.clearTimeout(timer)
+            timer = window.setTimeout(() => {
+                if (prg + _speed >= _dist) {
+                    window.clearTimeout(timer)
+                    prg = _dist;
+                    callback && callback()
+                } else {
+                    prg += _speed;
+                    progress (_dist, speed, delay, callback)
+                }
+
+                pressid.innerHTML=parseInt(prg)+'%';
+                pressid.style.width=parseInt(prg)+'%';  // 留意，由于已经不是自增1，所以这里要取整
+                console.log(prg)
+            }, _delay)
+        }
+
+        function random (n) {
+            if (typeof n === 'object') {
+                let times = n[1] - n[0]
+                let offset = n[0]
+                return Math.random() * times + offset
+            } else {
+                return n
+            }
+        }
+
+
+
+        document.onreadystatechange = function () {
+
+
+            if (document.readyState == "complete") {
+                pageSpin.style.display = 'none';
+            }
+
+
+
+
+
+            progress(100, [1, 5], 10, () => {
+                window.setTimeout(() => {  // 延迟了一秒再隐藏loading
+                    pageSpin.style.display = 'none';
+
+                }, 3000)
+            })
+            //alert(document.readyState)
+
+            //pressid.style.width=document.readyState;
+        }
+
+
+    }
+    initialize();
+</script>
+<app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
 </html>
+
+
+
+
