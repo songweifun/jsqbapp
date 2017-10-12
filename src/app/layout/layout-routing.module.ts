@@ -12,7 +12,7 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
-            //{ path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
 
 
             { path: 'orders', loadChildren: './orders/orders.module#OrdersModule' },

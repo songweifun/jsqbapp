@@ -1,13 +1,13 @@
 webpackJsonp([5],{
 
-/***/ "../../../../../src/app/layout/orders/all-transmit/all-transmit.component.html":
+/***/ "../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-order-list [orders]=\"orders\" [isTransmited]=\"isTransmited\"></app-order-list>\n    <app-http-pagination [url]=\"url\" [pageList]=\"pageList\" [method]=\"'get'\" (onDataChanged)=\"onDataChanged($event)\"></app-http-pagination>\n</div>\n"
+module.exports = "<div [@routerTransition] >\n<div class=\"row\">\n    <div class=\"col col-sm-12\">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                资源贡献量统计\n            </div>\n            <div class=\"card-block\">\n                <app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>\n                <!--<app-advance-pie-chart ></app-advance-pie-chart>-->\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n\n\n\n</div>\n\n\n\n<div class=\"row\">\n    <div class=\"col col-sm-12 \">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                订单总量统计\n            </div>\n            <div class=\"card-block\">\n                <app-vertical-ba-chart [options]=\"options\"></app-vertical-ba-chart>\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n\n    <div class=\"col col-sm-12 \">\n        <div class=\"card mb-3\">\n            <div class=\"card-header\">\n                资源贡献量统计\n            </div>\n            <div class=\"card-block\">\n                <app-pie-chart [options]=\"options_pie\"></app-pie-chart>\n\n            </div>\n            <div class=\"card-footer\">\n                <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n            </div>\n        </div>\n    </div>\n\n</div>\n</div>\n\n\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/all-transmit/all-transmit.component.scss":
+/***/ "../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -25,14 +25,130 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/all-transmit/all-transmit.component.ts":
+/***/ "../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LibraryStatisticsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LibraryStatisticsComponent = (function () {
+    function LibraryStatisticsComponent(systemService) {
+        this.systemService = systemService;
+    }
+    LibraryStatisticsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.systemService.getOrderStatisticsBySchool().subscribe(function (data) {
+            _this.options = {
+                single: data,
+                multi: [],
+                view: [700, 400],
+                // options
+                showXAxis: true,
+                showYAxis: true,
+                gradient: false,
+                showLegend: true,
+                showXAxisLabel: true,
+                xAxisLabel: '成员馆',
+                showYAxisLabel: true,
+                yAxisLabel: '抢单量',
+                colorScheme: {
+                    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
+                }
+            };
+        });
+        this.systemService.getResourceStatisticsBySchool().subscribe(function (data) {
+            // data=data.map((val,index,arr)=>{
+            //     val.value=parseInt(val.value);
+            //     return val;
+            // })
+            _this.options_pie = {
+                single: data,
+                multi: [],
+                view: [700, 400],
+                // options
+                colorScheme: {
+                    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
+                },
+                showLabels: true,
+                explodeSlices: false,
+                doughnut: false
+            };
+            _this.options_advance_pie = {
+                single: data.map(function (val, index, arr) {
+                    val.value = parseInt(val.value);
+                    return val;
+                }),
+                view: [800, 300],
+                colorScheme: {
+                    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
+                }
+            };
+        });
+    };
+    return LibraryStatisticsComponent;
+}());
+LibraryStatisticsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-library-statistics',
+        template: __webpack_require__("../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.scss")],
+        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__router_animations__["a" /* routerTransition */])()]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _a || Object])
+], LibraryStatisticsComponent);
+
+var _a;
+//# sourceMappingURL=library-statistics.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div [@routerTransition] >\n    <!--<div class=\"row\">-->\n        <!--<div class=\"col col-sm-12\">-->\n            <!--<div class=\"card mb-3\">-->\n                <!--<div class=\"card-header\">-->\n                    <!--资源贡献量统计-->\n                <!--</div>-->\n                <!--<div class=\"card-block\">-->\n                    <!--<app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>-->\n                    <!--&lt;!&ndash;<app-advance-pie-chart ></app-advance-pie-chart>&ndash;&gt;-->\n\n                <!--</div>-->\n                <!--<div class=\"card-footer\">-->\n                    <!--<button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n\n\n\n\n    <!--</div>-->\n\n\n\n    <div class=\"row\">\n        <div class=\"col col-sm-12\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                   IP请求量TOP10\n                </div>\n                <div class=\"card-block\">\n                    <app-vertical-ba-chart [options]=\"optionsRequestIpTop10\"></app-vertical-ba-chart>\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n\n        <div class=\"col col-sm-12\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                    机构请求量TOP10\n                </div>\n                <div class=\"card-block\">\n                    <!--//<app-pie-chart [options]=\"optionsRequestMapTop10\"></app-pie-chart>-->\n                    <app-vertical-ba-chart [options]=\"optionsRequestMapTop10\"></app-vertical-ba-chart>\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>\n\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllTransmitComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestStatisticsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -45,44 +161,76 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AllTransmitComponent = (function () {
-    function AllTransmitComponent(apiUrlService) {
-        this.apiUrlService = apiUrlService;
-        this.pageList = [10, 15, 25, 35];
-        this.isTransmited = true;
-        this.url = this.apiUrlService.allTransmitesUrl;
+var RequestStatisticsComponent = (function () {
+    function RequestStatisticsComponent(systemService) {
+        this.systemService = systemService;
     }
-    AllTransmitComponent.prototype.ngOnInit = function () {
+    RequestStatisticsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.systemService.getRequstStatisticsByIpTop10().subscribe(function (data) {
+            _this.optionsRequestIpTop10 = {
+                single: data,
+                multi: [],
+                view: [700, 400],
+                // options
+                showXAxis: true,
+                showYAxis: true,
+                gradient: false,
+                showLegend: false,
+                showXAxisLabel: true,
+                xAxisLabel: 'IP地址',
+                showYAxisLabel: true,
+                yAxisLabel: '请求量',
+                colorScheme: {
+                    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
+                }
+            };
+        });
+        this.systemService.getRequestStatisticsByMapNameTop10().subscribe(function (data) {
+            _this.optionsRequestMapTop10 = {
+                single: data,
+                multi: [],
+                view: [700, 400],
+                // options
+                showXAxis: true,
+                showYAxis: true,
+                gradient: true,
+                showLegend: true,
+                showXAxisLabel: true,
+                xAxisLabel: '机构名称',
+                showYAxisLabel: true,
+                yAxisLabel: '请求量',
+                colorScheme: {
+                    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
+                }
+            };
+        });
     };
-    AllTransmitComponent.prototype.onDataChanged = function (event) {
-        console.log(event);
-        this.orders = event.rows;
-    };
-    return AllTransmitComponent;
+    return RequestStatisticsComponent;
 }());
-AllTransmitComponent = __decorate([
+RequestStatisticsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-all-transmit',
-        template: __webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.scss")],
+        selector: 'app-request-statistics',
+        template: __webpack_require__("../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.scss")],
         animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object])
-], AllTransmitComponent);
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _a || Object])
+], RequestStatisticsComponent);
 
 var _a;
-//# sourceMappingURL=all-transmit.component.js.map
+//# sourceMappingURL=request-statistics.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/my-transmit/my-transmit.component.html":
+/***/ "../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-order-list [orders]=\"orders\" [isTransmited]=\"isTransmited\"></app-order-list>\n    <app-http-pagination [url]=\"url\" [method]=\"'get'\" [param]=\"param\" [pageList]=\"pageList\" (onDataChanged)=\"onDataChanged($event)\" ></app-http-pagination>\n</div>\n"
+module.exports = "<div [@routerTransition] >\n    <div class=\"row\">\n        <div class=\"col col-sm-12\">\n            <div class=\"card mb-3\">\n                <div class=\"card-header\">\n                    资源贡献量统计和资源总量统计\n                </div>\n                <div class=\"card-block\">\n                    <app-advance-pie-chart [options]=\"options_advance_pie\"></app-advance-pie-chart>\n                    <!--<app-advance-pie-chart ></app-advance-pie-chart>-->\n\n                </div>\n                <div class=\"card-footer\">\n                    <button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>\n                </div>\n            </div>\n        </div>\n\n\n\n\n    </div>\n\n\n\n    <!--<div class=\"row\">-->\n        <!--<div class=\"col col-sm-6\">-->\n            <!--<div class=\"card mb-3\">-->\n                <!--<div class=\"card-header\">-->\n                    <!--订单总量统计-->\n                <!--</div>-->\n                <!--<div class=\"card-block\">-->\n                    <!--<app-vertical-ba-chart [options]=\"options\"></app-vertical-ba-chart>-->\n\n                <!--</div>-->\n                <!--<div class=\"card-footer\">-->\n                    <!--<button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n\n\n        <!--<div class=\"col col-sm-6\">-->\n            <!--<div class=\"card mb-3\">-->\n                <!--<div class=\"card-header\">-->\n                    <!--资源贡献量统计-->\n                <!--</div>-->\n                <!--<div class=\"card-block\">-->\n                    <!--<app-pie-chart [options]=\"options_pie\"></app-pie-chart>-->\n\n                <!--</div>-->\n                <!--<div class=\"card-footer\">-->\n                    <!--<button class=\"btn btn-info btn-sm\" (click)=\"randomize()\">更新数据</button>-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n\n    <!--</div>-->\n</div>\n\n\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/my-transmit/my-transmit.component.scss":
+/***/ "../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -100,15 +248,14 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/my-transmit/my-transmit.component.ts":
+/***/ "../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__ = __webpack_require__("../../../../../src/app/shared/services/order/order.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyTransmitComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResourceStatisticsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -121,164 +268,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var MyTransmitComponent = (function () {
-    function MyTransmitComponent(orderService, apiUrlService) {
-        this.orderService = orderService;
-        this.apiUrlService = apiUrlService;
-        this.param = {
-            token: localStorage.getItem('token')
-        };
-        this.pageList = [10, 15, 25, 35];
-        this.isTransmited = true;
-        this.url = this.apiUrlService.getMyTransmitesUrl;
+var ResourceStatisticsComponent = (function () {
+    function ResourceStatisticsComponent(systemService) {
+        this.systemService = systemService;
     }
-    MyTransmitComponent.prototype.ngOnInit = function () {
+    ResourceStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.orderService.getMyTransmites().subscribe(function (data) { return _this.orders = data.rows; });
+        this.systemService.getResourceStatisticsBySchool().subscribe(function (data) {
+            // data=data.map((val,index,arr)=>{
+            //     val.value=parseInt(val.value);
+            //     return val;
+            // })
+            _this.options_advance_pie = {
+                single: data.map(function (val, index, arr) {
+                    val.value = parseInt(val.value);
+                    return val;
+                }),
+                view: [800, 300],
+                colorScheme: {
+                    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF3333', '#CC0099']
+                }
+            };
+        });
     };
-    MyTransmitComponent.prototype.onDataChanged = function (event) {
-        console.log(event);
-        this.orders = event.rows;
-    };
-    return MyTransmitComponent;
+    return ResourceStatisticsComponent;
 }());
-MyTransmitComponent = __decorate([
+ResourceStatisticsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-my-transmit',
-        template: __webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.scss")],
-        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__router_animations__["a" /* routerTransition */])()]
+        selector: 'app-resource-statistics',
+        template: __webpack_require__("../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.scss")],
+        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__["a" /* OrderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _b || Object])
-], MyTransmitComponent);
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _a || Object])
+], ResourceStatisticsComponent);
 
-var _a, _b;
-//# sourceMappingURL=my-transmit.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div [@routerTransition] >\n    <app-order-list [orders]=\"orders\"></app-order-list>\n</div>\n"
+var _a;
+//# sourceMappingURL=resource-statistics.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_web_socket_service__ = __webpack_require__("../../../../../src/app/shared/services/web-socket.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_send_article_service__ = __webpack_require__("../../../../../src/app/shared/services/send-article.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewApplyComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var NewApplyComponent = (function () {
-    //token:string;
-    // @Output() newOrderCount:Observable<number>=new EventEmitter();
-    function NewApplyComponent(wsService, sendArticleService, tokenService, appService) {
-        this.wsService = wsService;
-        this.sendArticleService = sendArticleService;
-        this.tokenService = tokenService;
-        this.appService = appService;
-    }
-    NewApplyComponent.prototype.ngOnChanges = function (changes) {
-        this.tokenService.refreshToken();
-    };
-    NewApplyComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this.subscrption) {
-            this.subscrption.unsubscribe(); //取消订阅
-            this.subscrption = null;
-        }
-        else {
-            //this.tokenService.refreshToken()
-            //点击按钮调用服务的方法创建连接 此方法返回一个可观测的流 这里就可以订阅这个流了 并携带一个参数id
-            var token = localStorage.getItem('token') ? localStorage.getItem('token') : '';
-            this.subscrption = this.wsService.createObservableSocket('ws://101.201.122.94:8085', token)
-                .subscribe(
-            //服务器吐送过来的消息
-            //收到的是这个客户端关注的所有商品的一个报价
-            function (products) {
-                //console.log(products)
-                _this.orders = (JSON.parse(products));
-                _this.appService.newOrderCountEventEmitter.emit(_this.orders.length);
-            });
-        }
-    };
-    NewApplyComponent.prototype.sendArticle = function (orderId) {
-        this.sendArticleService.sendArticle(orderId);
-    };
-    return NewApplyComponent;
-}());
-NewApplyComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-new-apply',
-        template: __webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.scss")],
-        animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__router_animations__["a" /* routerTransition */])()]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_web_socket_service__["a" /* WebSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_web_socket_service__["a" /* WebSocketService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_send_article_service__["a" /* SendArticleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_send_article_service__["a" /* SendArticleService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_token_service__["a" /* TokenService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_service__["a" /* AppService */]) === "function" && _d || Object])
-], NewApplyComponent);
-
-var _a, _b, _c, _d;
-//# sourceMappingURL=new-apply.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/layout/orders/orders-routing.module.ts":
+/***/ "../../../../../src/app/layout/statistics/statistics-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders_component__ = __webpack_require__("../../../../../src/app/layout/orders/orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_transmit_my_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__new_apply_new_apply_component__ = __webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__all_transmit_all_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/statistics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__library_statistics_library_statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__request_statistics_request_statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__resource_statistics_resource_statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticsRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+/**
+ * Created by daivd on 2017/9/21.
+ */
 
 
 
@@ -288,53 +337,53 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var routes = [
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_2__orders_component__["b" /* OrdersComponent */],
+        component: __WEBPACK_IMPORTED_MODULE_2__statistics_component__["b" /* StatisticsComponent */],
         children: [
             {
-                path: 'my-transmit',
-                component: __WEBPACK_IMPORTED_MODULE_3__my_transmit_my_transmit_component__["a" /* MyTransmitComponent */]
+                path: 'library',
+                component: __WEBPACK_IMPORTED_MODULE_3__library_statistics_library_statistics_component__["a" /* LibraryStatisticsComponent */]
             },
             {
-                path: 'new-apply',
-                component: __WEBPACK_IMPORTED_MODULE_4__new_apply_new_apply_component__["a" /* NewApplyComponent */]
+                path: 'rquest',
+                component: __WEBPACK_IMPORTED_MODULE_4__request_statistics_request_statistics_component__["a" /* RequestStatisticsComponent */]
             },
             {
-                path: 'all-transmit',
-                component: __WEBPACK_IMPORTED_MODULE_5__all_transmit_all_transmit_component__["a" /* AllTransmitComponent */]
-            }
+                path: 'resource',
+                component: __WEBPACK_IMPORTED_MODULE_5__resource_statistics_resource_statistics_component__["a" /* ResourceStatisticsComponent */]
+            },
         ]
     }
 ];
-var OrdersRoutingModule = (function () {
-    function OrdersRoutingModule() {
+var StatisticsRoutingModule = (function () {
+    function StatisticsRoutingModule() {
     }
-    return OrdersRoutingModule;
+    return StatisticsRoutingModule;
 }());
-OrdersRoutingModule = __decorate([
+StatisticsRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
     })
-], OrdersRoutingModule);
+], StatisticsRoutingModule);
 
-//# sourceMappingURL=orders-routing.module.js.map
+//# sourceMappingURL=statistics-routing.module.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/layout/orders/orders.module.ts":
+/***/ "../../../../../src/app/layout/statistics/statistics.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__orders_routing_module__ = __webpack_require__("../../../../../src/app/layout/orders/orders-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders_component__ = __webpack_require__("../../../../../src/app/layout/orders/orders.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__statistics_routing_module__ = __webpack_require__("../../../../../src/app/layout/statistics/statistics-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_transmit_my_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/my-transmit/my-transmit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__new_apply_new_apply_component__ = __webpack_require__("../../../../../src/app/layout/orders/new-apply/new-apply.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__all_transmit_all_transmit_component__ = __webpack_require__("../../../../../src/app/layout/orders/all-transmit/all-transmit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersModule", function() { return OrdersModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/statistics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__library_statistics_library_statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/library-statistics/library-statistics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__request_statistics_request_statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/request-statistics/request-statistics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__resource_statistics_resource_statistics_component__ = __webpack_require__("../../../../../src/app/layout/statistics/resource-statistics/resource-statistics.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatisticsModule", function() { return StatisticsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -349,28 +398,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var OrdersModule = (function () {
-    function OrdersModule() {
+var StatisticsModule = (function () {
+    function StatisticsModule() {
     }
-    return OrdersModule;
+    return StatisticsModule;
 }());
-OrdersModule = __decorate([
+StatisticsModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__orders_routing_module__["a" /* OrdersRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_1__statistics_routing_module__["a" /* StatisticsRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_2__shared_shared_module__["a" /* SharedModule */],
             __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_7__shared_shared_module__["a" /* SharedModule */]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__orders_component__["b" /* OrdersComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__my_transmit_my_transmit_component__["a" /* MyTransmitComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__new_apply_new_apply_component__["a" /* NewApplyComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__all_transmit_all_transmit_component__["a" /* AllTransmitComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__statistics_component__["b" /* StatisticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__library_statistics_library_statistics_component__["a" /* LibraryStatisticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__request_statistics_request_statistics_component__["a" /* RequestStatisticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__resource_statistics_resource_statistics_component__["a" /* ResourceStatisticsComponent */]
         ]
     })
-], OrdersModule);
+], StatisticsModule);
 
-//# sourceMappingURL=orders.module.js.map
+//# sourceMappingURL=statistics.module.js.map
 
 /***/ })
 

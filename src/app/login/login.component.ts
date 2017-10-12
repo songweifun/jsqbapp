@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import {Http} from "@angular/http";
-import {Observable} from "rxjs";
+//import {Observable} from "rxjs";
 import {TokenService} from "../shared/services/token.service";
 import {SystemService} from "../shared/services/system/system.service";
 
@@ -14,14 +14,14 @@ import {SystemService} from "../shared/services/system/system.service";
 })
 export class LoginComponent implements OnInit {
 
-    dataSource:Observable<any>;
+    //dataSource:Observable<any>;
 
     private ac:string;
     private se:string;
 
     constructor(
         public router: Router,
-        private http:Http,
+        //private http:Http,
         private tokenService:TokenService,
         private systemService:SystemService
     ) {
