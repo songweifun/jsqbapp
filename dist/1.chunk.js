@@ -507,7 +507,7 @@ var AddIpModalComponent = (function () {
                 validator: __WEBPACK_IMPORTED_MODULE_5__validator_validators__["c" /* ipRange */] //这么用
             }),
             time: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
-            isOpen: [],
+            isOpen: [1],
             daylimit: [100, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
             monthlimit: [1000, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]]
         });

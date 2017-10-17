@@ -84,7 +84,7 @@ export class AddIpModalComponent implements OnInit {
               }
           ),
           time:['',[Validators.required]],
-          isOpen:[],
+          isOpen:[1],
           daylimit:[100,[Validators.required]],
           monthlimit:[1000,[Validators.required]]
       })
