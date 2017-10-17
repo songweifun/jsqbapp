@@ -28,7 +28,7 @@ export class NewApplyComponent implements OnInit,OnChanges {
         private wsService:WebSocketService,
         private sendArticleService:SendArticleService,
         private tokenService:TokenService,
-        private appService:AppService
+        public appService:AppService
     ) { }
 
 
@@ -61,6 +61,7 @@ export class NewApplyComponent implements OnInit,OnChanges {
             this.subscrption=null;
             this.listHide=true;
             this.ordersStartText="开始抢单";
+            this.appService.newOrderCountEventEmitter.emit(0);//新订单数量
         }else{
             //this.tokenService.refreshToken()
 

@@ -5,6 +5,7 @@ import { OrdersComponent } from './orders.component';
 import {MyTransmitComponent} from "./my-transmit/my-transmit.component";
 import {NewApplyComponent} from "./new-apply/new-apply.component";
 import {AllTransmitComponent} from "./all-transmit/all-transmit.component";
+import {LeaveOrderNewGuard} from "../../guard/leaveOrderNew.guard";
 
 const routes: Routes = [
     {
@@ -17,7 +18,8 @@ const routes: Routes = [
             },
             {
                 path: 'new-apply',
-                component: NewApplyComponent
+                component: NewApplyComponent,
+                canDeactivate:[LeaveOrderNewGuard]
             },
             {
                 path: 'all-transmit',

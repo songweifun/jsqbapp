@@ -216,6 +216,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__guard_leaveOrderNew_guard__ = __webpack_require__("../../../../../src/app/guard/leaveOrderNew.guard.ts");
 /* unused harmony export HttpLoaderFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -241,6 +242,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import {ToastService} from "./shared/services/toast/toast.service";
+
 
 
 
@@ -297,7 +299,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_21__selective_preloading_strategy__["a" /* SelectivePreloadingStrategy */],
             __WEBPACK_IMPORTED_MODULE_22__shared_services_system_system_service__["a" /* SystemService */],
             __WEBPACK_IMPORTED_MODULE_23__shared_services_api_url_service__["a" /* ApiUrlService */],
-            __WEBPACK_IMPORTED_MODULE_24__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]
+            __WEBPACK_IMPORTED_MODULE_24__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
+            __WEBPACK_IMPORTED_MODULE_25__guard_leaveOrderNew_guard__["a" /* LeaveOrderNewGuard */]
         ],
         exports: [__WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_box_component__["a" /* ToastBoxComponent */], __WEBPACK_IMPORTED_MODULE_20__shared_services_spin_spin_component__["a" /* SpinComponent */], __WEBPACK_IMPORTED_MODULE_18__shared_components_toast_toast_component__["a" /* ToastComponent */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
@@ -342,6 +345,35 @@ AppService = __decorate([
 ], AppService);
 
 //# sourceMappingURL=app.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/guard/leaveOrderNew.guard.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeaveOrderNewGuard; });
+var LeaveOrderNewGuard = (function () {
+    function LeaveOrderNewGuard() {
+    }
+    LeaveOrderNewGuard.prototype.canDeactivate = function (component) {
+        if (component.subscrption) {
+            component.subscrption.unsubscribe();
+            component.subscrption = null;
+            component.listHide = true;
+            component.ordersStartText = "开始抢单";
+            component.appService.newOrderCountEventEmitter.emit(0);
+        }
+        // const alertCfg = new AlertConfig(AlertType.INFO, '权限控制', '没有权限');
+        // this.modalService.alert(alertCfg);
+        // this.router.navigate(['/orders/new-apply']);
+        //return window.confirm("订单正在推送您确定要离开此页面吗？")
+        return true;
+    };
+    return LeaveOrderNewGuard;
+}());
+
+//# sourceMappingURL=leaveOrderNew.guard.js.map
 
 /***/ }),
 

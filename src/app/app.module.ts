@@ -24,6 +24,7 @@ import {SelectivePreloadingStrategy} from "./selective-preloading-strategy";
 import {SystemService} from "./shared/services/system/system.service";
 import {ApiUrlService} from "./shared/services/api-url.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {LeaveOrderNewGuard} from "./guard/leaveOrderNew.guard";
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -66,7 +67,8 @@ export function HttpLoaderFactory(http: Http) {
         SelectivePreloadingStrategy,
         SystemService,
         ApiUrlService,
-        NgbActiveModal
+        NgbActiveModal,
+        LeaveOrderNewGuard
     ],
     exports:[ToastBoxComponent,SpinComponent,ToastComponent],
     bootstrap: [AppComponent]
