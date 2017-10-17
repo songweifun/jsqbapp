@@ -99,9 +99,10 @@ var LoginComponent = (function () {
         var _this = this;
         this.tokenService.getTokenAsync(this.ac, this.se).subscribe(function (data) {
             if (data.token) {
-                //alert(data.token)
+                //alert(data.id)
                 localStorage.setItem('isLoggedin', 'true');
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('uid', data.id);
                 localStorage.setItem('se', _this.se);
                 localStorage.setItem('ac', _this.ac);
                 _this.systemService.recordLoginlog(data.token).subscribe(function (data) {

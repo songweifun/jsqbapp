@@ -36,9 +36,10 @@ export class LoginComponent implements OnInit {
         this.tokenService.getTokenAsync(this.ac,this.se).subscribe(
             data=>{
                 if(data.token){
-                    //alert(data.token)
+                    //alert(data.id)
                     localStorage.setItem('isLoggedin', 'true');
                     localStorage.setItem('token',data.token);
+                    localStorage.setItem('uid',data.id);
                     localStorage.setItem('se', this.se);
                     localStorage.setItem('ac', this.ac);
                     this.systemService.recordLoginlog(data.token).subscribe(
