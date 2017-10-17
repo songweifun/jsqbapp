@@ -39,4 +39,9 @@ export class ResourceStatisticsComponent implements OnInit {
       )
   }
 
+
+    randomize(){
+        this.ngOnInit()
+    }
+
 }

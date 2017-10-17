@@ -99,6 +99,9 @@ var LibraryStatisticsComponent = (function () {
             };
         });
     };
+    LibraryStatisticsComponent.prototype.randomize = function () {
+        this.ngOnInit();
+    };
     return LibraryStatisticsComponent;
 }());
 LibraryStatisticsComponent = __decorate([
@@ -206,6 +209,9 @@ var RequestStatisticsComponent = (function () {
             };
         });
     };
+    RequestStatisticsComponent.prototype.randomize = function () {
+        this.ngOnInit();
+    };
     return RequestStatisticsComponent;
 }());
 RequestStatisticsComponent = __decorate([
@@ -290,6 +296,9 @@ var ResourceStatisticsComponent = (function () {
                 }
             };
         });
+    };
+    ResourceStatisticsComponent.prototype.randomize = function () {
+        this.ngOnInit();
     };
     return ResourceStatisticsComponent;
 }());

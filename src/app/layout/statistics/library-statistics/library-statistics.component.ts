@@ -85,6 +85,12 @@ export class LibraryStatisticsComponent implements OnInit {
   }
 
 
+    randomize(){
+        this.ngOnInit()
+    }
+
+
+
 
 
 }

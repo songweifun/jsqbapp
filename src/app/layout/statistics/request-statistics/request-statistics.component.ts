@@ -66,5 +66,11 @@ export class RequestStatisticsComponent implements OnInit {
   }
 
 
+    randomize(){
+        this.ngOnInit()
+    }
+
+
+
 
 }
