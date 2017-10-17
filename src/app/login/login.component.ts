@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
-import {Http} from "@angular/http";
-//import {Observable} from "rxjs";
 import {TokenService} from "../shared/services/token.service";
 import {SystemService} from "../shared/services/system/system.service";
 

@@ -161,7 +161,7 @@ var _a, _b;
 /***/ "../../../../../src/app/layout/orders/new-apply/new-apply.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition] >\n    <app-order-list [orders]=\"orders\"></app-order-list>\n</div>\n"
+module.exports = "<div [@routerTransition] >\n    <app-order-list [orders]=\"orders\" [hidden]=\"listHide\"></app-order-list>\n\n    <button [hidden]=\"btnHide\" class=\"btn btn-success btn-lg btn-block\" (click)=\"ordersStart()\">{{ordersStartText}}</button>\n</div>\n"
 
 /***/ }),
 
@@ -210,22 +210,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var NewApplyComponent = (function () {
-    //token:string;
-    // @Output() newOrderCount:Observable<number>=new EventEmitter();
     function NewApplyComponent(wsService, sendArticleService, tokenService, appService) {
         this.wsService = wsService;
         this.sendArticleService = sendArticleService;
         this.tokenService = tokenService;
         this.appService = appService;
+        //token:string;
+        // @Output() newOrderCount:Observable<number>=new EventEmitter();
+        this.listHide = true;
+        this.ordersStartText = "开始抢单";
     }
     NewApplyComponent.prototype.ngOnChanges = function (changes) {
         this.tokenService.refreshToken();
     };
     NewApplyComponent.prototype.ngOnInit = function () {
+    };
+    NewApplyComponent.prototype.sendArticle = function (orderId) {
+        this.sendArticleService.sendArticle(orderId);
+    };
+    NewApplyComponent.prototype.ordersStart = function () {
         var _this = this;
         if (this.subscrption) {
             this.subscrption.unsubscribe(); //取消订阅
             this.subscrption = null;
+            this.listHide = true;
+            this.ordersStartText = "开始抢单";
         }
         else {
             //this.tokenService.refreshToken()
@@ -239,11 +248,10 @@ var NewApplyComponent = (function () {
                 //console.log(products)
                 _this.orders = (JSON.parse(products));
                 _this.appService.newOrderCountEventEmitter.emit(_this.orders.length);
+                _this.listHide = false;
+                _this.ordersStartText = "停止抢单";
             });
         }
-    };
-    NewApplyComponent.prototype.sendArticle = function (orderId) {
-        this.sendArticleService.sendArticle(orderId);
     };
     return NewApplyComponent;
 }());

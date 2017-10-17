@@ -39,7 +39,7 @@ LoginRoutingModule = __decorate([
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-page\" [@routerTransition]>\n    <div class=\"row\">\n        <div class=\"col-md-4 push-md-4\">\n            <img src=\"assets/images/logo.png\" width=\"150px\" class=\"user-avatar\" />\n            <h1>Baohe Admin</h1>\n            <form role=\"form\">\n                <div class=\"form-content\">\n                    <div class=\"form-group\">\n                        <input type=\"text\" [(ngModel)]=\"ac\" name=\"ac\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Email\">{{ac}}\n                    </div>\n\n                    <div class=\"form-group\">\n                        <input type=\"password\" [(ngModel)]=\"se\" name=\"se\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Password\">\n                    </div>\n                </div>\n                <a class=\"btn rounded-btn\" [routerLink]=\"['/dashboard']\" (click)=\"onLoggedin()\"> 登 录 </a>\n                &nbsp;\n                <!--<a class=\"btn rounded-btn\" [routerLink]=\"['/signup']\">注册</a>-->\n            </form>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"login-page\" [@routerTransition]>\n    <div class=\"row\">\n        <div class=\"col-md-4 push-md-4\">\n            <img src=\"assets/images/logo.png\" width=\"150px\" class=\"user-avatar\" />\n            <h1>Baohe Admin</h1>\n            <form role=\"form\">\n                <div class=\"form-content\">\n                    <div class=\"form-group\">\n                        <input type=\"text\" [(ngModel)]=\"ac\" name=\"ac\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Email\">{{ac}}\n                    </div>\n\n                    <div class=\"form-group\">\n                        <input type=\"password\" [(ngModel)]=\"se\" name=\"se\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Password\">\n                    </div>\n                </div>\n                <a class=\"btn rounded-btn\"  (click)=\"onLoggedin()\"> 登 录 </a>\n                &nbsp;\n                <!--<a class=\"btn rounded-btn\" [routerLink]=\"['/signup']\">注册</a>-->\n            </form>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -83,7 +83,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import {Observable} from "rxjs";
 
 
 var LoginComponent = (function () {

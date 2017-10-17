@@ -67,7 +67,7 @@
 
 
 
-                <app-add-ip-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addIpMap($event,isBlack)" [isBlack]="isBlack" [isWhite]="isWhite"></app-add-ip-modal>
+                <app-add-ip-modal [hidden]="isWhite || isBlack" [header]="header" [btnText]="addBtnText" (onSubmitData)="addIpMap($event,isBlack)" [isBlack]="isBlack" [isWhite]="isWhite"></app-add-ip-modal>
             </div>
         </div>
     </div>

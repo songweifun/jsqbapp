@@ -21,6 +21,9 @@ export class NewApplyComponent implements OnInit,OnChanges {
 
    // @Output() newOrderCount:Observable<number>=new EventEmitter();
 
+    listHide:boolean=true;
+    ordersStartText:string="开始抢单";
+
     constructor(
         private wsService:WebSocketService,
         private sendArticleService:SendArticleService,
@@ -37,9 +40,23 @@ export class NewApplyComponent implements OnInit,OnChanges {
 
 
     ngOnInit() {
+
+
+
+    }
+
+    sendArticle(orderId){
+        this.sendArticleService.sendArticle(orderId)
+
+    }
+
+    ordersStart(){
+
         if(this.subscrption){
             this.subscrption.unsubscribe();//取消订阅
             this.subscrption=null;
+            this.listHide=true;
+            this.ordersStartText="开始抢单";
         }else{
             //this.tokenService.refreshToken()
 
@@ -55,16 +72,12 @@ export class NewApplyComponent implements OnInit,OnChanges {
                         //console.log(products)
                         this.orders=(JSON.parse(products));
                         this.appService.newOrderCountEventEmitter.emit(this.orders.length)
+                        this.listHide=false;
+                        this.ordersStartText="停止抢单";
                     }
 
                 );
         }
-
-
-    }
-
-    sendArticle(orderId){
-        this.sendArticleService.sendArticle(orderId)
 
     }
 

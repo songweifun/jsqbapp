@@ -84,7 +84,7 @@ export class AddIpModalComponent implements OnInit {
               }
           ),
           time:['',[Validators.required]],
-          isOpen:[1],
+          isOpen:[],
           daylimit:[100,[Validators.required]],
           monthlimit:[1000,[Validators.required]]
       })
@@ -106,7 +106,7 @@ export class AddIpModalComponent implements OnInit {
             this.systemService.getOneIpMap(this.ipMapId).subscribe(
                 data=>{
 
-                    console.log(content)
+                    //console.log(content)
                     let date=new Date(data.expire*1000)
 
                     let year=date.getFullYear();
@@ -114,7 +114,7 @@ export class AddIpModalComponent implements OnInit {
                     let month2 =(month<10 ? "0"+month:month);
                     let day=date.getDate();
 
-                    console.log(date.getMonth())
+                    //console.log(date.getMonth())
 
                     // this.formModel.value.mapName=new FormControl(data.map_name);
                     // this.formModel.value.isOpen=data.is_open;
@@ -147,9 +147,9 @@ export class AddIpModalComponent implements OnInit {
                             }
                         ),
                         time:[{year:year,month:month,day:day},[Validators.required]],
-                        isOpen:[data.is_open],
                         daylimit:[data.daylimit,[Validators.required]],
-                        monthlimit:[data.monthlimit,[Validators.required]]
+                        monthlimit:[data.monthlimit,[Validators.required]],
+                        isOpen:[data.is_open],
                     })
 
 
