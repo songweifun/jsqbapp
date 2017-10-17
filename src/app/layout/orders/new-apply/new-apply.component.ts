@@ -33,7 +33,11 @@ export class NewApplyComponent implements OnInit,OnChanges {
 
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.tokenService.refreshToken()
+        this.tokenService.refreshToken();//刷新token
+        // if(this.orders.length<=0){
+        //     this.listHide=true;
+        //     this.ordersStartText="没有订单";
+        // }
 
     }
 

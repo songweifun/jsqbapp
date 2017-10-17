@@ -221,7 +221,11 @@ var NewApplyComponent = (function () {
         this.ordersStartText = "开始抢单";
     }
     NewApplyComponent.prototype.ngOnChanges = function (changes) {
-        this.tokenService.refreshToken();
+        this.tokenService.refreshToken(); //刷新token
+        // if(this.orders.length<=0){
+        //     this.listHide=true;
+        //     this.ordersStartText="没有订单";
+        // }
     };
     NewApplyComponent.prototype.ngOnInit = function () {
     };
