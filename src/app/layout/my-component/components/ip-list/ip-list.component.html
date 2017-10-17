@@ -6,13 +6,13 @@
                 <table class="table table-hover  table-bordered table-dark table-sm ">
                     <thead class="bg-success">
                     <tr>
-                        <th><input type="checkbox"></th>
-                        <th>id</th>
+                        <th class="hidden-sm"><input type="checkbox"></th>
+                        <th class="hidden-sm">id</th>
                         <th>IP地址起</th>
                         <th>IP地址止</th>
                         <th>映射单位</th>
-                        <th [hidden]="isWhite || isBlack">是否启用映射</th>
-                        <th>加入黑白名单</th>
+                        <th [hidden]="isWhite || isBlack" class="hidden-sm">是否启用映射</th>
+                        <th class="hidden-sm">加入黑白名单</th>
 
                         <th>操作</th>
                     </tr>
@@ -33,17 +33,17 @@
                     <!--</tr>-->
 
                     <tr *ngFor="let map of ipMaps">
-                        <td><input type="checkbox"></td>
-                        <td>{{map.id}}</td>
+                        <td class="hidden-sm"><input type="checkbox"></td>
+                        <td class="hidden-sm">{{map.id}}</td>
                         <td>{{map.ip_start}}</td>
                         <td>{{map.ip_end}}</td>
                         <td>{{map.map_name}}</td>
-                        <td [hidden]="isWhite || isBlack">
+                        <td [hidden]="isWhite || isBlack" class="hidden-sm">
                             <div style="width:40px;">
                                 <app-switch [checked]="map.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,map.id)"></app-switch>
                             </div>
                         </td>
-                        <td>
+                        <td class="hidden-sm">
                             <div style="width:40px;">
                                 <app-switch [checked]="map.is_forbid==1?true:false" [onLabel]="'黑'"  [offLabel]="'白'" [theme]="theme" (onChange)="changeIsForbid($event,map.id)"></app-switch>
                             </div>

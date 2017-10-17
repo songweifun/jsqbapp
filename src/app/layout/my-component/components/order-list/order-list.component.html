@@ -8,10 +8,10 @@
                         <thead class="bg-success">
                         <tr>
                             <th>id</th>
-                            <th>申请IP</th>
+                            <th class="hidden-sm">申请IP</th>
                             <th>申请单位</th>
-                            <th>申请人</th>
-                            <th>申请时间</th>
+                            <th class="hidden-sm">申请人</th>
+                            <th class="hidden-sm">申请时间</th>
                             <!--<th>标题</th>-->
                             <!--<th>DOI号</th>-->
                             <th>操作</th>
@@ -21,10 +21,10 @@
                         <tbody>
                         <tr *ngFor="let order of orders" [hidden]="!orders">
                             <th scope="row">{{order.id}}</th>
-                            <td>{{order.requestip}}</td>
+                            <td class="hidden-sm">{{order.requestip}}</td>
                             <td>{{order.request_map}}</td>
-                            <td>{{order.from_name}}</td>
-                            <td>{{order.create_time}}</td>
+                            <td class="hidden-sm">{{order.from_name}}</td>
+                            <td class="hidden-sm">{{order.create_time}}</td>
                             <!--<td>{{order.title}}</td>-->
                             <!--<td>{{order.doi}}</td>-->
                             <!--<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>-->
