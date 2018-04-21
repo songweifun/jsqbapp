@@ -46,7 +46,6 @@
                                 </div>
 
                                 <div class="col-sm-4">
-
                                     <div [hidden]="!formModel.hasError('equal','secret')"><h5>{{formModel.getError('equal','secret')?.description}}</h5></div>
                                 </div>
                             </div>
@@ -56,9 +55,8 @@
                     <div class="form-group row">
                             <label for="inputPassword4" class="col-sm-2 col-form-label">所属成员馆</label>
                             <div class="col-sm-6">
-                                <!--<input type="text" class="form-control is-invalid" id="inputPassword6" placeholder="共享馆名称" formControlName="app_description" [class.is-invalid]="formModel.get('app_description').invalid && formModel.get('app_description').touched">-->
                                 <select  formControlName="school_id" class="form-control">
-                                    <option value="{{school.id}}"  *ngFor="let school of schools">{{school.name}}</option>
+                                    <option value="{{school.id}}"  *ngFor="let school of schools">{{school.lname}}</option>
                                 </select>
                             </div>
 
@@ -78,7 +76,8 @@
 
                                 <select name="" id="" formControlName="scope" class="form-control">
                                     <option value="32" selected>普通组</option>
-                                    <option value="64">超管组</option>
+                                    <option value="64">管理员组</option>
+                                    <option value="128">超管组</option>
                                 </select>
                             </div>
 

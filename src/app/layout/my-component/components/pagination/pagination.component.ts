@@ -106,7 +106,7 @@ export class PaginationComponent implements OnChanges,OnInit {
     }
 
     pageChangeHandler(event){
-        console.log(event)
+        //console.log(event)
         this.options.pageNumber =  Number.parseInt(event);
         //this.refreshPage();
         this.pageOperation(0);

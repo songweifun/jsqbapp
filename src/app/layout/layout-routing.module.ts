@@ -61,7 +61,8 @@ const routes: Routes = [
     exports: [RouterModule],
     providers:[
         superAdminGuard,
-        ModalService],
+        ModalService
+    ],
     entryComponents : [
 
         //ConfirmComponent,

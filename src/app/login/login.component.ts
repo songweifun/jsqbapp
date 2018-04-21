@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
     }
 
     onLoggedin() {
+        //localStorage.setItem('se', this.se);
+        //localStorage.setItem('ac', this.ac);
 
         this.tokenService.getTokenAsync(this.ac,this.se).subscribe(
             data=>{
@@ -42,25 +44,19 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('uid',data.id);
                     localStorage.setItem('se', this.se);
                     localStorage.setItem('ac', this.ac);
-                    this.systemService.recordLoginlog(data.token).subscribe(
-                        data=>{
-
-                        }
-                    )
+                    this.systemService.recordLoginlog(data.token,data=>{},err=>{})
                     localStorage.setItem('jurisdiction','0')
-                    this.systemService.checkSuperAdmin().subscribe(
-                        data=>{
-                            //alert(data.errorCode)
-                            //console.log(data.errorCode);
-                            if(data.errorCode==10001){
-                                localStorage.setItem('jurisdiction','0')
+                    this.systemService.checkSuperAdmin(data=>{
+                        //alert(data.errorCode)
+                        //console.log(data.errorCode);
+                        if(data.errorCode==10001){
+                            localStorage.setItem('jurisdiction','0')
 
-                            }else{
-                                localStorage.setItem('jurisdiction','1')
-                            }
+                        }else{
+                            localStorage.setItem('jurisdiction','1')
                         }
-                    )
-                    this.router.navigate(['/orders/new-apply'])
+                    },err=>{})
+                    this.router.navigate(['/orders/logistics'])
                 }else{
                     this.router.navigate(['/login'])
                 }

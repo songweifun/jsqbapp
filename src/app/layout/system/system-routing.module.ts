@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {SystemComponent} from "./system.component";
 import { LibraryComponent } from './library/library.component';
+import {Sip2ConfigComponent} from "./sip2-config/sip2-config.component";
 
 const routes: Routes = [
     {
@@ -13,8 +14,10 @@ const routes: Routes = [
                 path: 'library',
                 component: LibraryComponent
             },
-            
-
+            {
+                path: 'sip2',
+                component: Sip2ConfigComponent
+            },
 
         ]
     }

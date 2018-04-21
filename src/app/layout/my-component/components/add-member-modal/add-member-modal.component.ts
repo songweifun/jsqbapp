@@ -72,11 +72,7 @@ export class AddMemberModalComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.systemService.getAllSchoolMessage().subscribe(
-            data=>this.schools=data
-        )
-
-
+        this.systemService.getAllSchoolMessage(data=>this.schools=data,err=>{})
     }
 
     open(content) {
@@ -88,31 +84,29 @@ export class AddMemberModalComponent implements OnInit {
         });
         if(this.userId){
             // alert(111)
-            this.systemService.getOneMember(this.userId).subscribe(
-                data=>{
+            this.systemService.getOneMember(this.userId, data=>{
 
 
 
 
-                    this.formModel=this.fb.group({
-                        user_email:[data.email,[Validators.required,Validators.minLength(6)]],
-                        secret:this.fb.group(
-                            {
-                                app_secret:[data.password,Validators.minLength(6)],
-                                c_app_secret:[data.password]
-                            },
-                            {
-                                validator:equalValidator//这么用
-                            }
-                        ),
-                        school_id:[data.school,[Validators.required]],
-                        scope:[data.scope,[Validators.required]],
-                        isOpen:[data.is_open],
-                    })
+                this.formModel=this.fb.group({
+                    user_email:[data.email,[Validators.required,Validators.minLength(6)]],
+                    secret:this.fb.group(
+                        {
+                            app_secret:[data.password,Validators.minLength(6)],
+                            c_app_secret:[data.password]
+                        },
+                        {
+                            validator:equalValidator//这么用
+                        }
+                    ),
+                    school_id:[data.school,[Validators.required]],
+                    scope:[data.scope,[Validators.required]],
+                    isOpen:[data.is_open],
+                })
 
 
-                }
-            )
+            },err=>{})
 
         }
 

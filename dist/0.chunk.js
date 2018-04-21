@@ -80,23 +80,37 @@ var ModalComponent = (function () {
         }
     };
     ModalComponent.prototype.sendArticle = function (orderId) {
+        // this.sendArticleService.sendArticle(orderId).subscribe(
+        //     data=>{
+        //         if(data.errorCode===0){
+        //             const alertCfg = new AlertConfig(AlertType.INFO, '原文传递', '传递成功');
+        //             this.modalService2.alert(alertCfg);
+        //             //alert('传递成功')
+        //             this.myModalRef.close()
+        //         }else{
+        //             const alertCfg = new AlertConfig(AlertType.ERROR, '原文传递', '传递失败');
+        //             this.modalService2.alert(alertCfg);
+        //             //this.myModalRef.close()
+        //         }
+        //     }
+        // )
         var _this = this;
-        this.sendArticleService.sendArticle(orderId).subscribe(function (data) {
+        this.sendArticleService.sendArticle(orderId, function (data) {
             if (data.errorCode === 0) {
-                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].INFO, '原文传递', '传递成功');
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].INFO, '原文传递', '传递成功');
                 _this.modalService2.alert(alertCfg);
                 //alert('传递成功')
                 _this.myModalRef.close();
             }
             else {
-                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, '原文传递', '传递失败');
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, '原文传递', '传递失败');
                 _this.modalService2.alert(alertCfg);
                 //this.myModalRef.close()
             }
-        });
+        }, function (err) { });
     };
     ModalComponent.prototype.setIsupload = function (event) {
-        console.log(event);
+        //console.log(event)
         this.isUploaded = event;
     };
     return ModalComponent;
@@ -120,6 +134,205 @@ ModalComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=modal.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/domain/status.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export OrderStatus */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BookStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReturnOrderStatus; });
+/**
+ * Created by daivd on 2018/4/16.
+ */
+/**
+ * Created by daivd on 2018/4/16.
+ */ var OrderStatus;
+(function (OrderStatus) {
+    OrderStatus[OrderStatus["UNPAID"] = 1] = "UNPAID";
+    OrderStatus[OrderStatus["PAID"] = 2] = "PAID";
+    OrderStatus[OrderStatus["AWAIT_EXPRESS_ORDER"] = 3] = "AWAIT_EXPRESS_ORDER";
+    OrderStatus[OrderStatus["AWAIT_EXPRESS_CHECK"] = 4] = "AWAIT_EXPRESS_CHECK";
+    OrderStatus[OrderStatus["EXPRESS_ORDER_SUCCESS"] = 5] = "EXPRESS_ORDER_SUCCESS";
+    OrderStatus[OrderStatus["TRANSPORTING"] = 6] = "TRANSPORTING";
+    OrderStatus[OrderStatus["AWAIT_ACCEPT"] = 7] = "AWAIT_ACCEPT";
+    OrderStatus[OrderStatus["ACCEPTED"] = 8] = "ACCEPTED";
+    OrderStatus[OrderStatus["AWAIT_RETURN"] = 9] = "AWAIT_RETURN";
+    OrderStatus[OrderStatus["RETURNING"] = 10] = "RETURNING";
+    OrderStatus[OrderStatus["RETURNED"] = 11] = "RETURNED"; //已归还
+})(OrderStatus || (OrderStatus = {}));
+var BookStatus;
+(function (BookStatus) {
+    BookStatus[BookStatus["AWAIT_SEND"] = 1] = "AWAIT_SEND";
+    BookStatus[BookStatus["SENDED"] = 2] = "SENDED";
+    BookStatus[BookStatus["AWAIT_RETURN"] = 3] = "AWAIT_RETURN";
+    BookStatus[BookStatus["RETURNED"] = 4] = "RETURNED";
+    BookStatus[BookStatus["AFFIRM_RETURNED"] = 5] = "AFFIRM_RETURNED";
+})(BookStatus || (BookStatus = {}));
+var ReturnOrderStatus;
+(function (ReturnOrderStatus) {
+    ReturnOrderStatus[ReturnOrderStatus["RETURNING"] = 1] = "RETURNING";
+    ReturnOrderStatus[ReturnOrderStatus["ACCEPT"] = 2] = "ACCEPT";
+    ReturnOrderStatus[ReturnOrderStatus["RETURNED"] = 3] = "RETURNED";
+})(ReturnOrderStatus || (ReturnOrderStatus = {}));
+//# sourceMappingURL=status.model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\"><i class=\"fa\" [class.fa-plus]=\"btnText=='添加'\" [class.fa-wrench]=\"btnText=='修改'\"></i> {{btnText}}</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{header}}</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <form [formGroup]=\"formModel\" (ngSubmit)=\"onSubmit()\" novalidate>\n        <div class=\"modal-body\">\n            <div class=\"container\" >\n\n\n                <div class=\"form-group row\" [class.has-danger]=\"formModel.get('bind_name').invalid && formModel.get('bind_name').touched\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">用户名</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"text\" class=\"form-control\" id=\"inputPassword4\" placeholder=\"用户名\" formControlName=\"bind_name\" [class.form-control-danger]=\"formModel.get('bind_name').invalid && formModel.get('bind_name').touched\">\n\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('bind_name').valid || formModel.get('bind_name').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','bind_name')\"><h5>用户名为必填项</h5></div>\n                            <!--<div class=\"invalid-feedback\" [hidden]=\"!formModel.hasError('required','app_id')\">-->\n                            <!--用户名为必填项-->\n                            <!--</div>-->\n                            <div [hidden]=\"!formModel.hasError('minlength','bind_name')\"><h5>用户名最低为6个字符</h5></div><!-- 这个minlength要小些 -->\n                        </div>\n                    </div>\n                </div>\n                <div class=\"form-group row\">\n                    <label for=\"inputEmail3\" class=\"col-sm-2 col-form-label\">密码</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"password\" class=\"form-control\" id=\"inputEmail3\" placeholder=\"密码\" formControlName=\"bind_pass\">\n                    </div>\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"!formModel.hasError('required','bind_pass')\"><h5>密码最低为6个字符</h5></div><!-- 如果这个属性是嵌套的-->\n                    </div>\n                </div>\n\n\n                <div class=\"form-group row\" [class.has-danger]=\"formModel.get('host').invalid && formModel.get('host').touched\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">ip地址</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"text\" class=\"form-control\"  placeholder=\"ip地址\" formControlName=\"host\" [class.form-control-danger]=\"formModel.get('host').invalid && formModel.get('host').touched\">\n\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('host').valid || formModel.get('host').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','host')\"><h5>用户名为必填项</h5></div>\n\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group row\" [class.has-danger]=\"formModel.get('port').invalid && formModel.get('port').touched\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">端口</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"text\" class=\"form-control\"  placeholder=\"端口号\" formControlName=\"port\" [class.form-control-danger]=\"formModel.get('port').invalid && formModel.get('port').touched\">\n\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('port').valid || formModel.get('port').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','port')\"><h5>用户名为必填项</h5></div>\n\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"form-group row\" [class.has-danger]=\"formModel.get('location').invalid && formModel.get('location').touched\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">机器代码</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"text\" class=\"form-control\"  placeholder=\"机器代码\" formControlName=\"location\" [class.form-control-danger]=\"formModel.get('location').invalid && formModel.get('location').touched\">\n\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('location').valid || formModel.get('location').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','location')\"><h5>用户名为必填项</h5></div>\n\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group row\" [class.has-danger]=\"formModel.get('user_code').invalid && formModel.get('user_code').touched\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">借书账号名</label>\n                    <div class=\"col-sm-6\">\n                        <input type=\"text\" class=\"form-control\"  placeholder=\"借书账号名\" formControlName=\"user_code\" [class.form-control-danger]=\"formModel.get('user_code').invalid && formModel.get('user_code').touched\">\n\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('user_code').valid || formModel.get('user_code').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','user_code')\"><h5>用户名为必填项</h5></div>\n\n                        </div>\n                    </div>\n                </div>\n\n\n\n\n                <div class=\"form-group row\">\n                    <label for=\"inputPassword4\" class=\"col-sm-2 col-form-label\">所属成员馆</label>\n                    <div class=\"col-sm-6\">\n                        <select  formControlName=\"school_id\" class=\"form-control\">\n                            <option value=\"{{school.id}}\"  *ngFor=\"let school of schools\">{{school.lname}}</option>\n                        </select>\n                    </div>\n\n                    <div class=\"col-sm-4\">\n                        <div [hidden]=\"formModel.get('school_id').valid || formModel.get('school_id').untouched\">\n                            <div [hidden]=\"!formModel.hasError('required','school_id')\"><h5>所属成员馆为必选项</h5></div>\n                            <!--<div [hidden]=\"!formModel.hasError('minlength','app_description')\"><h5>共享馆名称最低为10个字符</h5></div>&lt;!&ndash; 这个minlength要小些 &ndash;&gt;-->\n                        </div>\n                    </div>\n\n                </div>\n\n\n\n                <fieldset class=\"form-group\" >\n                    <div class=\"row\">\n                        <legend class=\"col-form-legend col-sm-2\">是否开启</legend>\n                        <div class=\"col-sm-10\">\n                            <div class=\"form-check\">\n                                <label class=\"form-check-label\">\n                                    <input class=\"form-check-input\" type=\"radio\" name=\"is_default\" id=\"gridRadios1\" [value]=1 checked formControlName=\"is_default\">\n                                    是\n                                </label>\n                            </div>\n                            <div class=\"form-check\">\n                                <label class=\"form-check-label\">\n                                    <input class=\"form-check-input\" type=\"radio\" name=\"is_default\" id=\"gridRadios2\" [value]=0 formControlName=\"is_default\">\n                                    否\n                                </label>\n                            </div>\n                        </div>\n                    </div>\n                </fieldset>\n\n\n\n            </div>\n\n\n\n\n\n        </div>\n        <div class=\"modal-footer\">\n            <div class=\"form-group row\">\n                <div class=\"col-sm-10\">\n                    <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!formModel.valid\" >保存</button>\n                </div>\n            </div>\n            <div class=\"form-group row\">\n                <div class=\"col-sm-10\">\n                    <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n                </div>\n            </div>\n\n        </div>\n    </form>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddSip2ConfigModelComponent; });
+/* unused harmony export SubmitData */
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AddSip2ConfigModelComponent = (function () {
+    function AddSip2ConfigModelComponent(modalService, fb, systemService) {
+        this.modalService = modalService;
+        this.fb = fb;
+        this.systemService = systemService;
+        this.options = { size: 'lg' };
+        this.onSubmitData = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    AddSip2ConfigModelComponent.prototype.ngOnInit = function () {
+        this.formModel = this.fb.group({
+            bind_name: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].minLength(3)]],
+            bind_pass: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            host: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            port: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            location: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            user_code: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            school_id: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+            is_default: [1],
+        });
+    };
+    AddSip2ConfigModelComponent.prototype.open = function (content) {
+        var _this = this;
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+        if (this.ipMapId) {
+            // alert(111)
+            this.systemService.getOneSipConfig(this.ipMapId, function (data) {
+                _this.formModel = _this.fb.group({
+                    bind_name: [data.bind_name, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].minLength(3)]],
+                    bind_pass: [data.bind_pass, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    host: [data.host, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    port: [data.port, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    location: [data.location, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    user_code: [data.user_code, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    school_id: [data.school_id, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required]],
+                    is_default: [data.is_default],
+                });
+            }, function (err) { });
+        }
+        //this.formMode
+    };
+    AddSip2ConfigModelComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    AddSip2ConfigModelComponent.prototype.onSubmit = function () {
+        // alert(this.formModel.valid)
+        if (this.formModel.valid) {
+            var submitData = new SubmitData(this.formModel, this.myModalRef);
+            this.onSubmitData.emit(submitData);
+        }
+    };
+    return AddSip2ConfigModelComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AddSip2ConfigModelComponent.prototype, "header", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AddSip2ConfigModelComponent.prototype, "btnText", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], AddSip2ConfigModelComponent.prototype, "onSubmitData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Number)
+], AddSip2ConfigModelComponent.prototype, "ipMapId", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], AddSip2ConfigModelComponent.prototype, "schools", void 0);
+AddSip2ConfigModelComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-add-sip2-config-model',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _c || Object])
+], AddSip2ConfigModelComponent);
+
+var SubmitData = (function () {
+    function SubmitData(formModel, ref) {
+        this.formModel = formModel;
+        this.ref = ref;
+    }
+    return SubmitData;
+}());
+
+var _a, _b, _c;
+//# sourceMappingURL=add-sip2-config-model.component.js.map
 
 /***/ }),
 
@@ -201,6 +414,218 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/layout/my-component/components/book-confirm-modal/book-confirm-modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"   (click)=\"open(content)\" [disabled]=\"btnIsDisable\">{{btnText}}</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{header}}</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <input class=\"form-control\" type=\"text\" placeholder=\"{{placeHolder}}\" [(ngModel)]=\"barCode\">\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">保存</button>\n            </div>\n        </div>\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/book-confirm-modal/book-confirm-modal.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/book-confirm-modal/book-confirm-modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookConfirmModalComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BookConfirmModalComponent = (function () {
+    function BookConfirmModalComponent(modalService) {
+        this.modalService = modalService;
+        this.options = { size: 'sm' };
+        this.header = "系统借还书";
+        this.placeHolder = "条码号";
+        this.btnIsDisable = 0;
+        this.onBarCodeSubmit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    BookConfirmModalComponent.prototype.ngOnInit = function () {
+    };
+    BookConfirmModalComponent.prototype.open = function (content) {
+        var _this = this;
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+    };
+    BookConfirmModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    BookConfirmModalComponent.prototype.onSubmit = function () {
+        this.onBarCodeSubmit.emit(this.barCode);
+        this.myModalRef.close();
+    };
+    return BookConfirmModalComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], BookConfirmModalComponent.prototype, "btnText", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], BookConfirmModalComponent.prototype, "header", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], BookConfirmModalComponent.prototype, "placeHolder", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], BookConfirmModalComponent.prototype, "btnIsDisable", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], BookConfirmModalComponent.prototype, "onBarCodeSubmit", void 0);
+BookConfirmModalComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-book-confirm-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/book-confirm-modal/book-confirm-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/book-confirm-modal/book-confirm-modal.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object])
+], BookConfirmModalComponent);
+
+var _a;
+//# sourceMappingURL=book-confirm-modal.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/book-locations-modal/book-locations-modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\">查看</button>\n\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{header}}</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n\n        订单图书:\n        <table class=\"table table-striped table-bordered table-hover table-sm\">\n            <thead>\n            <tr class=\"bg-danger\">\n                <th>馆藏地</th>\n                <th>索书号</th>\n                <th>条码号</th>\n                <!--<th>馆藏地</th>-->\n                <th>可借状态状态</th>\n                <!--<th>确定可借</th>-->\n            </tr>\n            </thead>\n            <tbody>\n            <tr *ngFor=\"let item of items\">\n                <td>{{item.locationName}}</td>\n                <td>{{item.callNo}}</td>\n                <td>{{item.barCode}}</td>\n                <!--<td></td>-->\n                <td>{{item.is_available==3?'可借':'不可借'}}</td>\n                <!--<td></td>-->\n                <!--<td>-->\n                <!--<button class=\"btn btn-success btn-xs\" ng-click=\"makeSureBrown(orderDetailShow.id,vv.id,vv.is_available)\" ng-bind=\"vv.is_available==0?'确定':'取消'\" ng-class=\"{'btn-danger':vv.is_available==1}\" ng-disabled=\"orderDetailShow.status>4\"></button>-->\n                <!--</td>-->\n            </tr>\n            </tbody>\n        </table>\n\n\n\n    </div>\n    <div class=\"modal-footer\">\n        <!--<div class=\"form-group row\">-->\n            <!--<div class=\"col-sm-10\">-->\n                <!--<button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">保存</button>-->\n            <!--</div>-->\n        <!--</div>-->\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/book-locations-modal/book-locations-modal.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/book-locations-modal/book-locations-modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_book_service__ = __webpack_require__("../../../../../src/app/shared/services/book.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookLocationsModalComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BookLocationsModalComponent = (function () {
+    function BookLocationsModalComponent(modalService, bookService) {
+        this.modalService = modalService;
+        this.bookService = bookService;
+        this.options = { size: 'lg' };
+    }
+    BookLocationsModalComponent.prototype.ngOnInit = function () {
+        //alert(1111)
+    };
+    BookLocationsModalComponent.prototype.open = function (content) {
+        var _this = this;
+        this.bookService.getLibItemsWithSip2Aaviable(this.bookId, function (res) {
+            _this.items = res;
+            _this.myModalRef = _this.modalService.open(content, _this.options);
+            _this.myModalRef.result.then(function (result) {
+                _this.closeResult = "Closed with: " + result;
+            }, function (reason) {
+                _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+            });
+        }, function (err) { });
+        //alert(this.bookId)
+    };
+    BookLocationsModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    return BookLocationsModalComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], BookLocationsModalComponent.prototype, "bookId", void 0);
+BookLocationsModalComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-book-locations-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/book-locations-modal/book-locations-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/book-locations-modal/book-locations-modal.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_book_service__["a" /* BookService */]) === "function" && _b || Object])
+], BookLocationsModalComponent);
+
+var _a, _b;
+//# sourceMappingURL=book-locations-modal.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/layout/my-component/components/file-upload/file-upload.component.html":
 /***/ (function(module, exports) {
 
@@ -250,7 +675,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-var URL = 'http://101.201.103.106/jsqbapi/public/api/v1/upload';
+var URL = 'http://101.201.122.94:8089/public/api/v1/upload';
 var FileUploadComponent = (function () {
     function FileUploadComponent(tokenService, apiUrlService) {
         this.tokenService = tokenService;
@@ -264,7 +689,7 @@ var FileUploadComponent = (function () {
         var _this = this;
         var that = this;
         this.tokenService.refreshToken();
-        this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({ url: this.url, method: 'post', maxFileSize: 500000000, itemAlias: 'pdf', headers: [{ name: 'token', value: localStorage.getItem('token') }, { 'name': 'orderId', value: this.orderId }] });
+        this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({ url: this.url, method: 'POST', maxFileSize: 500000000, itemAlias: 'pdf', headers: [{ name: 'token', value: localStorage.getItem('token') }, { 'name': 'orderId', value: this.orderId }] });
         //定义两个回调
         this.uploader.onBeforeUploadItem = function (fileItem) {
             _this.onBeforeUploadItem(fileItem);
@@ -315,10 +740,278 @@ var _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/layout/my-component/components/modification-user-tel/modification-user-tel.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\">修改</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">修改手机号码</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n\n    <div class=\"modal-body\">\n        <table class=\"table table-bordered table-hover\">\n\n            <tbody>\n\n            <tr>\n                <td>手机</td>\n                <td><input type=\"text\" class=\"form-control\" [(ngModel)]=\"tel\"></td>\n                <td><button class=\"btn btn-success btn-sm\"  (click)=\"getCode()\">获取验证码</button></td>\n            </tr>\n            <tr>\n                <td>验证码</td>\n                <td><input type=\"text\" class=\"form-control\" [(ngModel)]=\"code\"></td>\n            </tr>\n\n            </tbody>\n        </table>\n\n\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">保存</button>\n            </div>\n        </div>\n\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/modification-user-tel/modification-user-tel.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/modification-user-tel/modification-user-tel.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_user_service__ = __webpack_require__("../../../../../src/app/shared/services/user.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModificationUserTelComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ModificationUserTelComponent = (function () {
+    function ModificationUserTelComponent(modalService, appService, userService) {
+        this.modalService = modalService;
+        this.appService = appService;
+        this.userService = userService;
+        this.options = { size: 'lg' };
+        this.tel = '';
+        this.code = '';
+        this.onDataSubmit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    ModificationUserTelComponent.prototype.ngOnInit = function () {
+    };
+    ModificationUserTelComponent.prototype.open = function (content) {
+        var _this = this;
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+    };
+    ModificationUserTelComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    ModificationUserTelComponent.prototype.getCode = function () {
+        if (!this.tel) {
+            alert('手机号码不能为空');
+        }
+        this.userService.getTelCode(this.tel, function (res) {
+            console.log(res);
+        });
+    };
+    ModificationUserTelComponent.prototype.onSubmit = function () {
+        if (!this.tel || !this.code) {
+            alert("验证码或者手机号为空");
+        }
+        else {
+            this.onDataSubmit.emit({ 'phone': this.tel, 'code': this.code });
+            this.myModalRef.close();
+        }
+    };
+    return ModificationUserTelComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], ModificationUserTelComponent.prototype, "user", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], ModificationUserTelComponent.prototype, "transformPageData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], ModificationUserTelComponent.prototype, "onDataSubmit", void 0);
+ModificationUserTelComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-modification-user-tel',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/modification-user-tel/modification-user-tel.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/modification-user-tel/modification-user-tel.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_user_service__["a" /* UserService */]) === "function" && _c || Object])
+], ModificationUserTelComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=modification-user-tel.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/order-detail-modal/order-detail-modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\">详情</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{header}}</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n\n        <!--<app-file-upload (isUploaded)=\"setIsupload($event)\" [hidden]=\"orderInfo.is_have\" [orderId]=\"orderInfo.id\"></app-file-upload>-->\n\n        <!--<button [hidden]=\"!isUploaded\" class=\"btn btn-success\" (click)=\"sendArticle(orderInfo.id)\">提交</button>-->\n\n\n        订单图书:\n        <table class=\"table table-striped table-bordered table-hover table-sm\">\n            <thead>\n            <tr class=\"bg-success\">\n                <th>书名</th>\n                <th>isbn</th>\n                <!--<th>索书号</th>-->\n                <!--<th>馆藏地</th>-->\n                <th>馆藏列表</th>\n                <th>确定可借</th>\n                <th>不可借删除</th>\n                <th>处理状态</th>\n            </tr>\n            </thead>\n            <tbody>\n            <tr *ngFor=\"let book of order.book_list\">\n                <td>{{book.book_detail.title}}</td>\n                <td>{{book.book_detail.isbn}}</td>\n                <!--<td></td>-->\n                <td><app-book-locations-modal [bookId]=\"book.book_detail.id\"></app-book-locations-modal></td>\n                <!--<td></td>-->\n                <td>\n                    <!--<button class=\"btn btn-success btn-xs\" ng-click=\"makeSureBrown(orderDetailShow.id,vv.id,vv.is_available)\" ng-bind=\"vv.is_available==0?'确定':'取消'\" ng-class=\"{'btn-danger':vv.is_available==1}\" ng-disabled=\"orderDetailShow.status>4\"></button>-->\n                    <app-book-confirm-modal *ngIf=\"book.is_available==0\" [btnText]=\"'确定'\" [btnIsDisable]=\"order.status>2\" (onBarCodeSubmit)=\"borrowBook($event,book.book_detail.id,book.id)\" ></app-book-confirm-modal>\n                    <app-book-confirm-modal *ngIf=\"book.is_available==1\" [btnText]=\"'取消'\" [btnIsDisable]=\"order.status>2\" (onBarCodeSubmit)=\"returnBook($event,book.book_detail.id,book.id)\" ></app-book-confirm-modal>\n                </td>\n                <td>\n                    <button class=\"btn btn-success btn-sm\" *ngIf=\"book.is_available==0\" [disabled]=\"order.status>2\" (click)=\"deleteOrderBook(book.id,book.book_detail.id,2)\">删除</button>\n                    <button class=\"btn btn-success btn-sm\" *ngIf=\"book.is_available==2\" [disabled]=\"order.status>2\" (click)=\"deleteOrderBook(book.id,book.book_detail.id,0)\">还原</button>\n                </td>\n                <td>\n                    <span *ngIf=\"book.is_available!=0\" style=\"color: green\"><i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i></span>\n                    <span *ngIf=\"book.is_available==0\" style=\"color: red\"><i class=\"fa fa-times-circle-o\" aria-hidden=\"true\"></i></span>\n                </td>\n            </tr>\n            </tbody>\n        </table>\n        <br>\n\n        订单信息:\n        <table class=\"table table-bordered table-hover table-sm\">\n\n            <tbody>\n            <tr>\n                <td>下单人</td>\n                <td>{{order.user_detail.user_name}}</td>\n            </tr>\n            <tr>\n                <td>下单人联系方式</td>\n                <td>{{order.user_detail.phone}}</td>\n            </tr>\n            <tr>\n                <td>收件人</td>\n                <td>{{order.address_detail.consignee}}</td>\n            </tr>\n            <tr>\n                <td>下单时间</td>\n                <td>{{order.create_time}}</td>\n            </tr>\n            <tr>\n                <td>收货地址</td>\n                <td>{{order.address_detail.province+order.address_detail.city+order.address_detail.county+order.address_detail.street+order.address_detail.detail_address}}</td>\n            </tr>\n            <tr>\n                <td>收件人电话</td>\n                <td>{{order.address_detail.tel}}</td>\n            </tr>\n            <tr>\n                <td>借还书时间</td>\n                <!--<td>{{order.start_time}}    -   {{order.return_time*1000}}</td>-->\n                <td>{{order.start_time*1000 | date:'yyyy-MM-dd HH:mm:ss'}}    -   {{order.return_time*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>\n            </tr><tr>\n                <td>支付金额</td>\n                <td>￥{{order.total_money}}</td>\n            </tr>\n            </tbody>\n        </table>\n\n\n\n\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">保存</button>\n            </div>\n        </div>\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/order-detail-modal/order-detail-modal.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/order-detail-modal/order-detail-modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_book_service__ = __webpack_require__("../../../../../src/app/shared/services/book.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderDetailModalComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var OrderDetailModalComponent = (function () {
+    function OrderDetailModalComponent(modalService, modalService2, bookService, appService) {
+        this.modalService = modalService;
+        this.modalService2 = modalService2;
+        this.bookService = bookService;
+        this.appService = appService;
+        this.options = { size: 'lg' };
+    }
+    OrderDetailModalComponent.prototype.ngOnInit = function () {
+    };
+    OrderDetailModalComponent.prototype.open = function (content) {
+        var _this = this;
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+    };
+    OrderDetailModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    OrderDetailModalComponent.prototype.borrowBook = function (event, book_id, id) {
+        var _this = this;
+        this.bookService.borrowBook(event, function (res) {
+            //console.log(event);
+            var arr = _this.order.book_list.map(function (book) { return parseInt(book.book_id); });
+            var index = arr.indexOf(parseInt(book_id));
+            _this.order.book_list[index]['is_available'] = 1;
+            //console.log(res);
+            _this.bookService.updateFieldByListId(id, 'is_available', 1, function (res) { }, function (err) { });
+            _this.bookService.updateFieldByListId(id, 'bar_code', event, function (res) { }, function (err) { });
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+        }, function (err) {
+            console.log(err);
+            alert("借书失败");
+        });
+    };
+    OrderDetailModalComponent.prototype.returnBook = function (event, book_id, id) {
+        var _this = this;
+        this.bookService.returnBook(event, function (res) {
+            //console.log(event);
+            var arr = _this.order.book_list.map(function (book) { return parseInt(book.book_id); });
+            var index = arr.indexOf(parseInt(book_id));
+            _this.order.book_list[index]['is_available'] = 0;
+            //console.log(res);
+            _this.bookService.updateFieldByListId(id, 'is_available', 0, function (res) { }, function (err) { });
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+        }, function (err) {
+            console.log(err);
+            alert("还书失败");
+        });
+        //alert(event)
+    };
+    OrderDetailModalComponent.prototype.deleteOrderBook = function (id, book_id, status) {
+        var _this = this;
+        this.bookService.updateFieldByListId(id, 'is_available', status, function (res) {
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData);
+            var arr = _this.order.book_list.map(function (book) { return parseInt(book.book_id); });
+            var index = arr.indexOf(parseInt(book_id));
+            _this.order.book_list[index]['is_available'] = status;
+        }, function (err) { });
+    };
+    return OrderDetailModalComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], OrderDetailModalComponent.prototype, "order", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], OrderDetailModalComponent.prototype, "transformPageData", void 0);
+OrderDetailModalComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-order-detail-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/order-detail-modal/order-detail-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/order-detail-modal/order-detail-modal.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_book_service__["a" /* BookService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_service__["a" /* AppService */]) === "function" && _d || Object])
+], OrderDetailModalComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=order-detail-modal.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/layout/my-component/components/order-list/order-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <div class=\"row\">\n        <div class=\"col col-xl-12 col-lg-12\">\n            <div class=\"card border-primary mb-3\">\n                <div class=\"card-header\">最新订单</div>\n                <div class=\"card-block table-responsive\">\n                    <table class=\"table table-hover  table-bordered table-dark table-sm \">\n                        <thead class=\"bg-success\">\n                        <tr>\n                            <th>id</th>\n                            <th class=\"hidden-sm\">申请IP</th>\n                            <th>申请单位</th>\n                            <th class=\"hidden-sm\">申请人</th>\n                            <th class=\"hidden-sm\">申请时间</th>\n                            <!--<th>标题</th>-->\n                            <!--<th>DOI号</th>-->\n                            <th>操作</th>\n                            <!--<th>留言</th>-->\n                        </tr>\n                        </thead>\n                        <tbody>\n                        <tr *ngFor=\"let order of orders\" [hidden]=\"!orders\">\n                            <th scope=\"row\">{{order.id}}</th>\n                            <td class=\"hidden-sm\">{{order.requestip}}</td>\n                            <td>{{order.request_map}}</td>\n                            <td class=\"hidden-sm\">{{order.from_name}}</td>\n                            <td class=\"hidden-sm\">{{order.create_time}}</td>\n                            <!--<td>{{order.title}}</td>-->\n                            <!--<td>{{order.doi}}</td>-->\n                            <!--<td [hidden]=\"!order.url\"><button class=\"btn btn-success btn-sm\" (click)=\"sendArticle(order.id)\">提交</button></td>-->\n                            <!--<td [hidden]=\"order.url\"><app-modal></app-modal></td>-->\n                            <td><app-modal [orderInfo]=\"order\" [isTransmited]=\"isTransmited\"></app-modal></td>\n                            <!--<td><button>详情</button></td>-->\n                        </tr>\n\n\n                        </tbody>\n                    </table>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<!--<div>-->\n    <!--<div class=\"row\">-->\n        <!--<div class=\"col col-xl-12 col-lg-12\">-->\n            <!--<div class=\"card border-primary mb-3\">-->\n                <!--<div class=\"card-header\">订单管理</div>-->\n                <!--<div class=\"card-block table-responsive\">-->\n                    <!--<table class=\"table table-hover  table-bordered table-dark table-sm \">-->\n                        <!--<thead class=\"bg-success\">-->\n                        <!--<tr>-->\n                            <!--<th>id</th>-->\n                            <!--<th class=\"hidden-sm\">申请IP</th>-->\n                            <!--<th>申请单位</th>-->\n                            <!--<th class=\"hidden-sm\">申请人</th>-->\n                            <!--<th class=\"hidden-sm\">申请时间</th>-->\n                            <!--&lt;!&ndash;<th>标题</th>&ndash;&gt;-->\n                            <!--&lt;!&ndash;<th>DOI号</th>&ndash;&gt;-->\n                            <!--<th>操作</th>-->\n                            <!--&lt;!&ndash;<th>留言</th>&ndash;&gt;-->\n                        <!--</tr>-->\n                        <!--</thead>-->\n                        <!--<tbody>-->\n                        <!--<tr *ngFor=\"let order of orders\" [hidden]=\"!orders\">-->\n                            <!--<th scope=\"row\">{{order.id}}</th>-->\n                            <!--<td class=\"hidden-sm\">{{order.requestip}}</td>-->\n                            <!--<td>{{order.request_map}}</td>-->\n                            <!--<td class=\"hidden-sm\">{{order.from_name}}</td>-->\n                            <!--<td class=\"hidden-sm\">{{order.create_time}}</td>-->\n                            <!--&lt;!&ndash;<td>{{order.title}}</td>&ndash;&gt;-->\n                            <!--&lt;!&ndash;<td>{{order.doi}}</td>&ndash;&gt;-->\n                            <!--&lt;!&ndash;<td [hidden]=\"!order.url\"><button class=\"btn btn-success btn-sm\" (click)=\"sendArticle(order.id)\">提交</button></td>&ndash;&gt;-->\n                            <!--&lt;!&ndash;<td [hidden]=\"order.url\"><app-modal></app-modal></td>&ndash;&gt;-->\n                            <!--<td><app-modal [orderInfo]=\"order\" [isTransmited]=\"isTransmited\"></app-modal></td>-->\n                            <!--&lt;!&ndash;<td><button>详情</button></td>&ndash;&gt;-->\n                        <!--</tr>-->\n\n\n                        <!--</tbody>-->\n                    <!--</table>-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n    <!--</div>-->\n<!--</div>-->\n\n\n<div>\n    <div class=\"row\">\n        <div class=\"col col-xl-12 col-lg-12\">\n            <div class=\"card border-primary mb-3\">\n                <div class=\"card-header\">订单管理</div>\n                <div class=\"card-block table-responsive\">\n\n\n                    <!--<button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"filterItems(999)\" [ngClass]=\"{'btn-success':state==999}\">全部</button>-->\n                    <button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"filterItems(0)\"  [ngClass]=\"{'btn-success':state==0}\">待发货</button>\n                    <!--<button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(2)\" ng-class=\"{'btn-success':state==2}\">已付款</button>-->\n                    <!--<button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"filterItems(1)\"  [ngClass]=\"{'btn-success':state==1}\">已发货</button>-->\n                    <button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"filterItems(2)\"  [ngClass]=\"{'btn-success':state==2}\">待收货</button>\n                    <!--<button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(5)\" ng-class=\"{'btn-success':state==5}\">下单成功</button>-->\n                    <button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"filterItems(3)\" [ngClass]=\"{'btn-success':state==3}\">待归还</button>\n                    <!--<button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(7)\" ng-class=\"{'btn-success':state==7}\">待收货</button>-->\n                    <!--<button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(8)\" ng-class=\"{'btn-success':state==8}\">已收货</button>-->\n                    <button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"filterItems(4)\" [ngClass]=\"{'btn-success':state==4}\">已归还</button>\n\n                    <!--<button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(10)\" ng-class=\"{'btn-success':state==10}\">还书中</button>-->\n                    <!--<button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(11)\" ng-class=\"{'btn-success':state==11}\">已归还</button>-->\n                    <!---->\n                    <!--\n                    <button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"filterItems(11)\" ng-class=\"{'btn-success':state==11}\">超过3天未自提订单</button>\n                    -->\n\n\n                    <br/>\n                    <!--<br/>-->\n\n\n                    <div class=\"form-group input-group col-xl-4 col-lg-4 pull-right\" >\n                        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"keyword\" (keyup)=\"onSearch()\" placeholder=\"请输入订单号搜索\">\n                        <span class=\"input-group-btn\">\n                        <button class=\"btn btn-secondary\" type=\"button\" (click)=\"onSearch()\"><i class=\"fa fa-search\"></i></button>\n                    </span>\n                    </div>\n\n\n\n                    <table class=\"table table-hover  table-bordered table-dark table-sm \">\n                        <thead class=\"bg-success\">\n                        <tr>\n                            <th>订单编号</th>\n                            <th class=\"hidden-sm\">下单时间</th>\n                            <th>下单人</th>\n                            <th class=\"hidden-sm\">联系电话</th>\n                            <th class=\"hidden-sm\">所属图书馆</th>\n                            <!--<th>标题</th>-->\n                            <!--<th>DOI号</th>-->\n                            <th>操作</th>\n                            <!--<th>留言</th>-->\n                        </tr>\n                        </thead>\n                        <tbody>\n                        <tr *ngFor=\"let order of orders\" [hidden]=\"!orders\">\n                            <th scope=\"row\">{{order.sn}}</th>\n                            <td class=\"hidden-sm\">{{order.create_time}}</td>\n                            <td>{{order.user_detail.user_name}}</td>\n                            <td class=\"hidden-sm\">{{order.user_detail.phone}}</td>\n                            <td class=\"hidden-sm\">{{order.library_detail.lname}}</td>\n                            <!--<td>{{order.title}}</td>-->\n                            <!--<td>{{order.doi}}</td>-->\n                            <!--<td [hidden]=\"!order.url\"><button class=\"btn btn-success btn-sm\" (click)=\"sendArticle(order.id)\">提交</button></td>-->\n                            <!--<td [hidden]=\"order.url\"><app-modal></app-modal></td>-->\n                            <td>\n                                <app-order-detail-modal [order]=\"order\" [transformPageData]=\"transformPageData\" ></app-order-detail-modal>\n                                <app-book-confirm-modal [btnText]=\"'发货'\" [header]=\"'发货'\" [placeHolder]=\"'物流单号'\" (onBarCodeSubmit)=\"sendOrder($event,order.id)\" [btnIsDisable]=\"!order.is_available || order.status>2\" *ngIf=\"isLogisticsList\"></app-book-confirm-modal>\n                                <!--<button class=\"btn btn-success btn-sm\">发货</button>-->\n                                <button class=\"btn btn-success btn-sm\" [disabled]=\"!order.is_available\" *ngIf=\"isLogisticsList\">查看物流</button>\n\n                                <button class=\"btn btn-success btn-sm\" (click)=\"sendExtractMessage(order.id)\" *ngIf=\"!isLogisticsList\" [disabled]=\"!isLogisticsList &&order.status>=9\">发送通知</button>\n                                <button class=\"btn btn-success btn-sm\" (click)=\"sendExtractOrder(order.id)\" *ngIf=\"!isLogisticsList &&order.status<9\" >自提发货</button>\n                                <button class=\"btn btn-danger btn-sm\"  *ngIf=\"!isLogisticsList &&order.status>=9\">已 提 走</button>\n                                <button class=\"btn btn-success btn-sm\" *ngIf=\"!isLogisticsList &&order.message_time && ((order.message_time+604800)*1000-nowTimeStamp)>0 &&order.status<9\">{{((order.message_time+604800)*1000-nowTimeStamp)|fomatshijiancha:''}}</button>\n\n\n                                <!--<app-modal [orderInfo]=\"order\" [isTransmited]=\"isTransmited\"></app-modal>-->\n                                <!--<app-modal [orderInfo]=\"order\" [isTransmited]=\"isTransmited\"></app-modal>-->\n                                <!--<app-modal [orderInfo]=\"order\" [isTransmited]=\"isTransmited\"></app-modal>-->\n                            </td>\n                            <!--<td><button>详情</button></td>-->\n                        </tr>\n\n\n                        </tbody>\n                    </table>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -345,6 +1038,10 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__ = __webpack_require__("../../../../../src/app/shared/services/order/order.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_message_service__ = __webpack_require__("../../../../../src/app/shared/services/message.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -356,12 +1053,70 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var OrderListComponent = (function () {
-    function OrderListComponent() {
+    function OrderListComponent(orderService, appService, apiUrlService, messageService) {
+        this.orderService = orderService;
+        this.appService = appService;
+        this.apiUrlService = apiUrlService;
+        this.messageService = messageService;
         this.isTransmited = false;
+        this.onStatusChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.isLogisticsList = true;
+        this.keyword = '';
+        this.state = 0;
     }
     OrderListComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //alert(this.isTransmited)
+        setInterval(function () {
+            var myDate = new Date();
+            var nowTime = myDate.toLocaleString();
+            _this.nowTimeStamp = myDate.valueOf();
+        }, 1000);
+    };
+    OrderListComponent.prototype.onSearch = function () {
+        this.transformPageData.url = this.apiUrlService.getLogisticsOrderUrl + '/' + this.state + '?keyword=' + this.keyword;
+        this.appService.pageRefreshEventEmitter.emit(this.transformPageData); //创建一个事件流发送传递过来的分页信息
+    };
+    OrderListComponent.prototype.sendOrder = function (event, id) {
+        var _this = this;
+        //alert(event);return false;
+        this.orderService.setOrderAndBookStatusById(id, 7, 3, function (res) {
+            //还要添加物流单号
+            // this.orderService.setCarrierCodeByOrderId(id,event,res=>{
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            // },err=>{})
+        }, function (err) { }, event);
+    };
+    OrderListComponent.prototype.filterItems = function (status) {
+        this.state = status; //用于视图高亮显示
+        if (this.isLogisticsList) {
+            this.transformPageData.url = this.apiUrlService.getLogisticsOrderUrl + '/' + status + '?keyword=' + this.keyword;
+            this.appService.pageRefreshEventEmitter.emit(this.transformPageData); //创建一个事件流发送传递过来的分页信息
+        }
+        else {
+            this.transformPageData.url = this.apiUrlService.getExtractOrderUrl + '/' + status + '?keyword=' + this.keyword;
+            this.appService.pageRefreshEventEmitter.emit(this.transformPageData); //创建一个事件流发送传递过来的分页信息
+        }
+        //alert(status);
+    };
+    OrderListComponent.prototype.sendExtractMessage = function (order_id) {
+        var _this = this;
+        this.messageService.sendExtractMessage(order_id, function (res) {
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            alert("发送成功");
+        }, function (err) { });
+    };
+    OrderListComponent.prototype.sendExtractOrder = function (order_id) {
+        var _this = this;
+        this.orderService.setOrderAndBookStatusById(order_id, 9, 3, function (res) {
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            alert("自提成功");
+        }, function (err) { });
     };
     return OrderListComponent;
 }());
@@ -373,15 +1128,28 @@ __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Boolean)
 ], OrderListComponent.prototype, "isTransmited", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], OrderListComponent.prototype, "transformPageData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], OrderListComponent.prototype, "onStatusChange", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], OrderListComponent.prototype, "isLogisticsList", void 0);
 OrderListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-order-list',
         template: __webpack_require__("../../../../../src/app/layout/my-component/components/order-list/order-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/order-list/order-list.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_order_order_service__["a" /* OrderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_api_url_service__["a" /* ApiUrlService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_message_service__["a" /* MessageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_message_service__["a" /* MessageService */]) === "function" && _d || Object])
 ], OrderListComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=order-list.component.js.map
 
 /***/ }),
@@ -392,11 +1160,8 @@ OrderListComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pagination_model__ = __webpack_require__("../../../../../src/app/layout/my-component/components/pagination/pagination-model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_http_http_service__ = __webpack_require__("../../../../../src/app/shared/services/http/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_util_utils__ = __webpack_require__("../../../../../src/app/shared/services/util/utils.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_toast_toast_service__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast-model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpPaginationComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -411,18 +1176,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
 /**
  * app-http-pagination组件
  */
 var HttpPaginationComponent = (function () {
-    function HttpPaginationComponent(httpService, toastService, appService) {
+    function HttpPaginationComponent(httpService2, appService) {
+        // this.appService.keywordEventEmitter.debounceTime(500).subscribe(res=>{
+        //     this.getServerData()
+        // })
         var _this = this;
-        this.httpService = httpService;
-        this.toastService = toastService;
+        this.httpService2 = httpService2;
         this.appService = appService;
+        // ngOnChanges(changes: SimpleChanges): void {
+        //     //this.getServerData()
+        // }
         this.pageList = [10, 20, 30, 50, 100, 150, 200];
         this.btnCls = 'btn-secondary';
         this.method = 'post';
@@ -431,6 +1198,9 @@ var HttpPaginationComponent = (function () {
         this.total = 0;
         this.pageSize = this.pageList[0];
         this.pageNumber = 1;
+        this.requestDataCallback = function (res) {
+            _this.serverDataProcess(res);
+        };
         this.appService.pageRefreshEventEmitter.subscribe(function (data) {
             _this.pageSize = data.pageSize;
             _this.pageNumber = data.pageNumber;
@@ -439,9 +1209,6 @@ var HttpPaginationComponent = (function () {
             //alert(data.pageNumber)
         });
     }
-    HttpPaginationComponent.prototype.ngOnChanges = function (changes) {
-        //this.getServerData()
-    };
     /**
     * 初始化
     */
@@ -459,80 +1226,27 @@ var HttpPaginationComponent = (function () {
      * 获得服务器数据
      */
     HttpPaginationComponent.prototype.getServerData = function () {
-        var that = this;
+        //alert(3333)
         var serviceData = {};
-        // alert(this.pageNumber)
-        if (__WEBPACK_IMPORTED_MODULE_3__shared_services_util_utils__["a" /* Utils */].isArray(this.param)) {
-            serviceData.pageNumber = this.pageNumber;
-            serviceData.pageSize = this.pageSize;
-            serviceData.list = this.param;
-        }
-        else if (__WEBPACK_IMPORTED_MODULE_3__shared_services_util_utils__["a" /* Utils */].isObject(this.param)) {
-            this.param.pageNumber = this.pageNumber;
-            this.param.pageSize = this.pageSize;
-            serviceData = this.param;
-        }
-        else {
-            serviceData.pageNumber = this.pageNumber;
-            serviceData.pageSize = this.pageSize;
-        }
-        if (this.method == __WEBPACK_IMPORTED_MODULE_1__pagination_model__["a" /* HttpPaginationMethod */].GET && __WEBPACK_IMPORTED_MODULE_3__shared_services_util_utils__["a" /* Utils */].isNotEmpty(this.url)) {
-            this.httpService.get(this.url, serviceData, function (successful, data, res) {
-                if (successful) {
-                    that.serverDataProcess(data);
-                }
-                else {
-                    var toastCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["a" /* ToastConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["b" /* ToastType */].ERROR, '', '数据请求失败！', 3000);
-                    that.toastService.toast(toastCfg);
-                }
-            }, function (successful, msg, err) {
-                var toastCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["a" /* ToastConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["b" /* ToastType */].ERROR, '', msg, 3000);
-                that.toastService.toast(toastCfg);
-            });
-        }
-        else if (__WEBPACK_IMPORTED_MODULE_3__shared_services_util_utils__["a" /* Utils */].isNotEmpty(this.url)) {
-            this.httpService.post(this.url, serviceData, function (successful, data, res) {
-                if (successful) {
-                    that.serverDataProcess(data);
-                }
-                else {
-                    var toastCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["a" /* ToastConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["b" /* ToastType */].ERROR, '', '数据请求失败！', 3000);
-                    that.toastService.toast(toastCfg);
-                }
-            }, function (successful, msg, err) {
-                var toastCfg = new __WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["a" /* ToastConfig */](__WEBPACK_IMPORTED_MODULE_5__shared_components_toast_toast_model__["b" /* ToastType */].ERROR, '', msg, 3000);
-                that.toastService.toast(toastCfg);
-            });
-        }
-        else {
-            console.error("app-http-pagination组件请求时，url参数为空！");
-        }
+        serviceData.pageNumber = this.pageNumber;
+        serviceData.pageSize = this.pageSize;
+        this.httpService2.request({ url: this.url, type: this.method, data: serviceData, sCallback: this.requestDataCallback }, false);
     };
     /**
      * 服务器端数据处理
      * @param data 数据
      */
     HttpPaginationComponent.prototype.serverDataProcess = function (data) {
-        if (data && data.total && data.rows) {
-            this.total = data.total;
-            //alert(this.total)
-            //this.pageSize = data.page_size;
-            // this.pageNumber =data.current_page;
-            this.onDataChanged.emit(data);
-        }
-        else {
-            //console.error("app-http-pagination,返回的数据格式不正确！");
-            this.total = data.total;
-            this.onDataChanged.emit(data);
-        }
+        this.total = data.total;
+        this.onDataChanged.emit(data);
     };
     /**
      * 分页改变事件
      * @param event
      */
     HttpPaginationComponent.prototype.onPageChanged = function ($event) {
-        if ($event.type != __WEBPACK_IMPORTED_MODULE_1__pagination_model__["b" /* PaginationType */].PAGE_INIT) {
-            console.log($event);
+        if ($event.type != __WEBPACK_IMPORTED_MODULE_1__pagination_model__["a" /* PaginationType */].PAGE_INIT) {
+            //console.log($event);
             this.pageSize = $event.pageSize;
             this.pageNumber = $event.pageNumber;
             //this.total=$event.total
@@ -572,10 +1286,10 @@ HttpPaginationComponent = __decorate([
     })
     //       <app-pagination [total]="total" [pageList]="pageList" [pageSize]="pageSize" [btnCls]="btnCls" (onPageChanged)="onPageChanged($event)"></app-pagination>
     ,
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_http_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_http_http_service__["a" /* HttpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__shared_components_toast_toast_service__["a" /* ToastService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_components_toast_toast_service__["a" /* ToastService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__app_service__["a" /* AppService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_http_service__["a" /* HttpService2 */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */]) === "function" && _b || Object])
 ], HttpPaginationComponent);
 
-var _a, _b, _c;
+var _a, _b;
 //# sourceMappingURL=http-pagination.component.js.map
 
 /***/ }),
@@ -584,9 +1298,9 @@ var _a, _b, _c;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return PaginationType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaginationType; });
 /* unused harmony export PaginationOptions */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpPaginationMethod; });
+/* unused harmony export HttpPaginationMethod */
 /**
  * 分页操作类型
  */
@@ -629,7 +1343,7 @@ HttpPaginationMethod.GET = "get";
 /***/ "../../../../../src/app/layout/my-component/components/pagination/pagination.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pull-right\">\n\n    <!--<div class=\"col col-sm-6 pull-right\">-->\n        <!--<div class=\"card mt-3\">-->\n            <!--<div class=\"card-header\">Advanced Pagination</div>-->\n            <!--<div class=\"card-block\">-->\n                <!--<div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = false</div>-->\n                <!--<ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [boundaryLinks]=\"true\"></ngb-pagination>-->\n\n                <!--<div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = true</div>-->\n                <ngb-pagination [collectionSize]=\"options.total\" [(page)]=\"options.pageNumber\" [pageSize]=\"options.pageSize\" [maxSize]=\"5\" [rotate]=\"true\" [boundaryLinks]=\"true\" [size]=\"''\" (pageChange)=\"pageChangeHandler($event)\"></ngb-pagination>\n    <!--<br>-->\n                <!--{{options.pageTotal}}<br>-->\n                <!--{{options.pageSize}}<br>-->\n                <!--{{options.total}}<br>-->\n\n                <!--<div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = true, ellipses = false</div>-->\n                <!--<ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [rotate]=\"true\" [ellipses]=\"false\" [boundaryLinks]=\"true\"></ngb-pagination>-->\n                <!--<div class=\"alert alert-info\">-->\n                    <!--<b>Current page: </b>{{advancedPagination}}-->\n                <!--</div>-->\n            <!--</div>-->\n        <!--</div>-->\n    <!--</div>-->\n</div>\n\n\n\n<div class=\"btn-group pull-left\" style=\"margin-top:5px\">\n\t\t\t<span *ngIf=\"options.pageTotal>0\"> 每页\n\t\t\t\t<select  [ngModel]=\"options.pageSize\" (ngModelChange)=\"pageSizeChanged($event);\">\n\t\t\t\t<option *ngFor=\"let item of options.pageList\" [value]='item'>{{item}}</option>\n\t\t\t\t</select> 条数据，\n\t            </span>\n            <span *ngIf=\"options.pageTotal<=0\">\n\t\t      每页 {{options.pageSize}} 条数据，\n\t\t\t</span>\n\n    当前第 {{options.pageNumber}} 页, 共 {{options.pageTotal}} 页，共  {{options.total}} 条数据\n</div>\n"
+module.exports = "<div class=\"row pull-right\">\n\n    <!--<div class=\"col col-sm-6 pull-right\">-->\n    <!--<div class=\"card mt-3\">-->\n    <!--<div class=\"card-header\">Advanced Pagination</div>-->\n    <!--<div class=\"card-block\">-->\n    <!--<div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = false</div>-->\n    <!--<ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [boundaryLinks]=\"true\"></ngb-pagination>-->\n\n    <!--<div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = true</div>-->\n    <ngb-pagination [collectionSize]=\"options.total\" [(page)]=\"options.pageNumber\" [pageSize]=\"options.pageSize\" [maxSize]=\"5\" [rotate]=\"true\" [boundaryLinks]=\"true\" [size]=\"''\" (pageChange)=\"pageChangeHandler($event)\"></ngb-pagination>\n    <!--<br>-->\n    <!--{{options.pageTotal}}<br>-->\n    <!--{{options.pageSize}}<br>-->\n    <!--{{options.total}}<br>-->\n\n    <!--<div class=\"text-uppercase text-muted fs-12\">maxSize = 5, rotate = true, ellipses = false</div>-->\n    <!--<ngb-pagination [collectionSize]=\"120\" [(page)]=\"advancedPagination\" [maxSize]=\"5\" [rotate]=\"true\" [ellipses]=\"false\" [boundaryLinks]=\"true\"></ngb-pagination>-->\n    <!--<div class=\"alert alert-info\">-->\n    <!--<b>Current page: </b>{{advancedPagination}}-->\n    <!--</div>-->\n    <!--</div>-->\n    <!--</div>-->\n    <!--</div>-->\n</div>\n\n\n\n<div class=\"btn-group pull-left\" style=\"margin-top:5px\">\n\t\t\t<span *ngIf=\"options.pageTotal>0\"> 每页\n\t\t\t\t<select  [ngModel]=\"options.pageSize\" (ngModelChange)=\"pageSizeChanged($event);\">\n\t\t\t\t<option *ngFor=\"let item of options.pageList\" [value]='item'>{{item}}</option>\n\t\t\t\t</select> 条数据，\n\t            </span>\n    <span *ngIf=\"options.pageTotal<=0\">\n\t\t      每页 {{options.pageSize}} 条数据，\n\t\t\t</span>\n\n    当前第 {{options.pageNumber}} 页, 共 {{options.pageTotal}} 页，共  {{options.total}} 条数据\n</div>\n"
 
 /***/ }),
 
@@ -704,7 +1418,7 @@ var PaginationComponent = (function () {
         this.options.pageSize = this.pageSize ? this.pageSize : this.pageList[0];
         this.options.pageNumber = this.pageNumber;
         this.refreshPage();
-        this.pageOperation(__WEBPACK_IMPORTED_MODULE_1__pagination_model__["b" /* PaginationType */].PAGE_INIT);
+        this.pageOperation(__WEBPACK_IMPORTED_MODULE_1__pagination_model__["a" /* PaginationType */].PAGE_INIT);
         //alert(11111)
     };
     /**
@@ -743,7 +1457,7 @@ var PaginationComponent = (function () {
         // this.isDisabled = !this.isDisabled;
     };
     PaginationComponent.prototype.pageChangeHandler = function (event) {
-        console.log(event);
+        //console.log(event)
         this.options.pageNumber = Number.parseInt(event);
         //this.refreshPage();
         this.pageOperation(0);
@@ -756,7 +1470,7 @@ var PaginationComponent = (function () {
         this.options.pageSize = Number.parseInt($event);
         //alert($event)
         this.refreshPage();
-        this.pageOperation(__WEBPACK_IMPORTED_MODULE_1__pagination_model__["b" /* PaginationType */].PAGE_SIZE_CHANGE);
+        this.pageOperation(__WEBPACK_IMPORTED_MODULE_1__pagination_model__["a" /* PaginationType */].PAGE_SIZE_CHANGE);
         //
     };
     return PaginationComponent;
@@ -879,6 +1593,283 @@ PieChartComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=pie-chart.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\">详情</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">图书详情</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n\n        <!--<app-file-upload (isUploaded)=\"setIsupload($event)\" [hidden]=\"orderInfo.is_have\" [orderId]=\"orderInfo.id\"></app-file-upload>-->\n\n        <!--<button [hidden]=\"!isUploaded\" class=\"btn btn-success\" (click)=\"sendArticle(orderInfo.id)\">提交</button>-->\n\n\n        订单图书:\n        <table class=\"table table-striped table-bordered table-hover table-sm\">\n            <thead>\n            <tr class=\"bg-success\">\n                <th>条码号</th>\n                <th>书名</th>\n                <!--<th>索书号</th>-->\n                <th>馆藏地</th>\n                <th>索书号</th>\n                <th>操作</th>\n            </tr>\n            </thead>\n            <tbody>\n            <tr *ngFor=\"let book of books\">\n                <td>{{book.bar_code}}</td>\n                <td>{{book.book_detail.title}}</td>\n                <td>{{book.book_sip2.variable.AP[0]}}</td>\n                <td>{{book.book_sip2.variable.AY[0]}}</td>\n\n                <!--<td></td>-->\n                <td>\n                    <app-book-confirm-modal *ngIf=\"book.status < 5\" [btnText]=\"'还书入库'\" [header]=\"'扫码或输入图书条形码'\" (onBarCodeSubmit)=\"onBookReturnHandle($event,book.id)\" [btnIsDisable]=\"book.status==5\"></app-book-confirm-modal>\n                    <app-book-confirm-modal *ngIf=\"book.status == 5\" [btnText]=\"'已入库'\" [header]=\"'扫码或输入图书条形码'\" (onBarCodeSubmit)=\"onBookReturnHandle($event,book.id)\" [btnIsDisable]=\"book.status==5\"></app-book-confirm-modal>\n                    <!--<button class=\"btn btn-success btn-xs\" ng-click=\"makeSureBrown(orderDetailShow.id,vv.id,vv.is_available)\" ng-bind=\"vv.is_available==0?'确定':'取消'\" ng-class=\"{'btn-danger':vv.is_available==1}\" ng-disabled=\"orderDetailShow.status>4\"></button>-->\n                    <!--<app-book-confirm-modal *ngIf=\"book.is_available==0\" [btnText]=\"'确定'\" (onBarCodeSubmit)=\"borrowBook($event,book.book_detail.id,book.id)\" ></app-book-confirm-modal>-->\n                    <!--<app-book-confirm-modal *ngIf=\"book.is_available==1\" [btnText]=\"'取消'\" (onBarCodeSubmit)=\"returnBook($event,book.book_detail.id,book.id)\" ></app-book-confirm-modal>-->\n\n                </td>\n            </tr>\n            </tbody>\n        </table>\n        <br>\n\n\n\n\n\n    </div>\n    <div class=\"modal-footer\">\n        <!--<div class=\"form-group row\">-->\n            <!--<div class=\"col-sm-10\">-->\n                <!--<button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">保存</button>-->\n            <!--</div>-->\n        <!--</div>-->\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_book_service__ = __webpack_require__("../../../../../src/app/shared/services/book.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_order_order_service__ = __webpack_require__("../../../../../src/app/shared/services/order/order.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__domain_status_model__ = __webpack_require__("../../../../../src/app/layout/domain/status.model.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReturnOrderDetailModalComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ReturnOrderDetailModalComponent = (function () {
+    function ReturnOrderDetailModalComponent(modalService, appService, bookService, orderService) {
+        this.modalService = modalService;
+        this.appService = appService;
+        this.bookService = bookService;
+        this.orderService = orderService;
+        this.options = { size: 'lg' };
+        this.returnOrderId = [];
+        this.btnText = "还书入库";
+        this.isDisabled = false;
+    }
+    ReturnOrderDetailModalComponent.prototype.ngOnInit = function () {
+    };
+    ReturnOrderDetailModalComponent.prototype.open = function (content) {
+        var _this = this;
+        //alert(this.returnOrderId)
+        this.bookService.getBooksByReturnOrderId(this.returnOrderId, function (res) {
+            _this.books = res;
+        }, function (err) { });
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+    };
+    ReturnOrderDetailModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    ReturnOrderDetailModalComponent.prototype.onBookReturnHandle = function (bar_code, order_book_list_id) {
+        var _this = this;
+        //alert(order_book_list_id);
+        //借书接口
+        this.bookService.returnBook(bar_code, function (res) {
+            //成功后要把把图书的状态 还书订单的状态改变下
+            _this.orderService.setReturnOrderAndBookStatusByBookId(order_book_list_id, _this.returnOrderId, __WEBPACK_IMPORTED_MODULE_5__domain_status_model__["a" /* ReturnOrderStatus */].RETURNED, __WEBPACK_IMPORTED_MODULE_5__domain_status_model__["b" /* BookStatus */].AFFIRM_RETURNED, function (res) {
+                _this.btnText = "已入库";
+                _this.isDisabled = true;
+                _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+                _this.bookService.getBooksByReturnOrderId(_this.returnOrderId, function (res) {
+                    _this.books = res;
+                }, function (err) { });
+            }, function (err) {
+            });
+        }, function (err) { });
+    };
+    return ReturnOrderDetailModalComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], ReturnOrderDetailModalComponent.prototype, "transformPageData", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], ReturnOrderDetailModalComponent.prototype, "returnOrderId", void 0);
+ReturnOrderDetailModalComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-return-order-detail-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_book_service__["a" /* BookService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_order_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_order_order_service__["a" /* OrderService */]) === "function" && _d || Object])
+], ReturnOrderDetailModalComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=return-order-detail-modal.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/sip2-config-list/sip2-config-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col col-xl-12 col-lg-12\">\n        <div class=\"card border-primary mb-3\">\n            <div class=\"card-header\">Sip2端口配置</div>\n            <div class=\"card-block table-responsive\">\n                <table class=\"table table-hover  table-bordered table-dark table-sm \">\n                    <thead class=\"bg-success\">\n                    <tr>\n                        <th>id</th>\n                        <th>学校名称</th>\n                        <th>IP地址</th>\n                        <th>端口</th>\n                        <th>用户名</th>\n                        <th >密码</th>\n                        <th>机器代码</th>\n                        <th class=\"hidden-sm\">是否开启</th>\n                        <th>操作</th>\n\n                    </tr>\n                    </thead>\n                    <tbody>\n\n                    <tr *ngFor=\"let config of configs\">\n                        <td>{{config.id}}</td>\n                        <td>{{config.library_detail.lname}}</td>\n                        <td>{{config.host}}</td>\n                        <td>{{config.port}}</td>\n\n                        <td>{{config.bind_name}}</td>\n                        <td>{{config.bind_pass}}</td>\n                        <td>{{config.location}}</td>\n                        <td class=\"hidden-sm\">\n                            <div style=\"width:40px;\">\n                                <app-switch [checked]=\"config.is_default==1?true:false\" [onLabel]=\"'开'\"  [offLabel]=\"'关'\" [theme]=\"theme2\" (onChange)=\"change($event,config.id)\"></app-switch>\n                            </div>\n                        </td>\n\n                        <td>\n                            <!--<app-add-library-modal [header]=\"editheader\" [btnText]=\"editBtnText\"  (onSubmitData)=\"editLibray($event,library.id)\" [ipMapId]=\"library.id\" [schools]=\"schools\"></app-add-library-modal>-->\n                            <app-add-sip2-config-model [btnText]=\"editBtnText\" (onSubmitData)=\"editSip2Config($event,config.id)\" [schools]=\"schools\" [ipMapId]=\"config.id\" ></app-add-sip2-config-model>\n                            <button class=\"btn btn-sm btn-success\" (click)=\"deleteSip2Config(config.id)\"><i class=\"fa fa-minus\"></i> 删除</button>\n                        </td>\n                    </tr>\n\n\n                    </tbody>\n                </table>\n\n\n\n                <app-add-sip2-config-model [btnText]=\"addBtnText\" (onSubmitData)=\"addSip2Config($event)\" [schools]=\"schools\"></app-add-sip2-config-model>\n\n            </div>\n        </div>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/sip2-config-list/sip2-config-list.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/sip2-config-list/sip2-config-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__switch_switch_model__ = __webpack_require__("../../../../../src/app/layout/my-component/components/switch/switch-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__ = __webpack_require__("../../../../../src/app/shared/components/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sip2ConfigListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var Sip2ConfigListComponent = (function () {
+    function Sip2ConfigListComponent(modalService, systemService, appService) {
+        this.modalService = modalService;
+        this.systemService = systemService;
+        this.appService = appService;
+        //swbtn: boolean = true;
+        this.theme = __WEBPACK_IMPORTED_MODULE_1__switch_switch_model__["a" /* SwitchTheme */].THTME_WARNING;
+        this.theme2 = __WEBPACK_IMPORTED_MODULE_1__switch_switch_model__["a" /* SwitchTheme */].THTME_SUCCESS;
+        this.addBtnText = "\u6DFB\u52A0";
+        this.editBtnText = '修改';
+    }
+    Sip2ConfigListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.systemService.getSchools(function (data) { return _this.schools = data; }, function (err) { });
+    };
+    Sip2ConfigListComponent.prototype.change = function (is_default, id) {
+        this.systemService.updateSip2ConfigIsDefault(is_default, id, function (res) { }, function (err) { });
+    };
+    Sip2ConfigListComponent.prototype.addSip2Config = function (event) {
+        var _this = this;
+        //alert(event)
+        this.systemService.addSip2Config(event.formModel.value, function (data) {
+            if (data.errorCode === 0) {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'Sip2配置', '添加成功');
+                _this.modalService.alert(alertCfg);
+                event.ref.close();
+                //this.transformPageData.pageNumber=1;
+                _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+                // this.systemService.getLibrarys(data=>{
+                //     this.libraries=data.rows;
+                // },err=>{})
+            }
+            else {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'Sip2配置', data.msg);
+                _this.modalService.alert(alertCfg);
+            }
+        }, function (err) { });
+    };
+    Sip2ConfigListComponent.prototype.editSip2Config = function (event, id) {
+        var _this = this;
+        this.systemService.updateSip2Config(event.formModel.value, id, function (data) {
+            //console.log(data)
+            if (data.errorCode === 0) {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'Sip2配置', '修改成功');
+                _this.modalService.alert(alertCfg);
+                event.ref.close();
+                _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            }
+            else {
+                var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'Sip2配置', '修改失败');
+                _this.modalService.alert(alertCfg);
+            }
+        }, function (err) { });
+    };
+    Sip2ConfigListComponent.prototype.deleteSip2Config = function (id) {
+        var _this = this;
+        var confirmCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* ConfirmConfig */]('您确定要删除此账号吗？');
+        this.modalService.confirm(confirmCfg).then(function (result) {
+            _this.systemService.deleteSip2Config(id, function (data) {
+                if (data.errorCode === 0) {
+                    var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, 'Sip2配置', '删除成功');
+                    _this.modalService.alert(alertCfg);
+                    _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+                }
+                else {
+                    var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].ERROR, 'Sip2配置', '删除失败');
+                    _this.modalService.alert(alertCfg);
+                }
+            }, function (err) { });
+        }, function (reason) {
+            //console.log(reason+22222222222)
+        });
+    };
+    return Sip2ConfigListComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], Sip2ConfigListComponent.prototype, "configs", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], Sip2ConfigListComponent.prototype, "transformPageData", void 0);
+Sip2ConfigListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-sip2-config-list',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/sip2-config-list/sip2-config-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/sip2-config-list/sip2-config-list.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_components_modal_modal_service__["a" /* ModalService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_system_system_service__["a" /* SystemService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_service__["a" /* AppService */]) === "function" && _c || Object])
+], Sip2ConfigListComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=sip2-config-list.component.js.map
 
 /***/ }),
 
@@ -1030,6 +2021,120 @@ SwitchComponent = __decorate([
 ], SwitchComponent);
 
 //# sourceMappingURL=switch.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/user-detail-modal/user-detail-modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-success btn-sm\"  (click)=\"open(content)\">详情</button>\n<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">用户详情</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <table class=\"table table-bordered table-hover table-sm\">\n\n            <tbody>\n            <tr>\n                <td>姓名</td>\n                <td>{{user.user_name}}</td>\n            </tr>\n            <tr>\n                <td>性别</td>\n                <td>{{user.sex}}</td>\n            </tr>\n\n            <tr>\n                <td>一卡通号</td>\n                <td>{{user.card}}</td>\n            </tr>\n            <tr>\n                <td>电话</td>\n                <td>{{user.phone}} <app-modification-user-tel (onDataSubmit)=\"modificateTel($event,user.id)\" > </app-modification-user-tel></td>\n            </tr>\n            <!--<tr>-->\n                <!--<td>修改电话</td>-->\n                <!--<td><input type=\"text\" class=\"form-control\"></td>-->\n            <!--</tr>-->\n            <tr>\n                <td>注册时间</td>\n                <td>{{user.create_time}}</td>\n            </tr>\n\n            </tbody>\n        </table>\n\n\n\n\n    </div>\n    <div class=\"modal-footer\">\n\n        <div class=\"form-group row\">\n            <div class=\"col-sm-10\">\n                <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">关闭</button>\n            </div>\n        </div>\n\n    </div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/user-detail-modal/user-detail-modal.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/layout/my-component/components/user-detail-modal/user-detail-modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_user_service__ = __webpack_require__("../../../../../src/app/shared/services/user.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDetailModalComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var UserDetailModalComponent = (function () {
+    function UserDetailModalComponent(modalService, appService, userServcie) {
+        this.modalService = modalService;
+        this.appService = appService;
+        this.userServcie = userServcie;
+        this.options = { size: 'sm' };
+    }
+    UserDetailModalComponent.prototype.ngOnInit = function () {
+    };
+    UserDetailModalComponent.prototype.open = function (content) {
+        var _this = this;
+        this.myModalRef = this.modalService.open(content, this.options);
+        this.myModalRef.result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+    };
+    UserDetailModalComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["e" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    UserDetailModalComponent.prototype.modificateTel = function (event, user_id) {
+        var _this = this;
+        //调用修改手机的接口
+        event.user_id = user_id;
+        console.log(event);
+        this.userServcie.modificateUseTel(event, function (res) {
+            console.log(res);
+            _this.appService.pageRefreshEventEmitter.emit(_this.transformPageData); //创建一个事件流发送传递过来的分页信息
+            _this.user.phone = event.phone;
+            alert(res.msg);
+        }, function (err) {
+            alert(JSON.parse(err['_body']).msg);
+        });
+    };
+    return UserDetailModalComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], UserDetailModalComponent.prototype, "user", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], UserDetailModalComponent.prototype, "transformPageData", void 0);
+UserDetailModalComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-user-detail-modal',
+        template: __webpack_require__("../../../../../src/app/layout/my-component/components/user-detail-modal/user-detail-modal.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/layout/my-component/components/user-detail-modal/user-detail-modal.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["d" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_user_service__["a" /* UserService */]) === "function" && _c || Object])
+], UserDetailModalComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=user-detail-modal.component.js.map
 
 /***/ }),
 
@@ -1534,7 +2639,7 @@ var AlertComponent = (function () {
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* AlertConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* AlertConfig */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* AlertConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* AlertConfig */]) === "function" && _a || Object)
 ], AlertComponent.prototype, "config", void 0);
 AlertComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1606,7 +2711,7 @@ var ConfirmComponent = (function () {
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* ConfirmConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["a" /* ConfirmConfig */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* ConfirmConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_model__["c" /* ConfirmConfig */]) === "function" && _a || Object)
 ], ConfirmComponent.prototype, "config", void 0);
 ConfirmComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1626,9 +2731,9 @@ var _a, _b;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ConfirmConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AlertType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return AlertConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertConfig; });
 /**
  * 确认框配置
  */
@@ -1789,6 +2894,15 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__swimlane_ngx_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__layout_my_component_components_pie_chart_pie_chart_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/pie-chart/pie-chart.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__layout_my_component_components_advance_pie_chart_advance_pie_chart_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/advance-pie-chart/advance-pie-chart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__layout_my_component_components_order_detail_modal_order_detail_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/order-detail-modal/order-detail-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__layout_my_component_components_book_locations_modal_book_locations_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/book-locations-modal/book-locations-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__layout_my_component_components_book_confirm_modal_book_confirm_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/book-confirm-modal/book-confirm-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__layout_my_component_components_user_detail_modal_user_detail_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/user-detail-modal/user-detail-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__layout_my_component_components_return_order_detail_modal_return_order_detail_modal_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipes_time_pipe__ = __webpack_require__("../../../../../src/app/shared/pipes/time.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__layout_my_component_components_sip2_config_list_sip2_config_list_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/sip2-config-list/sip2-config-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__layout_my_component_components_add_sip2_config_model_add_sip2_config_model_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__layout_my_component_components_modification_user_tel_modification_user_tel_component__ = __webpack_require__("../../../../../src/app/layout/my-component/components/modification-user-tel/modification-user-tel.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1796,6 +2910,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1852,7 +2975,16 @@ SharedModule = __decorate([
             // ToastBoxComponent
             __WEBPACK_IMPORTED_MODULE_16__layout_my_component_components_vertical_ba_chart_vertical_ba_chart_component__["a" /* VerticalBaChartComponent */],
             __WEBPACK_IMPORTED_MODULE_18__layout_my_component_components_pie_chart_pie_chart_component__["a" /* PieChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__layout_my_component_components_advance_pie_chart_advance_pie_chart_component__["a" /* AdvancePieChartComponent */]
+            __WEBPACK_IMPORTED_MODULE_19__layout_my_component_components_advance_pie_chart_advance_pie_chart_component__["a" /* AdvancePieChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__layout_my_component_components_order_detail_modal_order_detail_modal_component__["a" /* OrderDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__layout_my_component_components_book_locations_modal_book_locations_modal_component__["a" /* BookLocationsModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__layout_my_component_components_book_confirm_modal_book_confirm_modal_component__["a" /* BookConfirmModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__layout_my_component_components_user_detail_modal_user_detail_modal_component__["a" /* UserDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__layout_my_component_components_return_order_detail_modal_return_order_detail_modal_component__["a" /* ReturnOrderDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__pipes_time_pipe__["a" /* fomatshijianchaPipe */],
+            __WEBPACK_IMPORTED_MODULE_26__layout_my_component_components_sip2_config_list_sip2_config_list_component__["a" /* Sip2ConfigListComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__layout_my_component_components_add_sip2_config_model_add_sip2_config_model_component__["a" /* AddSip2ConfigModelComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__layout_my_component_components_modification_user_tel_modification_user_tel_component__["a" /* ModificationUserTelComponent */],
         ],
         providers: [
             //指定应用程序的根级别需要使用的service
@@ -1885,6 +3017,15 @@ SharedModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__layout_my_component_components_advance_pie_chart_advance_pie_chart_component__["a" /* AdvancePieChartComponent */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_20__layout_my_component_components_order_detail_modal_order_detail_modal_component__["a" /* OrderDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__layout_my_component_components_book_locations_modal_book_locations_modal_component__["a" /* BookLocationsModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__layout_my_component_components_book_confirm_modal_book_confirm_modal_component__["a" /* BookConfirmModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__layout_my_component_components_user_detail_modal_user_detail_modal_component__["a" /* UserDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__layout_my_component_components_return_order_detail_modal_return_order_detail_modal_component__["a" /* ReturnOrderDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__pipes_time_pipe__["a" /* fomatshijianchaPipe */],
+            __WEBPACK_IMPORTED_MODULE_26__layout_my_component_components_sip2_config_list_sip2_config_list_component__["a" /* Sip2ConfigListComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__layout_my_component_components_add_sip2_config_model_add_sip2_config_model_component__["a" /* AddSip2ConfigModelComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__layout_my_component_components_modification_user_tel_modification_user_tel_component__["a" /* ModificationUserTelComponent */],
         ]
         //bootstrap：通常是app启动的根组件，一般只有一个component。bootstrap中的组件会自动被放入到entryComponents中。
     })

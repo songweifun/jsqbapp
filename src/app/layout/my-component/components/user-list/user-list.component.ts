@@ -4,6 +4,8 @@ import {AlertConfig, AlertType} from "../../../../shared/components/modal/modal-
 import {ModalService} from "../../../../shared/components/modal/modal.service";
 import {AppService} from "../../../../app.service";
 import {SwitchTheme} from "../switch/switch-model";
+import {ApiUrlService} from "../../../../shared/services/api-url.service";
+import {UserService} from "../../../../shared/services/user.service";
 
 @Component({
   selector: 'app-user-list',
@@ -27,72 +29,50 @@ export class UserListComponent implements OnInit {
 
     keyword:string;
 
+    state:0
+
     //@Output() onSearchKeyWord:EventEmitter<string>=new EventEmitter();
 
   constructor(
       private appService: AppService,
       private systemService:SystemService,
       private modalService:ModalService,
+      private apiUrlService:ApiUrlService,
+      private userService:UserService,
   ) { }
 
   ngOnInit() {
   }
 
-    deleteMember(){
-        alert('delte member');
-    }
 
 
-    editMember(event,id){
-        //alert(111)
-        //console.log(event.formModel.value)
-        //this.formModel=event.formModel;
-        this.systemService.updateMember(event.formModel.value,id).subscribe(
-            data=>{
-                //console.log(data)
-                if(data.errorCode===0){
-                    const alertCfg = new AlertConfig(AlertType.INFO, '会员管理', '修改成功');
-                    this.modalService.alert(alertCfg);
-                    event.ref.close()
-                    this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
-                }else{
-                    const alertCfg = new AlertConfig(AlertType.ERROR, '会员管理', data.msg);
-                    this.modalService.alert(alertCfg);
 
-                }
-            }
-        )
-    }
 
     change(event,id){
         event=event?1:0;
-        this.systemService.updateMemberIsopen(event,id).subscribe(
-            data=>{
-
-
-            }
-        )
+        this.systemService.updateMemberIsopen(event,id,()=>{},()=>{})
     }
 
     onSearch(){
         this.appService.keywordEventEmitter.emit(this.keyword)
     }
 
-    addMember(event){
-      this.systemService.addMember(event.formModel.value).subscribe(
-          data=>{
-              if(data.errorCode===0){
-                  const alertCfg = new AlertConfig(AlertType.INFO, '会员管理', '添加成功');
-                  this.modalService.alert(alertCfg);
-                  event.ref.close()
-                  this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
-              }else{
-                  const alertCfg = new AlertConfig(AlertType.ERROR, '会员管理', data.msg);
-                  this.modalService.alert(alertCfg);
 
-              }
-          }
-      )
+
+    filterItems(status){
+        this.state=status;
+        this.transformPageData.url=this.apiUrlService.getAllmemberByPageUrl+'?status='+status
+        this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
+    }
+
+    checkUser(id,status){
+        this.userService.updateStatusByUserId(id,status,res=>{
+            alert(res.msg)
+        },err=>{
+            alert(err.msg)
+        })
+        this.appService.pageRefreshEventEmitter.emit(this.transformPageData);//创建一个事件流发送传递过来的分页信息
+
     }
 
 }

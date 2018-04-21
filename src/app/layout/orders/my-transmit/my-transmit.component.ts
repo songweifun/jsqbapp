@@ -14,29 +14,31 @@ import {ApiUrlService} from "../../../shared/services/api-url.service";
 export class MyTransmitComponent implements OnInit {
     orders:Array<Order>;
     url:string;
-    param:any = {
-        token: localStorage.getItem('token')
-    }
+
+    // param:any = {
+    //     token: localStorage.getItem('token')
+    // }
 
     pageList:Array<number>= [10,15, 25, 35];
 
     isTransmited:boolean=true;
 
   constructor(
-      private orderService:OrderService,
+      // private orderService:OrderService,
       private apiUrlService:ApiUrlService
   ) {
         this.url=this.apiUrlService.getMyTransmitesUrl
   }
 
   ngOnInit() {
-        this.orderService.getMyTransmites().subscribe(
-            data=>this.orders=data.rows
-        )
+        // this.orderService.getMyTransmites(data=>{
+        //     data=>this.orders=data.rows
+        // },err=>{})
+
   }
 
     onDataChanged(event){
-        console.log(event)
+        //console.log(event)
         this.orders=event.rows
     }
 

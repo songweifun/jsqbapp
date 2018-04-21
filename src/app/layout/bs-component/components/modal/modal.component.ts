@@ -49,26 +49,40 @@ export class ModalComponent {
     }
 
     sendArticle(orderId){
-        this.sendArticleService.sendArticle(orderId).subscribe(
-            data=>{
-                if(data.errorCode===0){
-                    const alertCfg = new AlertConfig(AlertType.INFO, '原文传递', '传递成功');
-                    this.modalService2.alert(alertCfg);
-                    //alert('传递成功')
-                    this.myModalRef.close()
-                }else{
-                    const alertCfg = new AlertConfig(AlertType.ERROR, '原文传递', '传递失败');
-                    this.modalService2.alert(alertCfg);
-                    //this.myModalRef.close()
-                }
+        // this.sendArticleService.sendArticle(orderId).subscribe(
+        //     data=>{
+        //         if(data.errorCode===0){
+        //             const alertCfg = new AlertConfig(AlertType.INFO, '原文传递', '传递成功');
+        //             this.modalService2.alert(alertCfg);
+        //             //alert('传递成功')
+        //             this.myModalRef.close()
+        //         }else{
+        //             const alertCfg = new AlertConfig(AlertType.ERROR, '原文传递', '传递失败');
+        //             this.modalService2.alert(alertCfg);
+        //             //this.myModalRef.close()
+        //         }
+        //     }
+        // )
+
+        this.sendArticleService.sendArticle(orderId,data=>{
+            if(data.errorCode===0){
+                const alertCfg = new AlertConfig(AlertType.INFO, '原文传递', '传递成功');
+                this.modalService2.alert(alertCfg);
+                //alert('传递成功')
+                this.myModalRef.close()
+            }else{
+                const alertCfg = new AlertConfig(AlertType.ERROR, '原文传递', '传递失败');
+                this.modalService2.alert(alertCfg);
+                //this.myModalRef.close()
             }
-        )
+
+        },err=>{})
 
 
     }
 
     setIsupload(event){
-        console.log(event)
+        //console.log(event)
         this.isUploaded=event;
 
     }

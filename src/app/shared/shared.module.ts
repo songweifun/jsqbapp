@@ -19,6 +19,15 @@ import {VerticalBaChartComponent} from "../layout/my-component/components/vertic
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {PieChartComponent} from "../layout/my-component/components/pie-chart/pie-chart.component";
 import {AdvancePieChartComponent} from "../layout/my-component/components/advance-pie-chart/advance-pie-chart.component";
+import {OrderDetailModalComponent} from "../layout/my-component/components/order-detail-modal/order-detail-modal.component";
+import {BookLocationsModalComponent} from "../layout/my-component/components/book-locations-modal/book-locations-modal.component";
+import {BookConfirmModalComponent} from "../layout/my-component/components/book-confirm-modal/book-confirm-modal.component";
+import {UserDetailModalComponent} from "../layout/my-component/components/user-detail-modal/user-detail-modal.component";
+import {ReturnOrderDetailModalComponent} from "../layout/my-component/components/return-order-detail-modal/return-order-detail-modal.component";
+import {fomatshijianchaPipe} from "./pipes/time.pipe";
+import {Sip2ConfigListComponent} from "../layout/my-component/components/sip2-config-list/sip2-config-list.component";
+import {AddSip2ConfigModelComponent} from "../layout/my-component/components/add-sip2-config-model/add-sip2-config-model.component";
+import {ModificationUserTelComponent} from "../layout/my-component/components/modification-user-tel/modification-user-tel.component";
 
 
 /**
@@ -56,7 +65,22 @@ import {AdvancePieChartComponent} from "../layout/my-component/components/advanc
         // ToastBoxComponent
         VerticalBaChartComponent,
         PieChartComponent,
-        AdvancePieChartComponent
+        AdvancePieChartComponent,
+        OrderDetailModalComponent,
+        BookLocationsModalComponent,
+        BookConfirmModalComponent,
+        UserDetailModalComponent,
+        ReturnOrderDetailModalComponent,
+        fomatshijianchaPipe,
+        Sip2ConfigListComponent,
+        AddSip2ConfigModelComponent,
+        ModificationUserTelComponent,
+
+
+
+
+
+
 
 
     ],
@@ -93,6 +117,19 @@ import {AdvancePieChartComponent} from "../layout/my-component/components/advanc
         AdvancePieChartComponent,
         FormsModule,
         ReactiveFormsModule,
+        OrderDetailModalComponent,
+        BookLocationsModalComponent,
+        BookConfirmModalComponent,
+        UserDetailModalComponent,
+        ReturnOrderDetailModalComponent,
+        fomatshijianchaPipe,
+        Sip2ConfigListComponent,
+        AddSip2ConfigModelComponent,
+        ModificationUserTelComponent,
+
+
+
+
 
 
     ]

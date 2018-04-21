@@ -52,7 +52,7 @@ var superAdminGuard = (function () {
             jurisdiction = true;
         }
         if (!jurisdiction) {
-            var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["c" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, '权限控制', '没有权限');
+            var alertCfg = new __WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["a" /* AlertConfig */](__WEBPACK_IMPORTED_MODULE_3__shared_components_modal_modal_model__["b" /* AlertType */].INFO, '权限控制', '没有权限');
             this.modalService.alert(alertCfg);
             this.router.navigate(['/orders/new-apply']);
         }

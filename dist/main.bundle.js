@@ -7,12 +7,12 @@ var map = {
 	"./dashboard/dashboard.module": [
 		"../../../../../src/app/layout/dashboard/dashboard.module.ts",
 		0,
-		2
+		3
 	],
 	"./ipmaping/ipmaping.module": [
 		"../../../../../src/app/layout/ipmaping/ipmaping.module.ts",
 		0,
-		1
+		2
 	],
 	"./layout/layout.module": [
 		"../../../../../src/app/layout/layout.module.ts",
@@ -22,7 +22,7 @@ var map = {
 	"./log/log.module": [
 		"../../../../../src/app/layout/log/log.module.ts",
 		0,
-		4
+		6
 	],
 	"./login/login.module": [
 		"../../../../../src/app/login/login.module.ts",
@@ -32,7 +32,7 @@ var map = {
 	"./member/member.module": [
 		"../../../../../src/app/layout/member/member.module.ts",
 		0,
-		3
+		5
 	],
 	"./not-found/not-found.module": [
 		"../../../../../src/app/not-found/not-found.module.ts",
@@ -42,7 +42,7 @@ var map = {
 	"./orders/orders.module": [
 		"../../../../../src/app/layout/orders/orders.module.ts",
 		0,
-		6
+		1
 	],
 	"./signup/signup.module": [
 		"../../../../../src/app/signup/signup.module.ts",
@@ -52,12 +52,12 @@ var map = {
 	"./statistics/statistics.module": [
 		"../../../../../src/app/layout/statistics/statistics.module.ts",
 		0,
-		5
+		7
 	],
 	"./system/system.module": [
 		"../../../../../src/app/layout/system/system.module.ts",
 		0,
-		7
+		4
 	]
 };
 function webpackAsyncContext(req) {
@@ -206,17 +206,21 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_services_token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__shared_services_order_order_service__ = __webpack_require__("../../../../../src/app/shared/services/order/order.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_services_http_http_service__ = __webpack_require__("../../../../../src/app/shared/services/http/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_spin_spin_service__ = __webpack_require__("../../../../../src/app/shared/services/spin/spin.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_components_toast_toast_service__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_components_toast_toast_component__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_box_component__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast-box.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__shared_services_spin_spin_component__ = __webpack_require__("../../../../../src/app/shared/services/spin/spin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__selective_preloading_strategy__ = __webpack_require__("../../../../../src/app/selective-preloading-strategy.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__guard_leaveOrderNew_guard__ = __webpack_require__("../../../../../src/app/guard/leaveOrderNew.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_services_spin_spin_service__ = __webpack_require__("../../../../../src/app/shared/services/spin/spin.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__app_service__ = __webpack_require__("../../../../../src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_components_toast_toast_service__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_component__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__shared_components_toast_toast_box_component__ = __webpack_require__("../../../../../src/app/shared/components/toast/toast-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__shared_services_spin_spin_component__ = __webpack_require__("../../../../../src/app/shared/services/spin/spin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__selective_preloading_strategy__ = __webpack_require__("../../../../../src/app/selective-preloading-strategy.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__shared_services_system_system_service__ = __webpack_require__("../../../../../src/app/shared/services/system/system.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__shared_services_api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__guard_leaveOrderNew_guard__ = __webpack_require__("../../../../../src/app/guard/leaveOrderNew.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_services_book_service__ = __webpack_require__("../../../../../src/app/shared/services/book.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_services_user_service__ = __webpack_require__("../../../../../src/app/shared/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_services_message_service__ = __webpack_require__("../../../../../src/app/shared/services/message.service.ts");
 /* unused harmony export HttpLoaderFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -225,6 +229,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -252,6 +257,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 // AoT requires an exported function for factories
 function HttpLoaderFactory(http) {
     // for development
@@ -267,9 +275,9 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__shared_components_toast_toast_component__["a" /* ToastComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_box_component__["a" /* ToastBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__shared_services_spin_spin_component__["a" /* SpinComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_component__["a" /* ToastComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__shared_components_toast_toast_box_component__["a" /* ToastBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__shared_services_spin_spin_component__["a" /* SpinComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["BrowserModule"],
@@ -284,25 +292,35 @@ AppModule = __decorate([
                     useFactory: HttpLoaderFactory,
                     deps: [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]]
                 }
-            })
+            }),
         ],
         providers: [
+            {
+                provide: "BASE_CONFIG",
+                useValue: {
+                    uri: "http://101.201.122.94/otoapi/public/api/v1/"
+                }
+            },
             __WEBPACK_IMPORTED_MODULE_9__shared__["a" /* AuthGuard */],
             __WEBPACK_IMPORTED_MODULE_10__shared_services_web_socket_service__["a" /* WebSocketService */],
             __WEBPACK_IMPORTED_MODULE_11__shared_services_send_article_service__["a" /* SendArticleService */],
             __WEBPACK_IMPORTED_MODULE_12__shared_services_token_service__["a" /* TokenService */],
             __WEBPACK_IMPORTED_MODULE_13__shared_services_order_order_service__["a" /* OrderService */],
             __WEBPACK_IMPORTED_MODULE_14__shared_services_http_http_service__["a" /* HttpService */],
-            __WEBPACK_IMPORTED_MODULE_15__shared_services_spin_spin_service__["a" /* SpinService */],
-            __WEBPACK_IMPORTED_MODULE_17__shared_components_toast_toast_service__["a" /* ToastService */],
-            __WEBPACK_IMPORTED_MODULE_16__app_service__["a" /* AppService */],
-            __WEBPACK_IMPORTED_MODULE_21__selective_preloading_strategy__["a" /* SelectivePreloadingStrategy */],
-            __WEBPACK_IMPORTED_MODULE_22__shared_services_system_system_service__["a" /* SystemService */],
-            __WEBPACK_IMPORTED_MODULE_23__shared_services_api_url_service__["a" /* ApiUrlService */],
-            __WEBPACK_IMPORTED_MODULE_24__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
-            __WEBPACK_IMPORTED_MODULE_25__guard_leaveOrderNew_guard__["a" /* LeaveOrderNewGuard */]
+            __WEBPACK_IMPORTED_MODULE_16__shared_services_spin_spin_service__["a" /* SpinService */],
+            __WEBPACK_IMPORTED_MODULE_18__shared_components_toast_toast_service__["a" /* ToastService */],
+            __WEBPACK_IMPORTED_MODULE_17__app_service__["a" /* AppService */],
+            __WEBPACK_IMPORTED_MODULE_22__selective_preloading_strategy__["a" /* SelectivePreloadingStrategy */],
+            __WEBPACK_IMPORTED_MODULE_23__shared_services_system_system_service__["a" /* SystemService */],
+            __WEBPACK_IMPORTED_MODULE_24__shared_services_api_url_service__["a" /* ApiUrlService */],
+            __WEBPACK_IMPORTED_MODULE_25__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
+            __WEBPACK_IMPORTED_MODULE_26__guard_leaveOrderNew_guard__["a" /* LeaveOrderNewGuard */],
+            __WEBPACK_IMPORTED_MODULE_15__shared_services_http_service__["a" /* HttpService2 */],
+            __WEBPACK_IMPORTED_MODULE_27__shared_services_book_service__["a" /* BookService */],
+            __WEBPACK_IMPORTED_MODULE_28__shared_services_user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_29__shared_services_message_service__["a" /* MessageService */],
         ],
-        exports: [__WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_box_component__["a" /* ToastBoxComponent */], __WEBPACK_IMPORTED_MODULE_20__shared_services_spin_spin_component__["a" /* SpinComponent */], __WEBPACK_IMPORTED_MODULE_18__shared_components_toast_toast_component__["a" /* ToastComponent */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_20__shared_components_toast_toast_box_component__["a" /* ToastBoxComponent */], __WEBPACK_IMPORTED_MODULE_21__shared_services_spin_spin_component__["a" /* SpinComponent */], __WEBPACK_IMPORTED_MODULE_19__shared_components_toast_toast_component__["a" /* ToastComponent */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -405,7 +423,7 @@ var SelectivePreloadingStrategy = (function () {
 /***/ "../../../../../src/app/shared/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"pos-f-t fixed-top header\">\n    <nav class=\"navbar navbar-inverse bg-inverse navbar-toggleable-md\">\n        <button class=\"navbar-toggler navbar-toggler-right\" (click)=\"toggleSidebar()\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"javascript:void(0)\">Baohe Admin</a>\n        <div class=\"collapse navbar-collapse\">\n            <!--<form class=\"form-inline my-2 my-lg-0\">-->\n                <!--<input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Search\">-->\n            <!--</form>-->\n            <ul class=\"navbar-nav ml-auto mt-2 mt-md-0\">\n                <!--<li class=\"nav-item hidden-lg-down\">-->\n                    <!--<a href=\"https://github.com/start-angular/SB-Admin-BS4-Angular-2/archive/master.zip\" class=\"nav-link btn mt-1\" role=\"button\" style=\"padding: .375rem 1rem !important; border-color: #999;\">{{ 'downloadNow' | translate }}</a>-->\n                <!--</li> &nbsp;-->\n                <li class=\"nav-item\">\n                    <a href=\"javascript:void(0)\" class=\"nav-link mt-1\" style=\"padding: 0.375rem 1rem !important; border-color: #999;\" (click)=\"rltAndLtr()\">RTL/LTR</a>\n                </li> &nbsp;\n                <!--<li class=\"nav-item dropdown\" ngbDropdown>-->\n                    <!--&lt;!&ndash; <div class=\"dropdown\"> &ndash;&gt;-->\n                    <!--<a class=\"nav-link\" href=\"javascript:void(0)\" ngbDropdownToggle>-->\n                        <!--<i class=\"fa fa-envelope\"></i> <b class=\"caret\"></b><span class=\"sr-only\">(current)</span>-->\n                    <!--</a>-->\n                    <!--<ul class=\"dropdown-menu dropdown-menu-right messages\">-->\n                        <!--<li class=\"media\">-->\n                            <!--<img class=\"d-flex align-self-center mr-3\" src=\"http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg\" alt=\"Generic placeholder image\">-->\n                            <!--<div class=\"media-body\">-->\n                                <!--<h5 class=\"mt-0 mb-1\">John Smith</h5>-->\n                                <!--<p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>-->\n                                <!--<p class=\"last\"> Lorem ipsum dolor sit amet, consectetur...</p>-->\n                            <!--</div>-->\n                        <!--</li>-->\n                        <!--<li class=\"media\">-->\n                            <!--<img class=\"d-flex align-self-center mr-3\" src=\"http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg\" alt=\"Generic placeholder image\">-->\n                            <!--<div class=\"media-body\">-->\n                                <!--<h5 class=\"mt-0 mb-1\">John Smith</h5>-->\n                                <!--<p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>-->\n                                <!--<p class=\"last\"> Lorem ipsum dolor sit amet, consectetur...</p>-->\n                            <!--</div>-->\n                        <!--</li>-->\n                        <!--<li class=\"media\">-->\n                            <!--<img class=\"d-flex align-self-center mr-3\" src=\"http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg\" alt=\"Generic placeholder image\">-->\n                            <!--<div class=\"media-body\">-->\n                                <!--<h5 class=\"mt-0 mb-1\">John Smith</h5>-->\n                                <!--<p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>-->\n                                <!--<p class=\"last\"> Lorem ipsum dolor sit amet, consectetur...</p>-->\n                            <!--</div>-->\n                        <!--</li>-->\n                    <!--</ul>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item dropdown\" ngbDropdown>-->\n                    <!--<a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>-->\n                        <!--<i class=\"fa fa-bell\"></i> <b class=\"caret\"></b><span class=\"sr-only\">(current)</span>-->\n                    <!--</a>-->\n                    <!--<ul class=\"dropdown-menu dropdown-menu-right\">-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">Pending Task <span class=\"badge badge-info\">6</span></a>-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">In queue <span class=\"badge badge-info\"> 13</span></a>-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">Mail <span class=\"badge badge-info\"> 45</span></a>-->\n                        <!--<li class=\"dropdown-divider\"></li>-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">View All</a>-->\n                    <!--</ul>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item dropdown\" ngbDropdown>-->\n                    <!--<a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>-->\n                        <!--<i class=\"fa fa-language\"></i> {{ 'language' | translate }} <b class=\"caret\"></b>-->\n                    <!--</a>-->\n                    <!--<div class=\"dropdown-menu dropdown-menu-right\">-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('cn')\">中文</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('en')\">English</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('fr')\">French</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('ur')\">Urdu</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('es')\">Spanish</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('fa')\">Farsi</a>-->\n                    <!--</div>-->\n                <!--</li>-->\n                <li class=\"nav-item dropdown\" ngbDropdown>\n                    <a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>\n                        <i class=\"fa fa-user\"></i> {{ac}} <b class=\"caret\"></b>\n                    </a>\n                    <div class=\"dropdown-menu dropdown-menu-right\">\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\"><i class=\"fa fa-fw fa-user\"></i> Profile</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\"><i class=\"fa fa-fw fa-envelope\"></i> Inbox</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\"><i class=\"fa fa-fw fa-gear\"></i> Settings</a>-->\n                        <a class=\"dropdown-item\" [routerLink]=\"['/login']\" (click)=\"onLoggedout()\"><i class=\"fa fa-fw fa-power-off\"></i> 退出</a>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n"
+module.exports = "<div class=\"pos-f-t fixed-top header\">\n    <nav class=\"navbar navbar-inverse bg-inverse navbar-toggleable-md\">\n        <button class=\"navbar-toggler navbar-toggler-right\" (click)=\"toggleSidebar()\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"javascript:void(0)\">Njau Admin</a>\n        <div class=\"collapse navbar-collapse\">\n            <!--<form class=\"form-inline my-2 my-lg-0\">-->\n                <!--<input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Search\">-->\n            <!--</form>-->\n            <ul class=\"navbar-nav ml-auto mt-2 mt-md-0\">\n                <!--<li class=\"nav-item hidden-lg-down\">-->\n                    <!--<a href=\"https://github.com/start-angular/SB-Admin-BS4-Angular-2/archive/master.zip\" class=\"nav-link btn mt-1\" role=\"button\" style=\"padding: .375rem 1rem !important; border-color: #999;\">{{ 'downloadNow' | translate }}</a>-->\n                <!--</li> &nbsp;-->\n                <li class=\"nav-item\">\n                    <a href=\"javascript:void(0)\" class=\"nav-link mt-1\" style=\"padding: 0.375rem 1rem !important; border-color: #999;\" (click)=\"rltAndLtr()\">RTL/LTR</a>\n                </li> &nbsp;\n                <!--<li class=\"nav-item dropdown\" ngbDropdown>-->\n                    <!--&lt;!&ndash; <div class=\"dropdown\"> &ndash;&gt;-->\n                    <!--<a class=\"nav-link\" href=\"javascript:void(0)\" ngbDropdownToggle>-->\n                        <!--<i class=\"fa fa-envelope\"></i> <b class=\"caret\"></b><span class=\"sr-only\">(current)</span>-->\n                    <!--</a>-->\n                    <!--<ul class=\"dropdown-menu dropdown-menu-right messages\">-->\n                        <!--<li class=\"media\">-->\n                            <!--<img class=\"d-flex align-self-center mr-3\" src=\"http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg\" alt=\"Generic placeholder image\">-->\n                            <!--<div class=\"media-body\">-->\n                                <!--<h5 class=\"mt-0 mb-1\">John Smith</h5>-->\n                                <!--<p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>-->\n                                <!--<p class=\"last\"> Lorem ipsum dolor sit amet, consectetur...</p>-->\n                            <!--</div>-->\n                        <!--</li>-->\n                        <!--<li class=\"media\">-->\n                            <!--<img class=\"d-flex align-self-center mr-3\" src=\"http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg\" alt=\"Generic placeholder image\">-->\n                            <!--<div class=\"media-body\">-->\n                                <!--<h5 class=\"mt-0 mb-1\">John Smith</h5>-->\n                                <!--<p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>-->\n                                <!--<p class=\"last\"> Lorem ipsum dolor sit amet, consectetur...</p>-->\n                            <!--</div>-->\n                        <!--</li>-->\n                        <!--<li class=\"media\">-->\n                            <!--<img class=\"d-flex align-self-center mr-3\" src=\"http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg\" alt=\"Generic placeholder image\">-->\n                            <!--<div class=\"media-body\">-->\n                                <!--<h5 class=\"mt-0 mb-1\">John Smith</h5>-->\n                                <!--<p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>-->\n                                <!--<p class=\"last\"> Lorem ipsum dolor sit amet, consectetur...</p>-->\n                            <!--</div>-->\n                        <!--</li>-->\n                    <!--</ul>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item dropdown\" ngbDropdown>-->\n                    <!--<a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>-->\n                        <!--<i class=\"fa fa-bell\"></i> <b class=\"caret\"></b><span class=\"sr-only\">(current)</span>-->\n                    <!--</a>-->\n                    <!--<ul class=\"dropdown-menu dropdown-menu-right\">-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">Pending Task <span class=\"badge badge-info\">6</span></a>-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">In queue <span class=\"badge badge-info\"> 13</span></a>-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">Mail <span class=\"badge badge-info\"> 45</span></a>-->\n                        <!--<li class=\"dropdown-divider\"></li>-->\n                        <!--<a href=\"javascript:void(0)\" class=\"dropdown-item\">View All</a>-->\n                    <!--</ul>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item dropdown\" ngbDropdown>-->\n                    <!--<a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>-->\n                        <!--<i class=\"fa fa-language\"></i> {{ 'language' | translate }} <b class=\"caret\"></b>-->\n                    <!--</a>-->\n                    <!--<div class=\"dropdown-menu dropdown-menu-right\">-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('cn')\">中文</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('en')\">English</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('fr')\">French</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('ur')\">Urdu</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('es')\">Spanish</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('fa')\">Farsi</a>-->\n                    <!--</div>-->\n                <!--</li>-->\n                <li class=\"nav-item dropdown\" ngbDropdown>\n                    <a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>\n                        <i class=\"fa fa-user\"></i> {{ac}} <b class=\"caret\"></b>\n                    </a>\n                    <div class=\"dropdown-menu dropdown-menu-right\">\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\"><i class=\"fa fa-fw fa-user\"></i> Profile</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\"><i class=\"fa fa-fw fa-envelope\"></i> Inbox</a>-->\n                        <!--<a class=\"dropdown-item\" href=\"javascript:void(0)\"><i class=\"fa fa-fw fa-gear\"></i> Settings</a>-->\n                        <a class=\"dropdown-item\" [routerLink]=\"['/login']\" (click)=\"onLoggedout()\"><i class=\"fa fa-fw fa-power-off\"></i> 退出</a>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n"
 
 /***/ }),
 
@@ -486,8 +504,7 @@ var HeaderComponent = (function () {
         localStorage.removeItem('jurisdiction');
         localStorage.removeItem('uid');
         this.tokenService.refreshToken();
-        this.systemService.recordLoginout(localStorage.getItem('token')).subscribe(function (data) {
-        });
+        this.systemService.recordLoginout(localStorage.getItem('token'), function (data) { }, function (err) { });
     };
     HeaderComponent.prototype.changeLang = function (language) {
         this.translate.use(language);
@@ -525,7 +542,7 @@ var _a, _b, _c, _d, _e;
 /***/ "../../../../../src/app/shared/components/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n        <!--<a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}-->\n        <!--</a>-->\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">\n                <span><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i>&nbsp; {{ '订单管理' }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '最新订单'  }}</span>  <span class=\"badge badge-info pull-right\"> {{newOrderCount}}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '我的传递'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '全部传递'  }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('ipmanage')\">\n                <span><i class=\"fa fa-adjust\" aria-hidden=\"true\"></i>&nbsp; {{ 'IP管理' }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'ipmanage'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ips-map']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ 'IP映射'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ip-white']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '白名单'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/ipmaping/ip-black']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '黑名单'  }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('statistics')\">\n                <span><i class=\"fa fa-fw fa-bar-chart-o\" aria-hidden=\"true\"></i>&nbsp;{{ '数据统计'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'statistics'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/statistics/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆统计'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/statistics/rquest']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '请求统计'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/statistics/resource']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '资源统计'  }}</span></a>\n                    </li>\n                </ul>\n            </li>\n        </div>\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('member')\">\n                <span><i class=\"fa fa-user\" aria-hidden=\"true\"></i>&nbsp;{{ '会员管理'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'member'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/member/user']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '用户管理'  }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '下载数量设置'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '访问时间设置'  }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('cog')\">\n                <span><i class=\"fa fa-cog\" aria-hidden=\"true\"></i>&nbsp; {{ '系统设置'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'cog'\">\n                <ul class=\"submenu\">\n\n                    <li>\n                        <a [routerLink]=\"['/system/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆设置'  }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '沟通设置'  }}</span></a>-->\n                    <!--</li>-->\n                    <!---->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '原文定位机制'  }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('log')\">\n                <span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>&nbsp; {{ '日志管理'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'log'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/log/enter']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '登录日志'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/log/operate']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '操作日志'  }}</span></a>\n                    </li>\n\n                </ul>\n            </li>\n        </div>\n\n\n        <!--<a [routerLink]=\"['/orders']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;订单管理-->\n        <!--</a>-->\n\n\n        <!--<a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component'  }}-->\n        <!--</a>-->\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">-->\n                <!--<span><i class=\"fa fa-plus\"></i>&nbsp; {{ 'menu'  }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n        <!--<a [routerLink]=\"['/blank-page']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-file-o\"></i>&nbsp;{{ 'blankpage'  }}-->\n        <!--</a>-->\n        <!--<a class=\"list-group-item more-themes\" href=\"http://www.strapui.com/\" >-->\n            <!--{{ 'moretheme'  }}-->\n        <!--</a>-->\n    </ul>\n</nav>\n"
+module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n        <!--<a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}-->\n        <!--</a>-->\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">\n                <span><i class=\"fa fa-cart-plus\" aria-hidden=\"true\"></i>&nbsp; {{ '订单管理' }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/orders/logistics']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '物流订单'  }}</span>  </a>\n                    </li>\n\n                    <li>\n                        <a [routerLink]=\"['/orders/extract']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '自提订单'  }}</span></a>\n                    </li>\n\n                    <li>\n                        <a [routerLink]=\"['/orders/return']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '还书订单'  }}</span></a>\n                    </li>\n\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '最新订单'  }}</span>  <span class=\"badge badge-info pull-right\"> {{newOrderCount}}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '我的传递'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '全部传递'  }}</span></a>-->\n                    <!--</li>-->\n                </ul>\n            </li>\n        </div>\n\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('ipmanage')\">-->\n                <!--<span><i class=\"fa fa-adjust\" aria-hidden=\"true\"></i>&nbsp; {{ 'IP管理' }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'ipmanage'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/ipmaping/ips-map']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ 'IP映射'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/ipmaping/ip-white']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '白名单'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/ipmaping/ip-black']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '黑名单'  }}</span></a>-->\n                    <!--</li>-->\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n\n\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('statistics')\">-->\n                <!--<span><i class=\"fa fa-fw fa-bar-chart-o\" aria-hidden=\"true\"></i>&nbsp;{{ '数据统计'  }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'statistics'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/statistics/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '共享馆统计'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/statistics/rquest']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '请求统计'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/statistics/resource']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '资源统计'  }}</span></a>-->\n                    <!--</li>-->\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('member')\">\n                <span><i class=\"fa fa-user\" aria-hidden=\"true\"></i>&nbsp;{{ '会员管理'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'member'\">\n                <ul class=\"submenu\">\n                    <li>\n                        <a [routerLink]=\"['/member/user']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '用户管理'  }}</span></a>\n                    </li>\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/new-apply']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '下载数量设置'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/my-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '访问时间设置'  }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <div class=\"nested-menu\">\n            <a class=\"list-group-item\" (click)=\"addExpandClass('cog')\">\n                <span><i class=\"fa fa-cog\" aria-hidden=\"true\"></i>&nbsp; {{ '系统设置'  }}</span>\n            </a>\n            <li class=\"nested\" [class.expand]=\"showMenu === 'cog'\">\n                <ul class=\"submenu\">\n\n                    <li>\n                        <a [routerLink]=\"['/system/library']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '成员馆设置'  }}</span></a>\n                    </li>\n                    <li>\n                        <a [routerLink]=\"['/system/sip2']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ 'Sip2设置'  }}</span></a>\n                    </li>\n                    <!---->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/orders/all-transmit']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '原文定位机制'  }}</span></a>-->\n                    <!--</li>-->\n\n                </ul>\n            </li>\n        </div>\n\n\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('log')\">-->\n                <!--<span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>&nbsp; {{ '日志管理'  }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'log'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/log/enter']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '登录日志'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a [routerLink]=\"['/log/operate']\" [routerLinkActive]=\"['router-link-active']\"><span>{{ '操作日志'  }}</span></a>-->\n                    <!--</li>-->\n\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n\n\n        <!--<a [routerLink]=\"['/orders']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;订单管理-->\n        <!--</a>-->\n\n\n        <!--<a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid'  }}-->\n        <!--</a>-->\n        <!--<a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component'  }}-->\n        <!--</a>-->\n        <!--<div class=\"nested-menu\">-->\n            <!--<a class=\"list-group-item\" (click)=\"addExpandClass('pages')\">-->\n                <!--<span><i class=\"fa fa-plus\"></i>&nbsp; {{ 'menu'  }}</span>-->\n            <!--</a>-->\n            <!--<li class=\"nested\" [class.expand]=\"showMenu === 'pages'\">-->\n                <!--<ul class=\"submenu\">-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                    <!--<li>-->\n                        <!--<a href=\"javascript:void(0)\"><span>{{ 'submenu'  }}</span></a>-->\n                    <!--</li>-->\n                <!--</ul>-->\n            <!--</li>-->\n        <!--</div>-->\n        <!--<a [routerLink]=\"['/blank-page']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">-->\n            <!--<i class=\"fa fa-file-o\"></i>&nbsp;{{ 'blankpage'  }}-->\n        <!--</a>-->\n        <!--<a class=\"list-group-item more-themes\" href=\"http://www.strapui.com/\" >-->\n            <!--{{ 'moretheme'  }}-->\n        <!--</a>-->\n    </ul>\n</nav>\n"
 
 /***/ }),
 
@@ -1212,6 +1229,7 @@ StatModule = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__time_pipe__ = __webpack_require__("../../../../../src/app/shared/pipes/time.pipe.ts");
 /* unused harmony export SharedPipesModule */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1219,6 +1237,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 var SharedPipesModule = (function () {
@@ -1231,11 +1250,52 @@ SharedPipesModule = __decorate([
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]
         ],
-        declarations: []
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__time_pipe__["a" /* fomatshijianchaPipe */]
+        ]
     })
 ], SharedPipesModule);
 
 //# sourceMappingURL=shared-pipes.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/pipes/time.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fomatshijianchaPipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var fomatshijianchaPipe = (function () {
+    function fomatshijianchaPipe() {
+    }
+    fomatshijianchaPipe.prototype.transform = function (shijiancha, args) {
+        var days = shijiancha / 1000 / 60 / 60 / 24;
+        var daysRound = Math.floor(days);
+        var hours = shijiancha / 1000 / 60 / 60 - (24 * daysRound);
+        var hoursRound = Math.floor(hours);
+        var minutes = shijiancha / 1000 / 60 - (24 * 60 * daysRound) - (60 * hoursRound);
+        var minutesRound = Math.floor(minutes);
+        var seconds = shijiancha / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
+        var secondsRound = Math.floor(seconds);
+        return daysRound + '天' + hoursRound + '小时' + minutesRound + '分' + secondsRound + '秒';
+    };
+    return fomatshijianchaPipe;
+}());
+fomatshijianchaPipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+        name: 'fomatshijiancha'
+    })
+], fomatshijianchaPipe);
+
+//# sourceMappingURL=time.pipe.js.map
 
 /***/ }),
 
@@ -1257,7 +1317,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ApiUrlService = (function () {
     function ApiUrlService() {
-        this.baseUrl = 'http://101.201.103.106/jsqbapi/public/api/v1/';
+        //private baseUrl='http://101.201.103.106/jsqbapi/public/api/v1/'
+        this.baseUrl = 'http://101.201.122.94:8089/public/api/v1/';
+        this.baseUrlOto = 'http://101.201.122.94/otoapi/public/api/v1/';
         this.uploadTextUrl = this.baseUrl + 'upload';
         this.allMapUrl = this.baseUrl + 'system/all_map';
         this.updateIpMapUrl = this.baseUrl + 'system/update_map';
@@ -1268,33 +1330,54 @@ var ApiUrlService = (function () {
         this.updateIpMapIsForbidUrl = this.baseUrl + 'system/update_map_forbid';
         this.getIpWhiteUrl = this.baseUrl + 'system/ip_white';
         this.getIpBlackUrl = this.baseUrl + 'system/ip_black';
-        this.getLibrariesUrl = this.baseUrl + 'system/library';
-        this.updateLibraryOpen = this.baseUrl + 'system/update_library_open';
-        this.addLibrayUrl = this.baseUrl + 'system/add_library';
-        this.updateLibrayUrl = this.baseUrl + 'system/update_library';
-        this.oneLibraryUrl = this.baseUrl + 'system/one_library';
-        this.deleteLibraryUrl = this.baseUrl + 'system/delete_library';
         this.sendArticleUrl = this.baseUrl + 'order/send';
-        this.tokenAppUrl = this.baseUrl + 'token/app';
         this.tokenVerifyUrl = this.baseUrl + 'token/verify';
         this.getMyTransmitesUrl = this.baseUrl + 'order/by_user';
         this.allTransmitesUrl = this.baseUrl + 'order/paginate';
-        this.getSchoolsUrl = this.baseUrl + 'system/schools';
         this.orderStatisticsSchoolUrl = this.baseUrl + 'statistics/order_byschool';
         this.resourceStatisticsSchoolUrl = this.baseUrl + 'statistics/resource_byschool';
         this.requestStatisticsIpTop10Url = this.baseUrl + 'statistics/requestip_top10';
         this.requestStatisticsMapTop10Url = this.baseUrl + 'statistics/requestmap_top10';
-        this.getAllmemberByPageUrl = this.baseUrl + 'member/all';
         this.getOneMemberDetailUrl = this.baseUrl + 'member/one_member';
         this.addMemberUrl = this.baseUrl + 'member/add';
         this.updateMemberUrl = this.baseUrl + 'member/update_member';
         this.getAllSchoolUrl = this.baseUrl + 'member/all_school';
-        this.updateMemberIpOpenUrl = this.baseUrl + 'member/update_isopen';
         this.recordLoginLogUrl = this.baseUrl + 'log/login';
         this.recordLogoutLogUrl = this.baseUrl + 'log/logout';
         this.getEntryLogUrl = this.baseUrl + 'log/get_entry';
         this.getOperateLogUrl = this.baseUrl + 'log/get_operate';
-        this.checkSuperAdminUrl = this.baseUrl + 'access/super_admin';
+        //oto
+        this.tokenAppUrl = this.baseUrlOto + 'token/app';
+        this.getLogisticsOrderUrl = this.baseUrlOto + 'order/status_admin/1';
+        this.getExtractOrderUrl = this.baseUrlOto + 'order/status_admin/0';
+        this.getLibItemsWithSip2AaviableUrl = this.baseUrlOto + 'jalis/lib_items_avaiable';
+        this.sip2BorrowBookUrl = this.baseUrlOto + 'Sip2/borrow';
+        this.sip2ReturnBookUrl = this.baseUrlOto + 'Sip2/return';
+        this.updateFieldByListIdUrl = this.baseUrlOto + 'order/update_field_id';
+        this.setOrderAndBookStatusByIdUrl = this.baseUrlOto + 'order/set_status_id';
+        this.checkSuperAdminUrl = this.baseUrlOto + 'access/super_admin';
+        this.getAllmemberByPageUrl = this.baseUrlOto + 'user/all';
+        this.updateMemberIpOpenUrl = this.baseUrlOto + 'user/update_status';
+        this.getLibrariesUrl = this.baseUrlOto + 'system/library';
+        this.updateLibraryOpen = this.baseUrlOto + 'system/update_library_open';
+        this.oneLibraryUrl = this.baseUrlOto + 'system/one_library';
+        this.addLibrayUrl = this.baseUrlOto + 'system/add_library';
+        this.updateLibrayUrl = this.baseUrlOto + 'system/update_library';
+        this.deleteLibraryUrl = this.baseUrlOto + 'system/delete_library';
+        this.getMyReturnOrdersListAdminUrl = this.baseUrlOto + 'order/admin_return_orders_list';
+        this.getBooksByReturnOrderIdUrl = this.baseUrlOto + 'order/return_order_books';
+        this.setReturnOrderAndBookStatusByBookIdUrl = this.baseUrlOto + 'order/set_status_return_order_id_book_id';
+        this.sendExtractMessageUrl = this.baseUrlOto + 'message/extract';
+        this.setCarrierCodeByOrderIdUrl = this.baseUrlOto + 'order/carrier_code';
+        this.getSchoolsUrl = this.baseUrlOto + 'system/schools';
+        this.getSip2ConfigListUrl = this.baseUrlOto + 'sip2config/all_byschool';
+        this.addSip2ConfigUrl = this.baseUrlOto + 'sip2config/add_sip2config';
+        this.oneSip2ConfigUrl = this.baseUrlOto + 'sip2config/one_sip2config';
+        this.updateSip2ConfigUrl = this.baseUrlOto + 'sip2config/update_sip2config';
+        this.updateSip2ConfigIsDefaultUrl = this.baseUrlOto + 'sip2config/update_sip2config_default';
+        this.deleteSip2ConfigUrl = this.baseUrlOto + 'sip2config/delete_sip2config';
+        this.getTelCodeUrl = this.baseUrlOto + 'token/code';
+        this.modificateUserTelUrl = this.baseUrlOto + 'user/modifi_tel';
     }
     return ApiUrlService;
 }());
@@ -1304,6 +1387,293 @@ ApiUrlService = __decorate([
 ], ApiUrlService);
 
 //# sourceMappingURL=api-url.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/book.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BookService = (function () {
+    function BookService(apiUrlService, httpService2) {
+        this.apiUrlService = apiUrlService;
+        this.httpService2 = httpService2;
+    }
+    BookService.prototype.getLibItemsWithSip2Aaviable = function (bookid, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.getLibItemsWithSip2AaviableUrl,
+            type: 'GET',
+            data: { 'marcid': bookid },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    BookService.prototype.borrowBook = function (barCode, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.sip2BorrowBookUrl,
+            type: 'POST',
+            data: { 'barCode': barCode },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    BookService.prototype.returnBook = function (barCode, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.sip2ReturnBookUrl,
+            type: 'POST',
+            data: { 'barCode': barCode },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    BookService.prototype.updateFieldByListId = function (id, field, value, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.updateFieldByListIdUrl,
+            type: 'PUT',
+            data: { id: id, field: field, value: value },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    BookService.prototype.getBooksByReturnOrderId = function (return_order_id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.getBooksByReturnOrderIdUrl,
+            type: 'GET',
+            data: { return_order_id: return_order_id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    return BookService;
+}());
+BookService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */]) === "function" && _b || Object])
+], BookService);
+
+var _a, _b;
+//# sourceMappingURL=book.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/http.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpService2; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+/**
+ * Created by daivd on 2018/2/27.
+ */
+
+
+
+
+var HttpService2 = (function () {
+    function HttpService2(http, config, tokenService) {
+        this.http = http;
+        this.config = config;
+        this.tokenService = tokenService;
+    }
+    /**封装的请求方法 */
+    //http 请求类, 当noRefech为true时，不做未授权重试机制
+    HttpService2.prototype.request = function (params, noRefetch) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        });
+        var url = params.url;
+        //alert(url)
+        if (!params.type) {
+            params.type = 'GET';
+        }
+        //post特殊处理后期改进
+        if (params.type == "POST") {
+            this.http.post(url, JSON.stringify(params.data), { headers: headers }).subscribe(function (res) {
+                var code = res.status.toString();
+                var startChar = code.charAt(0);
+                var data = JSON.parse(res['_body']);
+                //console.log(data)
+                if (startChar == '2') {
+                    params.sCallback && params.sCallback(data);
+                }
+            }, function (err) {
+                var code = err.status.toString();
+                if (code == '401') {
+                    //未授权重试机制
+                    if (!noRefetch) {
+                        _this._refetch(params);
+                    }
+                }
+                _this._processError(err);
+                params.eCallback && params.eCallback(err);
+            });
+        }
+        else if (params.type == "PUT") {
+            this.http.put(url, JSON.stringify(params.data), { headers: headers }).subscribe(function (res) {
+                var code = res.status.toString();
+                var startChar = code.charAt(0);
+                var data = JSON.parse(res['_body']);
+                //console.log(data)
+                //if (startChar == '2') {
+                params.sCallback && params.sCallback(data);
+                //}
+            }, function (err) {
+                var code = err.status.toString();
+                if (code == '401') {
+                    //未授权重试机制
+                    if (!noRefetch) {
+                        _this._refetch(params);
+                    }
+                }
+                _this._processError(err);
+                params.eCallback && params.eCallback(err);
+            });
+        }
+        else {
+            this.http.request(url, {
+                url: url,
+                method: params.type,
+                params: params.data,
+                headers: headers
+            }).subscribe(function (res) {
+                var code = res.status.toString();
+                var startChar = code.charAt(0);
+                var data = JSON.parse(res['_body']);
+                //console.log(data)
+                if (startChar == '2') {
+                    params.sCallback && params.sCallback(data);
+                }
+            }, function (err) {
+                var code = err.status.toString();
+                if (code == '401') {
+                    //未授权重试机制
+                    if (!noRefetch) {
+                        _this._refetch(params);
+                    }
+                }
+                _this._processError(err);
+                params.eCallback && params.eCallback(err);
+            });
+        }
+        // //console.log(url)
+        // wx.request({
+        //   url: url,
+        //   data:params.data,
+        //   method:params.type,
+        //   header:{
+        //     "content-type":"application/json",
+        //     "token":wx.getStorageSync('token')
+        //     //先获得code 然后再获得token存入缓存
+        //
+        //   },
+        //   success:function(res){
+        //     // 判断以2（2xx)开头的状态码为正确
+        //     // 异常不要返回到回调中，就在request中处理，记录日志并showToast一个统一的错误即可
+        //     var code = res.statusCode.toString();
+        //     var startChar = code.charAt(0);
+        //     if (startChar == '2') {
+        //       params.sCallback && params.sCallback(res.data);
+        //     } else {
+        //       if (code == '401') {
+        //         //未授权重试机制
+        //         if (!noRefetch) {
+        //           that._refetch(params);
+        //         }
+        //       }
+        //
+        //       that._processError(res);
+        //
+        //       if(noRefetch){
+        //         params.eCallback && params.eCallback(res.data);
+        //       }
+        //
+        //     }
+        //     //params.sCallback && params.sCallback(res.data);
+        //   },
+        //   fail:function(err){
+        //     that._processError(err);
+        //   }
+        // });
+    };
+    HttpService2.prototype._processError = function (err) {
+        console.log(err);
+    };
+    //未授权重试
+    HttpService2.prototype._refetch = function (param) {
+        var _this = this;
+        this.tokenService.getTokenFromServer(function (token) {
+            _this.request(param, true);
+        });
+    };
+    return HttpService2;
+}());
+HttpService2 = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('BASE_CONFIG')),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__token_service__["a" /* TokenService */]) === "function" && _b || Object])
+], HttpService2);
+
+var _a, _b;
+//# sourceMappingURL=http.service.js.map
 
 /***/ }),
 
@@ -1494,14 +1864,64 @@ var HttpService_1, _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/shared/services/message.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MessageService = (function () {
+    function MessageService(apiUrlService, httpService2) {
+        this.apiUrlService = apiUrlService;
+        this.httpService2 = httpService2;
+    }
+    MessageService.prototype.sendExtractMessage = function (order_id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.sendExtractMessageUrl,
+            type: 'POST',
+            data: { 'orderId': order_id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    return MessageService;
+}());
+MessageService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */]) === "function" && _b || Object])
+], MessageService);
+
+var _a, _b;
+//# sourceMappingURL=message.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/shared/services/order/order.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1515,30 +1935,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var OrderService = (function () {
-    function OrderService(http, tokenService, apiUrlService) {
-        this.http = http;
-        this.tokenService = tokenService;
+    function OrderService(apiUrlService, httpService2) {
         this.apiUrlService = apiUrlService;
+        this.httpService2 = httpService2;
     }
-    OrderService.prototype.getMyTransmites = function () {
-        // if(this.tokenService.verifyToken()===false){
-        //     this.tokenService.getToken(localStorage.getItem('ac'),localStorage.getItem('se'))
-        // }
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.getMyTransmitesUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    OrderService.prototype.setOrderAndBookStatusById = function (id, orderstatus, bookstatus, callback, ecallback, carrier_code) {
+        if (carrier_code === void 0) { carrier_code = ''; }
+        var params = {
+            url: this.apiUrlService.setOrderAndBookStatusByIdUrl,
+            type: 'PUT',
+            data: { id: id, orderStatus: orderstatus, bookStatus: bookstatus, carrier_code: carrier_code },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    OrderService.prototype.setReturnOrderAndBookStatusByBookId = function (order_book_list_id, return_order_id, returnOrderStatus, bookStatus, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.setReturnOrderAndBookStatusByBookIdUrl,
+            type: 'PUT',
+            data: { order_book_list_id: order_book_list_id, return_order_id: return_order_id, returnOrderStatus: returnOrderStatus, bookStatus: bookStatus },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    OrderService.prototype.setCarrierCodeByOrderId = function (order_id, carrier_code, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.setCarrierCodeByOrderIdUrl,
+            type: 'PUT',
+            data: { order_id: order_id, carrier_code: carrier_code },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
     return OrderService;
 }());
 OrderService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__token_service__["a" /* TokenService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__api_url_service__["a" /* ApiUrlService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */]) === "function" && _b || Object])
 ], OrderService);
 
-var _a, _b, _c;
+var _a, _b;
 //# sourceMappingURL=order.service.js.map
 
 /***/ }),
@@ -1551,6 +2003,7 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SendArticleService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1565,13 +2018,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SendArticleService = (function () {
-    function SendArticleService(http, tokenService, apiUrlService) {
+    function SendArticleService(http, tokenService, apiUrlService, httpService2) {
         this.http = http;
         this.tokenService = tokenService;
         this.apiUrlService = apiUrlService;
+        this.httpService2 = httpService2;
     }
-    SendArticleService.prototype.sendArticle = function (orderId) {
+    SendArticleService.prototype.sendArticle = function (orderId, callback, ecallback) {
         // this.tokenService.verifyToken().subscribe(
         //     data=>{
         //         if(data.isValid===false){
@@ -1583,21 +2038,33 @@ var SendArticleService = (function () {
         //         }
         //     }
         // )
-        if (this.tokenService.verifyToken() === false) {
-            this.tokenService.getToken(localStorage.getItem('ac'), localStorage.getItem('se'));
-        }
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.sourceData = this.http.post(this.apiUrlService.sendArticleUrl, { 'id': orderId }, { headers: myHeaders }).map(function (res) { return res.json(); });
+        // if(this.tokenService.verifyToken()===false){
+        //     this.tokenService.getToken(localStorage.getItem('ac'),localStorage.getItem('se'))
+        // }
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'))
+        // return this.sourceData=this.http.post(this.apiUrlService.sendArticleUrl,{'id':orderId},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.sendArticleUrl,
+            type: 'POST',
+            data: { 'id': orderId },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
     return SendArticleService;
 }());
 SendArticleService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__token_service__["a" /* TokenService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__api_url_service__["a" /* ApiUrlService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__token_service__["a" /* TokenService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__api_url_service__["a" /* ApiUrlService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__http_service__["a" /* HttpService2 */]) === "function" && _d || Object])
 ], SendArticleService);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=send-article.service.js.map
 
 /***/ }),
@@ -1734,6 +2201,7 @@ SpinService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__token_service__ = __webpack_require__("../../../../../src/app/shared/services/token.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SystemService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1749,20 +2217,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SystemService = (function () {
-    function SystemService(http, tokenService, apiUrlService) {
+    function SystemService(http, tokenService, apiUrlService, httpService2) {
         this.http = http;
         this.tokenService = tokenService;
         this.apiUrlService = apiUrlService;
+        this.httpService2 = httpService2;
     }
-    SystemService.prototype.addIpMap = function (value, isBlack) {
+    SystemService.prototype.addIpMap = function (value, isBlack, callback, ecallback) {
         var isForbid = isBlack ? 1 : 0;
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        //return this.http.post('http://localhost/after/jsqb/jsqbapi/public/api/v1/system/map',{data:value},{headers:this.myHeaders}).map(res=>res.json());
-        //console.log(myHeaders)
-        return this.sourceData = this.http.post(this.apiUrlService.addMapIpUrl, { data: value, is_forbid: isForbid }, { headers: myHeaders }).map(function (res) { return res.json(); });
+        // this.tokenService.refreshToken();
+        //
+        //
+        //
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'))
+        //
+        // //return this.http.post('http://localhost/after/jsqb/jsqbapi/public/api/v1/system/map',{data:value},{headers:this.myHeaders}).map(res=>res.json());
+        // //console.log(myHeaders)
+        // return  this.sourceData= this.http.post(this.apiUrlService.addMapIpUrl,{data:value,is_forbid:isForbid},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.addMapIpUrl,
+            type: 'POST',
+            data: { data: value, is_forbid: isForbid },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
     SystemService.prototype.getAllMap = function () {
         this.tokenService.refreshToken();
@@ -1770,103 +2256,297 @@ var SystemService = (function () {
         myHeaders.append('token', localStorage.getItem('token'));
         return this.sourceData = this.http.get(this.apiUrlService.allMapUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
     };
-    SystemService.prototype.updateIpMap = function (value, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateIpMapUrl, { data: value, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateIpMap = function (value, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        //  let myHeaders:Headers=new Headers();
+        //  myHeaders.append('token',localStorage.getItem('token'));
+        //  return  this.http.post(this.apiUrlService.updateIpMapUrl,{data:value,id:id},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.updateIpMapUrl,
+            type: 'POST',
+            data: { data: value, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getOneIpMap = function (id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.oneIpMapUrl + '?id=' + id, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getOneIpMap = function (id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.oneIpMapUrl+'?id='+id,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.oneIpMapUrl,
+            type: 'GET',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.updateIsopen = function (status, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateIpMapStatusUrl, { status: status, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateIsopen = function (status, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.post(this.apiUrlService.updateIpMapStatusUrl,{status:status,id:id},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.updateIpMapStatusUrl,
+            type: 'POST',
+            data: { status: status, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.deleteIpMap = function (id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        myHeaders.append('id', id); //id通过heaer传过去
-        return this.http.delete(this.apiUrlService.deleteIpMapUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.deleteIpMap = function (id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // myHeaders.append('id',id);//id通过heaer传过去
+        // return  this.http.delete(this.apiUrlService.deleteIpMapUrl,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.deleteIpMapUrl,
+            type: 'DELETE',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.updateIsForbid = function (status, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateIpMapIsForbidUrl, { status: status, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateIsForbid = function (status, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.post(this.apiUrlService.updateIpMapIsForbidUrl,{status:status,id:id},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.updateIpMapIsForbidUrl,
+            type: 'POST',
+            data: { status: status, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getLibrarys = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.getLibrariesUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getLibrarys = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.getLibrariesUrl,{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.getLibrariesUrl,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.updateLibraryIsOpen = function (status, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateLibraryOpen, { status: status, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateLibraryIsOpen = function (status, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.post(this.apiUrlService.updateLibraryOpen,{status:status,id:id},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.updateLibraryOpen,
+            type: 'POST',
+            data: { status: status, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.addLibrary = function (value) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.sourceData = this.http.post(this.apiUrlService.addLibrayUrl, { data: value }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.addLibrary = function (value, callback, ecallback) {
+        //       this.tokenService.refreshToken();
+        //       let myHeaders:Headers=new Headers();
+        //       myHeaders.append('token',localStorage.getItem('token'))
+        //
+        // return  this.sourceData= this.http.post(this.apiUrlService.addLibrayUrl,{data:value},{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.addLibrayUrl,
+            type: 'POST',
+            data: { data: value },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.updateLibrary = function (value, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateLibrayUrl, { data: value, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateLibrary = function (value, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.post(this.apiUrlService.updateLibrayUrl,{data:value,id:id},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.updateLibrayUrl,
+            type: 'POST',
+            data: { data: value, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getOneLibrary = function (id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.oneLibraryUrl + '?id=' + id, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getOneLibrary = function (id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.oneLibraryUrl+'?id='+id,{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.oneLibraryUrl,
+            type: 'GET',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.deleteLibrary = function (id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        myHeaders.append('id', id); //id通过heaer传过去
-        return this.http.delete(this.apiUrlService.deleteLibraryUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.deleteLibrary = function (id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.deleteLibraryUrl,
+            type: 'DELETE',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getSchools = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.getSchoolsUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getSchools = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.getSchoolsUrl,{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.getSchoolsUrl,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getOrderStatisticsBySchool = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.orderStatisticsSchoolUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getOrderStatisticsBySchool = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.orderStatisticsSchoolUrl,{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.orderStatisticsSchoolUrl,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getResourceStatisticsBySchool = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.resourceStatisticsSchoolUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getResourceStatisticsBySchool = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.resourceStatisticsSchoolUrl,{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.resourceStatisticsSchoolUrl,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getRequstStatisticsByIpTop10 = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.requestStatisticsIpTop10Url, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getRequstStatisticsByIpTop10 = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.requestStatisticsIpTop10Url,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.requestStatisticsIpTop10Url,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getRequestStatisticsByMapNameTop10 = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.requestStatisticsMapTop10Url, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getRequestStatisticsByMapNameTop10 = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.requestStatisticsMapTop10Url,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.requestStatisticsMapTop10Url,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
     SystemService.prototype.getAllmemberByPage = function () {
         this.tokenService.refreshToken();
@@ -1874,61 +2554,228 @@ var SystemService = (function () {
         myHeaders.append('token', localStorage.getItem('token'));
         return this.http.get(this.apiUrlService.getAllmemberByPageUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
     };
-    SystemService.prototype.getOneMember = function (id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.getOneMemberDetailUrl + '?id=' + id, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getOneMember = function (id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.getOneMemberDetailUrl+'?id='+id,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.getOneMemberDetailUrl,
+            type: 'GET',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.addMember = function (value) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.sourceData = this.http.post(this.apiUrlService.addMemberUrl, { data: value }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.addMember = function (value, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'))
+        // return  this.sourceData= this.http.post(this.apiUrlService.addMemberUrl,{data:value},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.addMemberUrl,
+            type: 'POST',
+            data: { data: value },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.updateMember = function (value, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateMemberUrl, { data: value, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateMember = function (value, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.post(this.apiUrlService.updateMemberUrl,{data:value,id:id},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.updateMemberUrl,
+            type: 'POST',
+            data: { data: value, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.getAllSchoolMessage = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.getAllSchoolUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.getAllSchoolMessage = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.getAllSchoolUrl,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.getAllSchoolUrl,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.updateMemberIsopen = function (status, id) {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.post(this.apiUrlService.updateMemberIpOpenUrl, { status: status, id: id }, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.updateMemberIsopen = function (status, id, callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.post(this.apiUrlService.updateMemberIpOpenUrl,{status:status,id:id},{headers:myHeaders}).map(res=>res.json());
+        //
+        var params = {
+            url: this.apiUrlService.updateMemberIpOpenUrl,
+            type: 'POST',
+            data: { status: status, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.recordLoginlog = function (token) {
+    SystemService.prototype.recordLoginlog = function (token, callback, ecallback) {
         //alert(token+'111111111111111111111111111')
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', token);
-        return this.http.post(this.apiUrlService.recordLoginLogUrl, {}, { headers: myHeaders }).map(function (res) { return res.json(); });
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',token);
+        // return  this.http.post(this.apiUrlService.recordLoginLogUrl,{},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.recordLoginLogUrl,
+            type: 'POST',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.recordLoginout = function (token) {
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', token);
-        return this.http.post(this.apiUrlService.recordLogoutLogUrl, {}, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.recordLoginout = function (token, callback, ecallback) {
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',token);
+        // return  this.http.post(this.apiUrlService.recordLogoutLogUrl,{},{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.recordLogoutLogUrl,
+            type: 'POST',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
-    SystemService.prototype.checkSuperAdmin = function () {
-        this.tokenService.refreshToken();
-        var myHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
-        myHeaders.append('token', localStorage.getItem('token'));
-        return this.http.get(this.apiUrlService.checkSuperAdminUrl, { headers: myHeaders }).map(function (res) { return res.json(); });
+    SystemService.prototype.checkSuperAdmin = function (callback, ecallback) {
+        // this.tokenService.refreshToken();
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'));
+        // return  this.http.get(this.apiUrlService.checkSuperAdminUrl,{headers:myHeaders}).map(res=>res.json());
+        var params = {
+            url: this.apiUrlService.checkSuperAdminUrl,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    SystemService.prototype.addSip2Config = function (value, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.addSip2ConfigUrl,
+            type: 'POST',
+            data: { data: value },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    SystemService.prototype.getOneSipConfig = function (id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.oneSip2ConfigUrl,
+            type: 'GET',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    SystemService.prototype.updateSip2Config = function (value, id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.updateSip2ConfigUrl,
+            type: 'POST',
+            data: { data: value, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    SystemService.prototype.updateSip2ConfigIsDefault = function (status, id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.updateSip2ConfigIsDefaultUrl,
+            type: 'POST',
+            data: { status: status, id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    SystemService.prototype.deleteSip2Config = function (id, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.deleteSip2ConfigUrl,
+            type: 'DELETE',
+            data: { id: id },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
     };
     return SystemService;
 }());
 SystemService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__token_service__["a" /* TokenService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__api_url_service__["a" /* ApiUrlService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__token_service__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__token_service__["a" /* TokenService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__api_url_service__["a" /* ApiUrlService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__http_service__["a" /* HttpService2 */]) === "function" && _d || Object])
 ], SystemService);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=system.service.js.map
 
 /***/ }),
@@ -1950,13 +2797,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 
 var TokenService = (function () {
-    function TokenService(http, apiUrlService) {
+    function TokenService(http, apiUrlService, config) {
         this.http = http;
         this.apiUrlService = apiUrlService;
+        this.config = config;
+        this.domain = "token";
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({
+            'Content-Type': 'application/json'
+        });
     }
     TokenService.prototype.getToken = function (ac, se) {
         var _this = this;
@@ -1975,17 +2830,6 @@ var TokenService = (function () {
         if (this.verifyToken() === false) {
             localStorage.setItem('token', this.getToken(localStorage.getItem('ac'), localStorage.getItem('se')));
         }
-        // this.verifyTokenAsync().subscribe(
-        //     data=>{
-        //         if(data.isValid==false){
-        //             this.getTokenAsync().subscribe(
-        //                 token=>{
-        //                     localStorage.setItem('token',token)
-        //                 }
-        //             )
-        //         }
-        //     }
-        // )
     };
     TokenService.prototype.getTokenAsync = function (ac, se) {
         return this.http.post(this.apiUrlService.tokenAppUrl, { "ac": ac, "se": se })
@@ -1995,15 +2839,121 @@ var TokenService = (function () {
         return this.http.post(this.apiUrlService.tokenVerifyUrl, { 'token': localStorage.getItem('token') })
             .map(function (res) { return res.json(); });
     };
+    //开始的干活
+    TokenService.prototype.verify = function () {
+        var token = localStorage.getItem('token');
+        //console.log(token)
+        if (!token) {
+            this.getTokenFromServer(function () { });
+        }
+        else {
+            this._veirfyFromServer(token);
+        }
+    };
+    TokenService.prototype._veirfyFromServer = function (token) {
+        var _this = this;
+        var verifyUri = this.config.uri + "/" + this.domain + "/verify";
+        this.http.post(verifyUri, JSON.stringify({ 'token': token }), { headers: this.headers }).map(function (res) { return res.json(); }).subscribe(function (res) {
+            if (!res.isValid) {
+                _this.getTokenFromServer(function () { });
+            }
+        });
+    };
+    TokenService.prototype.getTokenFromServer = function (callBack) {
+        var uri = this.config.uri + "/" + this.domain + "/app";
+        return this.http
+            .post(uri, JSON.stringify({ 'ac': localStorage.getItem('ac'), 'se': localStorage.getItem('se') }), { headers: this.headers })
+            .map(function (res) { return res.json(); }).subscribe(function (result) {
+            localStorage.setItem('token', result.token);
+            callBack && callBack(result.token);
+        });
+    };
     return TokenService;
 }());
 TokenService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__api_url_service__["a" /* ApiUrlService */]) === "function" && _b || Object])
+    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('BASE_CONFIG')),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__api_url_service__["a" /* ApiUrlService */]) === "function" && _b || Object, Object])
 ], TokenService);
 
 var _a, _b;
 //# sourceMappingURL=token.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_url_service__ = __webpack_require__("../../../../../src/app/shared/services/api-url.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__("../../../../../src/app/shared/services/http.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UserService = (function () {
+    function UserService(apiUrlService, httpService2) {
+        this.apiUrlService = apiUrlService;
+        this.httpService2 = httpService2;
+    }
+    UserService.prototype.updateStatusByUserId = function (user_id, status, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.updateMemberIpOpenUrl,
+            type: 'PUT',
+            data: { user_id: user_id, status: status },
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    UserService.prototype.getTelCode = function (tel, callback) {
+        var params = {
+            url: this.apiUrlService.getTelCodeUrl + "?phone=" + tel,
+            type: 'GET',
+            data: {},
+            sCallback: function (data) {
+                callback && callback(data);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    UserService.prototype.modificateUseTel = function (data, callback, ecallback) {
+        var params = {
+            url: this.apiUrlService.modificateUserTelUrl,
+            type: 'POST',
+            data: data,
+            sCallback: function (data) {
+                callback && callback(data);
+            },
+            eCallback: function (err) {
+                ecallback && ecallback(err);
+            }
+        };
+        this.httpService2.request(params, false);
+    };
+    return UserService;
+}());
+UserService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_url_service__["a" /* ApiUrlService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService2 */]) === "function" && _b || Object])
+], UserService);
+
+var _a, _b;
+//# sourceMappingURL=user.service.js.map
 
 /***/ }),
 

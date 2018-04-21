@@ -1,0 +1,26 @@
+<button class="btn btn-success btn-sm"   (click)="open(content)" [disabled]="btnIsDisable">{{btnText}}</button>
+<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{header}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input class="form-control" type="text" placeholder="{{placeHolder}}" [(ngModel)]="barCode">
+    </div>
+    <div class="modal-footer">
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">保存</button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-secondary" (click)="c('Close click')">关闭</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

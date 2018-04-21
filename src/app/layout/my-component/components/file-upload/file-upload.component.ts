@@ -3,7 +3,7 @@ import {FileUploader, FileItem, ParsedResponseHeaders} from "ng2-file-upload";
 import {TokenService} from "../../../../shared/services/token.service";
 import { ApiUrlService } from '../../../../shared/services/api-url.service'
 //const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-const URL = 'http://101.201.103.106/jsqbapi/public/api/v1/upload';
+const URL = 'http://101.201.122.94:8089/public/api/v1/upload';
 
 @Component({
   selector: 'app-file-upload',
@@ -38,7 +38,7 @@ export class FileUploadComponent implements OnInit {
 
       this.tokenService.refreshToken()
 
-      this.uploader= new FileUploader({url: this.url,method:'post',maxFileSize:500000000,itemAlias:'pdf',headers:[{name:'token',value:localStorage.getItem('token')},{'name':'orderId',value:this.orderId}]});
+      this.uploader= new FileUploader({url: this.url,method:'POST',maxFileSize:500000000,itemAlias:'pdf',headers:[{name:'token',value:localStorage.getItem('token')},{'name':'orderId',value:this.orderId}]});
       //定义两个回调
       this.uploader.onBeforeUploadItem=(fileItem: FileItem)=>{
           this.onBeforeUploadItem(fileItem);

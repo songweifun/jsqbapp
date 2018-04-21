@@ -3,6 +3,7 @@ import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs";
 import {TokenService} from "./token.service";
 import {ApiUrlService} from "./api-url.service";
+import {HttpService2} from "./http.service";
 
 @Injectable()
 export class SendArticleService {
@@ -12,12 +13,13 @@ export class SendArticleService {
   constructor(
       private http:Http,
       private tokenService:TokenService,
-      private apiUrlService:ApiUrlService
+      private apiUrlService:ApiUrlService,
+      private httpService2:HttpService2,
   ) {
 
   }
 
-    sendArticle(orderId){
+    sendArticle(orderId,callback,ecallback){
         // this.tokenService.verifyToken().subscribe(
         //     data=>{
         //         if(data.isValid===false){
@@ -29,13 +31,25 @@ export class SendArticleService {
         //         }
         //     }
         // )
-        if(this.tokenService.verifyToken()===false){
-            this.tokenService.getToken(localStorage.getItem('ac'),localStorage.getItem('se'))
+        // if(this.tokenService.verifyToken()===false){
+        //     this.tokenService.getToken(localStorage.getItem('ac'),localStorage.getItem('se'))
+        // }
+        // let myHeaders:Headers=new Headers();
+        // myHeaders.append('token',localStorage.getItem('token'))
+        // return this.sourceData=this.http.post(this.apiUrlService.sendArticleUrl,{'id':orderId},{headers:myHeaders}).map(res=>res.json());
+        const params={
+            url:this.apiUrlService.sendArticleUrl,
+            type:'POST',
+            data:{'id':orderId},
+            sCallback: (data)=> {
+                callback && callback(data);
+            },
+            eCallback:(err)=>{
+                ecallback && ecallback(err);
+            }
         }
-        let myHeaders:Headers=new Headers();
-        myHeaders.append('token',localStorage.getItem('token'))
-        return this.sourceData=this.http.post(this.apiUrlService.sendArticleUrl,{'id':orderId},{headers:myHeaders}).map(res=>res.json());
 
+        this.httpService2.request(params,false)
 
     }
 

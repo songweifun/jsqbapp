@@ -1,0 +1,4 @@
+<div [@routerTransition]>
+    <app-sip2-config-list [configs]="configs" [transformPageData]="transformPageData" ></app-sip2-config-list>
+    <app-http-pagination [url]="url" [method]="'GET'"  [pageList]="pageList" (onDataChanged)="onDataChanged($event)" ></app-http-pagination>
+</div>

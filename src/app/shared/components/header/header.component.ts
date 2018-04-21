@@ -52,11 +52,7 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('jurisdiction');
         localStorage.removeItem('uid');
         this.tokenService.refreshToken();
-        this.systemService.recordLoginout(localStorage.getItem('token')).subscribe(
-            data=>{
-
-            }
-        )
+        this.systemService.recordLoginout(localStorage.getItem('token'),data=>{},err=>{})
     }
 
     changeLang(language: string) {

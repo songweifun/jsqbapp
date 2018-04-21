@@ -1,0 +1,112 @@
+<button class="btn btn-success btn-sm"  (click)="open(content)">详情</button>
+<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{header}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <!--<app-file-upload (isUploaded)="setIsupload($event)" [hidden]="orderInfo.is_have" [orderId]="orderInfo.id"></app-file-upload>-->
+
+        <!--<button [hidden]="!isUploaded" class="btn btn-success" (click)="sendArticle(orderInfo.id)">提交</button>-->
+
+
+        订单图书:
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <thead>
+            <tr class="bg-success">
+                <th>书名</th>
+                <th>isbn</th>
+                <!--<th>索书号</th>-->
+                <!--<th>馆藏地</th>-->
+                <th>馆藏列表</th>
+                <th>确定可借</th>
+                <th>不可借删除</th>
+                <th>处理状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let book of order.book_list">
+                <td>{{book.book_detail.title}}</td>
+                <td>{{book.book_detail.isbn}}</td>
+                <!--<td></td>-->
+                <td><app-book-locations-modal [bookId]="book.book_detail.id"></app-book-locations-modal></td>
+                <!--<td></td>-->
+                <td>
+                    <!--<button class="btn btn-success btn-xs" ng-click="makeSureBrown(orderDetailShow.id,vv.id,vv.is_available)" ng-bind="vv.is_available==0?'确定':'取消'" ng-class="{'btn-danger':vv.is_available==1}" ng-disabled="orderDetailShow.status>4"></button>-->
+                    <app-book-confirm-modal *ngIf="book.is_available==0" [btnText]="'确定'" [btnIsDisable]="order.status>2" (onBarCodeSubmit)="borrowBook($event,book.book_detail.id,book.id)" ></app-book-confirm-modal>
+                    <app-book-confirm-modal *ngIf="book.is_available==1" [btnText]="'取消'" [btnIsDisable]="order.status>2" (onBarCodeSubmit)="returnBook($event,book.book_detail.id,book.id)" ></app-book-confirm-modal>
+                </td>
+                <td>
+                    <button class="btn btn-success btn-sm" *ngIf="book.is_available==0" [disabled]="order.status>2" (click)="deleteOrderBook(book.id,book.book_detail.id,2)">删除</button>
+                    <button class="btn btn-success btn-sm" *ngIf="book.is_available==2" [disabled]="order.status>2" (click)="deleteOrderBook(book.id,book.book_detail.id,0)">还原</button>
+                </td>
+                <td>
+                    <span *ngIf="book.is_available!=0" style="color: green"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+                    <span *ngIf="book.is_available==0" style="color: red"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+
+        订单信息:
+        <table class="table table-bordered table-hover table-sm">
+
+            <tbody>
+            <tr>
+                <td>下单人</td>
+                <td>{{order.user_detail.user_name}}</td>
+            </tr>
+            <tr>
+                <td>下单人联系方式</td>
+                <td>{{order.user_detail.phone}}</td>
+            </tr>
+            <tr>
+                <td>收件人</td>
+                <td>{{order.address_detail.consignee}}</td>
+            </tr>
+            <tr>
+                <td>下单时间</td>
+                <td>{{order.create_time}}</td>
+            </tr>
+            <tr>
+                <td>收货地址</td>
+                <td>{{order.address_detail.province+order.address_detail.city+order.address_detail.county+order.address_detail.street+order.address_detail.detail_address}}</td>
+            </tr>
+            <tr>
+                <td>收件人电话</td>
+                <td>{{order.address_detail.tel}}</td>
+            </tr>
+            <tr>
+                <td>借还书时间</td>
+                <!--<td>{{order.start_time}}    -   {{order.return_time*1000}}</td>-->
+                <td>{{order.start_time*1000 | date:'yyyy-MM-dd HH:mm:ss'}}    -   {{order.return_time*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr><tr>
+                <td>支付金额</td>
+                <td>￥{{order.total_money}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">保存</button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-secondary" (click)="c('Close click')">关闭</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

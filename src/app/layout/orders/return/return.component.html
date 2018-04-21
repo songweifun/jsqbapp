@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col col-xl-12 col-lg-12">
+        <div class="card border-primary mb-3">
+            <div class="card-header">还书订单</div>
+            <div class="card-block table-responsive">
+                <table class="table table-hover  table-bordered table-dark table-sm ">
+                    <thead class="bg-success">
+                    <tr>
+                        <th>编号</th>
+                        <th>还到哪里</th>
+                        <th>还书人</th>
+                        <th>快递公司</th>
+                        <th>快递单号</th>
+                        <th>还书时间</th>
+                        <th>订单状态</th>
+                        <th>操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr *ngFor="let order of returnOrders">
+                        <td>{{order.id}}</td>
+                        <td>{{order.school_detail.lname}}</td>
+                        <td>{{order.user_detail.user_name}}</td>
+                        <td class="hidden-sm">{{order.carrier_code?order.carrier_name:'上门还'}}</td>
+                        <td class="hidden-sm">{{order.carrier_code?order.carrier_code:'上门还书'}}</td>
+                        <td class="hidden-sm">{{order.create_time}}</td>
+                        <td>{{order_status[order.status]}}</td>
+                        <td>
+                            <app-return-order-detail-modal [returnOrderId]="order.id" [transformPageData]="transformPageData"></app-return-order-detail-modal>
+
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+
+
+                <!--<app-add-library-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addLibrary($event)" [schools]="schools"></app-add-library-modal>-->
+                <!-- <app-add-library-modal></app-add-library-modal> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-http-pagination [url]="url" [pageList]="pageList" [method]="'get'" (onDataChanged)="onDataChanged($event)"></app-http-pagination>
+

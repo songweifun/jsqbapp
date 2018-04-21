@@ -1,0 +1,4 @@
+<div [@routerTransition]>
+    <app-order-list [orders]="orders" [isTransmited]="isTransmited" [transformPageData]="transformPageData" (onStatusChange)="onStatusChangeHandle($event)" [isLogisticsList]="false"></app-order-list>
+    <app-http-pagination [url]="url" [method]="'GET'"  [pageList]="pageList" (onDataChanged)="onDataChanged($event)" ></app-http-pagination>
+</div>

@@ -19,32 +19,12 @@ export class AddLibraryModalComponent implements OnInit {
   @Input()
   header:string
 
-  @Input()
-   btnText:string
+  @Input() btnText:string
 
 
-   formModel:FormGroup
-//        =new FormGroup({
-//
-//
-//     app_id:new FormControl('',[Validators.required]),
-//     secret:new FormGroup(
-//         {
-//             app_secret:new FormControl(),
-//             c_app_secret:new FormControl()
-//         },
-//         {
-//             validator:equalValidator//这么用
-//         }
-//     ),
-//     app_description:new FormControl('',[Validators.required,Validators.minLength(10)]),
-//     scope:new FormControl(32),
-//     isOpen:new FormControl(1),
-//
-// })
+  formModel:FormGroup
 
-@Output()
-onSubmitData:EventEmitter<SubmitData>=new EventEmitter();
+  @Output() onSubmitData:EventEmitter<SubmitData>=new EventEmitter();
 
 
 @Input()
@@ -57,7 +37,7 @@ ipMapId:number;
 // transformPageData:any
 //model;
 
-    schools;
+@Input() schools;
 
 
 
@@ -89,11 +69,7 @@ constructor(
 }
 
 ngOnInit() {
-    this.systemService.getSchools().subscribe(
-        data=>this.schools=data
-    )
-
-
+    //this.systemService.getSchools(data=>this.schools=data,err=>{})
 }
 
 open(content) {
@@ -105,42 +81,26 @@ open(content) {
     });
     if(this.ipMapId){
        // alert(111)
-        this.systemService.getOneLibrary(this.ipMapId).subscribe(
-            data=>{
+        this.systemService.getOneLibrary(this.ipMapId,data=>{
 
-                // this.formModel=new FormGroup({
-                //     secret:new FormGroup({
-                //         app_secret:new FormControl(data.app_secret),
-                //         c_app_secret:new FormControl(data.app_secret)
-                //     }),
-                //
-                //     app_id:new FormControl(data.app_id),
-                //     isOpen:new FormControl(data.is_open),
-                //     scope:new FormControl(data.scope),
-                //     app_description:new FormControl(data.app_description)
-                //
-                // })
-
-
-                this.formModel=this.fb.group({
-                    app_id:[data.app_id,[Validators.required,Validators.minLength(6)]],
-                    secret:this.fb.group(
-                        {
-                            app_secret:[data.app_secret,Validators.minLength(6)],
-                            c_app_secret:[data.app_secret]
-                        },
-                        {
-                            validator:equalValidator//这么用
-                        }
-                    ),
-                    school_id:[data.school_id.id,[Validators.required]],
-                    scope:[data.scope,[Validators.required]],
-                    isOpen:[data.is_open],
-                })
+            this.formModel=this.fb.group({
+                app_id:[data.user_name,[Validators.required,Validators.minLength(6)]],
+                secret:this.fb.group(
+                    {
+                        app_secret:[data.password,Validators.minLength(6)],
+                        c_app_secret:[data.password]
+                    },
+                    {
+                        validator:equalValidator//这么用
+                    }
+                ),
+                school_id:[data.library_id,[Validators.required]],
+                scope:[data.scope,[Validators.required]],
+                isOpen:[data.status],
+            })
 
 
-            }
-        )
+        },err=>{})
 
     }
 

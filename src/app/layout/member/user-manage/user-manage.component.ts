@@ -62,4 +62,8 @@ export class UserManageComponent implements OnInit {
 
     }
 
+    filterItems(status){
+        alert(status);
+    }
+
 }

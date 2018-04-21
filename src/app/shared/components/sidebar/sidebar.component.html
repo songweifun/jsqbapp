@@ -12,56 +12,68 @@
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '最新订单'  }}</span>  <span class="badge badge-info pull-right"> {{newOrderCount}}</span></a>
+                        <a [routerLink]="['/orders/logistics']" [routerLinkActive]="['router-link-active']"><span>{{ '物流订单'  }}</span>  </a>
                     </li>
+
                     <li>
-                        <a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '我的传递'  }}</span></a>
+                        <a [routerLink]="['/orders/extract']" [routerLinkActive]="['router-link-active']"><span>{{ '自提订单'  }}</span></a>
                     </li>
+
                     <li>
-                        <a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '全部传递'  }}</span></a>
+                        <a [routerLink]="['/orders/return']" [routerLinkActive]="['router-link-active']"><span>{{ '还书订单'  }}</span></a>
                     </li>
+
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/orders/new-apply']" [routerLinkActive]="['router-link-active']"><span>{{ '最新订单'  }}</span>  <span class="badge badge-info pull-right"> {{newOrderCount}}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/orders/my-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '我的传递'  }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '全部传递'  }}</span></a>-->
+                    <!--</li>-->
                 </ul>
             </li>
         </div>
 
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('ipmanage')">
-                <span><i class="fa fa-adjust" aria-hidden="true"></i>&nbsp; {{ 'IP管理' }}</span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'ipmanage'">
-                <ul class="submenu">
-                    <li>
-                        <a [routerLink]="['/ipmaping/ips-map']" [routerLinkActive]="['router-link-active']"><span>{{ 'IP映射'  }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/ipmaping/ip-white']" [routerLinkActive]="['router-link-active']"><span>{{ '白名单'  }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/ipmaping/ip-black']" [routerLinkActive]="['router-link-active']"><span>{{ '黑名单'  }}</span></a>
-                    </li>
-                </ul>
-            </li>
-        </div>
+        <!--<div class="nested-menu">-->
+            <!--<a class="list-group-item" (click)="addExpandClass('ipmanage')">-->
+                <!--<span><i class="fa fa-adjust" aria-hidden="true"></i>&nbsp; {{ 'IP管理' }}</span>-->
+            <!--</a>-->
+            <!--<li class="nested" [class.expand]="showMenu === 'ipmanage'">-->
+                <!--<ul class="submenu">-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/ipmaping/ips-map']" [routerLinkActive]="['router-link-active']"><span>{{ 'IP映射'  }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/ipmaping/ip-white']" [routerLinkActive]="['router-link-active']"><span>{{ '白名单'  }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/ipmaping/ip-black']" [routerLinkActive]="['router-link-active']"><span>{{ '黑名单'  }}</span></a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</div>-->
 
 
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('statistics')">
-                <span><i class="fa fa-fw fa-bar-chart-o" aria-hidden="true"></i>&nbsp;{{ '数据统计'  }}</span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'statistics'">
-                <ul class="submenu">
-                    <li>
-                        <a [routerLink]="['/statistics/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆统计'  }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/statistics/rquest']" [routerLinkActive]="['router-link-active']"><span>{{ '请求统计'  }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/statistics/resource']" [routerLinkActive]="['router-link-active']"><span>{{ '资源统计'  }}</span></a>
-                    </li>
-                </ul>
-            </li>
-        </div>
+        <!--<div class="nested-menu">-->
+            <!--<a class="list-group-item" (click)="addExpandClass('statistics')">-->
+                <!--<span><i class="fa fa-fw fa-bar-chart-o" aria-hidden="true"></i>&nbsp;{{ '数据统计'  }}</span>-->
+            <!--</a>-->
+            <!--<li class="nested" [class.expand]="showMenu === 'statistics'">-->
+                <!--<ul class="submenu">-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/statistics/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆统计'  }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/statistics/rquest']" [routerLinkActive]="['router-link-active']"><span>{{ '请求统计'  }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/statistics/resource']" [routerLinkActive]="['router-link-active']"><span>{{ '资源统计'  }}</span></a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</div>-->
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('member')">
@@ -92,11 +104,11 @@
                 <ul class="submenu">
 
                     <li>
-                        <a [routerLink]="['/system/library']" [routerLinkActive]="['router-link-active']"><span>{{ '共享馆设置'  }}</span></a>
+                        <a [routerLink]="['/system/library']" [routerLinkActive]="['router-link-active']"><span>{{ '成员馆设置'  }}</span></a>
                     </li>
-                    <!--<li>-->
-                        <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '沟通设置'  }}</span></a>-->
-                    <!--</li>-->
+                    <li>
+                        <a [routerLink]="['/system/sip2']" [routerLinkActive]="['router-link-active']"><span>{{ 'Sip2设置'  }}</span></a>
+                    </li>
                     <!---->
                     <!--<li>-->
                         <!--<a [routerLink]="['/orders/all-transmit']" [routerLinkActive]="['router-link-active']"><span>{{ '原文定位机制'  }}</span></a>-->
@@ -107,22 +119,22 @@
         </div>
 
 
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('log')">
-                <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ '日志管理'  }}</span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'log'">
-                <ul class="submenu">
-                    <li>
-                        <a [routerLink]="['/log/enter']" [routerLinkActive]="['router-link-active']"><span>{{ '登录日志'  }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/log/operate']" [routerLinkActive]="['router-link-active']"><span>{{ '操作日志'  }}</span></a>
-                    </li>
+        <!--<div class="nested-menu">-->
+            <!--<a class="list-group-item" (click)="addExpandClass('log')">-->
+                <!--<span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp; {{ '日志管理'  }}</span>-->
+            <!--</a>-->
+            <!--<li class="nested" [class.expand]="showMenu === 'log'">-->
+                <!--<ul class="submenu">-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/log/enter']" [routerLinkActive]="['router-link-active']"><span>{{ '登录日志'  }}</span></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a [routerLink]="['/log/operate']" [routerLinkActive]="['router-link-active']"><span>{{ '操作日志'  }}</span></a>-->
+                    <!--</li>-->
 
-                </ul>
-            </li>
-        </div>
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</div>-->
 
 
         <!--<a [routerLink]="['/orders']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->

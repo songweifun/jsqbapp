@@ -1,68 +1,159 @@
-<div class="row">
-    <div class="col col-xl-12 col-lg-12">
-        <div class="card border-primary mb-3">
-            <div class="card-header">{{title}} </div>
+<!--<div class="row">-->
+    <!--<div class="col col-xl-12 col-lg-12">-->
+        <!--<div class="card border-primary mb-3">-->
+            <!--<div class="card-header">{{title}} </div>-->
 
-            <div class="card-block table-responsive">
-                <div class="form-group input-group col-xl-4 col-lg-4 pull-right" >
-                    <input type="text" class="form-control" [(ngModel)]="keyword" (keyup)="onSearch()" placeholder="请输入邮箱搜索">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button" (click)="onSearch()"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-                <table class="table table-hover  table-bordered table-dark table-sm ">
-                    <thead class="bg-success">
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>id</th>
-                        <th>email</th>
-                        <th class="hidden-sm">用户名</th>
-                        <th class="hidden-sm">电话</th>
-                        <th class="hidden-sm">开启关闭</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+            <!--<div class="card-block table-responsive">-->
+                <!--<div class="form-group input-group col-xl-4 col-lg-4 pull-right" >-->
+                    <!--<input type="text" class="form-control" [(ngModel)]="keyword" (keyup)="onSearch()" placeholder="请输入邮箱搜索">-->
+                    <!--<span class="input-group-btn">-->
+                        <!--<button class="btn btn-secondary" type="button" (click)="onSearch()"><i class="fa fa-search"></i></button>-->
+                    <!--</span>-->
+                <!--</div>-->
+                <!--<table class="table table-hover  table-bordered table-dark table-sm ">-->
+                    <!--<thead class="bg-success">-->
+                    <!--<tr>-->
+                        <!--<th><input type="checkbox"></th>-->
+                        <!--<th>id</th>-->
+                        <!--<th>email</th>-->
+                        <!--<th class="hidden-sm">用户名</th>-->
+                        <!--<th class="hidden-sm">电话</th>-->
+                        <!--<th class="hidden-sm">开启关闭</th>-->
+                        <!--<th>操作</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
 
 
-                    <tr *ngFor="let user of users">
-                        <td><input type="checkbox"></td>
-                        <td>{{user.id}}</td>
-                        <td>{{user.email}}</td>
-                        <td class="hidden-sm">{{user.name}}</td>
-                        <td class="hidden-sm">{{user.tel}}</td>
-                        <td [hidden]="isWhite || isBlack" class="hidden-sm">
-                            <div style="width:40px;">
-                                <app-switch [checked]="user.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,user.id)"></app-switch>
-                            </div>
-                        </td>
-                        <!--<td>-->
+                    <!--<tr *ngFor="let user of users">-->
+                        <!--<td><input type="checkbox"></td>-->
+                        <!--<td>{{user.id}}</td>-->
+                        <!--<td>{{user.email}}</td>-->
+                        <!--<td class="hidden-sm">{{user.name}}</td>-->
+                        <!--<td class="hidden-sm">{{user.tel}}</td>-->
+                        <!--<td [hidden]="isWhite || isBlack" class="hidden-sm">-->
                             <!--<div style="width:40px;">-->
-                                <!--&lt;!&ndash;<app-switch [checked]="map.is_forbid==1?true:false" [onLabel]="'黑'"  [offLabel]="'白'" [theme]="theme" (onChange)="changeIsForbid($event,map.id)"></app-switch>&ndash;&gt;-->
+                                <!--<app-switch [checked]="user.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,user.id)"></app-switch>-->
                             <!--</div>-->
                         <!--</td>-->
+                        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div style="width:40px;">&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash;<app-switch [checked]="map.is_forbid==1?true:false" [onLabel]="'黑'"  [offLabel]="'白'" [theme]="theme" (onChange)="changeIsForbid($event,map.id)"></app-switch>&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</td>&ndash;&gt;-->
 
-                        <td>
-                            <!--<button class="btn btn-sm btn-success">状态</button>-->
-                            <!--<button class="btn btn-sm btn-success"><i class="fa fa-wrench" aria-hidden="true"></i> 修改</button>-->
-                            <app-add-member-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editMember($event,user.id)" [userId]="user.id" ></app-add-member-modal>
-                            <!--<app-add-ip-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editIpMap($event,map.id)" [ipMapId]="map.id" [isBlack]="isBlack" [isWhite]="isWhite" ></app-add-ip-modal>-->
-                            <button class="btn btn-sm btn-success" (click)="deleteMember(user.id)"><i class="fa fa-minus"></i> 删除</button>
-                            <!--<button type="button" class="btn btn-info" (click)="openInfo()">信息消息框</button>-->
-
-
-                            <!--<button type="button" class="btn btn-danger" (click)="openError()">错误消息</button>-->
-                        </td>
-                    </tr>
-
-
-                    </tbody>
-                </table>
+                        <!--<td>-->
+                            <!--&lt;!&ndash;<button class="btn btn-sm btn-success">状态</button>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button class="btn btn-sm btn-success"><i class="fa fa-wrench" aria-hidden="true"></i> 修改</button>&ndash;&gt;-->
+                            <!--<app-add-member-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editMember($event,user.id)" [userId]="user.id" ></app-add-member-modal>-->
+                            <!--&lt;!&ndash;<app-add-ip-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editIpMap($event,map.id)" [ipMapId]="map.id" [isBlack]="isBlack" [isWhite]="isWhite" ></app-add-ip-modal>&ndash;&gt;-->
+                            <!--<button class="btn btn-sm btn-success" (click)="deleteMember(user.id)"><i class="fa fa-minus"></i> 删除</button>-->
+                            <!--&lt;!&ndash;<button type="button" class="btn btn-info" (click)="openInfo()">信息消息框</button>&ndash;&gt;-->
 
 
+                            <!--&lt;!&ndash;<button type="button" class="btn btn-danger" (click)="openError()">错误消息</button>&ndash;&gt;-->
+                        <!--</td>-->
+                    <!--</tr>-->
 
-                <app-add-member-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addMember($event)" ></app-add-member-modal>
+
+                    <!--</tbody>-->
+                <!--</table>-->
+
+
+
+                <!--<app-add-member-modal [header]="header" [btnText]="addBtnText" (onSubmitData)="addMember($event)" ></app-add-member-modal>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<div>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card border-primary mb-3">
+                <div class="card-header">订单管理</div>
+                <div class="card-block table-responsive">
+
+
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(0)" [ngClass]="{'btn-success':state==0}">全部</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(1)" [ngClass]="{'btn-success':state==1}">未审核</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(2)" [ngClass]="{'btn-success':state==2}">已审核</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(3)" [ngClass]="{'btn-success':state==3}">已冻结</button>
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(4)" [ngClass]="{'btn-success':state==4}">已注销</button>
+
+                    <br/>
+
+
+
+                    <div class="form-group input-group col-xl-4 col-lg-4 pull-right" >
+                        <input type="text" class="form-control" [(ngModel)]="keyword" (keyup)="onSearch()" placeholder="请输入邮箱搜索">
+                        <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" (click)="onSearch()"><i class="fa fa-search"></i></button>
+                    </span>
+                    </div>
+                    <table class="table table-hover  table-bordered table-dark table-sm ">
+                        <thead class="bg-success">
+                        <tr>
+                            <!--<th><input type="checkbox"></th>-->
+                            <th>id</th>
+
+                            <th class="hidden-sm">用户名</th>
+                            <th class="hidden-sm">电话</th>
+                            <th>注册时间</th>
+                            <!--<th class="hidden-sm">开启关闭</th>-->
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr *ngFor="let user of users">
+                            <!--<td><input type="checkbox"></td>-->
+                            <td>{{user.id}}</td>
+
+                            <td class="hidden-sm">{{user.user_name}}</td>
+                            <td class="hidden-sm">{{user.phone}}</td>
+                            <td>{{user.create_time}}</td>
+                            <!--<td [hidden]="isWhite || isBlack" class="hidden-sm">-->
+                                <!--<div style="width:40px;">-->
+                                    <!--<app-switch [checked]="user.is_open==1?true:false" [onLabel]="'开'"  [offLabel]="'关'" [theme]="theme2" (onChange)="change($event,user.id)"></app-switch>-->
+                                <!--</div>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                            <!--<div style="width:40px;">-->
+                            <!--&lt;!&ndash;<app-switch [checked]="map.is_forbid==1?true:false" [onLabel]="'黑'"  [offLabel]="'白'" [theme]="theme" (onChange)="changeIsForbid($event,map.id)"></app-switch>&ndash;&gt;-->
+                            <!--</div>-->
+                            <!--</td>-->
+
+                            <td>
+                                <!--<button class="btn btn-sm btn-success">状态</button>-->
+                                <!--<button class="btn btn-sm btn-success"><i class="fa fa-wrench" aria-hidden="true"></i> 修改</button>-->
+                                <!--<app-add-member-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editMember($event,user.id)" [userId]="user.id" ></app-add-member-modal>-->
+                                <!--<app-add-ip-modal [header]="editheader" [btnText]="editBtnText"  (onSubmitData)="editIpMap($event,map.id)" [ipMapId]="map.id" [isBlack]="isBlack" [isWhite]="isWhite" ></app-add-ip-modal>-->
+                                <app-user-detail-modal [user]="user" [transformPageData]="transformPageData"></app-user-detail-modal>
+                                <button  class="btn btn-sm btn-success" (click)="checkUser(user.id,2)" *ngIf="user.state=='1'"> 审核通过</button>
+                                <!--<button  class="btn btn-sm btn-danger"  (click)="checkUser(user.id,1)" *ngIf="user.state=='2'"> 取消审核</button>-->
+                                <button  class="btn btn-success btn-sm" (click)="checkUser(user.id,3)" *ngIf="user.state=='2'">冻结账号</button>
+                                <button  class="btn btn-danger btn-sm" (click)="checkUser(user.id,2)" *ngIf="user.state=='3'">取消冻结</button>
+                                <button  class="btn btn-success btn-sm" (click)="checkUser(user.id,4)" *ngIf="user.state=='3'">注销账号</button>
+                                <button  class="btn btn-danger btn-sm" (click)="checkUser(user.id,3)" *ngIf="user.state=='4'">解除注销</button>
+
+
+                                <!--<button type="button" class="btn btn-danger" (click)="openError()">错误消息</button>-->
+                            </td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
             </div>
         </div>
     </div>
 </div>
+

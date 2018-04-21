@@ -155,7 +155,7 @@ var NgbAccordion = (function () {
     };
     NgbAccordion.prototype.ngAfterContentChecked = function () {
         // active id updates
-        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["f" /* isString */])(this.activeIds)) {
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["h" /* isString */])(this.activeIds)) {
             this.activeIds = this.activeIds.split(/\s*,\s*/);
         }
         this._updateStates();
@@ -1355,8 +1355,8 @@ var NgbDatepickerNavigationSelect = (function () {
             this._generateMonths();
         }
     };
-    NgbDatepickerNavigationSelect.prototype.changeMonth = function (month) { this.select.emit(new __WEBPACK_IMPORTED_MODULE_1__ngb_date__["a" /* NgbDate */](this.date.year, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["a" /* toInteger */])(month), 1)); };
-    NgbDatepickerNavigationSelect.prototype.changeYear = function (year) { this.select.emit(new __WEBPACK_IMPORTED_MODULE_1__ngb_date__["a" /* NgbDate */](__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["a" /* toInteger */])(year), this.date.month, 1)); };
+    NgbDatepickerNavigationSelect.prototype.changeMonth = function (month) { this.select.emit(new __WEBPACK_IMPORTED_MODULE_1__ngb_date__["a" /* NgbDate */](this.date.year, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["e" /* toInteger */])(month), 1)); };
+    NgbDatepickerNavigationSelect.prototype.changeYear = function (year) { this.select.emit(new __WEBPACK_IMPORTED_MODULE_1__ngb_date__["a" /* NgbDate */](__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["e" /* toInteger */])(year), this.date.month, 1)); };
     NgbDatepickerNavigationSelect.prototype._generateMonths = function () {
         var _this = this;
         this.months = this.calendar.getMonths();
@@ -1635,7 +1635,7 @@ var NgbDatepicker = (function () {
         this._setDates();
         this._setViewWithinLimits(this._date);
         if (changes['displayMonths']) {
-            this.displayMonths = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__util_util__["a" /* toInteger */])(this.displayMonths);
+            this.displayMonths = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__util_util__["e" /* toInteger */])(this.displayMonths);
         }
         // we have to force rebuild all months only if any of these inputs changes
         if (['startDate', 'minDate', 'maxDate', 'navigation', 'firstDayOfWeek', 'markDisabled', 'displayMonths'].some(function (input) { return !!changes[input]; })) {
@@ -1706,7 +1706,7 @@ var NgbDatepicker = (function () {
             var newDate_1 = this_1._calendar.getNext(this_1._date, 'm', i);
             var index = this_1.months.findIndex(function (month) { return month.firstDate.equals(newDate_1); });
             if (force || index === -1) {
-                newMonths.push(this_1._service.generateMonthViewModel(newDate_1, this_1._minDate, this_1._maxDate, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__util_util__["a" /* toInteger */])(this_1.firstDayOfWeek), this_1.markDisabled));
+                newMonths.push(this_1._service.generateMonthViewModel(newDate_1, this_1._minDate, this_1._maxDate, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__util_util__["e" /* toInteger */])(this_1.firstDayOfWeek), this_1.markDisabled));
             }
             else {
                 newMonths.push(this_1.months[index]);
@@ -1792,9 +1792,9 @@ NgbDatepicker.propDecorators = {
 /* unused harmony reexport NgbDatepickerNavigation */
 /* unused harmony reexport NgbDatepickerNavigationSelect */
 /* unused harmony reexport NgbDatepickerConfig */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_8__datepicker_i18n__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_8__datepicker_i18n__["a"]; });
 /* unused harmony reexport NgbDateParserFormatter */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbDatepickerModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgbDatepickerModule; });
 
 
 
@@ -1877,7 +1877,7 @@ var NgbCalendarHijri = (function (_super) {
     NgbCalendarHijri.prototype.getMonths = function () { return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; };
     NgbCalendarHijri.prototype.getWeeksPerMonth = function () { return 6; };
     NgbCalendarHijri.prototype.isValid = function (date) {
-        return date && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["b" /* isNumber */])(date.year) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["b" /* isNumber */])(date.month) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["b" /* isNumber */])(date.day) &&
+        return date && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isNumber */])(date.year) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isNumber */])(date.month) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isNumber */])(date.day) &&
             !isNaN(this.toGregorian(date).getTime());
     };
     NgbCalendarHijri.prototype.setDay = function (date, day) {
@@ -2182,7 +2182,7 @@ var NgbCalendarGregorian = (function (_super) {
     };
     NgbCalendarGregorian.prototype.getToday = function () { return fromJSDate(new Date()); };
     NgbCalendarGregorian.prototype.isValid = function (date) {
-        if (!date || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isInteger */])(date.year) || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isInteger */])(date.month) || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isInteger */])(date.day)) {
+        if (!date || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["i" /* isInteger */])(date.year) || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["i" /* isInteger */])(date.month) || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["i" /* isInteger */])(date.day)) {
             return false;
         }
         var jsDate = toJSDate(date);
@@ -2233,21 +2233,21 @@ var NgbDateISOParserFormatter = (function (_super) {
     NgbDateISOParserFormatter.prototype.parse = function (value) {
         if (value) {
             var dateParts = value.trim().split('-');
-            if (dateParts.length === 1 && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(dateParts[0])) {
-                return { year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(dateParts[0]), month: null, day: null };
+            if (dateParts.length === 1 && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(dateParts[0])) {
+                return { year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(dateParts[0]), month: null, day: null };
             }
-            else if (dateParts.length === 2 && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(dateParts[0]) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(dateParts[1])) {
-                return { year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(dateParts[0]), month: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(dateParts[1]), day: null };
+            else if (dateParts.length === 2 && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(dateParts[0]) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(dateParts[1])) {
+                return { year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(dateParts[0]), month: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(dateParts[1]), day: null };
             }
-            else if (dateParts.length === 3 && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(dateParts[0]) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(dateParts[1]) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(dateParts[2])) {
-                return { year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(dateParts[0]), month: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(dateParts[1]), day: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(dateParts[2]) };
+            else if (dateParts.length === 3 && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(dateParts[0]) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(dateParts[1]) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(dateParts[2])) {
+                return { year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(dateParts[0]), month: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(dateParts[1]), day: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(dateParts[2]) };
             }
         }
         return null;
     };
     NgbDateISOParserFormatter.prototype.format = function (date) {
         return date ?
-            date.year + "-" + (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(date.month) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["c" /* padNumber */])(date.month) : '') + "-" + (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(date.day) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["c" /* padNumber */])(date.day) : '') :
+            date.year + "-" + (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(date.month) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["f" /* padNumber */])(date.month) : '') + "-" + (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(date.day) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["f" /* padNumber */])(date.day) : '') :
             '';
     };
     return NgbDateISOParserFormatter;
@@ -2554,7 +2554,7 @@ NgbDropdownModule.ctorParameters = function () { return []; };
 /* unused harmony reexport NgbCalendar */
 /* unused harmony reexport NgbCalendarIslamicCivil */
 /* unused harmony reexport NgbDatepickerModule */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__datepicker_datepicker_module__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__datepicker_datepicker_module__["a"]; });
 /* unused harmony reexport NgbDatepickerConfig */
 /* unused harmony reexport NgbDateParserFormatter */
 /* unused harmony reexport NgbDatepicker */
@@ -2630,7 +2630,7 @@ NgbDropdownModule.ctorParameters = function () { return []; };
 
 
 var NGB_MODULES = [
-    __WEBPACK_IMPORTED_MODULE_1__accordion_accordion_module__["a" /* NgbAccordionModule */], __WEBPACK_IMPORTED_MODULE_2__alert_alert_module__["a" /* NgbAlertModule */], __WEBPACK_IMPORTED_MODULE_3__buttons_radio_module__["a" /* NgbButtonsModule */], __WEBPACK_IMPORTED_MODULE_4__carousel_carousel_module__["a" /* NgbCarouselModule */], __WEBPACK_IMPORTED_MODULE_5__collapse_collapse_module__["a" /* NgbCollapseModule */], __WEBPACK_IMPORTED_MODULE_6__datepicker_datepicker_module__["a" /* NgbDatepickerModule */],
+    __WEBPACK_IMPORTED_MODULE_1__accordion_accordion_module__["a" /* NgbAccordionModule */], __WEBPACK_IMPORTED_MODULE_2__alert_alert_module__["a" /* NgbAlertModule */], __WEBPACK_IMPORTED_MODULE_3__buttons_radio_module__["a" /* NgbButtonsModule */], __WEBPACK_IMPORTED_MODULE_4__carousel_carousel_module__["a" /* NgbCarouselModule */], __WEBPACK_IMPORTED_MODULE_5__collapse_collapse_module__["a" /* NgbCollapseModule */], __WEBPACK_IMPORTED_MODULE_6__datepicker_datepicker_module__["b" /* NgbDatepickerModule */],
     __WEBPACK_IMPORTED_MODULE_7__dropdown_dropdown_module__["a" /* NgbDropdownModule */], __WEBPACK_IMPORTED_MODULE_8__modal_modal_module__["b" /* NgbModalModule */], __WEBPACK_IMPORTED_MODULE_9__pagination_pagination_module__["a" /* NgbPaginationModule */], __WEBPACK_IMPORTED_MODULE_10__popover_popover_module__["a" /* NgbPopoverModule */], __WEBPACK_IMPORTED_MODULE_11__progressbar_progressbar_module__["a" /* NgbProgressbarModule */], __WEBPACK_IMPORTED_MODULE_12__rating_rating_module__["a" /* NgbRatingModule */],
     __WEBPACK_IMPORTED_MODULE_13__tabset_tabset_module__["a" /* NgbTabsetModule */], __WEBPACK_IMPORTED_MODULE_14__timepicker_timepicker_module__["a" /* NgbTimepickerModule */], __WEBPACK_IMPORTED_MODULE_15__tooltip_tooltip_module__["a" /* NgbTooltipModule */], __WEBPACK_IMPORTED_MODULE_16__typeahead_typeahead_module__["a" /* NgbTypeaheadModule */]
 ];
@@ -2645,7 +2645,7 @@ NgbRootModule.decorators = [
                 imports: [
                     __WEBPACK_IMPORTED_MODULE_2__alert_alert_module__["a" /* NgbAlertModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_3__buttons_radio_module__["a" /* NgbButtonsModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_5__collapse_collapse_module__["a" /* NgbCollapseModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_11__progressbar_progressbar_module__["a" /* NgbProgressbarModule */].forRoot(),
                     __WEBPACK_IMPORTED_MODULE_15__tooltip_tooltip_module__["a" /* NgbTooltipModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_16__typeahead_typeahead_module__["a" /* NgbTypeaheadModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_1__accordion_accordion_module__["a" /* NgbAccordionModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_4__carousel_carousel_module__["a" /* NgbCarouselModule */].forRoot(),
-                    __WEBPACK_IMPORTED_MODULE_6__datepicker_datepicker_module__["a" /* NgbDatepickerModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_7__dropdown_dropdown_module__["a" /* NgbDropdownModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_8__modal_modal_module__["b" /* NgbModalModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_9__pagination_pagination_module__["a" /* NgbPaginationModule */].forRoot(),
+                    __WEBPACK_IMPORTED_MODULE_6__datepicker_datepicker_module__["b" /* NgbDatepickerModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_7__dropdown_dropdown_module__["a" /* NgbDropdownModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_8__modal_modal_module__["b" /* NgbModalModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_9__pagination_pagination_module__["a" /* NgbPaginationModule */].forRoot(),
                     __WEBPACK_IMPORTED_MODULE_10__popover_popover_module__["a" /* NgbPopoverModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_11__progressbar_progressbar_module__["a" /* NgbProgressbarModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_12__rating_rating_module__["a" /* NgbRatingModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_13__tabset_tabset_module__["a" /* NgbTabsetModule */].forRoot(),
                     __WEBPACK_IMPORTED_MODULE_14__timepicker_timepicker_module__["a" /* NgbTimepickerModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_15__tooltip_tooltip_module__["a" /* NgbTooltipModule */].forRoot()
                 ],
@@ -2813,7 +2813,7 @@ NgbModalRef.decorators = [
 /** @nocollapse */
 NgbModalRef.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentRef"], },
-    { type: __WEBPACK_IMPORTED_MODULE_1__util_popup__["a" /* ContentRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */], },
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentRef"], },
 ]; };
 //# sourceMappingURL=modal-ref.js.map
@@ -2872,29 +2872,29 @@ var NgbModalStack = (function () {
     };
     NgbModalStack.prototype._applyWindowOptions = function (windowInstance, options) {
         ['backdrop', 'keyboard', 'size', 'windowClass'].forEach(function (optionName) {
-            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["e" /* isDefined */])(options[optionName])) {
+            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["c" /* isDefined */])(options[optionName])) {
                 windowInstance[optionName] = options[optionName];
             }
         });
     };
     NgbModalStack.prototype._getContentRef = function (moduleCFR, contentInjector, content, context) {
         if (!content) {
-            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["a" /* ContentRef */]([]);
+            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */]([]);
         }
         else if (content instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["TemplateRef"]) {
             var viewRef = content.createEmbeddedView(context);
             this._applicationRef.attachView(viewRef);
-            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["a" /* ContentRef */]([viewRef.rootNodes], viewRef);
+            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */]([viewRef.rootNodes], viewRef);
         }
-        else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["f" /* isString */])(content)) {
-            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["a" /* ContentRef */]([[document.createTextNode("" + content)]]);
+        else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["h" /* isString */])(content)) {
+            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */]([[document.createTextNode("" + content)]]);
         }
         else {
             var contentCmptFactory = moduleCFR.resolveComponentFactory(content);
             var modalContentInjector = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ReflectiveInjector"].resolveAndCreate([{ provide: __WEBPACK_IMPORTED_MODULE_5__modal_ref__["a" /* NgbActiveModal */], useValue: context }], contentInjector);
             var componentRef = contentCmptFactory.create(modalContentInjector);
             this._applicationRef.attachView(componentRef.hostView);
-            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["a" /* ContentRef */]([[componentRef.location.nativeElement]], componentRef.hostView, componentRef);
+            return new __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */]([[componentRef.location.nativeElement]], componentRef.hostView, componentRef);
         }
     };
     return NgbModalStack;
@@ -3218,14 +3218,14 @@ var NgbPagination = (function () {
     };
     NgbPagination.prototype._setPageInRange = function (newPageNo) {
         var prevPageNo = this.page;
-        this.page = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["i" /* getValueInRange */])(newPageNo, this.pageCount, 1);
+        this.page = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["g" /* getValueInRange */])(newPageNo, this.pageCount, 1);
         if (this.page !== prevPageNo) {
             this.pageChange.emit(this.page);
         }
     };
     NgbPagination.prototype._updatePages = function (newPage) {
         this.pageCount = Math.ceil(this.collectionSize / this.pageSize);
-        if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["b" /* isNumber */])(this.pageCount)) {
+        if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["d" /* isNumber */])(this.pageCount)) {
             this.pageCount = 0;
         }
         // fill-in model needed to render pages
@@ -3405,7 +3405,7 @@ var NgbPopover = (function () {
         this.placement = config.placement;
         this.triggers = config.triggers;
         this.container = config.container;
-        this._popupService = new __WEBPACK_IMPORTED_MODULE_3__util_popup__["b" /* PopupService */](NgbPopoverWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
+        this._popupService = new __WEBPACK_IMPORTED_MODULE_3__util_popup__["a" /* PopupService */](NgbPopoverWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this._windowRef) {
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body');
@@ -3583,7 +3583,7 @@ var NgbProgressbar = (function () {
         this.type = config.type;
         this.showValue = config.showValue;
     }
-    NgbProgressbar.prototype.getValue = function () { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["i" /* getValueInRange */])(this.value, this.max); };
+    NgbProgressbar.prototype.getValue = function () { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["g" /* getValueInRange */])(this.value, this.max); };
     NgbProgressbar.prototype.getPercentValue = function () { return 100 * this.getValue() / this.max; };
     return NgbProgressbar;
 }());
@@ -3739,7 +3739,7 @@ var NgbRating = (function () {
     NgbRating.prototype.handleBlur = function () { this.onTouched(); };
     NgbRating.prototype.handleClick = function (value) { this.update(this.resettable && this.rate === value ? 0 : value); };
     NgbRating.prototype.handleKeyDown = function (event) {
-        if (Key[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["g" /* toString */])(event.which)]) {
+        if (Key[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["a" /* toString */])(event.which)]) {
             event.preventDefault();
             switch (event.which) {
                 case Key.ArrowDown:
@@ -3777,7 +3777,7 @@ var NgbRating = (function () {
     NgbRating.prototype.setDisabledState = function (isDisabled) { this.disabled = isDisabled; };
     NgbRating.prototype.update = function (value, internalChange) {
         if (internalChange === void 0) { internalChange = true; }
-        var newRate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["i" /* getValueInRange */])(value, this.max, 0);
+        var newRate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["g" /* getValueInRange */])(value, this.max, 0);
         if (!this.readonly && !this.disabled && this.rate !== newRate) {
             this.rate = newRate;
             this.rateChange.emit(this.rate);
@@ -4099,16 +4099,16 @@ NgbTabsetModule.ctorParameters = function () { return []; };
 
 var NgbTime = (function () {
     function NgbTime(hour, minute, second) {
-        this.hour = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(hour);
-        this.minute = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(minute);
-        this.second = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["a" /* toInteger */])(second);
+        this.hour = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(hour);
+        this.minute = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(minute);
+        this.second = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["e" /* toInteger */])(second);
     }
     NgbTime.prototype.changeHour = function (step) {
         if (step === void 0) { step = 1; }
         this.updateHour((isNaN(this.hour) ? 0 : this.hour) + step);
     };
     NgbTime.prototype.updateHour = function (hour) {
-        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(hour)) {
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(hour)) {
             this.hour = (hour < 0 ? 24 + hour : hour) % 24;
         }
         else {
@@ -4120,7 +4120,7 @@ var NgbTime = (function () {
         this.updateMinute((isNaN(this.minute) ? 0 : this.minute) + step);
     };
     NgbTime.prototype.updateMinute = function (minute) {
-        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(minute)) {
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(minute)) {
             this.minute = minute % 60 < 0 ? 60 + minute % 60 : minute % 60;
             this.changeHour(Math.floor(minute / 60));
         }
@@ -4133,7 +4133,7 @@ var NgbTime = (function () {
         this.updateSecond((isNaN(this.second) ? 0 : this.second) + step);
     };
     NgbTime.prototype.updateSecond = function (second) {
-        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(second)) {
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(second)) {
             this.second = second < 0 ? 60 + second % 60 : second % 60;
             this.changeMinute(Math.floor(second / 60));
         }
@@ -4143,7 +4143,7 @@ var NgbTime = (function () {
     };
     NgbTime.prototype.isValid = function (checkSecs) {
         if (checkSecs === void 0) { checkSecs = true; }
-        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(this.hour) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(this.minute) && (checkSecs ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["b" /* isNumber */])(this.second) : true);
+        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(this.hour) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(this.minute) && (checkSecs ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_util__["d" /* isNumber */])(this.second) : true);
     };
     NgbTime.prototype.toString = function () { return (this.hour || 0) + ":" + (this.minute || 0) + ":" + (this.second || 0); };
     return NgbTime;
@@ -4228,7 +4228,7 @@ var NgbTimepicker = (function () {
     }
     NgbTimepicker.prototype.writeValue = function (value) {
         this.model = value ? new __WEBPACK_IMPORTED_MODULE_3__ngb_time__["a" /* NgbTime */](value.hour, value.minute, value.second) : new __WEBPACK_IMPORTED_MODULE_3__ngb_time__["a" /* NgbTime */]();
-        if (!this.seconds && (!value || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["b" /* isNumber */])(value.second))) {
+        if (!this.seconds && (!value || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isNumber */])(value.second))) {
             this.model.second = 0;
         }
     };
@@ -4248,15 +4248,15 @@ var NgbTimepicker = (function () {
         this.propagateModelChange();
     };
     NgbTimepicker.prototype.updateHour = function (newVal) {
-        this.model.updateHour(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["a" /* toInteger */])(newVal));
+        this.model.updateHour(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["e" /* toInteger */])(newVal));
         this.propagateModelChange();
     };
     NgbTimepicker.prototype.updateMinute = function (newVal) {
-        this.model.updateMinute(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["a" /* toInteger */])(newVal));
+        this.model.updateMinute(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["e" /* toInteger */])(newVal));
         this.propagateModelChange();
     };
     NgbTimepicker.prototype.updateSecond = function (newVal) {
-        this.model.updateSecond(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["a" /* toInteger */])(newVal));
+        this.model.updateSecond(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["e" /* toInteger */])(newVal));
         this.propagateModelChange();
     };
     NgbTimepicker.prototype.toggleMeridian = function () {
@@ -4265,23 +4265,23 @@ var NgbTimepicker = (function () {
         }
     };
     NgbTimepicker.prototype.formatHour = function (value) {
-        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["b" /* isNumber */])(value)) {
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isNumber */])(value)) {
             if (this.meridian) {
-                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["c" /* padNumber */])(value % 12 === 0 ? 12 : value % 12);
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["f" /* padNumber */])(value % 12 === 0 ? 12 : value % 12);
             }
             else {
-                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["c" /* padNumber */])(value % 24);
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["f" /* padNumber */])(value % 24);
             }
         }
         else {
-            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["c" /* padNumber */])(NaN);
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["f" /* padNumber */])(NaN);
         }
     };
-    NgbTimepicker.prototype.formatMinSec = function (value) { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["c" /* padNumber */])(value); };
+    NgbTimepicker.prototype.formatMinSec = function (value) { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["f" /* padNumber */])(value); };
     NgbTimepicker.prototype.setFormControlSize = function () { return { 'form-control-sm': this.size === 'small', 'form-control-lg': this.size === 'large' }; };
     NgbTimepicker.prototype.setButtonSize = function () { return { 'btn-sm': this.size === 'small', 'btn-lg': this.size === 'large' }; };
     NgbTimepicker.prototype.ngOnChanges = function (changes) {
-        if (changes['seconds'] && !this.seconds && this.model && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["b" /* isNumber */])(this.model.second)) {
+        if (changes['seconds'] && !this.seconds && this.model && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_util__["d" /* isNumber */])(this.model.second)) {
             this.model.second = 0;
             this.propagateModelChange(false);
         }
@@ -4447,7 +4447,7 @@ var NgbTooltip = (function () {
         this.placement = config.placement;
         this.triggers = config.triggers;
         this.container = config.container;
-        this._popupService = new __WEBPACK_IMPORTED_MODULE_3__util_popup__["b" /* PopupService */](NgbTooltipWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
+        this._popupService = new __WEBPACK_IMPORTED_MODULE_3__util_popup__["a" /* PopupService */](NgbTooltipWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this._windowRef) {
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, _this.placement, _this.container === 'body');
@@ -4594,12 +4594,12 @@ var NgbHighlight = (function () {
         this.highlightClass = 'ngb-highlight';
     }
     NgbHighlight.prototype.ngOnChanges = function (changes) {
-        var resultStr = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["g" /* toString */])(this.result);
+        var resultStr = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["a" /* toString */])(this.result);
         var resultLC = resultStr.toLowerCase();
-        var termLC = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["g" /* toString */])(this.term).toLowerCase();
+        var termLC = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["a" /* toString */])(this.term).toLowerCase();
         var currentIdx = 0;
         if (termLC.length > 0) {
-            this.parts = resultLC.split(new RegExp("(" + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["h" /* regExpEscape */])(termLC) + ")")).map(function (part) {
+            this.parts = resultLC.split(new RegExp("(" + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["b" /* regExpEscape */])(termLC) + ")")).map(function (part) {
                 var originalPart = resultStr.substr(currentIdx, part.length);
                 currentIdx += part.length;
                 return originalPart;
@@ -4683,7 +4683,7 @@ var NgbTypeaheadWindow = (function () {
          * A function used to format a given result before display. This function should return a formatted string without any
          * HTML markup
          */
-        this.formatter = __WEBPACK_IMPORTED_MODULE_1__util_util__["g" /* toString */];
+        this.formatter = __WEBPACK_IMPORTED_MODULE_1__util_util__["a" /* toString */];
         /**
          * Event raised when user selects a particular result row
          */
@@ -4814,7 +4814,7 @@ var NgbTypeahead = (function () {
         this.focusFirst = config.focusFirst;
         this.showHint = config.showHint;
         this._valueChanges = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_fromEvent__["fromEvent"])(_elementRef.nativeElement, 'input', function ($event) { return $event.target.value; });
-        this._popupService = new __WEBPACK_IMPORTED_MODULE_7__util_popup__["b" /* PopupService */](__WEBPACK_IMPORTED_MODULE_6__typeahead_window__["a" /* NgbTypeaheadWindow */], _injector, _viewContainerRef, _renderer, componentFactoryResolver);
+        this._popupService = new __WEBPACK_IMPORTED_MODULE_7__util_popup__["a" /* PopupService */](__WEBPACK_IMPORTED_MODULE_6__typeahead_window__["a" /* NgbTypeaheadWindow */], _injector, _viewContainerRef, _renderer, componentFactoryResolver);
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this.isPopupOpen()) {
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__util_positioning__["a" /* positionElements */])(_this._elementRef.nativeElement, _this._windowRef.location.nativeElement, 'bottom-left');
@@ -4859,7 +4859,7 @@ var NgbTypeahead = (function () {
         if (!this.isPopupOpen()) {
             return;
         }
-        if (Key[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__util_util__["g" /* toString */])(event.which)]) {
+        if (Key[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__util_util__["a" /* toString */])(event.which)]) {
             switch (event.which) {
                 case Key.ArrowDown:
                     event.preventDefault();
@@ -4874,7 +4874,7 @@ var NgbTypeahead = (function () {
                 case Key.Enter:
                 case Key.Tab:
                     var result = this._windowRef.instance.getActive();
-                    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__util_util__["e" /* isDefined */])(result)) {
+                    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__util_util__["c" /* isDefined */])(result)) {
                         event.preventDefault();
                         event.stopPropagation();
                         this._selectResult(result);
@@ -4928,7 +4928,7 @@ var NgbTypeahead = (function () {
         }
     };
     NgbTypeahead.prototype._formatItemForInput = function (item) {
-        return item && this.inputFormatter ? this.inputFormatter(item) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__util_util__["g" /* toString */])(item);
+        return item && this.inputFormatter ? this.inputFormatter(item) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__util_util__["a" /* toString */])(item);
     };
     NgbTypeahead.prototype._writeInputValue = function (value) {
         this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
@@ -5063,8 +5063,8 @@ NgbTypeaheadModule.ctorParameters = function () { return []; };
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContentRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return PopupService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ContentRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopupService; });
 
 var ContentRef = (function () {
     function ContentRef(nodes, viewRef, componentRef) {
@@ -5328,15 +5328,15 @@ function listenToTriggers(renderer, nativeElement, triggers, openFn, closeFn, to
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = toInteger;
-/* harmony export (immutable) */ __webpack_exports__["g"] = toString;
-/* harmony export (immutable) */ __webpack_exports__["i"] = getValueInRange;
-/* harmony export (immutable) */ __webpack_exports__["f"] = isString;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isNumber;
-/* harmony export (immutable) */ __webpack_exports__["d"] = isInteger;
-/* harmony export (immutable) */ __webpack_exports__["e"] = isDefined;
-/* harmony export (immutable) */ __webpack_exports__["c"] = padNumber;
-/* harmony export (immutable) */ __webpack_exports__["h"] = regExpEscape;
+/* harmony export (immutable) */ __webpack_exports__["e"] = toInteger;
+/* harmony export (immutable) */ __webpack_exports__["a"] = toString;
+/* harmony export (immutable) */ __webpack_exports__["g"] = getValueInRange;
+/* harmony export (immutable) */ __webpack_exports__["h"] = isString;
+/* harmony export (immutable) */ __webpack_exports__["d"] = isNumber;
+/* harmony export (immutable) */ __webpack_exports__["i"] = isInteger;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isDefined;
+/* harmony export (immutable) */ __webpack_exports__["f"] = padNumber;
+/* harmony export (immutable) */ __webpack_exports__["b"] = regExpEscape;
 function toInteger(value) {
     return parseInt("" + value, 10);
 }

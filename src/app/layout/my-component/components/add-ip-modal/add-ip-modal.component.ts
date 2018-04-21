@@ -103,59 +103,56 @@ export class AddIpModalComponent implements OnInit {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
         if(this.ipMapId){
-            this.systemService.getOneIpMap(this.ipMapId).subscribe(
-                data=>{
+            this.systemService.getOneIpMap(this.ipMapId,data=>{
 
-                    //console.log(content)
-                    let date=new Date(data.expire*1000)
+                //console.log(content)
+                let date=new Date(data.expire*1000)
 
-                    let year=date.getFullYear();
-                    let month=date.getMonth()+1;
-                    let month2 =(month<10 ? "0"+month:month);
-                    let day=date.getDate();
+                let year=date.getFullYear();
+                let month=date.getMonth()+1;
+                let month2 =(month<10 ? "0"+month:month);
+                let day=date.getDate();
 
-                    //console.log(date.getMonth())
+                //console.log(date.getMonth())
 
-                    // this.formModel.value.mapName=new FormControl(data.map_name);
-                    // this.formModel.value.isOpen=data.is_open;
-                    // this.formModel.value.ipRange.start=data.ip_start;
-                    // this.formModel.value.ipRange.end=data.ip_end;
-
-
-                    // this.formModel=new FormGroup({
-                    //     ipRange:new FormGroup({
-                    //         start:new FormControl(data.ip_start),
-                    //         end:new FormControl(data.ip_end)
-                    //     }),
-                    //
-                    //     mapName:new FormControl(data.map_name),
-                    //     isOpen:new FormControl(data.is_open),
-                    //     time:new FormControl({year:year,month:month,day:day}),
-                    //     daylimit:new FormControl(data.daylimit),
-                    //     monthlimit:new FormControl(data.monthlimit)
-                    // })
-
-                    this.formModel=this.fb.group({
-                        mapName:[data.map_name,[Validators.required]],
-                        ipRange:this.fb.group(
-                            {
-                                start:[data.ip_start,ipValidator],
-                                end:[data.ip_end,ipValidator]
-                            },
-                            {
-                                validator:ipRange//这么用
-                            }
-                        ),
-                        time:[{year:year,month:month,day:day},[Validators.required]],
-                        daylimit:[data.daylimit,[Validators.required]],
-                        monthlimit:[data.monthlimit,[Validators.required]],
-                        isOpen:[data.is_open],
-                    })
+                // this.formModel.value.mapName=new FormControl(data.map_name);
+                // this.formModel.value.isOpen=data.is_open;
+                // this.formModel.value.ipRange.start=data.ip_start;
+                // this.formModel.value.ipRange.end=data.ip_end;
 
 
-                }
-            )
+                // this.formModel=new FormGroup({
+                //     ipRange:new FormGroup({
+                //         start:new FormControl(data.ip_start),
+                //         end:new FormControl(data.ip_end)
+                //     }),
+                //
+                //     mapName:new FormControl(data.map_name),
+                //     isOpen:new FormControl(data.is_open),
+                //     time:new FormControl({year:year,month:month,day:day}),
+                //     daylimit:new FormControl(data.daylimit),
+                //     monthlimit:new FormControl(data.monthlimit)
+                // })
 
+                this.formModel=this.fb.group({
+                    mapName:[data.map_name,[Validators.required]],
+                    ipRange:this.fb.group(
+                        {
+                            start:[data.ip_start,ipValidator],
+                            end:[data.ip_end,ipValidator]
+                        },
+                        {
+                            validator:ipRange//这么用
+                        }
+                    ),
+                    time:[{year:year,month:month,day:day},[Validators.required]],
+                    daylimit:[data.daylimit,[Validators.required]],
+                    monthlimit:[data.monthlimit,[Validators.required]],
+                    isOpen:[data.is_open],
+                })
+
+
+            },err=>{})
         }
 
 

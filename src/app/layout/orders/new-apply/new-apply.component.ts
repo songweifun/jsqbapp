@@ -49,10 +49,10 @@ export class NewApplyComponent implements OnInit,OnChanges {
 
     }
 
-    sendArticle(orderId){
-        this.sendArticleService.sendArticle(orderId)
-
-    }
+    // sendArticle(orderId){
+    //     this.sendArticleService.sendArticle(orderId)
+    //
+    // }
 
     ordersStart(){
 

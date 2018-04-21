@@ -39,7 +39,7 @@ LoginRoutingModule = __decorate([
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-page\" [@routerTransition]>\n    <div class=\"row\">\n        <div class=\"col-md-4 push-md-4\">\n            <img src=\"assets/images/logo.png\" width=\"150px\" class=\"user-avatar\" />\n            <h1>Baohe Admin</h1>\n            <form role=\"form\">\n                <div class=\"form-content\">\n                    <div class=\"form-group\">\n                        <input type=\"text\" [(ngModel)]=\"ac\" name=\"ac\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Email\">{{ac}}\n                    </div>\n\n                    <div class=\"form-group\">\n                        <input type=\"password\" [(ngModel)]=\"se\" name=\"se\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Password\">\n                    </div>\n                </div>\n                <a class=\"btn rounded-btn\"  (click)=\"onLoggedin()\"> 登 录 </a>\n                &nbsp;\n                <!--<a class=\"btn rounded-btn\" [routerLink]=\"['/signup']\">注册</a>-->\n            </form>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"login-page\" [@routerTransition]>\n    <div class=\"row\">\n        <div class=\"col-md-4 push-md-4\">\n            <img src=\"assets/images/logo.jpeg   \" width=\"150px\" class=\"user-avatar\" />\n            <h1>Njau Admin</h1>\n            <form role=\"form\">\n                <div class=\"form-content\">\n                    <div class=\"form-group\">\n                        <input type=\"text\" [(ngModel)]=\"ac\" name=\"ac\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Email\">{{ac}}\n                    </div>\n\n                    <div class=\"form-group\">\n                        <input type=\"password\" [(ngModel)]=\"se\" name=\"se\" class=\"form-control input-underline input-lg\" id=\"\" placeholder=\"Password\">\n                    </div>\n                </div>\n                <a class=\"btn rounded-btn\"  (click)=\"onLoggedin()\"> 登 录 </a>\n                &nbsp;\n                <!--<a class=\"btn rounded-btn\" [routerLink]=\"['/signup']\">注册</a>-->\n            </form>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -96,6 +96,8 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.onLoggedin = function () {
+        //localStorage.setItem('se', this.se);
+        //localStorage.setItem('ac', this.ac);
         var _this = this;
         this.tokenService.getTokenAsync(this.ac, this.se).subscribe(function (data) {
             if (data.token) {
@@ -105,10 +107,9 @@ var LoginComponent = (function () {
                 localStorage.setItem('uid', data.id);
                 localStorage.setItem('se', _this.se);
                 localStorage.setItem('ac', _this.ac);
-                _this.systemService.recordLoginlog(data.token).subscribe(function (data) {
-                });
+                _this.systemService.recordLoginlog(data.token, function (data) { }, function (err) { });
                 localStorage.setItem('jurisdiction', '0');
-                _this.systemService.checkSuperAdmin().subscribe(function (data) {
+                _this.systemService.checkSuperAdmin(function (data) {
                     //alert(data.errorCode)
                     //console.log(data.errorCode);
                     if (data.errorCode == 10001) {
@@ -117,8 +118,8 @@ var LoginComponent = (function () {
                     else {
                         localStorage.setItem('jurisdiction', '1');
                     }
-                });
-                _this.router.navigate(['/orders/new-apply']);
+                }, function (err) { });
+                _this.router.navigate(['/orders/logistics']);
             }
             else {
                 _this.router.navigate(['/login']);

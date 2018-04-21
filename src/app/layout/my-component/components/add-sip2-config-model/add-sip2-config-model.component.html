@@ -1,0 +1,169 @@
+<button class="btn btn-success btn-sm"  (click)="open(content)"><i class="fa" [class.fa-plus]="btnText=='添加'" [class.fa-wrench]="btnText=='修改'"></i> {{btnText}}</button>
+<!-- 这个变量指向 该元素对应的DOM对象，你可以在模板中的其他地方调用其方法和属性： -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{header}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>
+        <div class="modal-body">
+            <div class="container" >
+
+
+                <div class="form-group row" [class.has-danger]="formModel.get('bind_name').invalid && formModel.get('bind_name').touched">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">用户名</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="用户名" formControlName="bind_name" [class.form-control-danger]="formModel.get('bind_name').invalid && formModel.get('bind_name').touched">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('bind_name').valid || formModel.get('bind_name').untouched">
+                            <div [hidden]="!formModel.hasError('required','bind_name')"><h5>用户名为必填项</h5></div>
+                            <!--<div class="invalid-feedback" [hidden]="!formModel.hasError('required','app_id')">-->
+                            <!--用户名为必填项-->
+                            <!--</div>-->
+                            <div [hidden]="!formModel.hasError('minlength','bind_name')"><h5>用户名最低为6个字符</h5></div><!-- 这个minlength要小些 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">密码</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" id="inputEmail3" placeholder="密码" formControlName="bind_pass">
+                    </div>
+                    <div class="col-sm-4">
+                        <div [hidden]="!formModel.hasError('required','bind_pass')"><h5>密码最低为6个字符</h5></div><!-- 如果这个属性是嵌套的-->
+                    </div>
+                </div>
+
+
+                <div class="form-group row" [class.has-danger]="formModel.get('host').invalid && formModel.get('host').touched">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">ip地址</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  placeholder="ip地址" formControlName="host" [class.form-control-danger]="formModel.get('host').invalid && formModel.get('host').touched">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('host').valid || formModel.get('host').untouched">
+                            <div [hidden]="!formModel.hasError('required','host')"><h5>用户名为必填项</h5></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" [class.has-danger]="formModel.get('port').invalid && formModel.get('port').touched">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">端口</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  placeholder="端口号" formControlName="port" [class.form-control-danger]="formModel.get('port').invalid && formModel.get('port').touched">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('port').valid || formModel.get('port').untouched">
+                            <div [hidden]="!formModel.hasError('required','port')"><h5>用户名为必填项</h5></div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group row" [class.has-danger]="formModel.get('location').invalid && formModel.get('location').touched">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">机器代码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  placeholder="机器代码" formControlName="location" [class.form-control-danger]="formModel.get('location').invalid && formModel.get('location').touched">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('location').valid || formModel.get('location').untouched">
+                            <div [hidden]="!formModel.hasError('required','location')"><h5>用户名为必填项</h5></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" [class.has-danger]="formModel.get('user_code').invalid && formModel.get('user_code').touched">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">借书账号名</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"  placeholder="借书账号名" formControlName="user_code" [class.form-control-danger]="formModel.get('user_code').invalid && formModel.get('user_code').touched">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('user_code').valid || formModel.get('user_code').untouched">
+                            <div [hidden]="!formModel.hasError('required','user_code')"><h5>用户名为必填项</h5></div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group row">
+                    <label for="inputPassword4" class="col-sm-2 col-form-label">所属成员馆</label>
+                    <div class="col-sm-6">
+                        <select  formControlName="school_id" class="form-control">
+                            <option value="{{school.id}}"  *ngFor="let school of schools">{{school.lname}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div [hidden]="formModel.get('school_id').valid || formModel.get('school_id').untouched">
+                            <div [hidden]="!formModel.hasError('required','school_id')"><h5>所属成员馆为必选项</h5></div>
+                            <!--<div [hidden]="!formModel.hasError('minlength','app_description')"><h5>共享馆名称最低为10个字符</h5></div>&lt;!&ndash; 这个minlength要小些 &ndash;&gt;-->
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <fieldset class="form-group" >
+                    <div class="row">
+                        <legend class="col-form-legend col-sm-2">是否开启</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="is_default" id="gridRadios1" [value]=1 checked formControlName="is_default">
+                                    是
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="is_default" id="gridRadios2" [value]=0 formControlName="is_default">
+                                    否
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary" [disabled]="!formModel.valid" >保存</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-secondary" (click)="c('Close click')">关闭</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</ng-template>

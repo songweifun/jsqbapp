@@ -1,17 +1,96 @@
+<!--<div>-->
+    <!--<div class="row">-->
+        <!--<div class="col col-xl-12 col-lg-12">-->
+            <!--<div class="card border-primary mb-3">-->
+                <!--<div class="card-header">订单管理</div>-->
+                <!--<div class="card-block table-responsive">-->
+                    <!--<table class="table table-hover  table-bordered table-dark table-sm ">-->
+                        <!--<thead class="bg-success">-->
+                        <!--<tr>-->
+                            <!--<th>id</th>-->
+                            <!--<th class="hidden-sm">申请IP</th>-->
+                            <!--<th>申请单位</th>-->
+                            <!--<th class="hidden-sm">申请人</th>-->
+                            <!--<th class="hidden-sm">申请时间</th>-->
+                            <!--&lt;!&ndash;<th>标题</th>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<th>DOI号</th>&ndash;&gt;-->
+                            <!--<th>操作</th>-->
+                            <!--&lt;!&ndash;<th>留言</th>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr *ngFor="let order of orders" [hidden]="!orders">-->
+                            <!--<th scope="row">{{order.id}}</th>-->
+                            <!--<td class="hidden-sm">{{order.requestip}}</td>-->
+                            <!--<td>{{order.request_map}}</td>-->
+                            <!--<td class="hidden-sm">{{order.from_name}}</td>-->
+                            <!--<td class="hidden-sm">{{order.create_time}}</td>-->
+                            <!--&lt;!&ndash;<td>{{order.title}}</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td>{{order.doi}}</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td [hidden]="order.url"><app-modal></app-modal></td>&ndash;&gt;-->
+                            <!--<td><app-modal [orderInfo]="order" [isTransmited]="isTransmited"></app-modal></td>-->
+                            <!--&lt;!&ndash;<td><button>详情</button></td>&ndash;&gt;-->
+                        <!--</tr>-->
+
+
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
 <div>
     <div class="row">
         <div class="col col-xl-12 col-lg-12">
             <div class="card border-primary mb-3">
-                <div class="card-header">最新订单</div>
+                <div class="card-header">订单管理</div>
                 <div class="card-block table-responsive">
+
+
+                    <!--<button type="button" class="btn btn-primary btn-sm" (click)="filterItems(999)" [ngClass]="{'btn-success':state==999}">全部</button>-->
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(0)"  [ngClass]="{'btn-success':state==0}">待发货</button>
+                    <!--<button type="button" class="btn btn-success btn-sm" (click)="filterItems(2)" ng-class="{'btn-success':state==2}">已付款</button>-->
+                    <!--<button type="button" class="btn btn-primary btn-sm" (click)="filterItems(1)"  [ngClass]="{'btn-success':state==1}">已发货</button>-->
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(2)"  [ngClass]="{'btn-success':state==2}">待收货</button>
+                    <!--<button type="button" class="btn btn-success btn-sm" (click)="filterItems(5)" ng-class="{'btn-success':state==5}">下单成功</button>-->
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(3)" [ngClass]="{'btn-success':state==3}">待归还</button>
+                    <!--<button type="button" class="btn btn-success btn-sm" (click)="filterItems(7)" ng-class="{'btn-success':state==7}">待收货</button>-->
+                    <!--<button type="button" class="btn btn-success btn-sm" (click)="filterItems(8)" ng-class="{'btn-success':state==8}">已收货</button>-->
+                    <button type="button" class="btn btn-primary btn-sm" (click)="filterItems(4)" [ngClass]="{'btn-success':state==4}">已归还</button>
+
+                    <!--<button type="button" class="btn btn-success btn-sm" (click)="filterItems(10)" ng-class="{'btn-success':state==10}">还书中</button>-->
+                    <!--<button type="button" class="btn btn-success btn-sm" (click)="filterItems(11)" ng-class="{'btn-success':state==11}">已归还</button>-->
+                    <!---->
+                    <!--
+                    <button type="button" class="btn btn-success btn-sm" (click)="filterItems(11)" ng-class="{'btn-success':state==11}">超过3天未自提订单</button>
+                    -->
+
+
+                    <br/>
+                    <!--<br/>-->
+
+
+                    <div class="form-group input-group col-xl-4 col-lg-4 pull-right" >
+                        <input type="text" class="form-control" [(ngModel)]="keyword" (keyup)="onSearch()" placeholder="请输入订单号搜索">
+                        <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" (click)="onSearch()"><i class="fa fa-search"></i></button>
+                    </span>
+                    </div>
+
+
+
                     <table class="table table-hover  table-bordered table-dark table-sm ">
                         <thead class="bg-success">
                         <tr>
-                            <th>id</th>
-                            <th class="hidden-sm">申请IP</th>
-                            <th>申请单位</th>
-                            <th class="hidden-sm">申请人</th>
-                            <th class="hidden-sm">申请时间</th>
+                            <th>订单编号</th>
+                            <th class="hidden-sm">下单时间</th>
+                            <th>下单人</th>
+                            <th class="hidden-sm">联系电话</th>
+                            <th class="hidden-sm">所属图书馆</th>
                             <!--<th>标题</th>-->
                             <!--<th>DOI号</th>-->
                             <th>操作</th>
@@ -20,16 +99,31 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let order of orders" [hidden]="!orders">
-                            <th scope="row">{{order.id}}</th>
-                            <td class="hidden-sm">{{order.requestip}}</td>
-                            <td>{{order.request_map}}</td>
-                            <td class="hidden-sm">{{order.from_name}}</td>
+                            <th scope="row">{{order.sn}}</th>
                             <td class="hidden-sm">{{order.create_time}}</td>
+                            <td>{{order.user_detail.user_name}}</td>
+                            <td class="hidden-sm">{{order.user_detail.phone}}</td>
+                            <td class="hidden-sm">{{order.library_detail.lname}}</td>
                             <!--<td>{{order.title}}</td>-->
                             <!--<td>{{order.doi}}</td>-->
                             <!--<td [hidden]="!order.url"><button class="btn btn-success btn-sm" (click)="sendArticle(order.id)">提交</button></td>-->
                             <!--<td [hidden]="order.url"><app-modal></app-modal></td>-->
-                            <td><app-modal [orderInfo]="order" [isTransmited]="isTransmited"></app-modal></td>
+                            <td>
+                                <app-order-detail-modal [order]="order" [transformPageData]="transformPageData" ></app-order-detail-modal>
+                                <app-book-confirm-modal [btnText]="'发货'" [header]="'发货'" [placeHolder]="'物流单号'" (onBarCodeSubmit)="sendOrder($event,order.id)" [btnIsDisable]="!order.is_available || order.status>2" *ngIf="isLogisticsList"></app-book-confirm-modal>
+                                <!--<button class="btn btn-success btn-sm">发货</button>-->
+                                <button class="btn btn-success btn-sm" [disabled]="!order.is_available" *ngIf="isLogisticsList">查看物流</button>
+
+                                <button class="btn btn-success btn-sm" (click)="sendExtractMessage(order.id)" *ngIf="!isLogisticsList" [disabled]="!isLogisticsList &&order.status>=9">发送通知</button>
+                                <button class="btn btn-success btn-sm" (click)="sendExtractOrder(order.id)" *ngIf="!isLogisticsList &&order.status<9" >自提发货</button>
+                                <button class="btn btn-danger btn-sm"  *ngIf="!isLogisticsList &&order.status>=9">已 提 走</button>
+                                <button class="btn btn-success btn-sm" *ngIf="!isLogisticsList &&order.message_time && ((order.message_time+604800)*1000-nowTimeStamp)>0 &&order.status<9">{{((order.message_time+604800)*1000-nowTimeStamp)|fomatshijiancha:''}}</button>
+
+
+                                <!--<app-modal [orderInfo]="order" [isTransmited]="isTransmited"></app-modal>-->
+                                <!--<app-modal [orderInfo]="order" [isTransmited]="isTransmited"></app-modal>-->
+                                <!--<app-modal [orderInfo]="order" [isTransmited]="isTransmited"></app-modal>-->
+                            </td>
                             <!--<td><button>详情</button></td>-->
                         </tr>
 
@@ -41,3 +135,4 @@
         </div>
     </div>
 </div>
+

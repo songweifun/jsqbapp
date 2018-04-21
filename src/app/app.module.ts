@@ -13,6 +13,7 @@ import {SendArticleService} from "./shared/services/send-article.service";
 import {TokenService} from "./shared/services/token.service";
 import {OrderService} from "./shared/services/order/order.service";
 import {HttpService} from "./shared/services/http/http.service";
+import {HttpService2} from "./shared/services/http.service";
 import {SpinService} from "./shared/services/spin/spin.service";
 // import {ToastService} from "./shared/services/toast/toast.service";
 import {AppService} from "./app.service";
@@ -25,6 +26,9 @@ import {SystemService} from "./shared/services/system/system.service";
 import {ApiUrlService} from "./shared/services/api-url.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {LeaveOrderNewGuard} from "./guard/leaveOrderNew.guard";
+import {BookService} from "./shared/services/book.service";
+import {UserService} from "./shared/services/user.service";
+import {MessageService} from "./shared/services/message.service";
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -52,9 +56,15 @@ export function HttpLoaderFactory(http: Http) {
                 useFactory: HttpLoaderFactory,
                 deps: [Http]
             }
-        })
+        }),
     ],
     providers: [
+        {
+            provide:"BASE_CONFIG",
+            useValue:{
+                uri:"http://101.201.122.94/otoapi/public/api/v1/"
+            }
+        },
         AuthGuard,
         WebSocketService,
         SendArticleService,
@@ -68,7 +78,11 @@ export function HttpLoaderFactory(http: Http) {
         SystemService,
         ApiUrlService,
         NgbActiveModal,
-        LeaveOrderNewGuard
+        LeaveOrderNewGuard,
+        HttpService2,
+        BookService,
+        UserService,
+        MessageService,
     ],
     exports:[ToastBoxComponent,SpinComponent,ToastComponent],
     bootstrap: [AppComponent]

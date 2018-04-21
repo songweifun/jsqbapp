@@ -6,6 +6,9 @@ import {MyTransmitComponent} from "./my-transmit/my-transmit.component";
 import {NewApplyComponent} from "./new-apply/new-apply.component";
 import {AllTransmitComponent} from "./all-transmit/all-transmit.component";
 import {LeaveOrderNewGuard} from "../../guard/leaveOrderNew.guard";
+import {LogisticsComponent} from "./logistics/logistics.component";
+import {ExtractComponent} from "./extract/extract.component";
+import {ReturnComponent} from "./return/return.component";
 
 const routes: Routes = [
     {
@@ -24,6 +27,18 @@ const routes: Routes = [
             {
                 path: 'all-transmit',
                 component: AllTransmitComponent
+            },
+            {
+                path: 'logistics',
+                component: LogisticsComponent
+            },
+            {
+                path: 'extract',
+                component: ExtractComponent
+            },
+            {
+                path: 'return',
+                component: ReturnComponent
             }
 
         ]

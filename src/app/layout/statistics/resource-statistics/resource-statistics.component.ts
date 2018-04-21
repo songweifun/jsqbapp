@@ -17,26 +17,24 @@ export class ResourceStatisticsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.systemService.getResourceStatisticsBySchool().subscribe(
-          data=>{
-              // data=data.map((val,index,arr)=>{
-              //     val.value=parseInt(val.value);
-              //     return val;
-              // })
+      this.systemService.getResourceStatisticsBySchool(data=>{
+          // data=data.map((val,index,arr)=>{
+          //     val.value=parseInt(val.value);
+          //     return val;
+          // })
 
-              this.options_advance_pie={
-                  single: data.map((val,index,arr)=>{
-                      val.value=parseInt(val.value);
-                      return val;
-                  }),
-                  view:  [800, 300],
-                  colorScheme : {
-                      domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','#FF3333','#CC0099']
-                  }
-
+          this.options_advance_pie={
+              single: data.map((val,index,arr)=>{
+                  val.value=parseInt(val.value);
+                  return val;
+              }),
+              view:  [800, 300],
+              colorScheme : {
+                  domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA','#FF3333','#CC0099']
               }
+
           }
-      )
+      },err=>{})
   }
 
 
